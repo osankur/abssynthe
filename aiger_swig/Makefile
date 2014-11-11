@@ -1,5 +1,5 @@
 _aiger_wrap.so: aiger_wrap_wrap.c aiger.c
-	gcc -dynamiclib -Wl,-undefined,dynamic_lookup aiger_wrap_wrap.c \
+	gcc -shared -Wl,-undefined,dynamic_lookup aiger_wrap_wrap.c \
 		aiger.c \
 		-fPIC -o _aiger_wrap.so \
 		-I/usr/include/python2.7 \
