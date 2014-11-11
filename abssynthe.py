@@ -144,7 +144,8 @@ class SymblicitGame(Game):
 
 
 class ClusteredLocRedGame(Game):
-    def __init__(self, restrict_like_crazy=False, use_trans=False):
+    def __init__(self, restrict_like_crazy=False, use_trans=False, use_clustering=False):
+        self.use_clustering = use_clustering
         self.cached_trans_rel = None
         self.cached_latch_clusters = None
         self.restrict_like_crazy = restrict_like_crazy
@@ -153,24 +154,37 @@ class ClusteredLocRedGame(Game):
     def _latch_clusters(self):
         # Here the aig file is already read to spec
         # return list of clusters
-        return [[c] for c in iterate_latches()]
-        # return cluster.clusters()
+        if self.use_clustering:
+            return cluster.get_clusters(True,depth=1)
+        else:
+            cl = [[c] for c in iterate_latches()]
+            return cl
 
-    # TODO test
     def trans_rel_bdd(self):
         # check cache
         if self.cached_trans_rel:
             return self.cached_trans_rel
+        all_latches = set([lat for lat in aig.iterate_latches()])
+        cl = self._latch_clusters()
+        #lits = map(lambda c: map(lambda lat: lat.lit, c),cl)
+        #print lits
         translist = []
         for cl in self._latch_clusters():
-            b = bdd.true()
+            b = BDD.true()
             for x in cl:
-                b &= bdd.make_eq(bdd.BDD(get_primed_var(x.lit)),
+                b &= BDD.make_eq(BDD(get_primed_var(x.lit)),
                                  aig2bdd.get_bdd_for_lit(x.next))
+            hidden_latches = BDD.get_cube(imap(funcomp(BDD,
+                                            aig.symbol_lit),
+                                            all_latches.difference(cl)))
+            b.exist_abstract(hidden_latches)
+            # Here quantify existentially over all variables c,c' with c \not \in cl
             translist.append(b)
-        cached_transition = reduce(lambda x,y: x & y, translist, bdd.true())
-        log.BDD_DMP(b, "Composed and cached the concrete transition relation.")
-        return b
+        self.cached_trans_rel = reduce(lambda x,y: x & y, translist, BDD.true())
+        print "Monolithic size: ", aig2bdd.trans_rel_bdd().dag_size()
+        print "Clustered size: ", self.cached_trans_rel.dag_size()
+        log.BDD_DMP(self.cached_trans_rel, "Composed and cached the concrete transition relation.")
+        return self.cached_trans_rel
 
     # TODO test
     def substitute_latches_next(self, b, restrict_fun=None):
@@ -180,8 +194,8 @@ class ClusteredLocRedGame(Game):
             if restrict_fun is not None:
                 trans = trans.restrict(restrict_fun)
             primed_bdd = aig2bdd.prime_latches_in_bdd(b)
-            primed_latches = bdd.get_cube(
-                imap(funcomp(bdd.BDD, aig2bdd.get_primed_var, symbol_lit),
+            primed_latches = BDD.get_cube(
+                imap(funcomp(BDD, aig2bdd.get_primed_var, symbol_lit),
                      iterate_latches()))
             return trans.and_abstract(primed_bdd,
                                       primed_latches)
@@ -206,10 +220,10 @@ class ClusteredLocRedGame(Game):
             p_bdd &= env_strat
         # there is an uncontrollable action such that for all contro...
         temp_bdd = p_bdd.univ_abstract(
-            bdd.get_cube(imap(funcomp(bdd.BDD, symbol_lit),
+            BDD.get_cube(imap(funcomp(BDD, symbol_lit),
                               iterate_controllable_inputs())))
         p_bdd = temp_bdd.exist_abstract(
-            bdd.get_cube(imap(funcomp(bdd.BDD, symbol_lit),
+            BDD.get_cube(imap(funcomp(BDD, symbol_lit),
                               iterate_uncontrollable_inputs())))
         # prepare the output
         if get_strat:
@@ -229,11 +243,6 @@ class ClusteredLocRedGame(Game):
             dst, restrict_like_crazy=self.restrict_like_crazy)
 
 def ocansynth(argv):
-    game = ClusteredLocRedGame(restrict_like_crazy=False,
-                               use_trans=True)
-    w = backward_safety_synth(
-        game,
-        only_real=argv.out_file is None)
     if (w):
         return True
     else:
@@ -241,8 +250,11 @@ def ocansynth(argv):
 
 
 def synth(argv):
+    if argv.use_ocan:
+        game = ClusteredLocRedGame(restrict_like_crazy=False,use_trans=True,use_clustering=argv.use_clustering)
+        w = backward_safety_synth(game)
     # Explicit approach
-    if argv.use_symb:
+    elif argv.use_symb:
         print "USE_SYMB"
         assert argv.out_file is None
         symgame = SymblicitGame()
@@ -351,6 +363,8 @@ def main():
                         dest="only_transducer", default=False,
                         help=("Output only the synth'd transducer (i.e. " +
                               "remove the error monitor logic)."))
+    parser.add_argument("-ocan", "--ocan", action="store_true", dest="use_ocan", default=False);
+    parser.add_argument("-cl", "--clustering", action="store_true", dest="use_clustering", default=False);
     args = parser.parse_args()
     # initialize the log verbose level
     log.parse_verbose_level(args.verbose_level)
