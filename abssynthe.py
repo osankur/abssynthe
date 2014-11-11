@@ -161,28 +161,35 @@ class ClusteredLocRedGame(Game):
             return cl
 
     def trans_rel_bdd(self):
+        def to_litset(c):
+            return set(map(lambda l: l.lit, c))
         # check cache
         if self.cached_trans_rel:
             return self.cached_trans_rel
         all_latches = set([lat for lat in aig.iterate_latches()])
         cl = self._latch_clusters()
-        #lits = map(lambda c: map(lambda lat: lat.lit, c),cl)
-        #print lits
+        # just replace all latches by their literals
+        #cl = map(lambda c: map(lambda l: l.lit, c),cl)
         translist = []
         for cl in self._latch_clusters():
             b = BDD.true()
             for x in cl:
                 b &= BDD.make_eq(BDD(get_primed_var(x.lit)),
                                  aig2bdd.get_bdd_for_lit(x.next))
-            hidden_latches = BDD.get_cube(imap(funcomp(BDD,
-                                            aig.symbol_lit),
-                                            all_latches.difference(cl)))
-            b.exist_abstract(hidden_latches)
             # Here quantify existentially over all variables c,c' with c \not \in cl
+            cl_lits = to_litset(cl)
+            other_lits = to_litset(all_latches).difference(cl_lits)
+            print "Cluster: " + str(cl_lits)
+            print "Others: " + str(other_lits)
+            hidden_lits = to_litset(all_latches).difference(to_litset(cl))
+            hidden_lits_cube = BDD.get_cube(imap(BDD, hidden_lits))
+            print "Hidden latches has size: " + str(len(hidden_lits)) + " out of " + str(len(all_latches))
+            b.exist_abstract(hidden_lits_cube)
             translist.append(b)
         self.cached_trans_rel = reduce(lambda x,y: x & y, translist, BDD.true())
         print "Monolithic size: ", aig2bdd.trans_rel_bdd().dag_size()
         print "Clustered size: ", self.cached_trans_rel.dag_size()
+        print "Eq: " + str(aig2bdd.trans_rel_bdd() == self.cached_trans_rel)
         log.BDD_DMP(self.cached_trans_rel, "Composed and cached the concrete transition relation.")
         return self.cached_trans_rel
 

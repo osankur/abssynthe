@@ -42,20 +42,33 @@ def bounded_cone_of(root_latch, latches, bound=sys.maxint):
     return cone
         
 def remove_subsumed(cones):
-    cones = [a for a in cones]
+    cones = list(cones)
     for i in range(len(cones)):
         (lit,cone) = cones[i];
         if (cone == None):
             continue;
         for (litb,coneb) in cones:
-            if (coneb != None and cone.issubset(coneb) and cone != coneb ):
+            if (coneb != None and cone.issubset(coneb) and not(cone is coneb) ):
                 cones[i] = (lit,None)
     cones = [(lit,cone) for (lit,cone) in cones if cone != None]
     return cones
-        
 
-def get_clusters(include_err_latch = False):
+def print_clusters(cones, latches):        
+    for (lit,cone) in cones:
+        percentage = "(%" + "{:.2f}".format(100 * len(cone)/float(len(latches))) + " of latches)";
+        print >> stderr, "Lit ", lit, "dependencies ", percentage;
+        print >> stderr, cone;
+
+def to_lit(latch_list):
+    return map(lambda lat: lat.lit, latch_list)
+
+def get_clusters(include_err_latch = False, depth=sys.maxint):
     latches = [l for l in aig.iterate_latches() if l.name != 'fake_error_latch' or include_err_latch]
+    clusters = [[],[]]
+    for i in range(len(latches)):
+        clusters[i % 2].append(latches[i])
+    print "ARBITRARILY DIVIDING LATCHES INTO TWO"
+    return map(lambda cl: set(cl),clusters)
     for l in latches:
         print >> stderr, (l.lit,l.name)
     latch_lits = map(lambda l: l.lit, latches)
@@ -63,27 +76,51 @@ def get_clusters(include_err_latch = False):
         print >> stderr, "There are ", len(latch_lits), " latches";
     cones = []
     for lat in latches:
-        cones.append( (lat.lit,bounded_cone_of(lat.lit, set(latch_lits))) )
+        cones.append( (lat.lit,bounded_cone_of(lat.lit, set(latch_lits), depth)) )
     cones = remove_subsumed(cones)
     if cluster_debug:
-        for (lit,cone) in cones:
-            percentage = "(%" + "{:.2f}".format(100 * len(cone)/float(len(latches))) + " of latches)";
-            print >> stderr, "Lit ", lit, "dependencies ", percentage;
-            print >> stderr, cone;
-    cone_list = map(lambda (lit,cone): cone, cones)
-    clusters = map(lambda clust: set(map(lambda lit: aig.get_lit_type(lit)[1], clust)), cone_list)
+        print "Initial set of cones\n"
+        print_clusters(cones, latches)
+    cones = map(lambda (lit,cone): cone, cones)
+    cones = map(lambda clust: map(lambda lit: aig.get_lit_type(lit)[1], clust), cones)
+    cones = sorted(cones,cmp=lambda l1,l2: cmp(len(l1),len(l2)))
+    # If error latch is there, then remove all singletons
+    if (include_err_latch and depth == sys.maxint):
+        while(len(cones)> 0 and len(cones[0])==1):
+            cones.pop(0)
+    print "Removed singletons, we get:"
+    for cone in cones:
+        print map(lambda lat: lat.lit, cone)
+    print "Now merging"
+    while( len(cones) > 2):
+        a = cones.pop(0)
+        b = cones.pop(0)
+        #print "Got two sets: " + str(to_lit(a)) + " and " + str(to_lit(b))
+        cones.append(list(set(a).union(set(b))))
+        cones = sorted(cones,cmp=lambda l1,l2: cmp(len(l1),len(l2)))
+        #for cone in cones:
+        #    print map(lambda lat: lat.lit, cone)
+        #print "--"
+    #print "After sorting"
+    for cone in cones:
+        print map(lambda lat: lat.lit, cone)
+    return cones
 #    if cluster_debug :
 #        for cl in clusters:
 #            percentage = "(%" + "{:.2f}".format(len(cone)/float(len(latches))) + " of latches)";
 #            print >> stderr, "Lit ", lit, "dependencies ", percentage;
 #            print >> stderr, map(lambda lat: lat.lit, cl);
 
-
-    
     
 if __name__ == '__main__':
     if (len(sys.argv) < 2):
         print "Not enough arguments"
         exit(-1)
+    include_err_latch = False
+    if (len(sys.argv) > 2):
+        if (sys.argv[2] == "-e"):
+            include_err_latch = True;
+            print "setting err latch to true"
     aig.parse_into_spec(sys.argv[1])
-    get_clusters()
+    aig.introduce_error_latch()
+    get_clusters(include_err_latch,1)
