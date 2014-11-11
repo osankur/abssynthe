@@ -142,6 +142,63 @@ class SymblicitGame(Game):
         return s in self.Venv
 
 
+class ClusteredLocRedGame(Game):
+    def __init__(self):
+        cached_trans_rel = None
+        cached_latch_clusters = None
+
+    def _latch_clusters():
+        # Here the aig file is already read to spec
+        # return list of clusters
+        return []
+
+    # TODO Compute here the intersected transition relations.
+    def trans_rel_bdd():
+        # check cache
+        if cached_trans_rel:
+            return cached_trans_rel
+        b = bdd.true()
+        for x in iterate_latches():
+            b &= bdd.make_eq(bdd.BDD(get_primed_var(x.lit)),
+                             get_bdd_for_lit(x.next))
+        cached_transition = b
+        log.BDD_DMP(b, "Composed and cached the concrete transition relation.")
+        return b
+
+    # TODO Adapt this to our case
+    def substitute_latches_next(b, use_trans=False, restrict_fun=None):
+        if use_trans:
+            transition_bdd = trans_rel_bdd()
+            trans = transition_bdd
+            if restrict_fun is not None:
+                trans = trans.restrict(restrict_fun)
+            primed_bdd = prime_latches_in_bdd(b)
+            primed_latches = bdd.get_cube(
+                imap(funcomp(bdd.BDD, get_primed_var, symbol_lit),
+                     iterate_latches()))
+            return trans.and_abstract(primed_bdd,
+                                      primed_latches)
+        else:
+            latches = [x.lit for x in iterate_latches()]
+            latch_funs = [get_bdd_for_lit(x.next) for x in
+                          iterate_latches()]
+            if restrict_fun is not None:
+                latch_funs = [x.restrict(restrict_fun) for x in latch_funs]
+            # take a transition step backwards
+            return b.compose(latches, latch_funs)
+
+    def init(self):
+        return aig2bdd.init_state_bdd()
+
+    def error(self):
+        return aig2bdd.get_bdd_for_lit(aig.error_fake_latch.lit)
+
+    # TODO Rewrite the upre function using the new transition relation
+    def upre(self, dst):
+        return aig2bdd.upre_bdd(
+            dst, restrict_like_crazy=self.restrict_like_crazy,
+            use_trans=self.use_trans)
+
 def synth(argv):
     # Explicit approach
     if argv.use_symb:
