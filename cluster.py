@@ -6,6 +6,7 @@ import pycudd
 import aig
 from aiger_swig.aiger_wrap import *
 from aiger_swig.aiger_wrap import aiger
+import copy
 
 cluster_debug = True
 
@@ -62,18 +63,9 @@ def print_clusters(cones, latches):
 def to_lit(latch_list):
     return map(lambda lat: lat.lit, latch_list)
 
-def get_clusters(include_err_latch = False, depth=sys.maxint):
+def get_cones(include_err_latch = False, depth=sys.maxint):
     latches = [l for l in aig.iterate_latches() if l.name != 'fake_error_latch' or include_err_latch]
-    clusters = [[],[]]
-    for i in range(len(latches)):
-        clusters[i % 2].append(latches[i])
-    print "ARBITRARILY DIVIDING LATCHES INTO TWO"
-    return map(lambda cl: set(cl),clusters)
-    for l in latches:
-        print >> stderr, (l.lit,l.name)
     latch_lits = map(lambda l: l.lit, latches)
-    if cluster_debug:
-        print >> stderr, "There are ", len(latch_lits), " latches";
     cones = []
     for lat in latches:
         cones.append( (lat.lit,bounded_cone_of(lat.lit, set(latch_lits), depth)) )
@@ -83,33 +75,66 @@ def get_clusters(include_err_latch = False, depth=sys.maxint):
         print_clusters(cones, latches)
     cones = map(lambda (lit,cone): cone, cones)
     cones = map(lambda clust: map(lambda lit: aig.get_lit_type(lit)[1], clust), cones)
+    return cones
+
+
+def get_clusters(include_err_latch = False, depth=sys.maxint):
+    latches = [l for l in aig.iterate_latches() if l.name != 'fake_error_latch' or include_err_latch]
+    latch_lits = map(lambda l: l.lit, latches)
+    cones = []
+    for lat in latches:
+        cones.append( (lat.lit,bounded_cone_of(lat.lit, set(latch_lits), depth)) )
+    cones = remove_subsumed(cones)
+    #if cluster_debug:
+    #    print "Initial set of cones\n"
+    #    print_clusters(cones, latches)
+    cones = map(lambda (lit,cone): cone, cones)
+    cones = map(lambda clust: map(lambda lit: aig.get_lit_type(lit)[1], clust), cones)
     cones = sorted(cones,cmp=lambda l1,l2: cmp(len(l1),len(l2)))
     # If error latch is there, then remove all singletons
     if (include_err_latch and depth == sys.maxint):
         while(len(cones)> 0 and len(cones[0])==1):
             cones.pop(0)
-    print "Removed singletons, we get:"
-    for cone in cones:
-        print map(lambda lat: lat.lit, cone)
-    print "Now merging"
+    #for cl in cones:
+    #    print map(lambda l: l.lit, cl)
+#    print "--"
     while( len(cones) > 2):
         a = cones.pop(0)
         b = cones.pop(0)
-        #print "Got two sets: " + str(to_lit(a)) + " and " + str(to_lit(b))
         cones.append(list(set(a).union(set(b))))
-        cones = sorted(cones,cmp=lambda l1,l2: cmp(len(l1),len(l2)))
-        #for cone in cones:
-        #    print map(lambda lat: lat.lit, cone)
-        #print "--"
-    #print "After sorting"
+        cones = sorted(cones,cmp=lambda l1,l2: cmp(len(l1),len(l2)))        
+#        print "*****"
+#        for cone in cones:
+#            cl = map(lambda lat: lat.lit, cone)
+#            print sorted(cl)
+#        print "*****"
+    print "Clustering:"
     for cone in cones:
-        print map(lambda lat: lat.lit, cone)
+        cl = map(lambda lat: lat.lit, cone)
+        print sorted(cl)
+    cones = map(lambda cl: sorted(cl), cones)
     return cones
 #    if cluster_debug :
 #        for cl in clusters:
 #            percentage = "(%" + "{:.2f}".format(len(cone)/float(len(latches))) + " of latches)";
 #            print >> stderr, "Lit ", lit, "dependencies ", percentage;
 #            print >> stderr, map(lambda lat: lat.lit, cl);
+
+def get_clusters_bonus(include_err_latch = False, depth=sys.maxint):
+#    print "Calling get_clusters(include_err_latch=", include_err_latch, ", depth=", depth, ")"
+    cls = get_clusters(include_err_latch, depth)
+    cl1 = list(copy.copy(cls[1]))
+    cl2 = list(copy.copy(cls[1]))
+    nswitch = len(cls[0])-3
+    print nswitch, " to switch"
+    for i in range(nswitch):
+        j = len(cls[0])-i-1
+        if (j>= 0):
+            cl1.append(cls[0][j])
+        cl2.append(cls[0][i])
+    for cl in [cl1,cl2]:
+        print map(lambda l:l.lit, cl)
+    return [cl1,cl2]
 
     
 if __name__ == '__main__':
@@ -123,4 +148,4 @@ if __name__ == '__main__':
             print "setting err latch to true"
     aig.parse_into_spec(sys.argv[1])
     aig.introduce_error_latch()
-    get_clusters(include_err_latch,1)
+    get_clusters(include_err_latch,4)

@@ -143,9 +143,13 @@ class SymblicitGame(Game):
         return s in self.Venv
 
 
+
+
+
+
 class ClusteredLocRedGame(Game):
-    def __init__(self, restrict_like_crazy=False, use_trans=False, use_clustering=False):
-        self.use_clustering = use_clustering
+    def __init__(self, restrict_like_crazy=False, use_trans=False, clustering_level=0):
+        self.clustering_level= int(clustering_level)
         self.cached_trans_rel = None
         self.cached_latch_clusters = None
         self.restrict_like_crazy = restrict_like_crazy
@@ -154,8 +158,10 @@ class ClusteredLocRedGame(Game):
     def _latch_clusters(self):
         # Here the aig file is already read to spec
         # return list of clusters
-        if self.use_clustering:
+        if self.clustering_level == 1:
             return cluster.get_clusters(True,depth=1)
+        elif (self.clustering_level == 2):
+            return cluster.get_clusters_bonus(True,depth=1)
         else:
             cl = [[c] for c in iterate_latches()]
             return cl
@@ -167,7 +173,6 @@ class ClusteredLocRedGame(Game):
         if self.cached_trans_rel:
             return self.cached_trans_rel
         all_latches = set([lat for lat in aig.iterate_latches()])
-        cl = self._latch_clusters()
         # just replace all latches by their literals
         #cl = map(lambda c: map(lambda l: l.lit, c),cl)
         translist = []
@@ -179,17 +184,20 @@ class ClusteredLocRedGame(Game):
             # Here quantify existentially over all variables c,c' with c \not \in cl
             cl_lits = to_litset(cl)
             other_lits = to_litset(all_latches).difference(cl_lits)
-            print "Cluster: " + str(cl_lits)
-            print "Others: " + str(other_lits)
+            #print "Cluster: " + str(cl_lits)
+            #print "Others: " + str(other_lits)
             hidden_lits = to_litset(all_latches).difference(to_litset(cl))
             hidden_lits_cube = BDD.get_cube(imap(BDD, hidden_lits))
-            print "Hidden latches has size: " + str(len(hidden_lits)) + " out of " + str(len(all_latches))
-            b.exist_abstract(hidden_lits_cube)
+            #print "Hidden latches has size: " + str(len(hidden_lits)) + " out of " + str(len(all_latches))
+            b = b.exist_abstract(hidden_lits_cube)
             translist.append(b)
         self.cached_trans_rel = reduce(lambda x,y: x & y, translist, BDD.true())
-        print "Monolithic size: ", aig2bdd.trans_rel_bdd().dag_size()
-        print "Clustered size: ", self.cached_trans_rel.dag_size()
-        print "Eq: " + str(aig2bdd.trans_rel_bdd() == self.cached_trans_rel)
+        print "Trans size: ", self.cached_trans_rel.dag_size();
+        clustered_size = self.cached_trans_rel.dag_size()
+        print "Monolithic: ", aig2bdd.trans_rel_bdd().dag_size(), " Clustered: ", clustered_size
+        if (aig2bdd.trans_rel_bdd().dag_size() > clustered_size):
+            print "\t *SMALLER"
+        #print "Eq: " + str(aig2bdd.trans_rel_bdd() == self.cached_trans_rel)
         log.BDD_DMP(self.cached_trans_rel, "Composed and cached the concrete transition relation.")
         return self.cached_trans_rel
 
@@ -249,16 +257,10 @@ class ClusteredLocRedGame(Game):
         return self.upre_bdd(
             dst, restrict_like_crazy=self.restrict_like_crazy)
 
-def ocansynth(argv):
-    if (w):
-        return True
-    else:
-        return False
-
 
 def synth(argv):
     if argv.use_ocan:
-        game = ClusteredLocRedGame(restrict_like_crazy=False,use_trans=True,use_clustering=argv.use_clustering)
+        game = ClusteredLocRedGame(restrict_like_crazy=False,use_trans=True,clustering_level=argv.clustering_level)
         w = backward_safety_synth(game)
     # Explicit approach
     elif argv.use_symb:
@@ -371,7 +373,10 @@ def main():
                         help=("Output only the synth'd transducer (i.e. " +
                               "remove the error monitor logic)."))
     parser.add_argument("-ocan", "--ocan", action="store_true", dest="use_ocan", default=False);
-    parser.add_argument("-cl", "--clustering", action="store_true", dest="use_clustering", default=False);
+    parser.add_argument("-cl", "--clustering", dest="clustering_level",
+                        default="", required=False)
+
+#    parser.add_argument("-cl", "--clustering", action="store_true", dest="use_clustering", default=False);
     args = parser.parse_args()
     # initialize the log verbose level
     log.parse_verbose_level(args.verbose_level)
