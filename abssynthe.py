@@ -47,7 +47,7 @@ import aig
 from aig import *
 import log
 import cluster
-
+from random import randrange
 EXIT_STATUS_REALIZABLE = 10
 EXIT_STATUS_UNREALIZABLE = 20
 
@@ -298,17 +298,35 @@ class SymblicitGame(ForwardGame):
 #         return self.upre_bdd(
 #             dst, restrict_like_crazy=self.restrict_like_crazy)
 
+def random_bdd():
+    if (randrange(2)):
+        return BDD.true
+    else:
+        return BDD.false
+def test():
+    T = aig2bdd.trans_rel_bdd()
+    T2 = aig2bdd.prime_all_inputs_in_bdd(T)
+    b = BDD.make_impl(T,T2)
+    latches = [x.lit for x in iterate_latches()]
+    uinputs = [x.lit for x in iterate_uncontrollable_inputs()]
+    cinputs = [x.lit for x in iterate_controllable_inputs()]
+    platches_cube = BDD.get_cube(imap(funcomp(BDD, aig.get_primed_var), latches))
+    cinputs_cube = BDD.get_cube(imap(BDD, cinputs))
+    pcinputs_cube = BDD.get_cube(imap(funcomp(BDD, aig.get_primed_var), cinputs))
+    b = b.univ_abstract(platches_cube).exist_abstract(pcinputs_cube).exist_abstract(cinputs_cube);
+    for i in range(1000):        
+#        v = map(lambda l: random_bdd(), latches)        
+        state = BDD.get_cube( map(lambda l: BDD.make_eq(BDD(l),random_bdd()),latches))
+        state &= b
+        print state.dump_dot()
+        
+#    return b.swap_variables(latches, platches)
+    
 
 def synth(argv):
-    if argv.use_ocan:
-        pass;
-        #game = ClusteredLocRedGame(restrict_like_crazy=False,use_trans=True,clustering_level=argv.clustering_level)
-        #w = backward_safety_synth(game)
-        #test()
-    else:
-        # parse the input spec
-        aig = BDDAIG(aiger_file_name=argv.spec, intro_error_latch=True)
-        return _synth_from_spec(aig, argv)
+      # parse the input spec
+      aig = BDDAIG(aiger_file_name=argv.spec, intro_error_latch=True)
+      return _synth_from_spec(aig, argv)
 
 
 def _synth_from_spec(aig, argv):
