@@ -45,8 +45,6 @@ from algos import (
 from cudd_bdd import BDD
 import aig
 from aig import *
-import aig2bdd
-import bdd2aig
 import log
 import cluster
 
@@ -86,15 +84,16 @@ class ConcGame(BackwardGame):
 
 class SymblicitGame(ForwardGame):
     def __init__(self, aig):
+        self.use_control_sim = True
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
         self.latches = [x.lit for x in self.aig.iterate_latches()]
         self.latch_cube = BDD.make_cube(imap(funcomp(BDD,
                                                      symbol_lit),
-                                             self.ig.iterate_latches()))
+                                             self.aig.iterate_latches()))
         self.platch_cube = BDD.make_cube(imap(funcomp(BDD,
-                                                      self.aig.get_primed_var,
+                                                      aig.get_primed_var,
                                                       symbol_lit),
                                               self.aig.iterate_latches()))
         self.cinputs_cube = BDD.make_cube(
@@ -148,20 +147,33 @@ class SymblicitGame(ForwardGame):
         return imap(lambda x: (q, x), M)
 
     def cpost(self, s):
-        q = s[0]
-        au = s[1]
         if s in self.succ_cache:
             L = self.succ_cache[s]
-        else:
+        if (not self.use_control_sim):
+            q = s[0]
+            au = s[1]
             L = BDD.make_cube(
                 imap(lambda x: BDD.make_eq(BDD(x.lit),
                                            self.aig.lit2bdd(x.next)
                                            .and_abstract(q & au,
                                                          self.latch_cube &
-                                                         self.uinputs_cube)),
+                                                         self.uinputs_cube)),\
                      self.aig.iterate_latches()))\
-                .exist_abstract(self.cinputs_cube)
+                     .exist_abstract(self.cinputs_cube)
             self.succ_cache[s] = L
+        else: # using simulation reduction
+            A = BDD.true()
+            M = set()
+            while A != BDD.false():
+                # monolithic for the moment
+                trans = aig2bdd.trans_rel_bdd(
+                q = s[0]
+                au = s[1]
+                a = A.get_one_minterm(self.cinputs)
+                # qnext is the unique successor under 
+                qnext = (trans & q & au & a).get_one_minterm(self.latches);
+                lhs = self.aig.prime_all_inputs_in_bdd(trans)
+                
         while L != BDD.false():
             l = L.get_one_minterm(self.latches)
             L &= ~l
@@ -176,121 +188,123 @@ class SymblicitGame(ForwardGame):
 
 
 
-class ClusteredLocRedGame(Game):
-    def __init__(self, restrict_like_crazy=False, use_trans=False, clustering_level=0):
-        self.clustering_level= int(clustering_level)
-        self.cached_trans_rel = None
-        self.cached_latch_clusters = None
-        self.restrict_like_crazy = restrict_like_crazy
-        self.use_trans = use_trans
+# class ClusteredLocRedGame(Game):
+#     def __init__(self, restrict_like_crazy=False, use_trans=False, clustering_level=0):
+#         self.clustering_level= int(clustering_level)
+#         self.cached_trans_rel = None
+#         self.cached_latch_clusters = None
+#         self.restrict_like_crazy = restrict_like_crazy
+#         self.use_trans = use_trans
 
-    def _latch_clusters(self):
-        # Here the aig file is already read to spec
-        # return list of clusters
-        if self.clustering_level == 1:
-            return cluster.get_clusters(True,depth=1)
-        elif (self.clustering_level == 2):
-            return cluster.get_clusters_bonus(True,depth=1)
-        else:
-            cl = [[c] for c in iterate_latches()]
-            return cl
+#     def _latch_clusters(self):
+#         # Here the aig file is already read to spec
+#         # return list of clusters
+#         if self.clustering_level == 1:
+#             return cluster.get_clusters(True,depth=1)
+#         elif (self.clustering_level == 2):
+#             return cluster.get_clusters_bonus(True,depth=1)
+#         else:
+#             cl = [[c] for c in iterate_latches()]
+#             return cl
 
-    def trans_rel_bdd(self):
-        def to_litset(c):
-            return set(map(lambda l: l.lit, c))
-        # check cache
-        if self.cached_trans_rel:
-            return self.cached_trans_rel
-        all_latches = set([lat for lat in aig.iterate_latches()])
-        # just replace all latches by their literals
-        #cl = map(lambda c: map(lambda l: l.lit, c),cl)
-        translist = []
-        for cl in self._latch_clusters():
-            b = BDD.true()
-            for x in cl:
-                b &= BDD.make_eq(BDD(get_primed_var(x.lit)),
-                                 aig2bdd.get_bdd_for_lit(x.next))
-            # Here quantify existentially over all variables c,c' with c \not \in cl
-            cl_lits = to_litset(cl)
-            other_lits = to_litset(all_latches).difference(cl_lits)
-            #print "Cluster: " + str(cl_lits)
-            #print "Others: " + str(other_lits)
-            hidden_lits = to_litset(all_latches).difference(to_litset(cl))
-            hidden_lits_cube = BDD.get_cube(imap(BDD, hidden_lits))
-            #print "Hidden latches has size: " + str(len(hidden_lits)) + " out of " + str(len(all_latches))
-            b = b.exist_abstract(hidden_lits_cube)
-            translist.append(b)
-        self.cached_trans_rel = reduce(lambda x,y: x & y, translist, BDD.true())
-        print "Trans size: ", self.cached_trans_rel.dag_size();
-        clustered_size = self.cached_trans_rel.dag_size()
-        print "Monolithic: ", aig2bdd.trans_rel_bdd().dag_size(), " Clustered: ", clustered_size
-        if (aig2bdd.trans_rel_bdd().dag_size() > clustered_size):
-            print "\t *SMALLER"
-        #print "Eq: " + str(aig2bdd.trans_rel_bdd() == self.cached_trans_rel)
-        log.BDD_DMP(self.cached_trans_rel, "Composed and cached the concrete transition relation.")
-        return self.cached_trans_rel
+#     def trans_rel_bdd(self):
+#         def to_litset(c):
+#             return set(map(lambda l: l.lit, c))
+#         # check cache
+#         if self.cached_trans_rel:
+#             return self.cached_trans_rel
+#         all_latches = set([lat for lat in aig.iterate_latches()])
+#         # just replace all latches by their literals
+#         #cl = map(lambda c: map(lambda l: l.lit, c),cl)
+#         translist = []
+#         for cl in self._latch_clusters():
+#             b = BDD.true()
+#             for x in cl:
+#                 b &= BDD.make_eq(BDD(get_primed_var(x.lit)),
+#                                  aig2bdd.get_bdd_for_lit(x.next))
+#             # Here quantify existentially over all variables c,c' with c \not \in cl
+#             cl_lits = to_litset(cl)
+#             other_lits = to_litset(all_latches).difference(cl_lits)
+#             #print "Cluster: " + str(cl_lits)
+#             #print "Others: " + str(other_lits)
+#             hidden_lits = to_litset(all_latches).difference(to_litset(cl))
+#             hidden_lits_cube = BDD.get_cube(imap(BDD, hidden_lits))
+#             #print "Hidden latches has size: " + str(len(hidden_lits)) + " out of " + str(len(all_latches))
+#             b = b.exist_abstract(hidden_lits_cube)
+#             translist.append(b)
+#         self.cached_trans_rel = reduce(lambda x,y: x & y, translist, BDD.true())
+#         print "Trans size: ", self.cached_trans_rel.dag_size();
+#         clustered_size = self.cached_trans_rel.dag_size()
+#         print "Monolithic: ", aig2bdd3.trans_rel_bdd().dag_size(), " Clustered: ", clustered_size
+#         if (aig2bdd.trans_rel_bdd().dag_size() > clustered_size):
+#             print "\t *SMALLER"
+#         #print "Eq: " + str(aig2bdd.trans_rel_bdd() == self.cached_trans_rel)
+#         log.BDD_DMP(self.cached_trans_rel, "Composed and cached the concrete transition relation.")
+#         return self.cached_trans_rel
 
-    # TODO test
-    def substitute_latches_next(self, b, restrict_fun=None):
-        if self.use_trans:
-            transition_bdd = self.trans_rel_bdd()
-            trans = transition_bdd
-            if restrict_fun is not None:
-                trans = trans.restrict(restrict_fun)
-            primed_bdd = aig2bdd.prime_latches_in_bdd(b)
-            primed_latches = BDD.get_cube(
-                imap(funcomp(BDD, aig2bdd.get_primed_var, symbol_lit),
-                     iterate_latches()))
-            return trans.and_abstract(primed_bdd,
-                                      primed_latches)
-        else:
-            latches = [x.lit for x in iterate_latches()]
-            latch_funs = [aig2bdd.get_bdd_for_lit(x.next) for x in
-                          iterate_latches()]
-            if restrict_fun is not None:
-                latch_funs = [x.restrict(restrict_fun) for x in latch_funs]
-            # take a transition step backwards
-            return b.compose(latches, latch_funs)
+#     # TODO test
+#     def substitute_latches_next(self, b, restrict_fun=None):
+#         if self.use_trans:
+#             transition_bdd = self.trans_rel_bdd()
+#             trans = transition_bdd
+#             if restrict_fun is not None:
+#                 trans = trans.restrict(restrict_fun)
+#             primed_bdd = aig2bdd.prime_latches_in_bdd(b)
+#             primed_latches = BDD.get_cube(
+#                 imap(funcomp(BDD, aig2bdd.get_primed_var, symbol_lit),
+#                      iterate_latches()))
+#             return trans.and_abstract(primed_bdd,
+#                                       primed_latches)
+#         else:
+#             latches = [x.lit for x in iterate_latches()]
+#             latch_funs = [aig2bdd.get_bdd_for_lit(x.next) for x in
+#                           iterate_latches()]
+#             if restrict_fun is not None:
+#                 latch_funs = [x.restrict(restrict_fun) for x in latch_funs]
+#             # take a transition step backwards
+#             return b.compose(latches, latch_funs)
 
-    def upre_bdd(self, dst_states_bdd, env_strat=None, get_strat=False, restrict_like_crazy=False):
-        """
-        UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
-        """
-        # take a transition step backwards
-        p_bdd = self.substitute_latches_next(dst_states_bdd,
-                                        restrict_fun=~dst_states_bdd)
-        # use the given strategy
-        if env_strat is not None:
-            p_bdd &= env_strat
-        # there is an uncontrollable action such that for all contro...
-        temp_bdd = p_bdd.univ_abstract(
-            BDD.get_cube(imap(funcomp(BDD, symbol_lit),
-                              iterate_controllable_inputs())))
-        p_bdd = temp_bdd.exist_abstract(
-            BDD.get_cube(imap(funcomp(BDD, symbol_lit),
-                              iterate_uncontrollable_inputs())))
-        # prepare the output
-        if get_strat:
-            return temp_bdd
-        else:
-            return p_bdd
+#     def upre_bdd(self, dst_states_bdd, env_strat=None, get_strat=False, restrict_like_crazy=False):
+#         """
+#         UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
+#         """
+#         # take a transition step backwards
+#         p_bdd = self.substitute_latches_next(dst_states_bdd,
+#                                         restrict_fun=~dst_states_bdd)
+#         # use the given strategy
+#         if env_strat is not None:
+#             p_bdd &= env_strat
+#         # there is an uncontrollable action such that for all contro...
+#         temp_bdd = p_bdd.univ_abstract(
+#             BDD.get_cube(imap(funcomp(BDD, symbol_lit),
+#                               iterate_controllable_inputs())))
+#         p_bdd = temp_bdd.exist_abstract(
+#             BDD.get_cube(imap(funcomp(BDD, symbol_lit),
+#                               iterate_uncontrollable_inputs())))
+#         # prepare the output
+#         if get_strat:
+#             return temp_bdd
+#         else:
+#             return p_bdd
 
 
-    def init(self):
-        return aig2bdd.init_state_bdd()
+#     def init(self):
+#         return aig2bdd.init_state_bdd()
 
-    def error(self):
-        return aig2bdd.get_bdd_for_lit(aig.error_fake_latch.lit)
+#     def error(self):
+#         return aig2bdd.get_bdd_for_lit(aig.error_fake_latch.lit)
 
-    def upre(self, dst):
-        return self.upre_bdd(
-            dst, restrict_like_crazy=self.restrict_like_crazy)
+#     def upre(self, dst):
+#         return self.upre_bdd(
+#             dst, restrict_like_crazy=self.restrict_like_crazy)
 
 
 def synth(argv):
     if argv.use_ocan:
-        game = ClusteredLocRedGame(restrict_like_crazy=False,use_trans=True,clustering_level=argv.clustering_level)
-        w = backward_safety_synth(game)
+        pass;
+        #game = ClusteredLocRedGame(restrict_like_crazy=False,use_trans=True,clustering_level=argv.clustering_level)
+        #w = backward_safety_synth(game)
+        #test()
     else:
         # parse the input spec
         aig = BDDAIG(aiger_file_name=argv.spec, intro_error_latch=True)
@@ -299,10 +313,10 @@ def synth(argv):
 
 def _synth_from_spec(aig, argv):
     # Explicit approach
-    elif argv.use_symb:
+    if argv.use_symb:
         print "USE_SYMB"
         assert argv.out_file is None
-        symgame = SymblicitGame()
+        symgame = SymblicitGame(aig)
         w = forward_safety_synth(symgame)
     # Symbolic approach with compositional opts
     elif not argv.no_decomp and lit_is_negated(aig.error_fake_latch.next):
