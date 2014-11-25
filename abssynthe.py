@@ -94,7 +94,6 @@ class SymblicitGame(ForwardGame):
         self.cinputs = [x.lit for x in
                         self.aig.iterate_controllable_inputs()]
         self.latches = [x.lit for x in self.aig.iterate_latches()]
-#        self.platches = [self.aig.get_primed_var(symbol_lit(x)) for x in self.aig.iterate_latches()]
         self.platches = map(funcomp(self.aig.get_primed_var,
                                          symbol_lit),
                                          self.aig.iterate_latches())
@@ -156,6 +155,7 @@ class SymblicitGame(ForwardGame):
         return iter(self.succ_cache[q])
 
     def cpost(self, s):
+        print "Calling cpost: ", type(s)
         if (not self.use_control_sim):
             if s in self.succ_cache:
                 L = self.succ_cache[s]
