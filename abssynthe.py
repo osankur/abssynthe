@@ -176,8 +176,8 @@ class SymblicitGame(ForwardGame):
                 L &= ~l
                 self.Venv[l] = True
                 M.add(l)
-            if (len(M)>1):
-                M.pop()
+#            if (len(M)>1):
+#                M.pop()
             print "CPost |M| = ", str(len(M))
             for lx in M:
                 yield lx
