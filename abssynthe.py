@@ -32,7 +32,6 @@ from aig import (
     symbol_lit,
     strip_lit,
     lit_is_negated,
-    get_primed_var
 )
 from bdd_aig import BDDAIG
 from utils import funcomp
@@ -88,7 +87,7 @@ class ConcGame(BackwardGame):
 
 class SymblicitGame(ForwardGame):
     def __init__(self, aig):
-        self.use_control_sim = False
+        self.use_control_sim = True
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
@@ -99,17 +98,17 @@ class SymblicitGame(ForwardGame):
                                                      symbol_lit),
                                              self.aig.iterate_latches()))
         self.platch_cube = BDD.make_cube(imap(funcomp(BDD,
-                                                      get_primed_var,
+                                                      self.aig.get_primed_var,
                                                       symbol_lit),
                                               self.aig.iterate_latches()))
         self.cinputs_cube = BDD.make_cube(
             imap(funcomp(BDD, symbol_lit),
                  self.aig.iterate_controllable_inputs()))
-        self.pcinputs_cube = self.aig.prime_all_inputs_in_bdd(
-            self.cinputs_cube)
+        self.pcinputs_cube = self.aig.prime_all_inputs_in_bdd(self.cinputs_cube)
         self.uinputs_cube = BDD.make_cube(
             imap(funcomp(BDD, symbol_lit),
                  self.aig.iterate_uncontrollable_inputs()))
+        self.puinputs_cube = self.aig.prime_all_inputs_in_bdd(self.uinputs_cube)
         self.init_state_bdd = self.aig.init_state_bdd()
         self.error_bdd = self.aig.lit2bdd(self.aig.error_fake_latch.lit)
         self.Venv = dict()
@@ -130,7 +129,7 @@ class SymblicitGame(ForwardGame):
         while A != BDD.false():
             a = A.get_one_minterm(self.uinputs)
             trans = BDD.make_cube(
-                imap(lambda x: BDD.make_eq(BDD(get_primed_var(x.lit)),
+                imap(lambda x: BDD.make_eq(BDD(self.aig.get_primed_var(x.lit)),
                                            self.aig.lit2bdd(x.next)
                                            .and_abstract(q, self.latch_cube)),
                      self.aig.iterate_latches()))
@@ -153,9 +152,9 @@ class SymblicitGame(ForwardGame):
         return imap(lambda x: (q, x), M)
 
     def cpost(self, s):
-        if s in self.succ_cache:
-            L = self.succ_cache[s]
         if (not self.use_control_sim):
+            if s in self.succ_cache:
+                L = self.succ_cache[s]
             q = s[0]
             au = s[1]
             L = BDD.make_cube(
@@ -167,24 +166,42 @@ class SymblicitGame(ForwardGame):
                      self.aig.iterate_latches()))\
                      .exist_abstract(self.cinputs_cube)
             self.succ_cache[s] = L
+            while L != BDD.false():
+                l = L.get_one_minterm(self.latches)
+                L &= ~l
+                self.Venv[l] = True
+                yield l
         else: # using simulation reduction
+            ## TODO ADD CACHE
             A = BDD.true()
-            M = set()
+            M = []
             while A != BDD.false():
                 # monolithic for the moment
                 trans = self.aig.trans_rel_bdd()
                 q = s[0]
                 au = s[1]
                 a = A.get_one_minterm(self.cinputs)
-                # qnext is the unique successor under 
+                # qnext is the unique successor under actions au, a from q
                 qnext = (trans & q & au & a).get_one_minterm(self.latches);
-                lhs = self.aig.prime_all_inputs_in_bdd(trans)
-                
-        while L != BDD.false():
-            l = L.get_one_minterm(self.latches)
-            L &= ~l
-            self.Venv[l] = True
-            yield l
+                # lhs = T(qnext, X_u',X_c',L')
+                lhs = qnext & self.aig.prime_all_inputs_in_bdd(trans)
+                # The downward closure of qnext (all states that it can simulate)
+                # A X_u', E X_u, A X_c, E X_c', A L'. lhs => trans
+                simd = BDD.make_impl(lhs,trans).univ_abstract(self.platch_cube).\
+                    exist_abstract(self.pcinputs_cube).univ_abstract(self.cinputs_cube).\
+                    exist_abstract(self.uinputs_cube).univ_abstract(self.puinputs_cube);
+                A &= ~simd
+                Mp = []
+                for (ma, mq) in M:
+                    if not BDD.make_impl(mq, simd):
+                        Mp.append((ma,mq))
+                M = Mp
+                M.append( (a,qnext) )
+            log.DBG_MSG("|M| = " + str(len(M)))
+            self.succ_cache[q] = M
+            for (a,q) in M:
+                self.Venv[q] = True
+                yield q
 
     def is_env_state(self, s):
         return s in self.Venv
@@ -316,9 +333,9 @@ def test():
     latches = [x.lit for x in iterate_latches()]
     uinputs = [x.lit for x in iterate_uncontrollable_inputs()]
     cinputs = [x.lit for x in iterate_controllable_inputs()]
-    platches_cube = BDD.get_cube(imap(funcomp(BDD, get_primed_var), latches))
+    platches_cube = BDD.get_cube(imap(funcomp(BDD, self.aig.get_primed_var), latches))
     cinputs_cube = BDD.get_cube(imap(BDD, cinputs))
-    pcinputs_cube = BDD.get_cube(imap(funcomp(BDD, get_primed_var), cinputs))
+    pcinputs_cube = BDD.get_cube(imap(funcomp(BDD, self.aig.get_primed_var), cinputs))
     b = b.univ_abstract(platches_cube).exist_abstract(pcinputs_cube).exist_abstract(cinputs_cube);
     for i in range(1000):        
 #        v = map(lambda l: random_bdd(), latches)        
