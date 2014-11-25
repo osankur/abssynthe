@@ -87,13 +87,14 @@ class ConcGame(BackwardGame):
 
 class SymblicitGame(ForwardGame):
     def __init__(self, aig):
-        self.use_control_sim = True
+        self.use_control_sim =  True
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
         self.cinputs = [x.lit for x in
                         self.aig.iterate_controllable_inputs()]
         self.latches = [x.lit for x in self.aig.iterate_latches()]
+        self.platches = [self.aig.get_primed_var(x.lit) for x in self.aig.iterate_latches()]
         self.latch_cube = BDD.make_cube(imap(funcomp(BDD,
                                                      symbol_lit),
                                              self.aig.iterate_latches()))
@@ -123,7 +124,7 @@ class SymblicitGame(ForwardGame):
 
     def upost(self, q):
         if q in self.succ_cache:
-            return self.succ_cache[q]
+            return iter(self.succ_cache[q])
         A = BDD.true()
         M = set()
         while A != BDD.false():
@@ -147,11 +148,12 @@ class SymblicitGame(ForwardGame):
                     Mp.add(m)
             M = Mp
             M.add(a)
-        log.DBG_MSG("|M| = " + str(len(M)))
-        self.succ_cache[q] = M
-        return imap(lambda x: (q, x), M)
+        log.DBG_MSG("UPost |M| = " + str(len(M)))
+        self.succ_cache[q] = map(lambda x: (q,x), M)
+        return iter(self.succ_cache[q])
 
     def cpost(self, s):
+        print "Calling cpost: ", type(s)
         if (not self.use_control_sim):
             if s in self.succ_cache:
                 L = self.succ_cache[s]
@@ -166,23 +168,43 @@ class SymblicitGame(ForwardGame):
                      self.aig.iterate_latches()))\
                      .exist_abstract(self.cinputs_cube)
             self.succ_cache[s] = L
+            M = set([])
             while L != BDD.false():
                 l = L.get_one_minterm(self.latches)
                 L &= ~l
                 self.Venv[l] = True
-                yield l
+                M.add(l)
+            print "CPost |M| = ", str(len(M))            
+            for lx in M:
+                yield lx
+            # while L != BDD.false():
+            #     l = L.get_one_minterm(self.latches)
+            #     L &= ~l
+            #     self.Venv[l] = True
+            #     yield l
         else: # using simulation reduction
             ## TODO ADD CACHE
             A = BDD.true()
-            M = []
+            M = set([])
+            q = s[0]
+            au = s[1]
+            trans = self.aig.trans_rel_bdd()
+            # while A != BDD.false():
+            #     a = A.get_one_minterm(self.cinputs)
+            #     qnext = self.aig.unprime_latches_in_bdd((trans & q & au & a).get_one_minterm(self.platches));  
+            #     #assert(~qnext & (trans & q & au & a) == BDD.false())
+            #     M.add(qnext)
+            #     self.Venv[qnext] = True
+            #     A &= ~a
+            # print "Cpost |M| = " + str(len(M))
+            # for qx in M:
+            #     yield qx
             while A != BDD.false():
                 # monolithic for the moment
                 trans = self.aig.trans_rel_bdd()
-                q = s[0]
-                au = s[1]
                 a = A.get_one_minterm(self.cinputs)
                 # qnext is the unique successor under actions au, a from q
-                qnext = (trans & q & au & a).get_one_minterm(self.latches);
+                qnext = self.aig.unprime_latches_in_bdd((trans & q & au & a).get_one_minterm(self.platches));
                 # lhs = T(qnext, X_u',X_c',L')
                 lhs = qnext & self.aig.prime_all_inputs_in_bdd(trans)
                 # The downward closure of qnext (all states that it can simulate)
@@ -192,16 +214,16 @@ class SymblicitGame(ForwardGame):
                     exist_abstract(self.uinputs_cube).univ_abstract(self.puinputs_cube);
                 A &= ~simd
                 Mp = []
-                for (ma, mq) in M:
+                for mq in M:
                     if not BDD.make_impl(mq, simd):
-                        Mp.append((ma,mq))
+                        Mp.append(mq)
                 M = Mp
-                M.append( (a,qnext) )
-            log.DBG_MSG("|M| = " + str(len(M)))
-            self.succ_cache[q] = M
-            for (a,q) in M:
-                self.Venv[q] = True
-                yield q
+                M.append( qnext )
+            log.DBG_MSG("CPost |M| = " + str(len(M)))
+            log.DBG_MSG("Returning iter(M)")
+            for qx in iter(M):
+                print "Yielding: ", type(qx)
+                yield qx
 
     def is_env_state(self, s):
         return s in self.Venv
@@ -363,11 +385,13 @@ def _synth_from_spec(aig, argv):
     elif not argv.no_decomp and lit_is_negated(aig.error_fake_latch.next):
         log.DBG_MSG("Decomposition opt possible (BIG OR case)")
         (A, B) = aig.get_1l_land(strip_lit(aig.error_fake_latch.next))
-        (w, strat) = comp_safety_synth(
-            imap(lambda a: ConcGame(
+        print "-------------------";
+        l = imap(lambda a: ConcGame(
                 BDDAIG(aig).short_error(~(aig.lit2bdd(a))),
                 restrict_like_crazy=argv.restrict_like_crazy,
-                use_trans=argv.use_trans), A))
+                use_trans=argv.use_trans), A)
+        print l;
+        (w, strat) = comp_safety_synth(l)
         # we have to make sure the controller can stay in the win'n area
         if w is None:
             return False
