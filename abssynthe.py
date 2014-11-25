@@ -229,10 +229,6 @@ class SymblicitGame(ForwardGame):
         return s in self.Venv
 
 
-
-
-
-
 # class ClusteredLocRedGame(Game):
 #     def __init__(self, restrict_like_crazy=False, use_trans=False, clustering_level=0):
 #         self.clustering_level= int(clustering_level)
@@ -368,6 +364,34 @@ def test():
 #    return b.swap_variables(latches, platches)
     
 
+def merge_some_signals(cube, C, aig):
+    # TODO: there must be a more pythonic way of doing all of this
+    cube_latch_deps = set(cube.occ_sem(imap(symbol_lit,
+                                            aig.iterate_latches())))
+    latch_deps = reduce(set.union,
+                        map(aig.get_lit_latch_deps,
+                            cube_latch_deps),
+                        set())
+    dep_map = dict()
+    for c in C:
+        deps = frozenset(latch_deps | aig.get_lit_latch_deps(c))
+        found = False
+        for key in dep_map:
+            if key >= deps:
+                dep_map[key] &= aig.lit2bdd(c)
+                found = True
+                break
+            elif key <= deps:
+                dep_map[deps] = dep_map[key] & aig.lit2bdd(c)
+                del dep_map[key]
+                found = True
+                break
+        if not found:
+            dep_map[deps] = aig.lit2bdd(c)
+    for key in dep_map:
+        yield ~dep_map[key] & cube
+
+
 def synth(argv):
       # parse the input spec
       aig = BDDAIG(aiger_file_name=argv.spec, intro_error_latch=True)
@@ -385,13 +409,12 @@ def _synth_from_spec(aig, argv):
     elif not argv.no_decomp and lit_is_negated(aig.error_fake_latch.next):
         log.DBG_MSG("Decomposition opt possible (BIG OR case)")
         (A, B) = aig.get_1l_land(strip_lit(aig.error_fake_latch.next))
-        print "-------------------";
-        l = imap(lambda a: ConcGame(
-                BDDAIG(aig).short_error(~(aig.lit2bdd(a))),
+        (w, strat) = comp_safety_synth(
+            imap(lambda a: ConcGame(
+                BDDAIG(aig).short_error(a),
                 restrict_like_crazy=argv.restrict_like_crazy,
-                use_trans=argv.use_trans), A)
-        print l;
-        (w, strat) = comp_safety_synth(l)
+                use_trans=argv.use_trans),
+                merge_some_signals(BDD.true(), A, aig)))
         # we have to make sure the controller can stay in the win'n area
         if w is None:
             return False
@@ -432,9 +455,9 @@ def _synth_from_spec(aig, argv):
         log.DBG_MSG(str(len(C)) + " OR leaves: " + str(C))
         (w, strat) = comp_safety_synth(
             imap(lambda a: ConcGame(
-                BDDAIG(aig).short_error(~aig.lit2bdd(a) & cube),
+                BDDAIG(aig).short_error(a),
                 restrict_like_crazy=argv.restrict_like_crazy,
-                use_trans=argv.use_trans), C))
+                use_trans=argv.use_trans), merge_some_signals(cube, C, aig)))
         # we have to make sure the controller can stay in the win'n area
         if w is None:
             return False
