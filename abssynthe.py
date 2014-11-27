@@ -147,11 +147,11 @@ class SymblicitGame(ForwardGame):
             A &= ~simd
             Mp = set()
             for m in M:
-                if not BDD.make_impl(m, simd):
+                if not (BDD.make_impl(m, simd) == BDD.true()):
                     Mp.add(m)
             M = Mp
             M.add(a)
-        log.DBG_MSG("UPost |M| = " + str(len(M)))
+#        log.DBG_MSG("Uncontrollable Post |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q,x), M)
         return iter(self.succ_cache[q])
 
@@ -224,147 +224,56 @@ class SymblicitGame(ForwardGame):
                     simd = BDD.make_impl(trans,rhs).univ_abstract(self.platch_cube).\
                         exist_abstract(self.pcinputs_cube).univ_abstract(self.cinputs_cube).\
                         exist_abstract(self.uinputs_cube).univ_abstract(self.puinputs_cube);
-#                    print "Dependence: ", simd.occ_sem(set(self.latches) | set(self.platches)|
-#                                                       set(self.cinputs) | set(self.uinputs))
+#                    print "Dependence: ", 
+                    all_variables = simd.occ_sem(set(self.latches) | set(self.platches)|
+                                                       set(self.cinputs) | set(self.uinputs))
 #                    tm = (simd).get_one_minterm(self.latches)
 #                    print "qnext closure is [qnext] = ", qnext == tm
 #                    if (not tm in dominated):
 #                        dominated.append(tm)
-                    if ( not (simd & ~qnext) == BDD.false() ):
-                        print "CPOST REDUCES"
-                    simd = self.aig.prime_latches_in_bdd(simd)
-                    A &= ~simd
+#                    print "-----BEGIN--------"
+#                    if ( not (simd & ~qnext) == BDD.false() ):
+#                        print "simd > [qnext]"
+#                    else:
+#                        print "qnext == simd", (simd & ~qnext == BDD.false()), (qnext == simd)
+                    #simd = self.aig.prime_latches_in_bdd(simd)
+                    A &= ~self.aig.prime_latches_in_bdd(simd)
                     Mp = []
                     for mq in M:
-                        if not BDD.make_impl(mq, simd):
+                        if not (BDD.make_impl(mq, simd) == BDD.true()):
                             Mp.append(mq)
+                        else:
+                            pass;
+#                            mt = mq.get_one_minterm(self.latches)
+#                            print "mq is singleton: ", (~mt & mq == BDD.false())
+#                            log.BDD_DMP(BDD.make_impl(mq,simd).get_one_minterm(self.latches), "")
+#                            assert set(mq.occ_sem(all_variables)) <= set(self.latches)
+#                            assert set(qnext.occ_sem(all_variables)) <= set(self.latches)
+#                            impl = BDD.make_impl(mq,simd)
+#                            print "mq => simd :", (impl == BDD.true())
+#                            mt = impl.get_one_minterm(self.latches)
+#                            log.BDD_DMP(mt, "impl")
+#                            print "qnext == simd ", qnext == simd
+#                            print "simd: ", simd.occ_sem(self.latches)
+#                            log.BDD_DMP(mq, "mq: ")
+#                            log.BDD_DMP(simd,"simd: ")
                     M = Mp
                     M.append( qnext )                
+#                    print "-----END--------"
                 end = time.time()
 #                print "Dominated: ", dominated
 #                print "Qnexts: ", qnext_list
-                print "CPost Spent ", end-start, " and ", count, " iterations"
+#                print "CPost Spent ", end-start, " and ", count, " iterations"
                 self.succ_cache[s] = M
             else:
                 M = self.succ_cache[s]
-            log.DBG_MSG("CPost |M| = " + str(len(M)))
+#            log.DBG_MSG("CPost |M| = " + str(len(M)))
             for qx in iter(M):
                 self.Venv[qx] = True
                 yield qx
 
     def is_env_state(self, s):
         return s in self.Venv
-
-
-# class ClusteredLocRedGame(Game):
-#     def __init__(self, restrict_like_crazy=False, use_trans=False, clustering_level=0):
-#         self.clustering_level= int(clustering_level)
-#         self.cached_trans_rel = None
-#         self.cached_latch_clusters = None
-#         self.restrict_like_crazy = restrict_like_crazy
-#         self.use_trans = use_trans
-
-#     def _latch_clusters(self):
-#         # Here the aig file is already read to spec
-#         # return list of clusters
-#         if self.clustering_level == 1:
-#             return cluster.get_clusters(True,depth=1)
-#         elif (self.clustering_level == 2):
-#             return cluster.get_clusters_bonus(True,depth=1)
-#         else:
-#             cl = [[c] for c in iterate_latches()]
-#             return cl
-
-#     def trans_rel_bdd(self):
-#         def to_litset(c):
-#             return set(map(lambda l: l.lit, c))
-#         # check cache
-#         if self.cached_trans_rel:
-#             return self.cached_trans_rel
-#         all_latches = set([lat for lat in aig.iterate_latches()])
-#         # just replace all latches by their literals
-#         #cl = map(lambda c: map(lambda l: l.lit, c),cl)
-#         translist = []
-#         for cl in self._latch_clusters():
-#             b = BDD.true()
-#             for x in cl:
-#                 b &= BDD.make_eq(BDD(get_primed_var(x.lit)),
-#                                  aig2bdd.get_bdd_for_lit(x.next))
-#             # Here quantify existentially over all variables c,c' with c \not \in cl
-#             cl_lits = to_litset(cl)
-#             other_lits = to_litset(all_latches).difference(cl_lits)
-#             #print "Cluster: " + str(cl_lits)
-#             #print "Others: " + str(other_lits)
-#             hidden_lits = to_litset(all_latches).difference(to_litset(cl))
-#             hidden_lits_cube = BDD.get_cube(imap(BDD, hidden_lits))
-#             #print "Hidden latches has size: " + str(len(hidden_lits)) + " out of " + str(len(all_latches))
-#             b = b.exist_abstract(hidden_lits_cube)
-#             translist.append(b)
-#         self.cached_trans_rel = reduce(lambda x,y: x & y, translist, BDD.true())
-#         print "Trans size: ", self.cached_trans_rel.dag_size();
-#         clustered_size = self.cached_trans_rel.dag_size()
-#         print "Monolithic: ", aig2bdd3.trans_rel_bdd().dag_size(), " Clustered: ", clustered_size
-#         if (aig2bdd.trans_rel_bdd().dag_size() > clustered_size):
-#             print "\t *SMALLER"
-#         #print "Eq: " + str(aig2bdd.trans_rel_bdd() == self.cached_trans_rel)
-#         log.BDD_DMP(self.cached_trans_rel, "Composed and cached the concrete transition relation.")
-#         return self.cached_trans_rel
-
-#     # TODO test
-#     def substitute_latches_next(self, b, restrict_fun=None):
-#         if self.use_trans:
-#             transition_bdd = self.trans_rel_bdd()
-#             trans = transition_bdd
-#             if restrict_fun is not None:
-#                 trans = trans.restrict(restrict_fun)
-#             primed_bdd = aig2bdd.prime_latches_in_bdd(b)
-#             primed_latches = BDD.get_cube(
-#                 imap(funcomp(BDD, aig2bdd.get_primed_var, symbol_lit),
-#                      iterate_latches()))
-#             return trans.and_abstract(primed_bdd,
-#                                       primed_latches)
-#         else:
-#             latches = [x.lit for x in iterate_latches()]
-#             latch_funs = [aig2bdd.get_bdd_for_lit(x.next) for x in
-#                           iterate_latches()]
-#             if restrict_fun is not None:
-#                 latch_funs = [x.restrict(restrict_fun) for x in latch_funs]
-#             # take a transition step backwards
-#             return b.compose(latches, latch_funs)
-
-#     def upre_bdd(self, dst_states_bdd, env_strat=None, get_strat=False, restrict_like_crazy=False):
-#         """
-#         UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
-#         """
-#         # take a transition step backwards
-#         p_bdd = self.substitute_latches_next(dst_states_bdd,
-#                                         restrict_fun=~dst_states_bdd)
-#         # use the given strategy
-#         if env_strat is not None:
-#             p_bdd &= env_strat
-#         # there is an uncontrollable action such that for all contro...
-#         temp_bdd = p_bdd.univ_abstract(
-#             BDD.get_cube(imap(funcomp(BDD, symbol_lit),
-#                               iterate_controllable_inputs())))
-#         p_bdd = temp_bdd.exist_abstract(
-#             BDD.get_cube(imap(funcomp(BDD, symbol_lit),
-#                               iterate_uncontrollable_inputs())))
-#         # prepare the output
-#         if get_strat:
-#             return temp_bdd
-#         else:
-#             return p_bdd
-
-
-#     def init(self):
-#         return aig2bdd.init_state_bdd()
-
-#     def error(self):
-#         return aig2bdd.get_bdd_for_lit(aig.error_fake_latch.lit)
-
-#     def upre(self, dst):
-#         return self.upre_bdd(
-#             dst, restrict_like_crazy=self.restrict_like_crazy)
 
 def random_bdd():
     if (randrange(2)):
