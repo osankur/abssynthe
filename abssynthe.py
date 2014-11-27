@@ -47,6 +47,7 @@ import aig
 from aig import *
 import log
 import cluster
+import time
 from random import randrange
 EXIT_STATUS_REALIZABLE = 10
 EXIT_STATUS_UNREALIZABLE = 20
@@ -150,7 +151,7 @@ class SymblicitGame(ForwardGame):
                     Mp.add(m)
             M = Mp
             M.add(a)
-#        log.DBG_MSG("UPost |M| = " + str(len(M)))
+        log.DBG_MSG("UPost |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q,x), M)
         return iter(self.succ_cache[q])
 
@@ -194,22 +195,28 @@ class SymblicitGame(ForwardGame):
             # for qx in M2:
             #     yield qx
             # monolithic for the moment
-#            if (not s in self.succ_cache):                
-            if True:
+            if (not s in self.succ_cache):                
+#            if True:
+                #
+                dominated = []
+                qnext_list = []
+                #
+                start = time.time()
+                count = 0
                 q = s[0]
                 au = s[1]
                 trans = self.aig.trans_rel_bdd()
-                A = BDD.true()
                 M = []
                 A = trans & q & au
-                print "Cpost :", q, au, trans
-                print "A: ", A
-                print "&: ", (trans & q & au)
-
+                B = trans & q & au
                 while A != BDD.false():
                     # qnext is one possible successor from (q,au) that agrees with A
                     qnext = A.get_one_minterm(self.platches);
                     qnext = self.aig.unprime_latches_in_bdd(qnext)
+                    #
+                    count = count + 1
+                    qnext_list.append(qnext)
+                    #
                     # lhs = T(qnext, X_u',X_c',L')
                     rhs = qnext & self.aig.prime_all_inputs_in_bdd(trans)
                     # The downward closure of qnext (all states that it can simulate)
@@ -217,22 +224,32 @@ class SymblicitGame(ForwardGame):
                     simd = BDD.make_impl(trans,rhs).univ_abstract(self.platch_cube).\
                         exist_abstract(self.pcinputs_cube).univ_abstract(self.cinputs_cube).\
                         exist_abstract(self.uinputs_cube).univ_abstract(self.puinputs_cube);
-                    A &= ~self.aig.prime_latches_in_bdd(simd)
+#                    print "Dependence: ", simd.occ_sem(set(self.latches) | set(self.platches)|
+#                                                       set(self.cinputs) | set(self.uinputs))
+#                    tm = (simd).get_one_minterm(self.latches)
+#                    print "qnext closure is [qnext] = ", qnext == tm
+#                    if (not tm in dominated):
+#                        dominated.append(tm)
+                    if ( not (simd & ~qnext) == BDD.false() ):
+                        print "CPOST REDUCES"
+                    simd = self.aig.prime_latches_in_bdd(simd)
+                    A &= ~simd
                     Mp = []
                     for mq in M:
                         if not BDD.make_impl(mq, simd):
                             Mp.append(mq)
                     M = Mp
                     M.append( qnext )                
+                end = time.time()
+#                print "Dominated: ", dominated
+#                print "Qnexts: ", qnext_list
+                print "CPost Spent ", end-start, " and ", count, " iterations"
                 self.succ_cache[s] = M
             else:
-                pass;
-            print M
-            M = self.succ_cache[s]
+                M = self.succ_cache[s]
             log.DBG_MSG("CPost |M| = " + str(len(M)))
             for qx in iter(M):
                 self.Venv[qx] = True
-                #assert(qx in M2)
                 yield qx
 
     def is_env_state(self, s):
