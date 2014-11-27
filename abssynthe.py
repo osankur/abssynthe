@@ -150,12 +150,11 @@ class SymblicitGame(ForwardGame):
                     Mp.add(m)
             M = Mp
             M.add(a)
-        log.DBG_MSG("UPost |M| = " + str(len(M)))
+#        log.DBG_MSG("UPost |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q,x), M)
         return iter(self.succ_cache[q])
 
     def cpost(self, s):
-        print "Calling cpost: ", type(s)
         if (not self.use_control_sim):
             if s in self.succ_cache:
                 L = self.succ_cache[s]
@@ -176,21 +175,11 @@ class SymblicitGame(ForwardGame):
                 L &= ~l
                 self.Venv[l] = True
                 M.add(l)
-#            if (len(M)>1):
-#                M.pop()
             print "CPost |M| = ", str(len(M))
             for lx in M:
                 yield lx
-            # while L != BDD.false():
-            #     l = L.get_one_minterm(self.latches)
-            #     L &= ~l
-            #     self.Venv[l] = True
-            #     yield l
         else: # using simulation reduction
             # ## TODO ADD CACHE
-            q = s[0]
-            au = s[1]
-            trans = self.aig.trans_rel_bdd()
             # A2 = BDD.true()
             # M2 = set([])
             # while A2 != BDD.false():
@@ -205,28 +194,41 @@ class SymblicitGame(ForwardGame):
             # for qx in M2:
             #     yield qx
             # monolithic for the moment
-            A = BDD.true()
-            M = set([])
-            A &= trans & q & au
-            while A != BDD.false():
-                # qnext is one possible successor from (q,au) that agrees with A
-                qnext = A.get_one_minterm(self.platches);
-                qnext = self.aig.unprime_latches_in_bdd(qnext)
-                # lhs = T(qnext, X_u',X_c',L')
-                rhs = qnext & self.aig.prime_all_inputs_in_bdd(trans)
-                # The downward closure of qnext (all states that it can simulate)
-                # A X_u', E X_u, A X_c, E X_c', A L'. trans => rhs
-                simd = BDD.make_impl(trans,rhs).univ_abstract(self.platch_cube).\
-                    exist_abstract(self.pcinputs_cube).univ_abstract(self.cinputs_cube).\
-                    exist_abstract(self.uinputs_cube).univ_abstract(self.puinputs_cube);
-                A &= ~self.aig.prime_latches_in_bdd(simd)
-#                print M, qnext
-                Mp = []
-                for mq in M:
-                    if not BDD.make_impl(mq, simd):
-                        Mp.append(mq)
-                M = Mp
-                M.append( qnext )
+#            if (not s in self.succ_cache):                
+            if True:
+                q = s[0]
+                au = s[1]
+                trans = self.aig.trans_rel_bdd()
+                A = BDD.true()
+                M = []
+                A = trans & q & au
+                print "Cpost :", q, au, trans
+                print "A: ", A
+                print "&: ", (trans & q & au)
+
+                while A != BDD.false():
+                    # qnext is one possible successor from (q,au) that agrees with A
+                    qnext = A.get_one_minterm(self.platches);
+                    qnext = self.aig.unprime_latches_in_bdd(qnext)
+                    # lhs = T(qnext, X_u',X_c',L')
+                    rhs = qnext & self.aig.prime_all_inputs_in_bdd(trans)
+                    # The downward closure of qnext (all states that it can simulate)
+                    # A X_u', E X_u, A X_c, E X_c', A L'. trans => rhs
+                    simd = BDD.make_impl(trans,rhs).univ_abstract(self.platch_cube).\
+                        exist_abstract(self.pcinputs_cube).univ_abstract(self.cinputs_cube).\
+                        exist_abstract(self.uinputs_cube).univ_abstract(self.puinputs_cube);
+                    A &= ~self.aig.prime_latches_in_bdd(simd)
+                    Mp = []
+                    for mq in M:
+                        if not BDD.make_impl(mq, simd):
+                            Mp.append(mq)
+                    M = Mp
+                    M.append( qnext )                
+                self.succ_cache[s] = M
+            else:
+                pass;
+            print M
+            M = self.succ_cache[s]
             log.DBG_MSG("CPost |M| = " + str(len(M)))
             for qx in iter(M):
                 self.Venv[qx] = True
