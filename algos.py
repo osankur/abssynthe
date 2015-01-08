@@ -157,7 +157,6 @@ def backward_safety_synth(game):
     else:
         return win_region
 
-
 # Compositional approach, receives an iterable of BackwardGames
 def comp_safety_synth(games):
     s = None
