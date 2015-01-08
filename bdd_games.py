@@ -29,7 +29,7 @@ from cudd_bdd import BDD
 from aig import (
     symbol_lit,
 )
-from utils import funcomp
+from utils import funcomp,fixpoint
 from algos import (
     BackwardGame,
     ForwardGame,
@@ -84,6 +84,11 @@ class SymblicitGame(ForwardGame):
         self.Venv = dict()
         self.Venv[self.init_state_bdd] = True
         self.succ_cache = dict()
+        ## The set of states that are co-reachable from Bad (i.e. backwards
+        ## reachable). If state q is outside backwardReach, then we return
+        ## Upost(q) = emptyset.
+        self.backwardReach = fixpoint(self.error_bdd, 
+                                            lambda s: s | aig.pre_bdd(s));
 
     def init(self):
         return self.init_state_bdd
@@ -95,6 +100,11 @@ class SymblicitGame(ForwardGame):
         assert isinstance(q, BDD)
         if q in self.succ_cache:
             return iter(self.succ_cache[q])
+        elif (q & self.backwardReach == BDD.false()):
+          print "--- Pruned by backReach ---";
+          # If Bad is not reachable from q, then
+          # Env. cannot win from here; we turn this state into a deadlock
+          return iter([])
         A = BDD.true()
         M = set()
         while A != BDD.false():
@@ -114,7 +124,7 @@ class SymblicitGame(ForwardGame):
             A &= ~simd
             Mp = set()
             for m in M:
-                if not (BDD.make_impl(m, simd) == BDD.true()):
+              if not (BDD.make_impl(m, simd) == BDD.true()):
                     Mp.add(m)
             M = Mp
             M.add(a)

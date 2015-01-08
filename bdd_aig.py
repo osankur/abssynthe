@@ -285,6 +285,25 @@ class BDDAIG(AIG):
                                    self.iterate_uncontrollable_inputs())))
         return p_bdd
 
+    def pre_bdd(self, dst_states_bdd, use_trans=False):
+        """
+        PRE = EXu.EXc.EL' : T(L,Xu,Xc,L') ^ dst(L')
+        """
+        # take a transition step backwards
+        p_bdd = self.substitute_latches_next(
+            dst_states_bdd,
+            restrict_fun=~dst_states_bdd,
+            use_trans=use_trans)
+        # there is an uncontrollable action such that there is a contro...
+        temp_bdd = p_bdd.exist_abstract(
+            BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+                               self.iterate_controllable_inputs())))
+        p_bdd = temp_bdd.exist_abstract(
+            BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+                               self.iterate_uncontrollable_inputs())))
+        return p_bdd
+
+
     def strat_is_inductive(self, strat, use_trans=False):
         strat_dom = strat.exist_abstract(
             BDD.make_cube(imap(funcomp(BDD, symbol_lit),
