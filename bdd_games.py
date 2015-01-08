@@ -29,17 +29,18 @@ from cudd_bdd import BDD
 from aig import (
     symbol_lit,
 )
-from utils import funcomp
+from utils import funcomp,fixpoint
 from algos import (
     BackwardGame,
     ForwardGame,
 )
 
-
 class ConcGame(BackwardGame):
     def __init__(self, aig, use_trans=False):
         self.use_trans = use_trans
         self.aig = aig
+        self.backwardReach = fixpoint(self.error(), 
+                                        lambda s: s | aig.pre_bdd(s));
 
     def init(self):
         return self.aig.init_state_bdd()
@@ -59,7 +60,9 @@ class ConcGame(BackwardGame):
 
 
 class SymblicitGame(ForwardGame):
-    def __init__(self, aig):
+    def __init__(self, aig, use_backreach_reduction = True, winreg=None):
+        assert(winreg)
+        self.winreg = winreg
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
@@ -84,6 +87,15 @@ class SymblicitGame(ForwardGame):
         self.Venv = dict()
         self.Venv[self.init_state_bdd] = True
         self.succ_cache = dict()
+        ## The set of states that are co-reachable from Bad (i.e. backwards
+        ## reachable). If state q is outside backwardReach, then we return
+        ## Upost(q) = emptyset.
+        if use_backreach_reduction:
+            self.backwardReach = fixpoint(self.error_bdd, 
+                                            lambda s: s | aig.pre_bdd(s));
+        else:
+            self.backwardReach = BDD.true()
+        self.duplicates = set([])
 
     def init(self):
         return self.init_state_bdd
@@ -93,8 +105,18 @@ class SymblicitGame(ForwardGame):
 
     def upost(self, q):
         assert isinstance(q, BDD)
+        #if ( q in self.duplicates ):
+        #    assert( q & self.backwardReach == BDD.false())
         if q in self.succ_cache:
             return iter(self.succ_cache[q])
+        elif (q & self.backwardReach == BDD.false()):
+          print "--- Pruned by backReach", q.__hash__(), "---";
+          # If Bad is not reachable from q, then
+          # Env. cannot win from here; we turn this state into a deadlock
+          self.succ_cache[q] = iter([])
+          assert not (q & self.winreg == BDD.false())
+          # self.duplicates.add(q)
+          return iter([])
         A = BDD.true()
         M = set()
         while A != BDD.false():
@@ -114,7 +136,7 @@ class SymblicitGame(ForwardGame):
             A &= ~simd
             Mp = set()
             for m in M:
-                if not (BDD.make_impl(m, simd) == BDD.true()):
+              if not (BDD.make_impl(m, simd) == BDD.true()):
                     Mp.add(m)
             M = Mp
             M.add(a)

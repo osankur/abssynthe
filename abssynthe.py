@@ -28,6 +28,7 @@ import log
 from bdd_aig import BDDAIG
 from algos import (
     backward_safety_synth,
+    backward_safety_synth_bis,
     forward_safety_synth,
 )
 from bdd_games import (
@@ -41,15 +42,11 @@ from comp_algos import (
     subgame_mapper,
     subgame_reducer
 )
-from cudd_bdd import BDD
-import aig
-from aig import *
-import log
-import cluster
-import time
-from random import randrange
+
+
 EXIT_STATUS_REALIZABLE = 10
 EXIT_STATUS_UNREALIZABLE = 20
+
 
 def synth(argv):
     # parse the input spec
@@ -60,9 +57,8 @@ def synth(argv):
 def synth_from_spec(aig, argv):
     # Explicit approach
     if argv.use_symb:
-        print "USE_SYMB"
         assert argv.out_file is None
-        symgame = SymblicitGame(aig,argv.use_ocan)
+        symgame = SymblicitGame(aig)
         w = forward_safety_synth(symgame)
     # Symbolic approach with compositional opts
     elif argv.decomp is not None:
@@ -93,6 +89,23 @@ def synth_from_spec(aig, argv):
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
             w = comp_synth3(game_it, gen_game)
+        elif argv.comp_algo == 4:
+            print "Running OTFUR"
+            # solve games by OTFUR
+            (w, strat) = comp_synth(game_it)
+            # back to the general game
+            if w is None:
+                return False
+            log.DBG_MSG("Interm. win region bdd node count = " +
+                        str(w.dag_size()))
+            # for debugging:
+            monogame = ConcGame(aig, use_trans=argv.use_trans)
+            winreg = backward_safety_synth_bis(monogame)
+            #
+            symgame = SymblicitGame(BDDAIG(aig).short_error(~strat),
+                    use_backreach_reduction = True, winreg = winreg)
+            w = forward_safety_synth(symgame)
+
     # Symbolic approach (avoiding compositional opts)
     else:
         game = ConcGame(aig,
@@ -101,8 +114,8 @@ def synth_from_spec(aig, argv):
     # final check
     if w is None:
         return False
-    log.DBG_MSG("Win region bdd node count = " +
-                str(w.dag_size()))
+#    log.DBG_MSG("Win region bdd node count = " +
+#                str(w.dag_size()))
     # synthesis from the realizability analysis
     if w is not None:
         if argv.out_file is not None:
@@ -139,7 +152,7 @@ def main():
     parser.add_argument("-d", "--decomp", dest="decomp", default=None,
                         type=str, help="Decomposition type", choices="12")
     parser.add_argument("-ca", "--comp_algo", dest="comp_algo", type=str,
-                        default="1", choices="123",
+                        default="1", choices="1234",
                         help="Choice of compositional algorithm")
     parser.add_argument("-v", "--verbose_level", dest="verbose_level",
                         default="", required=False,
@@ -156,11 +169,6 @@ def main():
                         dest="only_transducer", default=False,
                         help=("Output only the synth'd transducer (i.e. " +
                               "remove the error monitor logic)."))
-    parser.add_argument("-ocan", "--ocan", action="store_true", dest="use_ocan", default=False);
-    parser.add_argument("-cl", "--clustering", dest="clustering_level",
-                        default="", required=False)
-
-#    parser.add_argument("-cl", "--clustering", action="store_true", dest="use_clustering", default=False);
     args = parser.parse_args()
     args.decomp = int(args.decomp) if args.decomp is not None else None
     args.comp_algo = int(args.comp_algo)

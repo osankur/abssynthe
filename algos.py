@@ -26,6 +26,7 @@ from abc import ABCMeta, abstractmethod
 from itertools import imap
 from utils import fixpoint
 import log
+#from cudd_bdd import *
 
 
 # game templates for the algorithms implemented here, they all
@@ -91,6 +92,9 @@ class BackwardGame(Game):
     def cpre(self, dst, get_strat):
         pass
 
+def is_iterator(a):
+  assert (type(a) == type(iter(set([]))) or type(a) == type(iter([])))
+  return "OK"
 
 # OTFUR algo
 def forward_safety_synth(game):
@@ -119,6 +123,7 @@ def forward_safety_synth(game):
             else:
                 depend[sp] = set([(s, iter([sp]))])
             if tracker.is_in_attr(sp):
+                print "Losing state:", sp.__hash__()
                 waiting.append((s, iter([sp])))
             else:
                 if game.is_env_state(sp):
@@ -130,10 +135,11 @@ def forward_safety_synth(game):
                 if game.is_env_state(s)\
                 else all(imap(tracker.is_in_attr, game.cpost(s)))
             if local_lose:
+                print "Losing state:", s.__hash__()
                 tracker.mark_in_attr(s, True)
                 waiting.extend(depend[s])
             if not tracker.is_in_attr(sp):
-                depend[sp].add((s, sp))
+                depend[sp].add((s, iter([sp])))
     log.DBG_MSG("OTFUR, losing[init_state] = " +
                 str(tracker.is_in_attr(init_state)))
     return None if tracker.is_in_attr(init_state) else True
@@ -142,7 +148,6 @@ def forward_safety_synth(game):
 # Classical backward fixpoint algo
 def backward_safety_synth(game):
     assert isinstance(game, BackwardGame)
-
     init_state = game.init()
     error_states = game.error()
     log.DBG_MSG("Computing fixpoint of UPRE.")
@@ -151,33 +156,22 @@ def backward_safety_synth(game):
         fun=lambda x: x | game.upre(x),
         early_exit=lambda x: x & init_state
     )
-
+#    assert (BDD.make_impl(~game.backwardReach,win_region) == BDD.true())
     if not (win_region & init_state):
         return None
     else:
         return win_region
 
-# Compositional approach, receives an iterable of BackwardGames
-def comp_safety_synth(games):
-    s = None
-    cum_w = None
-    cnt = 0
-    for game in games:
-        assert isinstance(game, BackwardGame)
-        w = backward_safety_synth(game)
-        cnt += 1
-        # short-circuit a negative response
-        if w is None:
-            log.DBG_MSG("Short-circuit exit after sub-game #" + str(cnt))
-            return (None,None)
-        if s is None:
-            s = game.cpre(w, get_strat=True)
-            cum_w = w
-        else:
-            s &= game.cpre(w, get_strat=True)
-            cum_w &= w
-        # sanity check before moving forward
-        if (not s or not game.init() & s):
-            return (None,None)
-    log.DBG_MSG("Solved " + str(cnt) + " sub games.")
-    return (cum_w, s)
+# Classical backward fixpoint algo
+# Identical to above but always returns winning region bdd
+def backward_safety_synth_bis(game):
+    assert isinstance(game, BackwardGame)
+    init_state = game.init()
+    error_states = game.error()
+    log.DBG_MSG("Computing fixpoint of UPRE.")
+    win_region = ~fixpoint(
+        error_states,
+        fun=lambda x: x | game.upre(x),
+        early_exit=lambda x: x & init_state
+    )
+    return win_region
