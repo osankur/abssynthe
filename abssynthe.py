@@ -88,6 +88,18 @@ def synth_from_spec(aig, argv):
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
             w = comp_synth3(game_it, gen_game)
+        elif argv.comp_algo == 4:
+            print "Running OTFUR"
+            # solve games by OTFUR
+            (w, strat) = comp_synth(game_it)
+            # back to the general game
+            if w is None:
+                return False
+            log.DBG_MSG("Interm. win region bdd node count = " +
+                        str(w.dag_size()))
+            game = SymblicitGame(BDDAIG(aig).short_error(~strat))
+            w = forward_safety_synth(game)
+
     # Symbolic approach (avoiding compositional opts)
     else:
         game = ConcGame(aig,
@@ -134,7 +146,7 @@ def main():
     parser.add_argument("-d", "--decomp", dest="decomp", default=None,
                         type=str, help="Decomposition type", choices="12")
     parser.add_argument("-ca", "--comp_algo", dest="comp_algo", type=str,
-                        default="1", choices="123",
+                        default="1", choices="1234",
                         help="Choice of compositional algorithm")
     parser.add_argument("-v", "--verbose_level", dest="verbose_level",
                         default="", required=False,
