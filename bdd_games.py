@@ -106,8 +106,6 @@ class SymblicitGame(ForwardGame):
 
     def upost(self, q):
         assert isinstance(q, BDD)
-        #if ( q in self.duplicates ):
-        #    assert( q & self.backwardReach == BDD.false())
         if q in self.succ_cache:
             return iter(self.succ_cache[q])
         elif (q & self.backwardReach == BDD.false()):
@@ -133,7 +131,6 @@ class SymblicitGame(ForwardGame):
                 .exist_abstract(self.pcinputs_cube)\
                 .univ_abstract(self.cinputs_cube)
             simd = self.aig.unprime_all_inputs_in_bdd(simd)
-
             A &= ~simd
             Mp = set()
             for m in M:
@@ -141,8 +138,13 @@ class SymblicitGame(ForwardGame):
                     Mp.add(m)
             M = Mp
             M.add(a)
-            assert ( q & a & self.envstrat != BDD.false())
-        ########### CHECK IF THESE ACTIONS ARE IN ENVSTRAT
+            # VERIFY THAT ACTION a IS LOSING FOR ENV
+            assert ( q & a & self.envstrat == BDD.false())
+#            if ( q & a & self.envstrat ):
+#              csucc = cpost((q,a))
+#              bret = all(imap(lambda s: s & self.winreg != BDD.false(),csucc))
+        # CHECK THAT THERE IS ONE WINNING ACTION FOR ENV
+        assert (q & self.envstrat != BDD.false())
         log.DBG_MSG("Upost |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q, x), M)
         return iter(self.succ_cache[q])

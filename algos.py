@@ -24,9 +24,12 @@ gperezme@ulb.ac.be
 
 from abc import ABCMeta, abstractmethod
 from itertools import imap
-from utils import fixpoint
+from utils import fixpoint,funcomp
 import log
 from cudd_bdd import *
+from aig import (
+    symbol_lit,
+)
 
 
 # game templates for the algorithms implemented here, they all
@@ -104,9 +107,8 @@ def forward_safety_synth(game):
     tracker = game.visit_tracker()
     depend = dict()
     depend[init_state] = set()
-#    if (game.is_env_state(init_state)):
-#      print "init is [env]: ", init_state.__hash__(), tracker.is_visited(init_state)
     waiting = [(init_state, game.upost(init_state))]
+    #assert( init_state & game.envstrat )
     while waiting and not tracker.is_in_attr(init_state):
         (s, sp_iter) = waiting.pop()
         try:
@@ -169,6 +171,8 @@ def backward_safety_synth(game):
     else:
         return win_region
 
+
+# TEMPORARY
 # Classical backward fixpoint algo
 # Identical to above but always returns 
 #   winning region bdd(L) for Controller 
@@ -178,15 +182,22 @@ def backward_safety_synth_bis(game):
     init_state = game.init()
     error_states = game.error()
     log.DBG_MSG("Computing fixpoint of UPRE.")
-    curU = error_states
-    allU = BDD.false()
-    env_strat = BDD.false()
-    while not (allU | curU == allU):
-      allU = allU | curU
-      curU = game.aig.upre_bdd(curU,get_strat=True)
+    uinputs_cube = BDD.make_cube(
+            imap(funcomp(BDD, symbol_lit),
+                 game.aig.iterate_uncontrollable_inputs()))
+    losing_strat = fixpoint(
+        error_states,
+        fun=lambda x: x | game.aig.upre_bdd(x.exist_abstract(uinputs_cube),get_strat=True)
+            
+    )
+    losing_region = losing_strat.exist_abstract(uinputs_cube)
     win_region = ~fixpoint(
         error_states,
-        fun=lambda x: x | game.upre(x),
-        early_exit=lambda x: x & init_state
+        fun=lambda x: x | game.upre(x)
     )
-    return (win_region,allU)
+    assert(win_region | losing_region == BDD.true())
+    if ( init_state & win_region ):
+      print "Controller wins"
+    else:
+      print "Environment wins"
+    return (win_region,losing_strat)
