@@ -303,7 +303,6 @@ class BDDAIG(AIG):
                                self.iterate_uncontrollable_inputs())))
         return p_bdd
 
-
     def strat_is_inductive(self, strat, use_trans=False):
         strat_dom = strat.exist_abstract(
             BDD.make_cube(imap(funcomp(BDD, symbol_lit),

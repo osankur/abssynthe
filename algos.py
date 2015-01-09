@@ -26,7 +26,7 @@ from abc import ABCMeta, abstractmethod
 from itertools import imap
 from utils import fixpoint
 import log
-#from cudd_bdd import *
+from cudd_bdd import *
 
 
 # game templates for the algorithms implemented here, they all
@@ -104,6 +104,8 @@ def forward_safety_synth(game):
     tracker = game.visit_tracker()
     depend = dict()
     depend[init_state] = set()
+#    if (game.is_env_state(init_state)):
+#      print "init is [env]: ", init_state.__hash__(), tracker.is_visited(init_state)
     waiting = [(init_state, game.upost(init_state))]
     while waiting and not tracker.is_in_attr(init_state):
         (s, sp_iter) = waiting.pop()
@@ -115,6 +117,11 @@ def forward_safety_synth(game):
         waiting.append((s, sp_iter))
         # process s, sp_iter
         if not tracker.is_visited(sp):
+            print "Visiting ", sp.__hash__(),
+            if (game.is_env_state(sp)):
+                print "[env]"
+            else:
+                print "[cont]"
             tracker.visit(sp)
             tracker.mark_in_attr(
                 sp, game.is_env_state(sp) and bool(sp & error_states))
@@ -163,15 +170,23 @@ def backward_safety_synth(game):
         return win_region
 
 # Classical backward fixpoint algo
-# Identical to above but always returns winning region bdd
+# Identical to above but always returns 
+#   winning region bdd(L) for Controller 
+#   winning region and strategy(L,X_u) for Environment
 def backward_safety_synth_bis(game):
     assert isinstance(game, BackwardGame)
     init_state = game.init()
     error_states = game.error()
     log.DBG_MSG("Computing fixpoint of UPRE.")
+    curU = error_states
+    allU = BDD.false()
+    env_strat = BDD.false()
+    while not (allU | curU == allU):
+      allU = allU | curU
+      curU = game.aig.upre_bdd(curU,get_strat=True)
     win_region = ~fixpoint(
         error_states,
         fun=lambda x: x | game.upre(x),
         early_exit=lambda x: x & init_state
     )
-    return win_region
+    return (win_region,allU)

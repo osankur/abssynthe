@@ -60,9 +60,10 @@ class ConcGame(BackwardGame):
 
 
 class SymblicitGame(ForwardGame):
-    def __init__(self, aig, use_backreach_reduction = True, winreg=None):
+    def __init__(self, aig, use_backreach_reduction = True, winreg=None, envstrat=None):
         assert(winreg)
         self.winreg = winreg
+        self.envstrat = envstrat
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
@@ -140,6 +141,8 @@ class SymblicitGame(ForwardGame):
                     Mp.add(m)
             M = Mp
             M.add(a)
+            assert ( q & a & self.envstrat != BDD.false())
+        ########### CHECK IF THESE ACTIONS ARE IN ENVSTRAT
         log.DBG_MSG("Upost |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q, x), M)
         return iter(self.succ_cache[q])
