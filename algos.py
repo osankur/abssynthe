@@ -30,7 +30,7 @@ from cudd_bdd import *
 from aig import (
     symbol_lit,
 )
-
+import sys
 
 # game templates for the algorithms implemented here, they all
 # use only the functions provided here
@@ -108,7 +108,7 @@ def forward_safety_synth(game):
     depend = dict()
     depend[init_state] = set()
     waiting = [(init_state, game.upost(init_state))]
-    #assert( init_state & game.envstrat )
+    log.DBG_MSG("Starting OTFUR")
     while waiting and not tracker.is_in_attr(init_state):
         (s, sp_iter) = waiting.pop()
         try:
@@ -120,10 +120,10 @@ def forward_safety_synth(game):
         # process s, sp_iter
         if not tracker.is_visited(sp):
             print "Visiting ", sp.__hash__(),
-            if (game.is_env_state(sp)):
-                print "[env]"
-            else:
-                print "[cont]"
+            #if (game.is_env_state(sp)):
+            #    print "[env]"
+            #else:
+            #    print "[cont]"
             tracker.visit(sp)
             tracker.mark_in_attr(
                 sp, game.is_env_state(sp) and bool(sp & error_states))
@@ -132,7 +132,7 @@ def forward_safety_synth(game):
             else:
                 depend[sp] = set([(s, iter([sp]))])
             if tracker.is_in_attr(sp):
-                print "Losing state:", sp.__hash__()
+                #print "Losing state:", sp.__hash__()
                 waiting.append((s, iter([sp])))
             else:
                 if game.is_env_state(sp):
@@ -144,7 +144,7 @@ def forward_safety_synth(game):
                 if game.is_env_state(s)\
                 else all(imap(tracker.is_in_attr, game.cpost(s)))
             if local_lose:
-                print "Losing state:", s.__hash__()
+                #print "Losing state:", s.__hash__()
                 tracker.mark_in_attr(s, True)
                 waiting.extend(depend[s])
             if not tracker.is_in_attr(sp):

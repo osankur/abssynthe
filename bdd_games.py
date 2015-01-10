@@ -60,14 +60,16 @@ class ConcGame(BackwardGame):
 
 
 class SymblicitGame(ForwardGame):
-    def __init__(self, aig, use_backreach_reduction = True, winreg=None, envstrat=None):
-        assert(winreg)
+    def __init__(self, aig, use_backreach_reduction = True, cont_strat = BDD.true(), winreg=None, envstrat=None):
+        # Controller will be restricted to play according to cont_strat
+        self.cont_strat = cont_strat
         self.winreg = winreg
         self.envstrat = envstrat
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
         self.latches = [x.lit for x in self.aig.iterate_latches()]
+        self.platches = [self.aig.get_primed_var(x.lit) for x in self.aig.iterate_latches()]
         self.latch_cube = BDD.make_cube(imap(funcomp(BDD,
                                                      symbol_lit),
                                              self.aig.iterate_latches()))
@@ -109,7 +111,7 @@ class SymblicitGame(ForwardGame):
         if q in self.succ_cache:
             return iter(self.succ_cache[q])
         elif (q & self.backwardReach == BDD.false()):
-          print "--- Pruned by backReach", q.__hash__(), "---";
+          #print "--- Pruned by backReach", q.__hash__(), "---";
           # If Bad is not reachable from q, then
           # Env. cannot win from here; we turn this state into a deadlock
           self.succ_cache[q] = iter([])
@@ -118,37 +120,40 @@ class SymblicitGame(ForwardGame):
           return iter([])
         A = BDD.true()
         M = set()
+        count = 0
         while A != BDD.false():
+            count = count + 1
+            #print "Upost iteration: ", count
             a = A.get_one_minterm(self.uinputs)
             trans = BDD.make_cube(
-                imap(lambda x: BDD.make_eq(BDD(self.aig.get_primed_var(x.lit)),
-                                           self.aig.lit2bdd(x.next)
-                                           .and_abstract(q, self.latch_cube)),
-                     self.aig.iterate_latches()))
-            lhs = trans & a
+                imap(lambda x: BDD.make_eq(
+                            BDD(self.aig.get_primed_var(x.lit)),
+                            #self.aig.lit2bdd(x.next).and_abstract(q, self.latch_cube)
+                            (self.aig.lit2bdd(x.next) & q).exist_abstract(self.latch_cube)
+                                          ),
+                     self.aig.iterate_latches())
+                    )
+            lhs = (trans & a).exist_abstract(self.uinputs_cube)
             rhs = self.aig.prime_all_inputs_in_bdd(trans)
             simd = BDD.make_impl(lhs, rhs).univ_abstract(self.platch_cube)\
                 .exist_abstract(self.pcinputs_cube)\
-                .univ_abstract(self.cinputs_cube)
+               .univ_abstract(self.cinputs_cube)
             simd = self.aig.unprime_all_inputs_in_bdd(simd)
+            assert ( BDD.make_impl(a,simd) == BDD.true())
             A &= ~simd
+            assert ( a & A == BDD.false())
             Mp = set()
             for m in M:
               if not (BDD.make_impl(m, simd) == BDD.true()):
                     Mp.add(m)
             M = Mp
             M.add(a)
-            # VERIFY THAT ACTION a IS LOSING FOR ENV
-            assert ( q & a & self.envstrat == BDD.false())
-#            if ( q & a & self.envstrat ):
-#              csucc = cpost((q,a))
-#              bret = all(imap(lambda s: s & self.winreg != BDD.false(),csucc))
-        # CHECK THAT THERE IS ONE WINNING ACTION FOR ENV
-        assert (q & self.envstrat != BDD.false())
+            #assert ( q & a & self.envstrat == BDD.false())
         log.DBG_MSG("Upost |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q, x), M)
         return iter(self.succ_cache[q])
 
+    # TODO TODO TODO Add cont_strat here to constrain cont. actions
     def cpost(self, s):
         assert isinstance(s, tuple)
         q = s[0]

@@ -90,7 +90,6 @@ def synth_from_spec(aig, argv):
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
             w = comp_synth3(game_it, gen_game)
         elif argv.comp_algo == 4:
-            print "Running OTFUR"
             # solve games by OTFUR
             (w, strat) = comp_synth(game_it)
             # back to the general game
