@@ -98,11 +98,13 @@ def synth_from_spec(aig, argv):
             log.DBG_MSG("Interm. win region bdd node count = " +
                         str(w.dag_size()))
             # for debugging:
-            monogame = ConcGame(aig, use_trans=argv.use_trans)
-            (winreg,envstrat) = backward_safety_synth_bis(monogame)
+            #monogame = ConcGame(aig, use_trans=argv.use_trans)
+            #(winreg,envstrat) = backward_safety_synth_bis(monogame)
+            #symgame = SymblicitGame(BDDAIG(aig).short_error(~w),
+            #        use_backreach_reduction = True, cont_strat = strat, winreg = winreg, envstrat=envstrat)
             #
-            symgame = SymblicitGame(BDDAIG(aig).short_error(~strat),
-                    use_backreach_reduction = True, winreg = winreg, envstrat=envstrat)
+            symgame = SymblicitGame(BDDAIG(aig).short_error(~w),
+                    use_backreach_reduction = True, cont_strat = strat)
             w = forward_safety_synth(symgame)
 
     # Symbolic approach (avoiding compositional opts)

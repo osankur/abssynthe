@@ -119,11 +119,6 @@ def forward_safety_synth(game):
         waiting.append((s, sp_iter))
         # process s, sp_iter
         if not tracker.is_visited(sp):
-            print "Visiting ", sp.__hash__(),
-            #if (game.is_env_state(sp)):
-            #    print "[env]"
-            #else:
-            #    print "[cont]"
             tracker.visit(sp)
             tracker.mark_in_attr(
                 sp, game.is_env_state(sp) and bool(sp & error_states))
@@ -132,7 +127,6 @@ def forward_safety_synth(game):
             else:
                 depend[sp] = set([(s, iter([sp]))])
             if tracker.is_in_attr(sp):
-                #print "Losing state:", sp.__hash__()
                 waiting.append((s, iter([sp])))
             else:
                 if game.is_env_state(sp):
@@ -144,7 +138,6 @@ def forward_safety_synth(game):
                 if game.is_env_state(s)\
                 else all(imap(tracker.is_in_attr, game.cpost(s)))
             if local_lose:
-                #print "Losing state:", s.__hash__()
                 tracker.mark_in_attr(s, True)
                 waiting.extend(depend[s])
             if not tracker.is_in_attr(sp):

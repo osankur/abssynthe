@@ -63,8 +63,11 @@ class SymblicitGame(ForwardGame):
     def __init__(self, aig, use_backreach_reduction = True, cont_strat = BDD.true(), winreg=None, envstrat=None):
         # Controller will be restricted to play according to cont_strat
         self.cont_strat = cont_strat
+        # These are for debugging (winning region and strategy for environment
+                # computed independently)
         self.winreg = winreg
         self.envstrat = envstrat
+        #
         self.aig = aig
         self.uinputs = [x.lit for x in
                         self.aig.iterate_uncontrollable_inputs()]
@@ -111,25 +114,19 @@ class SymblicitGame(ForwardGame):
         if q in self.succ_cache:
             return iter(self.succ_cache[q])
         elif (q & self.backwardReach == BDD.false()):
-          #print "--- Pruned by backReach", q.__hash__(), "---";
-          # If Bad is not reachable from q, then
-          # Env. cannot win from here; we turn this state into a deadlock
+          log.DBG_MSG("--- Pruned by backReach: " + str(q.__hash__()) + "---");
           self.succ_cache[q] = iter([])
-          assert not (q & self.winreg == BDD.false())
-          # self.duplicates.add(q)
           return iter([])
         A = BDD.true()
         M = set()
         count = 0
         while A != BDD.false():
             count = count + 1
-            #print "Upost iteration: ", count
             a = A.get_one_minterm(self.uinputs)
             trans = BDD.make_cube(
                 imap(lambda x: BDD.make_eq(
                             BDD(self.aig.get_primed_var(x.lit)),
-                            #self.aig.lit2bdd(x.next).and_abstract(q, self.latch_cube)
-                            (self.aig.lit2bdd(x.next) & q).exist_abstract(self.latch_cube)
+                            self.aig.lit2bdd(x.next).and_abstract(q, self.latch_cube)
                                           ),
                      self.aig.iterate_latches())
                     )
@@ -139,21 +136,17 @@ class SymblicitGame(ForwardGame):
                 .exist_abstract(self.pcinputs_cube)\
                .univ_abstract(self.cinputs_cube)
             simd = self.aig.unprime_all_inputs_in_bdd(simd)
-            assert ( BDD.make_impl(a,simd) == BDD.true())
             A &= ~simd
-            assert ( a & A == BDD.false())
             Mp = set()
             for m in M:
               if not (BDD.make_impl(m, simd) == BDD.true()):
                     Mp.add(m)
             M = Mp
             M.add(a)
-            #assert ( q & a & self.envstrat == BDD.false())
         log.DBG_MSG("Upost |M| = " + str(len(M)))
         self.succ_cache[q] = map(lambda x: (q, x), M)
         return iter(self.succ_cache[q])
 
-    # TODO TODO TODO Add cont_strat here to constrain cont. actions
     def cpost(self, s):
         assert isinstance(s, tuple)
         q = s[0]
@@ -161,14 +154,26 @@ class SymblicitGame(ForwardGame):
         if s in self.succ_cache:
             L = self.succ_cache[s]
         else:
+#            L = BDD.make_cube(
+#                imap(lambda x: BDD.make_eq(BDD(x.lit),
+#                                           self.aig.lit2bdd(x.next)
+#                                           .and_abstract(q & au,
+#                                                         self.latch_cube &
+#                                                         self.uinputs_cube)),
+#                     self.aig.iterate_latches()))\
+#                .exist_abstract(self.cinputs_cube)
+            # L(X_c,L')
             L = BDD.make_cube(
                 imap(lambda x: BDD.make_eq(BDD(x.lit),
                                            self.aig.lit2bdd(x.next)
                                            .and_abstract(q & au,
                                                          self.latch_cube &
                                                          self.uinputs_cube)),
-                     self.aig.iterate_latches()))\
-                .exist_abstract(self.cinputs_cube)
+                     self.aig.iterate_latches()))
+            local_cont_strat = self.cont_strat.and_abstract( q & au, self.latch_cube
+                    & self.uinputs_cube);
+            # Controller only chooses actions that are in cont_strat & q & au
+            L = (L & local_cont_strat).exist_abstract(self.cinputs_cube)
             self.succ_cache[s] = L
         M = set()
         while L != BDD.false():
