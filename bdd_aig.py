@@ -290,7 +290,7 @@ class BDDAIG(AIG):
                                self.iterate_uncontrollable_inputs())))
         return one_step_pre
 
-    def upre_bdd_opt1(self, dst_states_bdd, env_strat=None, get_strat=False, 
+    def upre_bdd_opt2(self, dst_states_bdd, env_strat=None, get_strat=False, 
                     use_trans=False):
         """
         UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
@@ -298,7 +298,8 @@ class BDDAIG(AIG):
         one_step_pre = self.pre_bdd(dst_states_bdd)
         p_bdd = self.substitute_latches_next(
             dst_states_bdd,
-            restrict_fun=[one_step_pre, ~dst_states_bdd],
+            #restrict_fun=[one_step_pre, ~dst_states_bdd],
+            restrict_fun=[one_step_pre],
             use_trans=use_trans)
         p_bdd &= one_step_pre
         # use the given strategy

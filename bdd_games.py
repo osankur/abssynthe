@@ -44,12 +44,36 @@ class ConcGame(BackwardGame):
         self.opt_type = opt_type
         self.coreachable_states = None
         if (self.opt_type == 3):
-            log.LOG_MSG("Restricting by coreachables()")
             # Here the usual upre fixpoint is no more correct
             # However we will intersect coreachables() after each
             # iteration of upre, which then becomes exact
-            self.aig.restrict_latch_next_funs(self.coreachables())
-            log.DBG_MSG("Done with the coreachables()")
+            # self.aig.restrict_latch_next_funs(self.coreachables())
+            cor = self.coreachables()
+            latdep = self.aig.get_bdd_latch_deps(cor)
+            log.LOG_MSG("Coreachables depend on " + str(len(latdep)) + " latches")
+            latches_and_restricted_funs = []
+            orig_total_size = 0
+            rest_total_size = 0
+            for l in self.aig.iterate_latches():
+                if l != self.aig.error_fake_latch:
+                    restr_fun = self.aig.lit2bdd(l.next).restrict(cor)
+                    latches_and_restricted_funs.append( (l, restr_fun) )
+                    orig_total_size = orig_total_size + self.aig.lit2bdd(l.next).dag_size()
+                    rest_total_size = rest_total_size + restr_fun.dag_size()
+            if (rest_total_size < 0.9 * orig_total_size):
+                # We set the transition functions to the restricted ones
+                log.LOG_MSG("Restricting next funs by coreachables()")
+                log.LOG_MSG("\t Total dag size of next funs were " +
+                        str(orig_total_size) + " now " + str(rest_total_size))
+                for (l,f) in latches_and_restricted_funs:
+                    self.aig.set_lit2bdd(l.next, f)
+            else:
+                # It's not worth restricting the transition relation
+                # Go back to no opt
+                log.LOG_MSG("Not worth restricting the next functions")
+                log.LOG_MSG("\t Total dag size of next funs were " +
+                        str(orig_total_size) + " now " + str(rest_total_size))
+                self.opt_type = 1
 
     def init(self):
         return self.aig.init_state_bdd()
@@ -66,7 +90,7 @@ class ConcGame(BackwardGame):
     def upre(self, dst):
         if (self.opt_type == 2):
             log.LOG_MSG("UPRE with opt_type 2")
-            return self.aig.upre_bdd_opt1(dst, use_trans=self.use_trans)
+            return self.aig.upre_bdd_opt2(dst, use_trans=self.use_trans)
         if (self.opt_type == 3):
             log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
             over_upre = self.aig.upre_bdd(dst, use_trans=self.use_trans)
