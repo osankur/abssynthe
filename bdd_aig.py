@@ -22,7 +22,7 @@ Universite Libre de Bruxelles
 gperezme@ulb.ac.be
 """
 
-from itertools import imap, chain
+from itertools import imap, chain, combinations
 from utils import funcomp
 from aig import (
     AIG,
@@ -317,6 +317,93 @@ class BDDAIG(AIG):
             return temp_bdd
         else:
             return p_bdd
+
+    def upre_bdd_opt4(self, dst_states_bdd, env_strat=None, get_strat=False,
+                 use_trans=False):
+        """
+        UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
+        """
+        restr_opt = False
+        exp_unfold_bound = 1
+        p_bdd = self.substitute_latches_next(
+            dst_states_bdd,
+            restrict_fun=[~dst_states_bdd],
+            use_trans=use_trans)
+        if env_strat is not None:
+            p_bdd &= env_strat
+        def powerset(iterable):
+          xs = list(iterable)
+          return chain.from_iterable( combinations(xs,n) for n in range(len(xs)+1) )
+        # We apply the universal quantifier manually for the subset exp_cinputs
+        cinputs = list(self.iterate_controllable_inputs())
+        # cinputs.reverse()
+        exp_cinputs = cinputs[0:exp_unfold_bound]
+        rest_cinputs = cinputs[exp_unfold_bound:]
+        # assert(set(exp_cinputs) | set(rest_cinputs) == set(cinputs))
+        rest_cinputs_cube = BDD.make_cube(imap(funcomp(BDD,symbol_lit), rest_cinputs))
+        conjuncts = []
+        # p_bdd = p_bdd.univ_abstract(rest_cinputs_cube)
+        for inp in powerset(exp_cinputs):
+            pos_latches = map(symbol_lit,inp)
+            neg_latches = list(map(symbol_lit,set(exp_cinputs)-set(inp)))
+            some_latches = pos_latches + neg_latches
+            some_values = ([BDD.true()] * len(pos_latches)) + ([BDD.false()]*len(neg_latches))
+            tmp = p_bdd.compose(some_latches,some_values)
+            # alternative to compose:
+            # tmp = p_bdd
+            # for lat in pos_latches:
+            #     tmp &= BDD(lat)
+            # for lat in neg_latches:
+            #    tmp &= ~BDD(lat)
+            # tmp = tmp.exist_abstract(BDD.make_cube(imap(BDD,some_latches)))
+            conjuncts.append(tmp.univ_abstract(rest_cinputs_cube))
+            # conjuncts.append(tmp)
+        if (restr_opt):
+            restr_fun = conjuncts[0].exist_abstract(BDD.make_cube(
+                                imap(funcomp(BDD,symbol_lit),self.iterate_uncontrollable_inputs())))
+            conjuncts = map(lambda c: c.safe_restrict(restr_fun),conjuncts)
+        uinput_vars = map(symbol_lit, self.iterate_uncontrollable_inputs())
+        # Sort the conjuncts in increasing order of their occ_sem(uinputs)
+        conjuncts.sort(lambda c,d:
+                cmp(len(c.occ_sem(uinput_vars)),len(d.occ_sem(uinput_vars))))
+        # occ_vars = map(lambda x: x.occ_sem(uinput_vars),conjuncts)
+        # for l in occ_vars:
+        # print l
+        # var_clusters[i] will contain the variables that only appear
+        # in var_clusters[i:]
+        var_clusters = []
+        acc = set([])
+        for i in range(len(conjuncts)):
+            newvars = set(conjuncts[i].occ_sem(uinput_vars)) - acc
+            var_clusters.append(newvars)
+            acc = acc | newvars
+        # Compute conjunction inside out
+        log.DBG_MSG("Quantification schedule:")
+        for l in var_clusters:
+            log.DBG_MSG(str(l))
+        # print "Uinput dependencies of the conjuncts:"
+        # occ_vars = map(lambda x: x.occ_sem(uinput_vars),conjuncts)
+        # for l in occ_vars:
+        #    print l
+        # assert(upre_LXu == self.upre_bdd(dst_states_bdd,
+        #            get_strat=True,use_trans=use_trans))
+        upre_L = BDD.true()
+        for (var, con) in reversed(zip(var_clusters, conjuncts)):
+            upre_L &= con
+            if (var):
+                upre_L = upre_L.exist_abstract(BDD.make_cube(imap(BDD, var)))
+        if restr_opt:
+            upre_L &= restr_fun
+        # p_bdd = upre_LXu.exist_abstract(
+        #  BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+        #                     self.iterate_uncontrollable_inputs())))
+        #assert(p_bdd == upre_L)
+        # assert(upre_L == self.upre_bdd(dst_states_bdd,use_trans=use_trans))
+        # assert(upre_L == noopt_upre)
+        if get_strat:
+            return reduce(lambda x,y: x&y, conjuncts)
+        else:
+            return upre_L
 
     def cpre_bdd(self, dst_states_bdd, get_strat=False, use_trans=False):
         """ CPRE = AXu.EXc.EL' : T(L,Xu,Xc,L') ^ dst(L') """

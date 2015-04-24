@@ -69,7 +69,8 @@ def decompose(aig, argv):
             return imap(lambda a: ConcGame(
                 BDDAIG(aig).short_error(a),
                 use_trans=argv.use_trans),
-                merge_some_signals(BDD.true(), A, aig, argv))
+                map(lambda x: aig.lit2bdd(x), A))
+                #merge_some_signals(BDD.true(), A, aig, argv))
         else:
             (A, B) = aig.get_1l_land(aig.error_fake_latch.next)
             if not B:

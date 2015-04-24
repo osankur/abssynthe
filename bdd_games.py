@@ -34,7 +34,7 @@ from algos import (
     BackwardGame,
     ForwardGame,
 )
-
+import sys
 
 class ConcGame(BackwardGame):
     def __init__(self, aig, use_trans=False, opt_type=1):
@@ -60,14 +60,18 @@ class ConcGame(BackwardGame):
                     latches_and_restricted_funs.append( (l, restr_fun) )
                     orig_total_size = orig_total_size + self.aig.lit2bdd(l.next).dag_size()
                     rest_total_size = rest_total_size + restr_fun.dag_size()
-            if (rest_total_size < 0.9 * orig_total_size):
+            if (rest_total_size < orig_total_size):
                 # We set the transition functions to the restricted ones
+                print "GOOD"
+                sys.exit(-1)
                 log.LOG_MSG("Restricting next funs by coreachables()")
                 log.LOG_MSG("\t Total dag size of next funs were " +
                         str(orig_total_size) + " now " + str(rest_total_size))
                 for (l,f) in latches_and_restricted_funs:
                     self.aig.set_lit2bdd(l.next, f)
             else:
+                print "BAD"
+                sys.exit(0)
                 # It's not worth restricting the transition relation
                 # Go back to no opt
                 log.LOG_MSG("Not worth restricting the next functions")
@@ -95,6 +99,12 @@ class ConcGame(BackwardGame):
             log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
             over_upre = self.aig.upre_bdd(dst, use_trans=self.use_trans)
             return over_upre & self.coreachables()
+        if (self.opt_type == 4):
+            log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
+            #upre1 = self.aig.upre_bdd(dst, use_trans=self.use_trans)
+            return self.aig.upre_bdd_opt4(dst, use_trans=self.use_trans)
+            #assert(upre1 | dst == upre4 | dst)
+            #return upre4
         # if self.opt_type == 1
         log.LOG_MSG("UPRE with opt_type 1")
         return self.aig.upre_bdd(dst, use_trans=self.use_trans)
