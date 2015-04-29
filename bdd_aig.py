@@ -62,6 +62,15 @@ class BDDAIG(AIG):
         del self.lit_to_bdd[lit]
         return self
 
+    def get_bdd_deps(self, b):
+        bdd_deps = set(b.occ_sem())
+        bdd_latch_deps = bdd_deps - set([symbol_lit(x) for x
+                                         in self.iterate_latches()])
+        deps = reduce(set.union,
+                      map(self.get_lit_deps,
+                          bdd_latch_deps),
+                      bdd_deps)
+        return deps
     def get_bdd_latch_deps(self, b):
         bdd_latch_deps = set(b.occ_sem(imap(symbol_lit,
                                             self.iterate_latches())))

@@ -216,6 +216,10 @@ class AIG:
         latchset = set([x.lit for x in self.iterate_latches()])
         return self.get_lit_deps(lit) & latchset
 
+    def get_lit_cinput_deps(self, lit):
+        cinput_set = set([x.lit for x in self.iterate_controllable_inputs()])
+        return self.get_lit_deps(lit) & cinput_set
+
     def latch_dependency_map(self):
         m = dict()
         latchset = set([x.lit for x in self.iterate_latches()])

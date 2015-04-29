@@ -93,20 +93,20 @@ class ConcGame(BackwardGame):
 
     def upre(self, dst):
         if (self.opt_type == 2):
-            log.LOG_MSG("UPRE with opt_type 2")
+            # log.LOG_MSG("UPRE with opt_type 2")
             return self.aig.upre_bdd_opt2(dst, use_trans=self.use_trans)
         if (self.opt_type == 3):
-            log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
+            # log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
             over_upre = self.aig.upre_bdd(dst, use_trans=self.use_trans)
             return over_upre & self.coreachables()
         if (self.opt_type == 4):
-            log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
+            # log.LOG_MSG("UPRE with opt_type: " + str(self.opt_type))
             #upre1 = self.aig.upre_bdd(dst, use_trans=self.use_trans)
             return self.aig.upre_bdd_opt4(dst, use_trans=self.use_trans)
             #assert(upre1 | dst == upre4 | dst)
             #return upre4
         # if self.opt_type == 1
-        log.LOG_MSG("UPRE with opt_type 1")
+        # log.LOG_MSG("UPRE with opt_type 1")
         return self.aig.upre_bdd(dst, use_trans=self.use_trans)
 
     def cpre(self, dst, get_strat=False):

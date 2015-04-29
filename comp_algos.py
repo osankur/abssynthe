@@ -35,14 +35,13 @@ from bdd_aig import BDDAIG
 from bdd_games import ConcGame
 import log
 
-
 def merge_some_signals(cube, C, aig, argv):
     # TODO: there must be a more pythonic way of doing all of this
     log.LOG_MSG(str(len(C)) + " sub-games originally")
-    latch_deps = aig.get_bdd_latch_deps(cube)
+    cube_deps = aig.get_bdd_deps(cube)
     dep_map = dict()
     for c in C:
-        deps = frozenset(latch_deps | aig.get_lit_latch_deps(c))
+        deps = frozenset(cube_deps | aig.get_lit_deps(c))
         found = False
         for key in dep_map:
             if key >= deps:
@@ -69,8 +68,7 @@ def decompose(aig, argv):
             return imap(lambda a: ConcGame(
                 BDDAIG(aig).short_error(a),
                 use_trans=argv.use_trans),
-                map(lambda x: aig.lit2bdd(x), A))
-                #merge_some_signals(BDD.true(), A, aig, argv))
+                merge_some_signals(BDD.true(), A, aig, argv))
         else:
             (A, B) = aig.get_1l_land(aig.error_fake_latch.next)
             if not B:
@@ -105,25 +103,62 @@ def decompose(aig, argv):
         raise NotImplementedError
 
 
+#def get_cinputs_of_game(game):
+#    cinputs = set()
+#    for l in game.aig.iterate_latches():
+#        cinputs |= game.aig.get_lit_cinput_deps(l.lit)
+#    return cinputs
+def get_cinputs_of_game(game):
+    cinputs = set()
+    all_cinputs = [x.lit for x in game.aig.iterate_controllable_inputs()]
+    for l in game.aig.iterate_latches():
+        cinputs |= set(game.aig.lit2bdd(l.next).occ_sem(all_cinputs))
+    return cinputs
+    
+
 # Compositional approach, receives an iterable of BackwardGames
 def comp_synth(games):
-    s = None
-    cum_w = None
+    s = BDD.true()
+    cum_w = BDD.true()
     cnt = 0
+    sub_w = []
+    # We will iterate several times over games!
+    games = list(games)
+    # If all subgames have each one latch (i.e. error latch) 
+    # then the global game has the error latch
+    b_latchless = all(map(lambda g: g.aig.num_latches() == 0, games))
+    cinputs = map(get_cinputs_of_game, games)
+    def aux(x,y):
+        if (len(x&y)>0):
+            raise Exception()
+        return x|y
+    for c in cinputs:
+        log.DBG_MSG(str(c))
+    # Are the cinputs of the subgames pairwise disjoint?
+    try:
+        reduce(aux, cinputs, set([]))
+        b_disjoint_cinputs = True
+    except Exception:
+        b_disjoint_cinputs = False
+    log.DBG_MSG("latchless: " +str(b_latchless))
+    log.DBG_MSG("disjoint cinputs: " + str(b_disjoint_cinputs))
     for game in games:
         assert isinstance(game, BackwardGame)
         w = backward_safety_synth(game)
+        cpre = game.cpre(w, get_strat=True)
         cnt += 1
         # short-circuit a negative response
         if w is None:
             log.DBG_MSG("Short-circuit exit after sub-game #" + str(cnt))
             return (None, None)
-        if s is None:
-            s = game.cpre(w, get_strat=True)
-            cum_w = w
-        else:
-            s &= game.cpre(w, get_strat=True)
-            cum_w &= w
+        sub_w.append((w,cpre))
+    if (b_latchless and b_disjoint_cinputs):
+        return (~game.error(), BDD.true())
+    for (w,st) in sub_w:
+        # THE FOLLOWING LINE IS BUGGY
+        # s &= game.cpre(w, get_strat=True)
+        s &= st
+        cum_w &= w
         # sanity check before moving forward
         if (not s or not game.init() & s):
             return (None, None)

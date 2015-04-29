@@ -139,12 +139,6 @@ def forward_safety_synth(game):
                 str(tracker.is_in_attr(init_state)))
     return None if tracker.is_in_attr(init_state) else True
 
-def union_upre(game, x):
-    assert(x is not None)
-    r = game.upre(x)
-    assert(r is not None)
-    return r | x
-
 # Classical backward fixpoint algo
 def backward_safety_synth(game):
     assert isinstance(game, BackwardGame)
