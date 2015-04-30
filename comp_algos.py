@@ -103,11 +103,6 @@ def decompose(aig, argv):
         raise NotImplementedError
 
 
-#def get_cinputs_of_game(game):
-#    cinputs = set()
-#    for l in game.aig.iterate_latches():
-#        cinputs |= game.aig.get_lit_cinput_deps(l.lit)
-#    return cinputs
 def get_cinputs_of_game(game):
     cinputs = set()
     all_cinputs = [x.lit for x in game.aig.iterate_controllable_inputs()]
@@ -307,7 +302,6 @@ def comp_synth4(games, gen_game):
 
 def subgame_mapper(games, aig):
     s = None
-    cum_s = None
     cnt = 0
     pair_list = []
     for game in games:
@@ -319,23 +313,19 @@ def subgame_mapper(games, aig):
             log.DBG_MSG("Short-circuit exit 1 after sub-game #" + str(cnt))
             return None
         s = game.cpre(w, get_strat=True)
-        if cum_s is None:
-            cum_s = s
-        else:
-            cum_s &= s
-        # another short-circuit exit
-        if (not cum_s or not game.init() & cum_s):
-            log.DBG_MSG("Short-circuit exit 2 after sub-game #" + str(cnt))
-            return None
         pair_list.append((game, s, w))
     log.DBG_MSG("Solved " + str(cnt) + " sub games.")
     # lets simplify transition functions
-    aig.restrict_latch_next_funs(cum_s)
+    # aig.restrict_latch_next_funs(cum_s)
     return pair_list
 
 
 def subgame_reducer(games, aig, argv, a=None, b=None, c=None):
     assert games
+    games = list(games)
+    b_latchless = all(map(lambda g: g[0].aig.num_latches() == 0, games))
+    if (b_latchless):
+        log.DBG_MSG("We are going latchless!")
     if a is None:
         a = 2
     if b is None:
@@ -359,11 +349,16 @@ def subgame_reducer(games, aig, argv, a=None, b=None, c=None):
         # we must reduce games i and j now
         game = ConcGame(BDDAIG(aig).short_error(~(games[i][1] & games[j][1])),
                         use_trans=argv.use_trans)
-        w = backward_safety_synth(game)
-        if w is None:
-            return None
+        if (b_latchless and len(get_cinputs_of_game(games[i][0]) &
+            get_cinputs_of_game(games[j][0])) == 0):
+            w = games[i][1] & games[j][1]
+            s = games[i][2] & games[j][2]
         else:
-            s = game.cpre(w, get_strat=True)
+            w = backward_safety_synth(game)
+            if w is None:
+                return None
+            else:
+                s = game.cpre(w, get_strat=True)
         games[i] = (game, s, w)
         games.pop(j)
         # lets simplify the transition relations
