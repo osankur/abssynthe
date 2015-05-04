@@ -79,15 +79,16 @@ def synth_from_spec(aig, argv):
                             use_trans=argv.use_trans)
             w = backward_safety_synth(game)
         elif argv.comp_algo == 2:
-            games_mapped = subgame_mapper(game_it, aig)
+            get_strat = False
+            games_mapped = subgame_mapper(game_it, aig, get_strat)
             # local aggregation yields None if short-circ'd
             if games_mapped is None:
                 return False
-            w = subgame_reducer(games_mapped, aig, argv)
+            w = subgame_reducer(games_mapped, aig, argv, get_strat)
         elif argv.comp_algo == 3:
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
-            w = comp_synth3(game_it, gen_game)
+            w = comp_synth3(game_it, gen_game, True)
         elif argv.comp_algo == 4:
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)

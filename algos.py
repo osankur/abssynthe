@@ -142,10 +142,12 @@ def forward_safety_synth(game):
 # Classical backward fixpoint algo
 def backward_safety_synth(game):
     assert isinstance(game, BackwardGame)
-
+    
     init_state = game.init()
     error_states = game.error()
     log.DBG_MSG("Computing fixpoint of UPRE.")
+    # u = game.upre(error_states)
+    # game.short_aig_error(error_states | u)
     win_region = ~fixpoint(
         error_states,
         fun=lambda x: x | game.upre(x),

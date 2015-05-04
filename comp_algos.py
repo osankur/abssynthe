@@ -161,10 +161,10 @@ def comp_synth(games):
     return (cum_w, s)
 
 
-def comp_synth3(games, gen_game):
+def comp_synth3(games, gen_game, use_strat=False):
     s = None
-    cum_s = None
-    cum_w = None
+    cum_s = BDD.true()
+    cum_w = BDD.true()
     cnt = 0
     triple_list = []
     for game in games:
@@ -175,21 +175,34 @@ def comp_synth3(games, gen_game):
         if w is None:
             log.DBG_MSG("Short-circuit exit 1 after sub-game #" + str(cnt))
             return None
-        s = game.cpre(w, get_strat=True)
-        if cum_s is None:
-            cum_s = s
-            cum_w = w
-        else:
+        if (use_strat):
+            s = game.cpre(w, get_strat=True)
             cum_s &= s
             cum_w &= w
-        # another short-circuit exit
-        if (not cum_s or not game.init() & cum_s):
-            log.DBG_MSG("Short-circuit exit 2 after sub-game #" + str(cnt))
-            return None
+            # another short-circuit exit
+            if (not cum_s or not game.init() & cum_s):
+                log.DBG_MSG("Short-circuit exit 2 after sub-game #" + str(cnt))
+                return None
+        else:
+            # s = game.cpre(w, get_strat=True)
+            # cum_s &= s
+            cum_w &= w
+            if (not cum_w or not game.init() & cum_w):
+                log.DBG_MSG("Short-circuit exit 2 after sub-game #" + str(cnt))
+                return None
         triple_list.append((game, s, w))
     log.DBG_MSG("Solved " + str(cnt) + " sub games.")
+    #print "---Solving global"
+    #gen_game.short_aig_error(~cum_w)
+    #return backward_safety_synth(gen_game)
+    # if (not use_strat):
+    #    cum_s = cum_w
     # lets simplify transition functions
-    gen_game.short_aig_error(~cum_s)
+    #if (use_strat):
+    gen_game.short_aig_error(~cum_w)
+    #else:
+    #    gen_game.short_aig_error(~cum_w)
+        
     # what comes next is a fixpoint computation using a UPRE
     # step at a time in the global game and using it to get more
     # information from the local sub-games
@@ -198,6 +211,7 @@ def comp_synth3(games, gen_game):
     while lose_next != lose:
         lose = lose_next
         log.DBG_MSG("Doing global UPRE")
+        gen_game.short_aig_error(lose)
         lose_next = lose | gen_game.upre(lose)
         for i in range(len(triple_list)):
             wt = triple_list[i][2]
@@ -217,10 +231,14 @@ def comp_synth3(games, gen_game):
                 if (wt is None or not gamet.init() & wt):
                     log.DBG_MSG("Short-circuit exit 3")
                     return None
-                st = gamet.cpre(wt, get_strat=True)
-                cum_s &= st
-                gen_game.short_aig_error(~cum_s)
-                triple_list[i] = (gamet, st, wt)
+                if(use_strat):
+                    st = gamet.cpre(wt, get_strat=True)
+                    cum_s &= st
+                    gen_game.short_aig_error(~cum_s)
+                    triple_list[i] = (gamet, st, wt)
+                else:
+                    #gen_game.short_aig_error(~wt)
+                    triple_list[i] = (gamet, None, wt)
         for t in triple_list:
             lose_next |= ~t[2]
     # after the fixpoint has been reached we can compute the error
@@ -300,7 +318,7 @@ def comp_synth4(games, gen_game):
         return win
 
 
-def subgame_mapper(games, aig):
+def subgame_mapper(games, aig, get_strat=False):
     s = None
     cnt = 0
     pair_list = []
@@ -312,7 +330,9 @@ def subgame_mapper(games, aig):
         if w is None:
             log.DBG_MSG("Short-circuit exit 1 after sub-game #" + str(cnt))
             return None
-        s = game.cpre(w, get_strat=True)
+        s = None
+        if (get_strat):
+            s = game.cpre(w, get_strat=True)
         pair_list.append((game, s, w))
     log.DBG_MSG("Solved " + str(cnt) + " sub games.")
     # lets simplify transition functions
@@ -320,7 +340,7 @@ def subgame_mapper(games, aig):
     return pair_list
 
 
-def subgame_reducer(games, aig, argv, a=None, b=None, c=None):
+def subgame_reducer(games, aig, argv, a=None, b=None, c=None, get_strat=False):
     assert games
     games = list(games)
     b_latchless = all(map(lambda g: g[0].aig.num_latches() == 0, games))
@@ -337,30 +357,44 @@ def subgame_reducer(games, aig, argv, a=None, b=None, c=None):
         # we first compute an fij function for all pairs
         for i in range(0, len(games) - 1):
             for j in range(i + 1, len(games)):
-                li = set(aig.get_bdd_latch_deps(games[i][1]))
-                lj = set(aig.get_bdd_latch_deps(games[j][1]))
+                if (get_strat):
+                    sij = (games[i][1] & games[j][1]).dag_size()
+                    li = set(aig.get_bdd_latch_deps(games[i][1]))
+                    lj = set(aig.get_bdd_latch_deps(games[j][1]))
+                else:
+                    sij = (games[i][2] & games[j][2]).dag_size()
+                    li = set(aig.get_bdd_latch_deps(games[i][2]))
+                    lj = set(aig.get_bdd_latch_deps(games[j][2]))
                 cij = len(li & lj)
                 nij = len(li | lj)
-                sij = (games[i][1] & games[j][1]).dag_size()
                 triple_list.append((i, j, a * cij + b * nij + c * sij))
         # now we get the best pair according to the fij function
         (i, j, val) = max(triple_list, key=lambda x: x[2])
         log.DBG_MSG("We must reduce games " + str(i) + " and " + str(j))
         # we must reduce games i and j now
-        game = ConcGame(BDDAIG(aig).short_error(~(games[i][1] & games[j][1])),
+        if (get_strat):
+            game = ConcGame(BDDAIG(aig).short_error(~(games[i][1] & games[j][1])),
+                        use_trans=argv.use_trans)
+        else:
+            game = ConcGame(BDDAIG(aig).short_error(~(games[i][2] & games[j][2])),
                         use_trans=argv.use_trans)
         if (b_latchless and len(get_cinputs_of_game(games[i][0]) &
             get_cinputs_of_game(games[j][0])) == 0):
             w = games[i][1] & games[j][1]
-            s = games[i][2] & games[j][2]
+            if w is None:
+                return None
+            s = None
+            if (get_strat):
+                s = games[i][2] & games[j][2]
         else:
             w = backward_safety_synth(game)
             if w is None:
                 return None
-            else:
+            s = None
+            if (get_strat):
                 s = game.cpre(w, get_strat=True)
         games[i] = (game, s, w)
         games.pop(j)
         # lets simplify the transition relations
-        aig.restrict_latch_next_funs(s)
+        # aig.restrict_latch_next_funs(s)
     return games[0][2]
