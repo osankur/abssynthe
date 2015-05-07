@@ -34,7 +34,6 @@ from aig import (
 from cudd_bdd import BDD
 import log
 
-
 class BDDAIG(AIG):
     def __init__(self, aig=None, aiger_file_name=None,
                  intro_error_latch=False):
@@ -99,11 +98,51 @@ class BDDAIG(AIG):
             not_deps = [l.lit for l in self.iterate_latches()
                         if l.lit not in latch_deps]
             log.DBG_MSG(str(len(not_deps)) + " Latches not needed")
-                        # : " +
-                        # str(not_deps))
         nu_bddaig.latch_restr = latch_deps
+        orig_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
+                                l in self.iterate_latches()])
         nu_bddaig.restrict_latch_next_funs(~b)
+        after_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
+                                l in self.iterate_latches()])
+        if (after_size < orig_size):
+            print "short_error restrict improvement: ", after_size, " < ", orig_size
         return nu_bddaig
+
+    #def short_error_list(self, blist):
+    #    nu_bddaig = BDDAIG(aig=self)
+    #    b = reduce(lambda x,y: x|y, blist, BDD.false())
+    #    nu_bddaig.set_lit2bdd(self.error_fake_latch.next, b)
+    #    latch_deps = self.get_bdd_latch_deps(b)
+    #    if log.debug:
+    #        not_deps = [l.lit for l in self.iterate_latches()
+    #                    if l.lit not in latch_deps]
+    #        log.DBG_MSG(str(len(not_deps)) + " Latches not needed")
+    #                    # : " +
+    #                    # str(not_deps))
+    #    nu_bddaig.latch_restr = latch_deps
+    #    ############ This never reduces the BDD sizes!
+    #    #multiple_restr = False
+    #    #orig_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
+    #    #                        l in self.iterate_latches()])
+    #    #orig_sizes = [self.lit2bdd(l.next).dag_size() for
+    #    #                        l in self.iterate_latches()]
+    #    #if (multiple_restr):
+    #    #    for err in blist:
+    #    #        nu_bddaig.restrict_latch_next_funs(~err)
+    #    #    nu_bddaig.restrict_latch_next_funs(~b)
+    #    #else:
+    #    #    nu_bddaig.restrict_latch_next_funs(~b)
+    #    #after_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
+    #    #                        l in self.iterate_latches()])
+    #    #after_sizes = [self.lit2bdd(l.next).dag_size() for
+    #    #                        l in self.iterate_latches()]
+    #    #if (after_size < orig_size):
+    #    #    print "Improvement: ", after_size, " < ", orig_size
+    #    #else:
+    #    #    print "No improvement"
+    #    #if (any(map(lambda x: x[0]<x[1], zip(orig_sizes,after_sizes)))):
+    #    #    print "Local improvement!"
+    #    return nu_bddaig
 
     def iterate_latches(self):
         for l in AIG.iterate_latches(self):
@@ -234,6 +273,27 @@ class BDDAIG(AIG):
             )))
         return self.unprime_latches_in_bdd(suc_bdd)
 
+    def substitute_latches_next_orig(self, b, use_trans=False, restrict_fun=None):
+        if use_trans:
+            transition_bdd = self.trans_rel_bdd()
+            trans = transition_bdd
+            if restrict_fun is not None:
+                trans = trans.restrict(restrict_fun)
+            primed_bdd = self.prime_latches_in_bdd(b)
+            primed_latches = BDD.make_cube(
+                imap(funcomp(BDD, self.get_primed_var, symbol_lit),
+                     self.iterate_latches()))
+            return trans.and_abstract(primed_bdd,
+                                      primed_latches)
+        else:
+            latches = [x.lit for x in self.iterate_latches()]
+            latch_funs = [self.lit2bdd(x.next) for x in
+                          self.iterate_latches()]
+            if restrict_fun is not None:
+                latch_funs = [x.restrict(restrict_fun) for x in latch_funs]
+            # take a transition step backwards
+            return b.compose(latches, latch_funs)
+
     def substitute_latches_next(self, b, use_trans=False, restrict_fun=None):
         if use_trans:
             transition_bdd = self.trans_rel_bdd()
@@ -251,10 +311,17 @@ class BDDAIG(AIG):
             latches = [x.lit for x in self.iterate_latches()]
             latch_funs = [self.lit2bdd(x.next) for x in
                           self.iterate_latches()]
+            ######## This restrict *does* help sometimes reduce the BDD sizes
             if restrict_fun is not None:
+                orig_size = reduce(lambda x,y:x+y, [l.dag_size() for l in latch_funs])
+                # log.BDD_DMP(latch_funs[34], "fun[0]")
                 for f in restrict_fun:
                     latch_funs = [x.restrict(f) for x in latch_funs]
-            # take a transition step backwards
+                after_size = reduce(lambda x,y:x+y, [l.dag_size() for l in latch_funs])
+                #if (orig_size > after_size):
+                #    print "IMPROVEMENT: ", orig_size, after_size
+                #else:
+                #    print "No improvement", orig_size
             return b.compose(latches, latch_funs)
 
     def upre_bdd(self, dst_states_bdd, env_strat=None, get_strat=False,
@@ -269,7 +336,6 @@ class BDDAIG(AIG):
             dst_states_bdd,
             restrict_fun=[~dst_states_bdd],
             use_trans=use_trans)
-        #    restrict_fun=None,
         # use the given strategy
         if env_strat is not None:
             p_bdd &= env_strat
@@ -285,6 +351,29 @@ class BDDAIG(AIG):
             return temp_bdd
         else:
             return p_bdd
+
+    def overpre_bdd(self, dst_states_bdd):
+        latches = [x for x in self.iterate_latches()]
+        nlatches = len(latches)
+        if (nlatches > 40):
+            remlatches = latches[0:nlatches/2]
+            latches = latches[nlatches/2:]
+            dst_states_bdd = dst_states_bdd.exist_abstract(
+                    BDD.make_cube(map(funcomp(BDD,symbol_lit),remlatches)))
+        latch_funs = [self.lit2bdd(x.next) for x in latches]
+        latches = map(symbol_lit, latches)
+        tmp_bdd = dst_states_bdd.compose(latches, latch_funs)
+        #tmp_bdd = tmp_bdd.exist_abstract(
+        #    BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+        #                       self.iterate_controllable_inputs())))
+        inputs = list(self.iterate_controllable_inputs()) + list(self.iterate_uncontrollable_inputs())
+        one_step_pre = tmp_bdd.exist_abstract(
+            BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+                               inputs)))
+        #one_step_pre = tmp_bdd.exist_abstract(
+        #    BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+        #                       self.iterate_inputs())))
+        return one_step_pre
 
     def pre_bdd(self, dst_states_bdd):
         latches = [x.lit for x in self.iterate_latches()]
@@ -302,13 +391,22 @@ class BDDAIG(AIG):
     def upre_bdd_opt2(self, dst_states_bdd, env_strat=None, get_strat=False, 
                     use_trans=False):
         """
-        UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
+        This optimization consists in computing the predecessors,
+        restricting the transition functions to Pre, 
+        applying upre and intersecting back with Pre.
+
+        This optimization did help reduce BDD sizes, often very modestly
+        sometimes a bit more. But the computation overhead was too much
+
+        One could also use overpre which gives the same result and
+        the only improvement (if any) seems to be due to unpredictable variable
+        reordering
         """
         one_step_pre = self.pre_bdd(dst_states_bdd)
         p_bdd = self.substitute_latches_next(
             dst_states_bdd,
-            #restrict_fun=[one_step_pre, ~dst_states_bdd],
-            restrict_fun=[one_step_pre],
+            restrict_fun=[~dst_states_bdd, one_step_pre],
+            #restrict_fun=[one_step_pre],
             use_trans=use_trans)
         p_bdd &= one_step_pre
         # use the given strategy
@@ -327,10 +425,49 @@ class BDDAIG(AIG):
         else:
             return p_bdd
 
+    def upre_bdd_opt5(self, dst_states_bdd, env_strat=None, get_strat=False, 
+                    use_trans=False):
+        """
+            Nothing...........
+        """
+        all_cinputs = [x.lit for x in self.iterate_controllable_inputs()]
+        latch_names = list(self.iterate_latches())
+        cinputs = map(lambda x: self.lit2bdd(x.next).occ_sem(all_cinputs), latch_names)
+        pairs = zip(latch_names, cinputs)
+        nocinput_latches = filter(lambda x: len(x[1]) == 0, pairs)
+        cinput_latches = filter(lambda x: len(x[1]) > 0, pairs)
+
+        # COMPOSE
+        restr_fun = [~dst_states_bdd]
+        latch_funs = map(lambda x: self.lit2bdd(x[0].next), nocinput_latches)
+        latches = map(lambda x: x.lit, nocinput_latches)
+        for f in restrict_fun:
+            latch_funs = [x.restrict(f) for x in latch_funs]
+        pre = b.compose(latches, latch_funs)
+        #/COMPOSE
+
+        if env_strat is not None:
+            p_bdd &= env_strat
+        # there is an uncontrollable action such that for all contro...
+        temp_bdd = p_bdd.univ_abstract(
+            BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+                               self.iterate_controllable_inputs())))
+        p_bdd = temp_bdd.exist_abstract(
+            BDD.make_cube(imap(funcomp(BDD, symbol_lit),
+                               self.iterate_uncontrollable_inputs())))
+        # prepare the output
+        if get_strat:
+            return temp_bdd
+        else:
+            return p_bdd
+
     def upre_bdd_opt4(self, dst_states_bdd, env_strat=None, get_strat=False,
                  use_trans=False):
         """
-        UPRE = EXu.AXc.EL' : T(L,Xu,Xc,L') ^ dst(L') [^St(L,Xu)]
+        This optimization consists in manually expanding the universal
+        quantificaton for a small number of cinputs (exp_unfold_bound),
+        distributing the remaining universal quantification inside conjuncts,
+        and then applying quant. scheduling to apply the existential quant.
         """
         restr_opt = False
         exp_unfold_bound = 1
@@ -367,10 +504,6 @@ class BDDAIG(AIG):
             # tmp = tmp.exist_abstract(BDD.make_cube(imap(BDD,some_latches)))
             conjuncts.append(tmp.univ_abstract(rest_cinputs_cube))
             # conjuncts.append(tmp)
-        if (restr_opt):
-            restr_fun = conjuncts[0].exist_abstract(BDD.make_cube(
-                                imap(funcomp(BDD,symbol_lit),self.iterate_uncontrollable_inputs())))
-            conjuncts = map(lambda c: c.safe_restrict(restr_fun),conjuncts)
         uinput_vars = map(symbol_lit, self.iterate_uncontrollable_inputs())
         # Sort the conjuncts in increasing order of their occ_sem(uinputs)
         conjuncts.sort(lambda c,d:
@@ -401,8 +534,6 @@ class BDDAIG(AIG):
             upre_L &= con
             if (var):
                 upre_L = upre_L.exist_abstract(BDD.make_cube(imap(BDD, var)))
-        if restr_opt:
-            upre_L &= restr_fun
         # p_bdd = upre_LXu.exist_abstract(
         #  BDD.make_cube(imap(funcomp(BDD, symbol_lit),
         #                     self.iterate_uncontrollable_inputs())))

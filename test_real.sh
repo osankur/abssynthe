@@ -29,31 +29,78 @@ UNREAL=20
 # The benchmarks to be used.
 # The files have to be located in ${BM_DIR}.
 FILES=(
-cycle_sched_2 $REAL
-cycle_sched_3 $REAL
-cycle_sched_4 $REAL
-cycle_sched_5 $REAL
-cycle_sched_6 $REAL
-cycle_sched_7 $REAL
-cycle_sched_8 $REAL
-cycle_sched_9 $REAL
-cycle_sched_10 $REAL
-cycle_sched_11 $REAL
-cycle_sched_12 $REAL
-cycle_sched_13 $REAL
-cycle_sched_14 $REAL
-cycle_sched_15 $REAL
-cycle_sched_16 $REAL
-cycle_sched_17 $REAL
-cycle_sched_18 $REAL
-cycle_sched_19 $REAL
-cycle_sched_20 $REAL
-cycle_sched_21 $REAL
-cycle_sched_22 $REAL
-cycle_sched_23 $REAL
-cycle_sched_24 $REAL
-cycle_sched_25 $REAL
-cycle_sched_26 $REAL
+cycle_sched_10_2_1
+cycle_sched_10_2_2
+cycle_sched_11_2_1
+cycle_sched_12_2_1
+cycle_sched_12_2_2
+cycle_sched_12_2_3
+cycle_sched_12_2_4
+cycle_sched_13_2_1
+cycle_sched_14_2_1
+cycle_sched_14_2_2
+cycle_sched_15_2_1
+cycle_sched_15_2_3
+cycle_sched_16_2_1
+cycle_sched_16_2_2
+cycle_sched_16_2_4
+cycle_sched_17_2_1
+cycle_sched_18_2_1
+cycle_sched_18_2_3
+cycle_sched_19_2_1
+cycle_sched_20_2_4
+cycle_sched_2_10_1
+cycle_sched_21_2_3
+cycle_sched_2_2_1
+cycle_sched_2_3_1
+cycle_sched_2_4_1
+cycle_sched_24_2_3
+cycle_sched_24_2_4
+cycle_sched_2_5_1
+cycle_sched_2_6_1
+cycle_sched_2_7_1
+cycle_sched_2_8_1
+cycle_sched_28_2_4
+cycle_sched_2_9_1
+cycle_sched_3_2_1
+cycle_sched_32_2_4
+cycle_sched_4_2_1
+cycle_sched_4_2_2
+cycle_sched_5_2_1
+cycle_sched_6_2_1
+cycle_sched_6_2_2
+cycle_sched_6_2_3
+cycle_sched_7_2_1
+cycle_sched_8_2_1
+cycle_sched_8_2_2
+cycle_sched_8_2_4
+cycle_sched_9_2_1
+cycle_sched_9_2_3
+#cycle_sched_2 $REAL
+#cycle_sched_3 $REAL
+#cycle_sched_4 $REAL
+#cycle_sched_5 $REAL
+#cycle_sched_6 $REAL
+#cycle_sched_7 $REAL
+#cycle_sched_8 $REAL
+#cycle_sched_9 $REAL
+#cycle_sched_10 $REAL
+#cycle_sched_11 $REAL
+#cycle_sched_12 $REAL
+#cycle_sched_13 $REAL
+#cycle_sched_14 $REAL
+#cycle_sched_15 $REAL
+#cycle_sched_16 $REAL
+#cycle_sched_17 $REAL
+#cycle_sched_18 $REAL
+#cycle_sched_19 $REAL
+#cycle_sched_20 $REAL
+#cycle_sched_21 $REAL
+#cycle_sched_22 $REAL
+#cycle_sched_23 $REAL
+#cycle_sched_24 $REAL
+#cycle_sched_25 $REAL
+#cycle_sched_26 $REAL
 #amba2b8unrealn    $UNREAL
 #amba2b8unrealy    $UNREAL
 #amba2b9n    $REAL
@@ -202,8 +249,8 @@ cycle_sched_26 $REAL
 
 CALL_SYNTH_TOOL="./start abssynthe.py -v L -ca 1 -d 1 $@ "
 TIMESTAMP=`date +%s`
-RES_TXT_FILE="${DIR}tests/results_${TIMESTAMP}.txt"
-RES_DIR="${DIR}tests/results_${TIMESTAMP}/"
+RES_TXT_FILE="${DIR}tests/sched_ca_${TIMESTAMP}.txt"
+RES_DIR="${DIR}tests/sched_ca_${TIMESTAMP}/"
 mkdir -p "${DIR}tests/"
 mkdir -p ${RES_DIR}
 

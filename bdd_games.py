@@ -91,6 +91,9 @@ class ConcGame(BackwardGame):
     def short_aig_error(self, error):
         self.aig = self.aig.short_error(error)
 
+    def short_aig_error(self, errs):
+        self.aig = self.aig.short_error_list(errs)
+
     def upre(self, dst):
         if (self.opt_type == 2):
             # log.LOG_MSG("UPRE with opt_type 2")
@@ -105,6 +108,8 @@ class ConcGame(BackwardGame):
             return self.aig.upre_bdd_opt4(dst, use_trans=self.use_trans)
             #assert(upre1 | dst == upre4 | dst)
             #return upre4
+        if (self.opt_type == 5):
+            return self.aig.upre_bdd_opt5(dst, use_trans=self.use_trans)
         # if self.opt_type == 1
         # log.LOG_MSG("UPRE with opt_type 1")
         return self.aig.upre_bdd(dst, use_trans=self.use_trans)

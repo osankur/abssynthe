@@ -48,3 +48,23 @@ def fixpoint(s, fun, early_exit=never):
 
 def funcomp(*functions):
     return reduce(lambda f, g: lambda x: f(g(x)), functions)
+
+
+### For debugging purposes
+def fixpoint_verbose(s, fun, early_exit=never):
+    """ fixpoint of monotone function starting from s """
+    prev = None
+    cur = s
+    cnt = 0
+    upre_list = [cur]
+    while prev is None or prev != cur:
+        prev = cur
+        cur = fun(prev)
+        upre_list.append(cur)
+        cnt += 1
+        if early_exit(cur):
+            log.DBG_MSG("Early exit after " + str(cnt) + " steps.")
+            return (cur, upre_list)
+    log.DBG_MSG("Fixpoint reached after " + str(cnt) + " steps.")
+    return (cur, upre_list)
+

@@ -22,6 +22,54 @@ Universite Libre de Bruxelles
 gperezme@ulb.ac.be
 """
 
+"""
+TODO LIST 
+1) For synthesis, the CPRE of the winning region is always computed
+    although some realizability algorithms also do this computation
+    This is redundant
+   
+   Also adapt the synthesis part to take into account a list of 
+   winning strategies for subgames for the case of disjoint cont. inputs
+
+2) How can we apply restrict on states? (rather than trans. functions?)
+
+CHANGES
+
+1) In comp. algorithms restricting the trans. functions by winning
+quasi-strategies almost never reduce the BDD sizes. I commented this
+in bdd_aig.short_error() function for the moment.
+
+A general test must be performed to decide what to do.
+
+On genbuf9b3unrealy.aag, without restrict alg. 2 terminates in 5s, and with
+restrict it takes ages
+
+2) The latch and input dependency functions have too much overhead.
+I put a hash table on cudd_bdd.occ_sem() function
+One could do the same for others (use profiling to detect these problems)
+
+The bottleneck in Alg. 2 was this computation which was extremely redundant!
+(e.g. on genbuf14c2unrealn.aag runing time was reduced from 1m to 12s.)
+
+3) In Alg. 2 if cinputs (thus also latches) are independent we just need to intersect the winning
+regions and strategies. No need to UPRE. DONE
+
+Optimizations:
+    - Choosing the subgame pairs that have the least joint cinputs were
+      sometimes very beneficial:
+      amba4b9y.aag went from 7.5s to 2.5s 
+      however genbuf14c2unrealn.aag went from 13s to 17s
+
+      Bad for opt:
+        amba6c5y.aag 6s -> 30s
+        amba6c4unrealy.aag 19s -> 33s
+
+        cycle_sched_6: 9.5s -> 10.5s
+            (noopt had more independent subgames)
+        cycle_sched_7: 12.3 -> 13.5s
+"""
+
+
 import argparse
 import log
 from bdd_aig import BDDAIG
@@ -71,31 +119,31 @@ def synth_from_spec(aig, argv):
             # solve and aggregate sub-games
             (w, strat) = comp_synth(game_it)
             # back to the general game
-            if w is None:
-                return False
-            log.DBG_MSG("Interm. win region bdd node count = " +
-                        str(w.dag_size()))
-            game = ConcGame(BDDAIG(aig).short_error(~strat),
-                            use_trans=argv.use_trans)
-            w = backward_safety_synth(game)
+            # if w is None:
+            #     return False
+            # log.DBG_MSG("Interm. win region bdd node count = " +
+            #             str(w.dag_size()))
+            # game = ConcGame(BDDAIG(aig).short_error(~strat),
+            #                 use_trans=argv.use_trans)
+            # w = backward_safety_synth(game)
         elif argv.comp_algo == 2:
-            get_strat = False
-            games_mapped = subgame_mapper(game_it, aig, get_strat)
+            # print "STARTING NOW"
+            games_mapped = subgame_mapper(game_it, aig)
             # local aggregation yields None if short-circ'd
+            # return False
             if games_mapped is None:
                 return False
-            w = subgame_reducer(games_mapped, aig, argv, get_strat)
+            w = subgame_reducer(games_mapped, aig, argv, opt_pij=argv.opt_pij)
         elif argv.comp_algo == 3:
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
-            w = comp_synth3(game_it, gen_game, True)
+            w = comp_synth3(game_it, gen_game)
         elif argv.comp_algo == 4:
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
             w = comp_synth4(game_it, gen_game)
         else:
             raise NotImplementedError()
-    # Symbolic approach (avoiding compositional opts)
     else:
         game = ConcGame(aig,
                         use_trans=argv.use_trans,
@@ -145,9 +193,11 @@ def main():
                         default="1", choices="1234",
                         help="Choice of compositional algorithm")
     parser.add_argument("-opt", "--opt", dest="opt_type", type=str,
-                        default="1", choices="1234",
+                        default="1", choices="12345",
                         help="Type of restrict optimization: (1) Nothing, (2)\
                         Local predecessor, (3) global coreachable set")
+    parser.add_argument("-pij", "--pij", action="store_true", dest="opt_pij",
+                        default=False, help="Alg.2 heuristics")
     parser.add_argument("-v", "--verbose_level", dest="verbose_level",
                         default="", required=False,
                         help="Verbose level = (D)ebug, (W)arnings, " +

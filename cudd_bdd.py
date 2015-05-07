@@ -38,7 +38,7 @@ class BDD(bdd.BDD_Base):
 
     def __init__(self, var=None):
         global next_free_var
-
+        self.occ_sem_dict = dict()
         if var is None:
             return
         if next_free_var <= var:
@@ -134,17 +134,38 @@ class BDD(bdd.BDD_Base):
     def __hash__(self):
         return self._cudd_bdd.__hash__()
 
+    #def occ_sem(self, var_list=None):
+    #    """ returns: a subset of var_list which occurs in the boolean function
+    #    represented by bdd """
+    #    if var_list is None:
+    #        var_list = range(next_free_var)
+    #    var_list = list(var_list)
+    #    occ = []
+    #    if self == BDD.false():
+    #        return occ
+    #    for v in var_list:
+    #        if self != self.exist_abstract(BDD(v)):
+    #            occ.append(v)
+    #    print "occ_sem : ", self, ": ", occ
+    #    return occ
     def occ_sem(self, var_list=None):
         """ returns: a subset of var_list which occurs in the boolean function
         represented by bdd """
         if var_list is None:
             var_list = range(next_free_var)
+        # In case var_list is an iterator
+        var_list = list(var_list)
+        tvar_list = tuple(var_list)
+        if (tvar_list in self.occ_sem_dict):
+            return self.occ_sem_dict[tvar_list]
         occ = []
         if self == BDD.false():
+            self.occ_sem_dict[tvar_list] = occ
             return occ
         for v in var_list:
             if self != self.exist_abstract(BDD(v)):
                 occ.append(v)
+        self.occ_sem_dict[tvar_list] = occ
         return occ
 
     def occ_pos(self, var_list=None):

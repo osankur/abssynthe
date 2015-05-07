@@ -24,9 +24,10 @@ gperezme@ulb.ac.be
 
 from abc import ABCMeta, abstractmethod
 from itertools import imap
-from utils import fixpoint
+from utils import *
 from functools import partial
 import log
+from cudd_bdd import BDD
 
 
 # game templates for the algorithms implemented here, they all
@@ -101,7 +102,7 @@ def forward_safety_synth(game):
     tracker = game.visit_tracker()
     depend = dict()
     depend[init_state] = set()
-    waiting = [(init_state, game.upost(init_state))]
+    waiting = [(init_state, game.upost(init_state))] 
     while waiting and not tracker.is_in_attr(init_state):
         (s, sp_iter) = waiting.pop()
         try:
@@ -142,19 +143,22 @@ def forward_safety_synth(game):
 # Classical backward fixpoint algo
 def backward_safety_synth(game):
     assert isinstance(game, BackwardGame)
-    
     init_state = game.init()
     error_states = game.error()
     log.DBG_MSG("Computing fixpoint of UPRE.")
-    # u = game.upre(error_states)
-    # game.short_aig_error(error_states | u)
+    #latches = [l for l in game.aig.iterate_latches()]
+    #for l in latches:
+    #    print "Latch.next size: ", game.aig.lit2bdd(l.next).dag_size()
+    #err_bdd = game.aig.lit2bdd(latches[-1].next)
+    #if (err_bdd.dag_size()>4500):
+    #    log.BDD_DMP(err_bdd, "error latch")
     win_region = ~fixpoint(
         error_states,
         fun=lambda x: x | game.upre(x),
         early_exit=lambda x: x & init_state
     )
-
     if not (win_region & init_state):
         return None
     else:
         return win_region
+
