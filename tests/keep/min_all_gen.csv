@@ -1,0 +1,164 @@
+demo-v2_2_UNREAL    ;0.02
+demo-v2_5_UNREAL    ;0.04
+demo-v3_2_REAL      ;0.04
+demo-v5_2_REAL      ;0.04
+factory_assembly_3x3_1_1errors;0.08
+cycle_sched_2       ;0.09
+demo-v4_2_UNREAL    ;0.1
+demo-v3_5_REAL      ;0.12
+genbuf2b4y          ;0.12
+genbuf2f3unrealy    ;0.14
+genbuf2b3unrealy    ;0.15
+genbuf2f4y          ;0.15
+genbuf2c3n          ;0.16
+genbuf2c2unrealy    ;0.17
+genbuf2c3y          ;0.17
+demo-v6_2_UNREAL    ;0.19
+genbuf3b4y          ;0.19
+cycle_sched_3       ;0.21
+genbuf3c3y          ;0.21
+genbuf3f4y          ;0.21
+genbuf4c3y          ;0.22
+genbuf4f3unrealy    ;0.22
+genbuf3f4n          ;0.23
+genbuf2f3unrealn    ;0.24
+genbuf3b3unrealy    ;0.24
+genbuf3f3unrealy    ;0.24
+demo-v5_5_REAL      ;0.25
+genbuf2c2unrealn    ;0.25
+genbuf2b4n          ;0.26
+genbuf2f4n          ;0.26
+genbuf3b4n          ;0.31
+genbuf3c2unrealy    ;0.32
+genbuf3c3n          ;0.32
+genbuf4f4n          ;0.32
+factory_assembly_4x3_1_1errors;0.33
+gb_s2_r2_comp1_UNREAL;0.33
+genbuf4b3unrealy    ;0.34
+gb_s2_r2_comp2_UNREAL;0.34
+genbuf4f3unrealn    ;0.35
+genbuf4c2unrealy    ;0.4
+genbuf5c2unrealy    ;0.4
+genbuf5f4unrealy    ;0.41
+amba2f8unrealy      ;0.42
+amba2c7y            ;0.44
+genbuf3c2unrealn    ;0.45
+genbuf3b3unrealn    ;0.46
+genbuf3f3unrealn    ;0.46
+genbuf4b4y          ;0.46
+genbuf5c3n          ;0.46
+amba2f8unrealn      ;0.47
+amba2f9y            ;0.48
+genbuf4b4n          ;0.48
+genbuf4f4y          ;0.48
+amba2f9n            ;0.49
+genbuf5c3y          ;0.5
+genbuf4c3n          ;0.51
+genbuf6b4y          ;0.51
+demo-v6_5_REAL      ;0.54
+genbuf6b4n          ;0.55
+genbuf6c2unrealy    ;0.55
+amba2c6unrealy      ;0.59
+amba2c7n            ;0.59
+genbuf5b4y          ;0.59
+amba2b8unrealy      ;0.61
+demo-v4_5_REAL      ;0.63
+genbuf5c2unrealn    ;0.63
+factory_assembly_5x3_1_0errors;0.65
+amba2b9n            ;0.69
+genbuf5f5n          ;0.69
+amba2c6unrealn      ;0.72
+genbuf5f5y          ;0.72
+genbuf5f4unrealn    ;0.77
+amba2b9y            ;0.8
+genbuf6c2unrealn    ;0.8
+amba2b8unrealn      ;0.82
+genbuf4c2unrealn    ;0.87
+load_2c_comp_comp1_REAL;0.89
+genbuf6b3unrealn    ;0.92
+genbuf10c3n         ;0.97
+genbuf10b4y         ;1.03
+genbuf5b4n          ;1.04
+amba3b4unrealy      ;1.06
+genbuf11c3y         ;1.08
+genbuf4b3unrealn    ;1.09
+genbuf11b4y         ;1.1
+amba3b5y            ;1.12
+load_full_2_comp1_UNREAL;1.17
+amba3f8unrealy      ;1.18
+amba3b5n            ;1.23
+amba3b4unrealn      ;1.24
+gb_s2_r4_comp1_UNREAL;1.3
+gb_s2_r7_comp7_REAL ;1.31
+amba3c4unrealy      ;1.32
+load_2c_comp_comp2_REAL;1.32
+load_full_2_comp2_REAL;1.38
+gb_s2_r7_comp1_UNREAL;1.38
+amba3c5y            ;1.42
+amba3f9y            ;1.43
+cycle_sched_4       ;1.47
+amba3f9n            ;1.47
+genbuf6b3unrealy    ;1.51
+genbuf10b4n         ;1.61
+amba3c4unrealn      ;1.64
+genbuf11b4n         ;1.66
+amba3f8unrealn      ;1.67
+load_2c_comp_comp3_REAL;1.76
+genbuf5b3unrealy    ;1.79
+amba3c5n            ;1.81
+genbuf10c2unrealn   ;1.89
+genbuf10f9unrealy   ;1.95
+genbuf11f10unrealy  ;1.99
+genbuf5b3unrealn    ;2.02
+factory_assembly_5x3_1_4errors;2.05
+genbuf10f10y        ;2.1
+gb_s2_r3_comp1_UNREAL;2.33
+genbuf11c3n         ;2.38
+genbuf10b3unrealy   ;2.58
+amba4c7y            ;2.64
+genbuf10c3y         ;2.64
+genbuf10f9unrealn   ;2.76
+genbuf11c2unrealy   ;2.78
+genbuf11b3unrealy   ;2.9
+genbuf11f11y        ;3.26
+gb_s2_r3_comp2_UNREAL;3.27
+amba5b5n            ;3.33
+load_full_2_comp3_REAL;3.35
+amba5b4unrealy      ;3.42
+genbuf10b3unrealn   ;3.44
+genbuf11f10unrealn  ;3.62
+amba4c6unrealy      ;3.74
+amba4f24unrealy     ;3.87
+amba4c7n            ;3.94
+genbuf11f11n        ;4.1
+genbuf10f10n        ;4.21
+amba5c5y            ;4.23
+cycle_sched_6       ;4.34
+genbuf11b3unrealn   ;4.72
+gb_s2_r6_comp1_UNREAL;4.72
+amba5c4unrealy      ;4.86
+genbuf11c2unrealn   ;5.24
+amba4f25y           ;5.3
+amba4b9y            ;5.51
+cycle_sched_5       ;5.77
+load_full_3_comp1_UNREAL;6.26
+amba4c6unrealn      ;6.32
+amba5b4unrealn      ;6.47
+cycle_sched_7       ;6.76
+genbuf10c2unrealy   ;6.78
+amba4b8unrealn      ;7.9
+amba5b5y            ;8.27
+amba4b8unrealy      ;8.33
+amba4b9n            ;10.12
+amba4f25n           ;11.27
+amba4f24unrealn     ;11.53
+cycle_sched_8       ;14.24
+amba5c4unrealn      ;20.12
+cycle_sched_9       ;23.99
+amba5c5n            ;25.73
+cycle_sched_10      ;56.56
+cycle_sched_12      ;149.16
+cycle_sched_13      ;184.68
+cycle_sched_11      ;355.79
+gb_s2_r4_comp2_REAL ;499.74
+gb_s2_r6_comp2_UNREAL;499.76

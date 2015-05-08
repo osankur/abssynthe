@@ -1,0 +1,1989 @@
+=====================  cycle_sched_2.aag =====================
+[LOG] 9 sub-games originally
+[LOG] 8 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.27 sec (Real time) / 0.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_3.aag =====================
+[LOG] 12 sub-games originally
+[LOG] 11 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.03 sec (Real time) / 1.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_4.aag =====================
+[LOG] 15 sub-games originally
+[LOG] 14 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 2.84 sec (Real time) / 2.81 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_5.aag =====================
+[LOG] 18 sub-games originally
+[LOG] 17 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 10.77 sec (Real time) / 10.66 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_6.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 20 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 10.05 sec (Real time) / 10.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_7.aag =====================
+[LOG] 24 sub-games originally
+[LOG] 23 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 14.21 sec (Real time) / 14.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_8.aag =====================
+[LOG] 27 sub-games originally
+[LOG] 26 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 55.69 sec (Real time) / 55.61 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_9.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 29 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 41.06 sec (Real time) / 40.98 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_10.aag =====================
+[LOG] 33 sub-games originally
+[LOG] 32 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 163.03 sec (Real time) / 162.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_11.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 35 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.01 sec (Real time) / 499.68 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_12.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.71 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_13.aag =====================
+[LOG] 42 sub-games originally
+[LOG] 41 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 426.58 sec (Real time) / 426.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cycle_sched_16.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.55 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_17.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.49 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_18.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.03 sec (Real time) / 499.54 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_19.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.04 sec (Real time) / 499.38 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_20.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.04 sec (Real time) / 499.49 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_21.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.03 sec (Real time) / 499.52 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_22.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.30 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_23.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.47 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_24.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.33 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_25.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.02 sec (Real time) / 499.08 sec (User CPU time)
+Timeout: 1
+=====================  cycle_sched_26.aag =====================
+Command exited with non-zero status 137
+Synthesis time: 500.01 sec (Real time) / 499.22 sec (User CPU time)
+Timeout: 1
+=====================  amba2b8unrealn.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 14 sub-games after incl. red.
+short_error restrict improvement:  809  <  1213
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.22 sec (Real time) / 1.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2b8unrealy.aag =====================
+[LOG] 14 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  1210  <  1639
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.63 sec (Real time) / 0.61 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2b9n.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 14 sub-games after incl. red.
+short_error restrict improvement:  622  <  1113
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.93 sec (Real time) / 0.92 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2b9y.aag =====================
+[LOG] 14 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  1166  <  1597
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.93 sec (Real time) / 0.90 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2c6unrealn.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  775  <  1039
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.06 sec (Real time) / 1.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2c6unrealy.aag =====================
+[LOG] 14 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  779  <  986
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.09 sec (Real time) / 1.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2c7n.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 14 sub-games after incl. red.
+short_error restrict improvement:  750  <  1014
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.91 sec (Real time) / 0.89 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2c7y.aag =====================
+[LOG] 14 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  699  <  906
+Opt_pij:  False
+short_error restrict improvement:  474  <  578
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.02 sec (Real time) / 1.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2f8unrealn.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 14 sub-games after incl. red.
+short_error restrict improvement:  953  <  1290
+short_error restrict improvement:  873  <  875
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.76 sec (Real time) / 0.75 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2f8unrealy.aag =====================
+[LOG] 14 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  969  <  1296
+short_error restrict improvement:  769  <  797
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.87 sec (Real time) / 0.86 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2f9n.aag =====================
+[LOG] 21 sub-games originally
+[LOG] 14 sub-games after incl. red.
+short_error restrict improvement:  1094  <  1431
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.73 sec (Real time) / 0.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2f9y.aag =====================
+[LOG] 14 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  1195  <  1520
+short_error restrict improvement:  774  <  775
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.71 sec (Real time) / 0.69 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3b4unrealn.aag =====================
+[LOG] 29 sub-games originally
+[LOG] 18 sub-games after incl. red.
+short_error restrict improvement:  1628  <  2195
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+short_error restrict improvement:  1222  <  1234
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 6.17 sec (Real time) / 6.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3b4unrealy.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1733  <  2978
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.16 sec (Real time) / 1.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3b5n.aag =====================
+[LOG] 29 sub-games originally
+[LOG] 18 sub-games after incl. red.
+short_error restrict improvement:  1619  <  2194
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 88.14 sec (Real time) / 88.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3b5y.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1590  <  2982
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.80 sec (Real time) / 1.79 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3c4unrealn.aag =====================
+[LOG] 29 sub-games originally
+[LOG] 20 sub-games after incl. red.
+short_error restrict improvement:  1351  <  2113
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 29.33 sec (Real time) / 29.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3c4unrealy.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1374  <  2057
+Opt_pij:  False
+short_error restrict improvement:  1232  <  1294
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.77 sec (Real time) / 1.74 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3c5n.aag =====================
+[LOG] 29 sub-games originally
+[LOG] 18 sub-games after incl. red.
+short_error restrict improvement:  1213  <  1777
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 90.39 sec (Real time) / 90.33 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3c5y.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1001  <  1732
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+short_error restrict improvement:  968  <  978
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 2.00 sec (Real time) / 1.97 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3f8unrealn.aag =====================
+[LOG] 29 sub-games originally
+[LOG] 18 sub-games after incl. red.
+short_error restrict improvement:  1310  <  2227
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+short_error restrict improvement:  1066  <  1079
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 2.21 sec (Real time) / 2.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3f8unrealy.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1314  <  2723
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 2.32 sec (Real time) / 2.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3f9n.aag =====================
+[LOG] 29 sub-games originally
+[LOG] 18 sub-games after incl. red.
+short_error restrict improvement:  1562  <  2487
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 2.43 sec (Real time) / 2.41 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3f9y.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1358  <  2753
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 5.95 sec (Real time) / 5.94 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4b8unrealn.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 22 sub-games after incl. red.
+short_error restrict improvement:  2311  <  2427
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 331.76 sec (Real time) / 331.59 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4b8unrealy.aag =====================
+[LOG] 25 sub-games originally
+[LOG] 17 sub-games after incl. red.
+short_error restrict improvement:  2170  <  3490
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 7.56 sec (Real time) / 7.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4b9n.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 22 sub-games after incl. red.
+short_error restrict improvement:  2149  <  2444
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 72.25 sec (Real time) / 72.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4b9y.aag =====================
+[LOG] 25 sub-games originally
+[LOG] 17 sub-games after incl. red.
+short_error restrict improvement:  1820  <  3294
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 5.80 sec (Real time) / 5.76 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4c6unrealn.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 23 sub-games after incl. red.
+short_error restrict improvement:  2831  <  3442
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 347.77 sec (Real time) / 347.54 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4c6unrealy.aag =====================
+[LOG] 25 sub-games originally
+[LOG] 17 sub-games after incl. red.
+short_error restrict improvement:  1921  <  3517
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 9.84 sec (Real time) / 9.82 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4c7n.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 23 sub-games after incl. red.
+short_error restrict improvement:  1738  <  2360
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 123.31 sec (Real time) / 123.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4c7y.aag =====================
+[LOG] 25 sub-games originally
+[LOG] 17 sub-games after incl. red.
+short_error restrict improvement:  1650  <  3248
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 8.47 sec (Real time) / 8.44 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4f24unrealn.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 22 sub-games after incl. red.
+short_error restrict improvement:  2985  <  3808
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.06 sec (Real time) / 499.75 sec (User CPU time)
+Timeout: 1
+=====================  amba4f24unrealy.aag =====================
+[LOG] 25 sub-games originally
+[LOG] 17 sub-games after incl. red.
+short_error restrict improvement:  2017  <  3976
+Opt_pij:  False
+short_error restrict improvement:  2649  <  2698
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+short_error restrict improvement:  2134  <  2649
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 11.81 sec (Real time) / 11.79 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4f25n.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 22 sub-games after incl. red.
+short_error restrict improvement:  1767  <  2706
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.04 sec (Real time) / 499.78 sec (User CPU time)
+Timeout: 1
+=====================  amba4f25y.aag =====================
+[LOG] 25 sub-games originally
+[LOG] 17 sub-games after incl. red.
+short_error restrict improvement:  2023  <  3983
+Opt_pij:  False
+short_error restrict improvement:  2600  <  2641
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+short_error restrict improvement:  2156  <  2600
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 9.66 sec (Real time) / 9.63 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5b4unrealn.aag =====================
+[LOG] 43 sub-games originally
+[LOG] 27 sub-games after incl. red.
+short_error restrict improvement:  5644  <  6003
+short_error restrict improvement:  4103  <  5644
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.00 sec (Real time) / 499.78 sec (User CPU time)
+Timeout: 1
+=====================  amba5b4unrealy.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 21 sub-games after incl. red.
+short_error restrict improvement:  4277  <  4307
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 4.33 sec (Real time) / 4.31 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5b5n.aag =====================
+[LOG] 43 sub-games originally
+[LOG] 26 sub-games after incl. red.
+short_error restrict improvement:  6003  <  6429
+short_error restrict improvement:  4370  <  6003
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.04 sec (Real time) / 499.76 sec (User CPU time)
+Timeout: 1
+=====================  amba5b5y.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 21 sub-games after incl. red.
+short_error restrict improvement:  3655  <  3746
+short_error restrict improvement:  3075  <  3097
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 7.22 sec (Real time) / 7.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5c4unrealn.aag =====================
+[LOG] 43 sub-games originally
+[LOG] 26 sub-games after incl. red.
+short_error restrict improvement:  4320  <  4517
+short_error restrict improvement:  2875  <  4320
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.01 sec (Real time) / 499.74 sec (User CPU time)
+Timeout: 1
+=====================  amba5c4unrealy.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 21 sub-games after incl. red.
+short_error restrict improvement:  3291  <  4471
+short_error restrict improvement:  3210  <  3291
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 9.89 sec (Real time) / 9.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5c5n.aag =====================
+[LOG] 43 sub-games originally
+[LOG] 26 sub-games after incl. red.
+short_error restrict improvement:  5075  <  5284
+short_error restrict improvement:  2664  <  5075
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.01 sec (Real time) / 499.75 sec (User CPU time)
+Timeout: 1
+=====================  amba5c5y.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 21 sub-games after incl. red.
+short_error restrict improvement:  4236  <  5396
+short_error restrict improvement:  2638  <  4236
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 10.97 sec (Real time) / 10.95 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v2_2_UNREAL.aag =====================
+[LOG] 7 sub-games originally
+[LOG] 1 sub-games after incl. red.
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.05 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v2_5_UNREAL.aag =====================
+[LOG] 7 sub-games originally
+[LOG] 1 sub-games after incl. red.
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.06 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v3_2_REAL.aag =====================
+[LOG] 12 sub-games originally
+[LOG] 1 sub-games after incl. red.
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.07 sec (Real time) / 0.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v3_5_REAL.aag =====================
+[LOG] 12 sub-games originally
+[LOG] 1 sub-games after incl. red.
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.16 sec (Real time) / 0.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v4_2_UNREAL.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 1 sub-games after incl. red.
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.16 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v4_5_REAL.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 1 sub-games after incl. red.
+short_error restrict improvement:  1286  <  1324
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.70 sec (Real time) / 0.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v5_2_REAL.aag =====================
+[LOG] 16 sub-games originally
+[LOG] 3 sub-games after incl. red.
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.17 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v5_5_REAL.aag =====================
+[LOG] 16 sub-games originally
+[LOG] 2 sub-games after incl. red.
+short_error restrict improvement:  1034  <  1069
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.56 sec (Real time) / 0.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v6_2_UNREAL.aag =====================
+[LOG] 23 sub-games originally
+[LOG] 1 sub-games after incl. red.
+short_error restrict improvement:  806  <  892
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.25 sec (Real time) / 0.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v6_5_REAL.aag =====================
+[LOG] 23 sub-games originally
+[LOG] 1 sub-games after incl. red.
+short_error restrict improvement:  1466  <  1522
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.03 sec (Real time) / 1.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_3x3_1_1errors.aag =====================
+[LOG] 3 sub-games originally
+[LOG] 2 sub-games after incl. red.
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.10 sec (Real time) / 0.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  factory_assembly_4x3_1_1errors.aag =====================
+[LOG] 2 sub-games originally
+[LOG] 1 sub-games after incl. red.
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.40 sec (Real time) / 0.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_5x3_1_0errors.aag =====================
+[LOG] 3 sub-games originally
+[LOG] 2 sub-games after incl. red.
+short_error restrict improvement:  4430  <  6076
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.91 sec (Real time) / 0.89 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_5x3_1_4errors.aag =====================
+[LOG] 3 sub-games originally
+[LOG] 2 sub-games after incl. red.
+short_error restrict improvement:  12733  <  13081
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 9.16 sec (Real time) / 9.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10b3unrealn.aag =====================
+[LOG] 120 sub-games originally
+[LOG] 27 sub-games after incl. red.
+short_error restrict improvement:  2828  <  4156
+Opt_pij:  False
+short_error restrict improvement:  2239  <  3387
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 80.36 sec (Real time) / 80.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10b3unrealy.aag =====================
+[LOG] 65 sub-games originally
+[LOG] 14 sub-games after incl. red.
+short_error restrict improvement:  4894  <  5988
+Opt_pij:  False
+short_error restrict improvement:  2433  <  3435
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 48.24 sec (Real time) / 48.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10b4n.aag =====================
+[LOG] 120 sub-games originally
+[LOG] 28 sub-games after incl. red.
+short_error restrict improvement:  3220  <  4046
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 23.68 sec (Real time) / 23.64 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10b4y.aag =====================
+[LOG] 65 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  3543  <  7086
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 19.27 sec (Real time) / 19.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10c2unrealn.aag =====================
+[LOG] 120 sub-games originally
+[LOG] 23 sub-games after incl. red.
+short_error restrict improvement:  1822  <  1954
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 160.09 sec (Real time) / 159.97 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10c2unrealy.aag =====================
+[LOG] 65 sub-games originally
+[LOG] 16 sub-games after incl. red.
+short_error restrict improvement:  3255  <  3313
+short_error restrict improvement:  1846  <  3255
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 214.37 sec (Real time) / 214.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10c3n.aag =====================
+[LOG] 120 sub-games originally
+[LOG] 23 sub-games after incl. red.
+short_error restrict improvement:  2526  <  2657
+Opt_pij:  False
+short_error restrict improvement:  1488  <  1516
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 79.24 sec (Real time) / 79.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10c3y.aag =====================
+[LOG] 65 sub-games originally
+[LOG] 16 sub-games after incl. red.
+short_error restrict improvement:  1906  <  3368
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 29.23 sec (Real time) / 29.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10f10n.aag =====================
+[LOG] 120 sub-games originally
+[LOG] 28 sub-games after incl. red.
+short_error restrict improvement:  2978  <  5142
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 394.45 sec (Real time) / 394.25 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10f10y.aag =====================
+[LOG] 65 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  3390  <  4650
+Opt_pij:  False
+Command exited with non-zero status 137
+Synthesis time: 500.01 sec (Real time) / 499.77 sec (User CPU time)
+Timeout: 1
+=====================  genbuf10f9unrealn.aag =====================
+[LOG] 120 sub-games originally
+[LOG] 28 sub-games after incl. red.
+short_error restrict improvement:  4720  <  5969
+short_error restrict improvement:  2830  <  4720
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 395.13 sec (Real time) / 394.96 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10f9unrealy.aag =====================
+[LOG] 65 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  5160  <  6841
+Opt_pij:  False
+Command exited with non-zero status 137
+Synthesis time: 500.03 sec (Real time) / 499.75 sec (User CPU time)
+Timeout: 1
+=====================  genbuf11b3unrealn.aag =====================
+[LOG] 136 sub-games originally
+[LOG] 26 sub-games after incl. red.
+short_error restrict improvement:  5389  <  6568
+short_error restrict improvement:  4305  <  5389
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 80.77 sec (Real time) / 80.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11b3unrealy.aag =====================
+[LOG] 71 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  3980  <  4693
+short_error restrict improvement:  3625  <  3980
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 107.51 sec (Real time) / 107.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11b4n.aag =====================
+[LOG] 136 sub-games originally
+[LOG] 46 sub-games after incl. red.
+short_error restrict improvement:  3527  <  5484
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 21.80 sec (Real time) / 21.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11b4y.aag =====================
+[LOG] 71 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  4146  <  5243
+short_error restrict improvement:  3952  <  4146
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 42.57 sec (Real time) / 42.53 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11c2unrealn.aag =====================
+[LOG] 136 sub-games originally
+[LOG] 48 sub-games after incl. red.
+short_error restrict improvement:  2298  <  2504
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 74.96 sec (Real time) / 74.88 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11c2unrealy.aag =====================
+[LOG] 71 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  3397  <  3467
+short_error restrict improvement:  1826  <  3397
+Opt_pij:  False
+Command exited with non-zero status 137
+Synthesis time: 500.03 sec (Real time) / 499.75 sec (User CPU time)
+Timeout: 1
+=====================  genbuf11c3n.aag =====================
+[LOG] 136 sub-games originally
+[LOG] 31 sub-games after incl. red.
+short_error restrict improvement:  2530  <  2675
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 110.32 sec (Real time) / 110.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11c3y.aag =====================
+[LOG] 71 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  3113  <  3134
+short_error restrict improvement:  1784  <  3113
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 136.68 sec (Real time) / 136.60 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11f10unrealn.aag =====================
+[LOG] 136 sub-games originally
+[LOG] 28 sub-games after incl. red.
+short_error restrict improvement:  4362  <  6341
+short_error restrict improvement:  3261  <  3584
+Opt_pij:  False
+Command exited with non-zero status 137
+Synthesis time: 500.05 sec (Real time) / 499.64 sec (User CPU time)
+Timeout: 1
+=====================  genbuf11f10unrealy.aag =====================
+[LOG] 71 sub-games originally
+[LOG] 15 sub-games after incl. red.
+short_error restrict improvement:  5362  <  6215
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 324.14 sec (Real time) / 323.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11f11n.aag =====================
+[LOG] 136 sub-games originally
+[LOG] 28 sub-games after incl. red.
+short_error restrict improvement:  5019  <  5591
+Opt_pij:  False
+short_error restrict improvement:  3104  <  3782
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 257.10 sec (Real time) / 256.97 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11f11y.aag =====================
+[LOG] 71 sub-games originally
+[LOG] 16 sub-games after incl. red.
+short_error restrict improvement:  4860  <  6553
+Opt_pij:  False
+short_error restrict improvement:  3326  <  4860
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 177.74 sec (Real time) / 177.65 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2b3unrealy.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  1405  <  2032
+short_error restrict improvement:  534  <  1405
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.29 sec (Real time) / 0.27 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2b4n.aag =====================
+[LOG] 28 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  1226  <  1533
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.47 sec (Real time) / 0.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2b4y.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  607  <  1346
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.30 sec (Real time) / 0.29 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2c2unrealn.aag =====================
+[LOG] 28 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  515  <  1090
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.47 sec (Real time) / 0.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2c2unrealy.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  852  <  1446
+short_error restrict improvement:  446  <  852
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.38 sec (Real time) / 0.36 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2c3n.aag =====================
+[LOG] 28 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  725  <  1299
+short_error restrict improvement:  435  <  725
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.37 sec (Real time) / 0.34 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2c3y.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  458  <  1052
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.28 sec (Real time) / 0.27 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2f3unrealn.aag =====================
+[LOG] 28 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  615  <  1186
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.40 sec (Real time) / 0.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2f3unrealy.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  495  <  1111
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.28 sec (Real time) / 0.27 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2f4n.aag =====================
+[LOG] 28 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  747  <  1413
+Opt_pij:  False
+short_error restrict improvement:  532  <  747
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.38 sec (Real time) / 0.37 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2f4y.aag =====================
+[LOG] 19 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  1400  <  2001
+short_error restrict improvement:  583  <  1400
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.29 sec (Real time) / 0.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3b3unrealn.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  1731  <  1820
+short_error restrict improvement:  833  <  1015
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.81 sec (Real time) / 0.79 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3b3unrealy.aag =====================
+[LOG] 22 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  1519  <  1746
+short_error restrict improvement:  1411  <  1519
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.35 sec (Real time) / 1.32 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3b4n.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  1866  <  2253
+short_error restrict improvement:  1160  <  1866
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.80 sec (Real time) / 0.77 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3b4y.aag =====================
+[LOG] 22 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  1761  <  1799
+short_error restrict improvement:  1270  <  1761
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.55 sec (Real time) / 0.54 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3c2unrealn.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  1168  <  1203
+short_error restrict improvement:  510  <  1168
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.74 sec (Real time) / 0.73 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3c2unrealy.aag =====================
+[LOG] 22 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  463  <  498
+short_error restrict improvement:  417  <  463
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.41 sec (Real time) / 0.40 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3c3n.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  884  <  1061
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.67 sec (Real time) / 0.66 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3c3y.aag =====================
+[LOG] 22 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  410  <  519
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.35 sec (Real time) / 0.34 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3f3unrealn.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  1869  <  2137
+short_error restrict improvement:  1173  <  1869
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.73 sec (Real time) / 0.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3f3unrealy.aag =====================
+[LOG] 22 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  1279  <  1358
+short_error restrict improvement:  1205  <  1279
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.95 sec (Real time) / 0.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3f4n.aag =====================
+[LOG] 36 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  1636  <  2413
+short_error restrict improvement:  1151  <  1636
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.69 sec (Real time) / 0.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3f4y.aag =====================
+[LOG] 22 sub-games originally
+[LOG] 7 sub-games after incl. red.
+short_error restrict improvement:  1695  <  1757
+short_error restrict improvement:  1445  <  1695
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.49 sec (Real time) / 0.48 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4b3unrealn.aag =====================
+[LOG] 45 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  1482  <  1663
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.26 sec (Real time) / 1.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4b3unrealy.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 8 sub-games after incl. red.
+short_error restrict improvement:  1709  <  2279
+Opt_pij:  False
+short_error restrict improvement:  1284  <  1709
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.96 sec (Real time) / 0.95 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4b4n.aag =====================
+[LOG] 45 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  2422  <  2502
+short_error restrict improvement:  1565  <  2422
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.16 sec (Real time) / 1.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4b4y.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 8 sub-games after incl. red.
+short_error restrict improvement:  2080  <  2122
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.26 sec (Real time) / 1.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4c2unrealn.aag =====================
+[LOG] 45 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  1717  <  1737
+short_error restrict improvement:  1225  <  1717
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.45 sec (Real time) / 1.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4c2unrealy.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 8 sub-games after incl. red.
+short_error restrict improvement:  597  <  768
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.80 sec (Real time) / 0.79 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4c3n.aag =====================
+[LOG] 45 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  1445  <  1517
+Opt_pij:  False
+short_error restrict improvement:  856  <  1223
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.13 sec (Real time) / 1.11 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4c3y.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 8 sub-games after incl. red.
+short_error restrict improvement:  950  <  1100
+short_error restrict improvement:  509  <  950
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.49 sec (Real time) / 0.47 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4f3unrealn.aag =====================
+[LOG] 45 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  1511  <  1569
+short_error restrict improvement:  1301  <  1511
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.94 sec (Real time) / 0.92 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4f3unrealy.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 8 sub-games after incl. red.
+short_error restrict improvement:  1426  <  2161
+Opt_pij:  False
+short_error restrict improvement:  1313  <  1426
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.66 sec (Real time) / 0.64 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4f4n.aag =====================
+[LOG] 45 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  1814  <  2066
+short_error restrict improvement:  1348  <  1814
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.12 sec (Real time) / 1.11 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4f4y.aag =====================
+[LOG] 30 sub-games originally
+[LOG] 8 sub-games after incl. red.
+short_error restrict improvement:  2034  <  2177
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.39 sec (Real time) / 1.37 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5b3unrealn.aag =====================
+[LOG] 55 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1487  <  1749
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 25.54 sec (Real time) / 25.50 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5b3unrealy.aag =====================
+[LOG] 26 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  2137  <  2912
+short_error restrict improvement:  1582  <  2137
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 2.22 sec (Real time) / 2.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5b4n.aag =====================
+[LOG] 55 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1605  <  2690
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 4.53 sec (Real time) / 4.51 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5b4y.aag =====================
+[LOG] 26 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  1997  <  3014
+short_error restrict improvement:  1440  <  1997
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.97 sec (Real time) / 0.95 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5c2unrealn.aag =====================
+[LOG] 55 sub-games originally
+[LOG] 16 sub-games after incl. red.
+short_error restrict improvement:  1625  <  1657
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 10.46 sec (Real time) / 10.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5c2unrealy.aag =====================
+[LOG] 26 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  1462  <  1734
+Opt_pij:  False
+short_error restrict improvement:  1032  <  1462
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.23 sec (Real time) / 1.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5c3n.aag =====================
+[LOG] 55 sub-games originally
+[LOG] 13 sub-games after incl. red.
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 19.52 sec (Real time) / 19.48 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5c3y.aag =====================
+[LOG] 26 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  1463  <  1737
+Opt_pij:  False
+short_error restrict improvement:  1057  <  1463
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 0.96 sec (Real time) / 0.95 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5f4unrealn.aag =====================
+[LOG] 55 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  1584  <  2033
+Opt_pij:  False
+short_error restrict improvement:  1543  <  1807
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.41 sec (Real time) / 1.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5f4unrealy.aag =====================
+[LOG] 26 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  2448  <  2949
+short_error restrict improvement:  1572  <  2448
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.48 sec (Real time) / 1.47 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5f5n.aag =====================
+[LOG] 55 sub-games originally
+[LOG] 12 sub-games after incl. red.
+short_error restrict improvement:  1623  <  2029
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.42 sec (Real time) / 1.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5f5y.aag =====================
+[LOG] 26 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  2511  <  3012
+short_error restrict improvement:  1576  <  2511
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.62 sec (Real time) / 1.61 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6b3unrealn.aag =====================
+[LOG] 66 sub-games originally
+[LOG] 13 sub-games after incl. red.
+short_error restrict improvement:  2313  <  3179
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 18.40 sec (Real time) / 18.35 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6b3unrealy.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  2244  <  2830
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 2.35 sec (Real time) / 2.31 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6b4n.aag =====================
+[LOG] 66 sub-games originally
+[LOG] 19 sub-games after incl. red.
+short_error restrict improvement:  2239  <  3226
+Opt_pij:  False
+short_error restrict improvement:  1718  <  2239
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 5.75 sec (Real time) / 5.74 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6b4y.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 10 sub-games after incl. red.
+short_error restrict improvement:  2091  <  3264
+short_error restrict improvement:  1736  <  2091
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.42 sec (Real time) / 1.41 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6c2unrealn.aag =====================
+[LOG] 66 sub-games originally
+[LOG] 12 sub-games after incl. red.
+short_error restrict improvement:  1222  <  1334
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 46.86 sec (Real time) / 46.82 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6c2unrealy.aag =====================
+[LOG] 35 sub-games originally
+[LOG] 11 sub-games after incl. red.
+short_error restrict improvement:  1871  <  1925
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.92 sec (Real time) / 1.90 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  gb_s2_r2_comp1_UNREAL.aag =====================
+[LOG] 118 sub-games originally
+[LOG] 6 sub-games after incl. red.
+short_error restrict improvement:  3591  <  3804
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 0.87 sec (Real time) / 0.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  gb_s2_r2_comp2_UNREAL.aag =====================
+[LOG] 118 sub-games originally
+[LOG] 9 sub-games after incl. red.
+short_error restrict improvement:  4757  <  5196
+Opt_pij:  False
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+INDEPENDENT SUBGAMES
+Command exited with non-zero status 137
+Synthesis time: 500.05 sec (Real time) / 499.66 sec (User CPU time)
+Timeout: 1
+=====================  load_full_2_comp1_UNREAL.aag =====================
+[LOG] 61 sub-games originally
+[LOG] 2 sub-games after incl. red.
+short_error restrict improvement:  4403  <  5081
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 1.23 sec (Real time) / 1.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  load_full_2_comp2_REAL.aag =====================
+[LOG] 61 sub-games originally
+[LOG] 2 sub-games after incl. red.
+short_error restrict improvement:  6032  <  7018
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 3.41 sec (Real time) / 3.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_comp3_REAL.aag =====================
+[LOG] 61 sub-games originally
+[LOG] 2 sub-games after incl. red.
+short_error restrict improvement:  7820  <  9086
+short_error restrict improvement:  7179  <  13127
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 6.41 sec (Real time) / 6.37 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_3_comp1_UNREAL.aag =====================
+[LOG] 134 sub-games originally
+[LOG] 3 sub-games after incl. red.
+short_error restrict improvement:  16356  <  38176
+Opt_pij:  False
+[LOG] Realizable? False
+Command exited with non-zero status 20
+Synthesis time: 210.08 sec (Real time) / 209.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  load_2c_comp_comp1_REAL.aag =====================
+[LOG] 50 sub-games originally
+[LOG] 3 sub-games after incl. red.
+short_error restrict improvement:  2292  <  2402
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 1.67 sec (Real time) / 1.66 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp2_REAL.aag =====================
+[LOG] 50 sub-games originally
+[LOG] 3 sub-games after incl. red.
+short_error restrict improvement:  3196  <  3277
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 2.09 sec (Real time) / 2.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp3_REAL.aag =====================
+[LOG] 50 sub-games originally
+[LOG] 3 sub-games after incl. red.
+short_error restrict improvement:  4052  <  4113
+Opt_pij:  False
+[LOG] Realizable? True
+Command exited with non-zero status 10
+Synthesis time: 3.55 sec (Real time) / 3.49 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)

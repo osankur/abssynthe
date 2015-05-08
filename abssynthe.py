@@ -33,16 +33,21 @@ TODO LIST
 
 2) How can we apply restrict on states? (rather than trans. functions?)
 
+3) Modify Alg.2: if all BDD sizes exceed a given threshold finish them with
+Alg.1
+
 CHANGES
 
 1) In comp. algorithms restricting the trans. functions by winning
 quasi-strategies almost never reduce the BDD sizes. I commented this
 in bdd_aig.short_error() function for the moment.
 
-A general test must be performed to decide what to do.
+Romain's explanation: the  upre function already does restrict with ~dst_states
+So the restrict in short_error is just redundant and could perhaps cause
+unnecessary reordering
 
 On genbuf9b3unrealy.aag, without restrict alg. 2 terminates in 5s, and with
-restrict it takes ages
+restrict it takes ages (probably due to reordering)
 
 2) The latch and input dependency functions have too much overhead.
 I put a hash table on cudd_bdd.occ_sem() function
@@ -133,7 +138,7 @@ def synth_from_spec(aig, argv):
             # return False
             if games_mapped is None:
                 return False
-            w = subgame_reducer(games_mapped, aig, argv, opt_pij=argv.opt_pij)
+            w = subgame_reducer(games_mapped, aig, argv)
         elif argv.comp_algo == 3:
             # solve games by up-down algo
             gen_game = ConcGame(aig, use_trans=argv.use_trans)
@@ -196,8 +201,8 @@ def main():
                         default="1", choices="12345",
                         help="Type of restrict optimization: (1) Nothing, (2)\
                         Local predecessor, (3) global coreachable set")
-    parser.add_argument("-pij", "--pij", action="store_true", dest="opt_pij",
-                        default=False, help="Alg.2 heuristics")
+    #parser.add_argument("-pij", "--pij", action="store_true", dest="opt_pij",
+    #                    default=False, help="Alg.2 heuristics")
     parser.add_argument("-v", "--verbose_level", dest="verbose_level",
                         default="", required=False,
                         help="Verbose level = (D)ebug, (W)arnings, " +
