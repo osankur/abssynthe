@@ -34,7 +34,13 @@ TODO LIST
 2) How can we apply restrict on states? (rather than trans. functions?)
 
 3) Modify Alg.2: if all BDD sizes exceed a given threshold finish them with
-Alg.1
+Alg.1 
+
+4) Alg2: try the other way around pij ->  -pij
+
+5) I got rid of the cpre computation in comp.1 it seems much faster
+Can we adapt this to Alg.2? Would it still be efficient to keep the original
+error function (I don't think so)?
 
 CHANGES
 
@@ -58,6 +64,8 @@ The bottleneck in Alg. 2 was this computation which was extremely redundant!
 
 3) In Alg. 2 if cinputs (thus also latches) are independent we just need to intersect the winning
 regions and strategies. No need to UPRE. DONE
+
+4) Removed the unnecessary cpre in the last iteration of Alg.2
 
 Optimizations:
     - Choosing the subgame pairs that have the least joint cinputs were
@@ -122,7 +130,7 @@ def synth_from_spec(aig, argv):
             return synth_from_spec(aig, argv)
         if argv.comp_algo == 1:
             # solve and aggregate sub-games
-            (w, strat) = comp_synth(game_it)
+            (w, strat) = comp_synth(game_it,argv.get_strat)
             # back to the general game
             # if w is None:
             #     return False
@@ -201,8 +209,8 @@ def main():
                         default="1", choices="12345",
                         help="Type of restrict optimization: (1) Nothing, (2)\
                         Local predecessor, (3) global coreachable set")
-    #parser.add_argument("-pij", "--pij", action="store_true", dest="opt_pij",
-    #                    default=False, help="Alg.2 heuristics")
+    parser.add_argument("-gs", "--strat", action="store_true", dest="get_strat",
+                        default=False, help="")
     parser.add_argument("-v", "--verbose_level", dest="verbose_level",
                         default="", required=False,
                         help="Verbose level = (D)ebug, (W)arnings, " +
