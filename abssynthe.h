@@ -30,6 +30,7 @@
 struct settings_struct {
     bool use_trans;
     bool parallel;
+	int decomp; 
     int comp_algo;
     const char* spec_file;
     const char* out_file;

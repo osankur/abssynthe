@@ -365,13 +365,10 @@ bool compSolve1(AIG* spec_base) {
             total_cinputs.insert(ic.begin(), ic.end());
         }
     }   
-    logMsg("Are we cinput-independent? " + to_string(cinput_independent));
-    //dbgMsg("Are we cinput-independent? " + to_string(cinput_independent));
+    dbgMsg("Are we cinput-independent? " + to_string(cinput_independent));
 
     if (!cinput_independent) { // we still have one game to solve
         // release cache memory and other stuff used in BDDAIG instances
-		std::cout << ("Not cinput independent\n");
-		std::cout.flush();
         for (vector<BDDAIG*>::iterator i = subgames.begin(); i != subgames.end(); i++)
             delete *i;
         if (global_done) return pResult;
@@ -408,8 +405,6 @@ bool compSolve1(AIG* spec_base) {
         // we have to output a strategy from the local non-deterministic
         // strategies...
         dbgMsg("Starting synthesis, acquiring lock on synth mutex");
-		std::cout << ("Starting synthesis, acquiring lock on synth mutex\n");
-		std::cout.flush();
         synth_lock.lock();
         if (global_done) {
             synth_lock.unlock();
@@ -553,7 +548,7 @@ bool compSolve3(AIG* spec_base) {
     mgr.AutodynEnable(CUDD_REORDER_SIFT);
     BDDAIG spec(*spec_base, &mgr);
     resetTimer("decompose");
-    vector<BDDAIG*> subgames = spec.decompose();
+    vector<BDDAIG*> subgames = spec.decompose(5);
     if (subgames.size() == 0) return internalSolve(&mgr, &spec, NULL, NULL, NULL,
                                                    true);
     // Solving now the subgames

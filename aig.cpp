@@ -35,6 +35,8 @@
 #include <iterator>
 #include <iostream>
 #include <ctime>
+#include <climits>
+#include <list>
 #include "cudd.h"
 #include "cuddObj.hh"
 
@@ -656,7 +658,8 @@ std::set<unsigned> BDDAIG::getBddLatchDeps(BDD b) {
     return depLatches;
 }
 
-std::vector<BDD> BDDAIG::mergeSomeSignals(BDD cube, std::vector<unsigned>* original) {
+std::vector<BDD> BDDAIG::mergeSomeSignals(BDD cube, std::vector<unsigned>* original, 
+                                                         int bound_subgames = INT_MAX) {
     logMsg(std::to_string(original->size()) + " sub-games originally");
     const std::set<unsigned> cube_deps = this->getBddDeps(cube);
 #if false
@@ -667,8 +670,8 @@ std::vector<BDD> BDDAIG::mergeSomeSignals(BDD cube, std::vector<unsigned>* origi
         litstring += std::to_string(*i) + ", ";
     dbgMsg("the cube deps: " + stringOfUnsignedSet(cube_deps));
 #endif
-    std::vector<std::set<unsigned>> dep_vector;
-    std::vector<BDD> bdd_vector;
+    std::list<std::set<unsigned>> dep_vector;
+    std::list<BDD> bdd_vector;
 
     for (std::vector<unsigned>::iterator i = original->begin();
          i != original->end(); i++) {
@@ -686,8 +689,8 @@ std::vector<BDD> BDDAIG::mergeSomeSignals(BDD cube, std::vector<unsigned>* origi
         dbgMsg("We will compare with " + std::to_string(dep_vector.size()) +
                " previous subgames");
 #endif
-        std::vector<std::set<unsigned>>::iterator dep_it = dep_vector.begin();
-        std::vector<BDD>::iterator bdd_it = bdd_vector.begin();
+        std::list<std::set<unsigned>>::iterator dep_it = dep_vector.begin();
+        std::list<BDD>::iterator bdd_it = bdd_vector.begin();
         bool found = false;
         for (; dep_it != dep_vector.end();) {
             if (setInclusion(&deps, &(*dep_it))) {
@@ -715,9 +718,47 @@ std::vector<BDD> BDDAIG::mergeSomeSignals(BDD cube, std::vector<unsigned>* origi
 
     logMsg(std::to_string(dep_vector.size()) + " sub-games after incl. red.");
     
+    if (dep_vector.size() > bound_subgames){
+      logMsg("(Reducing the subgames from down to " + std::to_string(bound_subgames) + ")");
+      std::list<std::set<unsigned>>::iterator selected_it, selected_jt;
+      std::list<BDD>::iterator selected_itb, selected_jtb;
+      int score = INT_MAX;
+      std::list<std::set<unsigned>>::iterator it, jt;
+      std::list<BDD>::iterator itb, jtb;
+      while (dep_vector.size() > bound_subgames){
+        for (it = dep_vector.begin(), itb = bdd_vector.begin(); 
+            it != dep_vector.end(); it++, itb++){
+          jt = it;
+          jtb = itb;
+          jt++;
+          jtb++;
+          for (; jt != dep_vector.end(); jt++, jtb++){
+            std::set<unsigned> dep_union;
+            set_union(it->begin(), it->end(), jt->begin(), jt->end(), 
+                std::inserter(dep_union, dep_union.begin()));
+            if (dep_union.size() < score){
+              score = dep_union.size();
+              selected_it = it;
+              selected_jt = jt;
+              selected_itb = itb;
+              selected_jtb = jtb;
+            }
+          }
+        }
+      }
+      /*
+      dep_vector.erase(it);
+      dep_vector.erase(jt);
+      bdd_vector.erase(itb);
+      bdd_vector.erase(jtb);
+      */
+    } else {
+      logMsg("(Not reducing the subgames any further)");
+    }
+    logMsg(std::to_string(dep_vector.size()) + " sub-games after incl. red.");
     // as a last step, we should take NOT x AND cube, for each bdd
     std::vector<BDD> bdd_vector_with_cube;
-    for (std::vector<BDD>::iterator i = bdd_vector.begin();
+    for (std::list<BDD>::iterator i = bdd_vector.begin();
          i != bdd_vector.end(); i++) {
         bdd_vector_with_cube.push_back(~(*i) & cube);
     }
@@ -767,14 +808,14 @@ std::set<unsigned> BDDAIG::semanticDeps(BDD b) {
     return result;
 }
 
-std::vector<BDDAIG*> BDDAIG::decompose() {
+std::vector<BDDAIG*> BDDAIG::decompose(int subgames_bound) {
     std::vector<BDDAIG*> result;
     if (AIG::litIsNegated(this->error_fake_latch->next)) {
         logMsg("Decomposition possible (BIG OR case)");
         std::vector<unsigned> A, B;
         this->getNInputAnd(AIG::stripLit(this->error_fake_latch->next), &A, &B);
-        std::vector<BDD> clean_signals = this->mergeSomeSignals(this->mgr->bddOne(),
-                                                                &A);
+        std::vector<BDD> clean_signals = this->mergeSomeSignals(this->mgr->bddOne(), 
+                                                  &A,subgames_bound);
         for (std::vector<BDD>::iterator i = clean_signals.begin();
              i != clean_signals.end(); i++) {
             result.push_back(new BDDAIG(*this, *i));
@@ -810,7 +851,7 @@ std::vector<BDDAIG*> BDDAIG::decompose() {
                     and_leaves_cube &= this->lit2bdd(*i);
             }
             std::vector<BDD> clean_signals = this->mergeSomeSignals(and_leaves_cube,
-                                                                    &C);
+                                                                    &C, subgames_bound);
             for (std::vector<BDD>::iterator i = clean_signals.begin();
                  i != clean_signals.end(); i++) {
                 result.push_back(new BDDAIG(*this, *i));

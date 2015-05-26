@@ -31,7 +31,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <cassert>
-
+#include <climits>
 #include "cuddObj.hh"
 
 #include "aiger.h"
@@ -90,7 +90,7 @@ class BDDAIG : public AIG {
         std::unordered_map<unsigned long, std::set<unsigned>>* bdd2deps_map;
         std::vector<BDD>* next_fun_compose_vec;
         BDD lit2bdd(unsigned);
-        std::vector<BDD> mergeSomeSignals(BDD, std::vector<unsigned>*);
+        std::vector<BDD> mergeSomeSignals(BDD, std::vector<unsigned>*,int);
         bool isValidLatchBdd(BDD);
         bool isValidBdd(BDD);
     public:
@@ -112,7 +112,7 @@ class BDDAIG : public AIG {
         std::set<unsigned> getBddDeps(BDD);
         std::set<unsigned> getBddLatchDeps(BDD);
         std::vector<BDD> nextFunComposeVec(BDD*);
-        std::vector<BDDAIG*> decompose();
+        std::vector<BDDAIG*> decompose(int bound_subgames=INT_MAX);
 };
 
 #endif
