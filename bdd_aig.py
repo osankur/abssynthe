@@ -50,6 +50,10 @@ class BDDAIG(AIG):
         # Successor relation without the
         # inputs
         self.post_rel = None
+        # List of pairs BDD * variable set, ( l' <-> T_l, vars) 
+        # where vars are to be quantified away when conjoining from left to
+        # right the BDDs (l' <-> T_l) to construct the transition relation
+        self.trans_order = None
 
     def _copy_from_aig(self, aig):
         assert isinstance(aig, AIG)
@@ -233,108 +237,104 @@ class BDDAIG(AIG):
     def post_monolithic_bdd(self, src_states_bdd, sys_strat=None):
         latches = [x for x in self.iterate_latches()]
         latch_cube = BDD.make_cube(imap(funcomp(BDD, symbol_lit),latches))
-        trans = self.trans_rel_bdd()
+        trans_src = src_states_bdd & self.trans_rel_bdd()
         vars = [x for x in self.iterate_controllable_inputs()] + [x for x in self.iterate_uncontrollable_inputs()]
+        vars = vars + latches
         cube = BDD.make_cube(imap(funcomp(BDD, symbol_lit), vars))
-        trans = trans.exist_abstract(cube)
-        post = (trans & src_states_bdd).exist_abstract(latch_cube)
-        return self.unprime_latches_in_bdd(post)
+        return self.unprime_latches_in_bdd(trans_src.exist_abstract(cube))
 
     def post_bdd(self, src_states_bdd, sys_strat=None):
+        b_trans = False
+        W1 = 2
+        W2 = 1
+        W4 = 1
+        P = []
         latches = [x for x in self.iterate_latches()]
         latch_cube = BDD.make_cube(imap(funcomp(BDD, symbol_lit),latches))
-        trans = None
-        if (self.post_rel is None):
-            log.DBG_MSG("Will compute a quantification schedule")
-            W1 = 2
-            W2 = 1
-            W4 = 1
-            # we launch clustering
-            P = []
-            inputs = [x for x in self.iterate_controllable_inputs()] + [x for x in self.iterate_uncontrollable_inputs()]
-            latch_lits = set(map(symbol_lit, latches))
-            input_lits = set(map(symbol_lit, inputs))
-            # Q = set(map(lambda x: self.lit2bdd(x.next), latches))
-            Q = set(latches)
+        inputs = [x for x in self.iterate_controllable_inputs()] + [x for x in self.iterate_uncontrollable_inputs()]
+        latch_lits = set(map(symbol_lit, latches))
+        input_lits = set(map(symbol_lit, inputs))
+        # transition relation for each latch
+        trans = map(lambda l: BDD.make_eq(BDD(self.get_primed_var(l.lit)), self.lit2bdd(l.next)), latches)
+        # Q is the list of pairs of latches and their trans relations except for err latch, 
+        # for which we conjoin with src_states_bdd
+        log.DBG_MSG("Doing err_fun & src_states")
+        if b_trans:
+            Q = zip(latches,trans)
+        else:
+            err_latch = self.error_fake_latch
+            Q = []
+            for (q,b) in zip(latches,trans):
+                if (q == err_latch):
+                    Q.append((q, b & src_states_bdd))
+                else:
+                    Q.append((q, b))
+        log.DBG_MSG("Launching Clustering")
+        if b_trans:
+            caredVars = input_lits
+        else:
             caredVars = latch_lits | input_lits
-            while len(Q) != 0:
-                v = []
-                m = []
-                # The list of sets of dependent variables for each element of Q
-                Qbdd = map(lambda l: self.lit2bdd(l.next), Q)
-                deps = map(lambda b: set(b.occ_sem(caredVars)),Qbdd)
-                # deps = map(lambda b: set(self.get_bdd_deps(b)) & caredVars,Qbdd)
-                allQdeps = reduce(lambda x,y: x|y, deps);
-                # The list of sets of BDD indices of the dependent variables ...
-                dep_indices = map(lambda s: map(lambda b: BDD(b).get_index(),s), deps)
-                dep_indices = map(lambda s: set([0]) if (len(s) == 0) else s, dep_indices)
-                w = map(lambda s: len(s), deps)
-                m = map(lambda s: max(s), dep_indices)
-                M = max(m)
-                x = len(allQdeps);
-                for (q,qdep) in zip(Q,deps):
-                    vset = qdep
-                    for (u,udep) in zip(Q,deps):
-                        if u == q:
-                            continue
-                        vset = vset - udep
-                    v.append(len(vset))
-                # total scores
-                R = []
-                for (ve,we,me,q) in zip(v,w,m,Q):
-                    if (we == 0):
-                        r1 = 0
-                    else:
-                        r1 = ve / float(we)
-                    r2 = we / float(x)
-                    r4 = me / float(M)
-                    R.append((q,W1 * r1 + W2 * r2 + W4*r4))
-                Rsorted = sorted(R, key=lambda (x,y): y)
-                qselected = Rsorted[0][0]
-                Q = Q - set([qselected])
-                P.append(qselected)
-            # Computing the quantification schedule
-            var_clusters = []
-            acc = set([])
-            for p in P:
-                newvars = set(self.lit2bdd(p.next).occ_sem(caredVars)) - acc
-                var_clusters.append(newvars)
-                acc = acc | newvars
-            # print "Printing quantification order:"
-            # for qv in var_clusters:
-            #    print qv
-            # Computing the transition relation
-            self.post_rel = BDD.true()
-            PT = map(lambda l: BDD.make_eq(BDD(self.get_primed_var(l.lit)),
-                                            self.lit2bdd(l.next)), P)
-            log.DBG_MSG("Done computing the quant. schedule")
-            # PTdeps = map(lambda b: b.occ_sem(caredVars), PT)
-            # for i in range(len(PTdeps)):
-            #    # verifier que PT[i] ne depend pas de var_clusters[i+1:]
-            #    for var in var_clusters[i+1:]:
-            #        assert( len(set(PTdeps[i]) & var) == 0)
-            # for t in PT:
-            #    print "Trans has size " + str(t.dag_size())
-            for (var, con) in reversed(zip(var_clusters,PT)):
-                self.post_rel &= con
-                # log.DBG_MSG("Conjoining trans rel. Current size = " + str(self.post_rel.dag_size()))
-                if (var):
-                    self.post_rel = self.post_rel.exist_abstract(BDD.make_cube(imap(BDD,var)))
-            # self.post_rel = self.post_rel.exist_abstract(BDD.make_cube(imap(BDD,acc)))
-            # print "Computed Reach Set. BDD has size : " + str(self.post_rel.dag_size())
-            # print "False: " + str(BDD.false() == self.post_rel)
-            # trans = self.trans_rel_bdd();
-            # trans = trans.exist_abstract(BDD.make_cube(imap(BDD,acc)))
-            # assert(trans == self.post_rel)
-            allvars = [x.lit for x in self.iterate_controllable_inputs()] + [x.lit for x in self.iterate_uncontrollable_inputs()]
-            print allvars
-            print acc
-            ########## SINCE WE ARE INTERSECTING WITH SRC_STATES_BDD LATER,
-            ########## WE SHOULDN'T QUANTIFY AWAY LATCHES. FIX THIS.
-            ########## BETTER: INTERSECT FIRST THE ERROR TRANS FUNCTION WITH SRC_STATES
-            assert(set(allvars) == set(acc))
-        post = (self.post_rel & src_states_bdd).exist_abstract(latch_cube)
-        return self.unprime_latches_in_bdd(post)
+        Q = set(Q)
+        while len(Q) != 0:
+            v = []
+            m = []
+            # The list of sets of dependent variables for each element of Q
+            deps = map(lambda b: set(b[1].occ_sem(caredVars)),Q)
+            # deps = map(lambda b: set(self.get_bdd_deps(b)) & caredVars,Qbdd)
+            allQdeps = reduce(lambda x,y: x|y, deps);
+            # The list of sets of BDD indices of the dependent variables ...
+            dep_indices = map(lambda s: map(lambda b: BDD(b).get_index(),s), deps)
+            dep_indices = map(lambda s: set([0]) if (len(s) == 0) else s, dep_indices)
+            w = map(lambda s: len(s), deps)
+            m = map(lambda s: max(s), dep_indices)
+            M = max(m)
+            x = len(allQdeps);
+            for (q,qdep) in zip(Q,deps):
+                vset = qdep
+                for (u,udep) in zip(Q,deps):
+                    if u == q:
+                        continue
+                    vset = vset - udep
+                v.append(len(vset))
+            # total scores
+            R = []
+            for (ve,we,me,q) in zip(v,w,m,Q):
+                if (we == 0):
+                    r1 = 0
+                else:
+                    r1 = ve / float(we)
+                r2 = we / float(x)
+                r4 = me / float(M)
+                R.append((q,W1 * r1 + W2 * r2 + W4*r4))
+            qselected = min(R, key=lambda (x,y): y)[0]
+            Q = Q - set([qselected])
+            P.append(qselected)
+        # Reminder: we want to conjoin all elements of P[1]
+        # Computing the quantification schedule
+        var_clusters = []
+        acc = set([])
+        for p in P:
+            newvars = set(p[1].occ_sem(caredVars)) - acc
+            var_clusters.append(newvars)
+            acc = acc | newvars
+        cj = zip(var_clusters, map(lambda l: l[0].lit, P))
+        for (vars,l) in cj:
+            print "Latch ", l, " : ", vars
+        print "All variables to be quantified: ", sorted(list(acc))
+        PT = map(lambda x: x[1], P)
+        post = BDD.true()
+        log.DBG_MSG("Ending Clustering")
+        for (var, con) in reversed(zip(var_clusters,PT)):
+            post &= con
+            if (var):
+                post = post.exist_abstract(BDD.make_cube(imap(BDD,var)))
+        if b_trans:
+            post = self.unprime_latches_in_bdd((src_states_bdd & post).exist_abstract(latch_cube))
+        else:
+            post = self.unprime_latches_in_bdd(post)
+        return post
+
+
     #def post_bdd(self, src_states_bdd, sys_strat=None,
     #             use_trans=False, over_approx=False):
     #    """

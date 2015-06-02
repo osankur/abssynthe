@@ -184,8 +184,9 @@ def forward_solve(game):
     front = onionRings[-1]
     while front != BDD.false():
         log.DBG_MSG("Forward step: " + str(len(onionRings)))
+        log.DBG_MSG(" -- size of unionRings: " + str(unionOfRings.dag_size()))
         oldfront = front
-        front = game.aig.post_monolithic_bdd(oldfront) & ~unionOfRings
+        front = game.aig.post_bdd(oldfront) & ~unionOfRings
         onionRings.append(front)
         unionOfRings = unionOfRings | front
         if (front != BDD.false() and front & error_states == front):
