@@ -363,9 +363,9 @@ gb_s2_r6_comp2_UNREAL
 gb_s2_r6_comp2_UNREAL
 )
 
-CALL_SYNTH_TOOL="./start abssynthe.py -v L -ca 1 -d 1 $@ "
+CALL_SYNTH_TOOL="./start abssynthe.py -v L -ca 2 -d 1 $@ "
 TIMESTAMP=`date +%s`
-RES_TXT_FILE="${DIR}tests/ca1_restrict_${TIMESTAMP}.txt"
+RES_TXT_FILE="${DIR}tests/ca2_switch5000_${TIMESTAMP}.txt"
 RES_DIR="${DIR}tests/tmp_${TIMESTAMP}/"
 mkdir -p "${DIR}tests/"
 mkdir -p ${RES_DIR}

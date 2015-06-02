@@ -1,0 +1,4269 @@
+=====================  add10n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add10y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add12n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add12y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add14n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add14y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add16n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.07 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add16y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.10 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add18n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.13 sec (Real time) / 0.09 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add18y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.06 sec (Real time) / 0.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add20n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.13 sec (Real time) / 0.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add20y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.09 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add2n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add2y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add6n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add6y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  add8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba10b4unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.79 sec (User CPU time)
+Timeout: 1
+=====================  amba10b4unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.29 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  amba10b5n.aag =====================
+Command terminated by signal 9
+Synthesis time: 121.05 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  amba10b5y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.90 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  amba10c4unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 121.07 sec (Real time) / 119.84 sec (User CPU time)
+Timeout: 1
+=====================  amba10c4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 50.04 sec (Real time) / 49.67 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba10c5n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  amba10c5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 31.75 sec (Real time) / 31.67 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba10f36unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.84 sec (User CPU time)
+Timeout: 1
+=====================  amba10f36unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.86 sec (Real time) / 119.84 sec (User CPU time)
+Timeout: 1
+=====================  amba10f37n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.22 sec (Real time) / 119.80 sec (User CPU time)
+Timeout: 1
+=====================  amba10f37y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.93 sec (Real time) / 119.72 sec (User CPU time)
+Timeout: 1
+=====================  amba2b8unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.89 sec (Real time) / 0.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2b8unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.92 sec (Real time) / 0.92 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2b9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.07 sec (Real time) / 1.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2b9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.69 sec (Real time) / 0.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2c6unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.52 sec (Real time) / 0.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2c6unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.44 sec (Real time) / 0.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2c7n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.46 sec (Real time) / 0.46 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2c7y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.45 sec (Real time) / 0.44 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2f8unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.73 sec (Real time) / 0.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2f8unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.55 sec (Real time) / 0.54 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba2f9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.46 sec (Real time) / 0.44 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba2f9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.46 sec (Real time) / 0.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3b4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.24 sec (Real time) / 1.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3b4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.70 sec (Real time) / 1.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3b5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.44 sec (Real time) / 1.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3b5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.76 sec (Real time) / 2.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3c4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.14 sec (Real time) / 1.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3c4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.42 sec (Real time) / 1.40 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3c5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.62 sec (Real time) / 2.59 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3c5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.15 sec (Real time) / 1.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3f8unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.61 sec (Real time) / 1.60 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3f8unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.35 sec (Real time) / 1.34 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba3f9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 5.58 sec (Real time) / 5.57 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba3f9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.37 sec (Real time) / 1.35 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4b8unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 22.23 sec (Real time) / 22.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4b8unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 6.28 sec (Real time) / 6.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4b9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 12.50 sec (Real time) / 12.46 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4b9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 12.38 sec (Real time) / 12.36 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4c6unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 7.82 sec (Real time) / 7.73 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4c6unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 27.79 sec (Real time) / 26.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4c7n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 7.38 sec (Real time) / 6.69 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4c7y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 8.03 sec (Real time) / 8.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4f24unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 11.05 sec (Real time) / 11.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4f24unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.04 sec (Real time) / 4.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba4f25n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 24.08 sec (Real time) / 24.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba4f25y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 21.05 sec (Real time) / 20.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5b4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 6.03 sec (Real time) / 6.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5b4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 27.21 sec (Real time) / 26.96 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5b5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.80 sec (Real time) / 4.74 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5b5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 25.19 sec (Real time) / 24.92 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5c4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 76.39 sec (Real time) / 75.75 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5c4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 20.08 sec (Real time) / 20.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5c5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 22.57 sec (Real time) / 22.42 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5c5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 10.02 sec (Real time) / 9.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5f16unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 49.50 sec (Real time) / 48.86 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5f16unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 99.85 sec (Real time) / 99.70 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba5f17n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 46.94 sec (Real time) / 46.48 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba5f17y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 106.55 sec (Real time) / 105.60 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba6b4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 20.92 sec (Real time) / 20.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba6b4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 6.84 sec (Real time) / 6.75 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba6b5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 31.85 sec (Real time) / 31.53 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba6b5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 6.41 sec (Real time) / 6.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba6c4unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.51 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  amba6c4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 61.45 sec (Real time) / 60.83 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba6c5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 25.64 sec (Real time) / 25.36 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba6c5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 10.02 sec (Real time) / 9.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba6f20unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 88.92 sec (Real time) / 88.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba6f20unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 28.92 sec (Real time) / 28.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba6f21n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  amba6f21y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  amba7b4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 21.69 sec (Real time) / 21.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba7b4unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.63 sec (Real time) / 119.78 sec (User CPU time)
+Timeout: 1
+=====================  amba7b5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 35.26 sec (Real time) / 34.90 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba7b5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 73.19 sec (Real time) / 72.51 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba7c4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 15.27 sec (Real time) / 15.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba7c4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 43.71 sec (Real time) / 43.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba7c5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 16.74 sec (Real time) / 16.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba7c5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 43.21 sec (Real time) / 43.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba7f24unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 39.33 sec (Real time) / 39.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba7f24unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 121.03 sec (Real time) / 119.95 sec (User CPU time)
+Timeout: 1
+=====================  amba7f25n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 100.80 sec (Real time) / 99.89 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba7f25y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 16.02 sec (Real time) / 15.86 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba8b5unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 37.93 sec (Real time) / 37.70 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba8b5unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 61.56 sec (Real time) / 61.47 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba8b6n.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 98.65 sec (Real time) / 98.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 0 (tool reported 'unrealizable' instead of 'realizable')
+=====================  amba8b6y.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 55.94 sec (Real time) / 55.88 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 0 (tool reported 'unrealizable' instead of 'realizable')
+=====================  amba8c6unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  amba8c6unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  amba8c7n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.63 sec (Real time) / 119.79 sec (User CPU time)
+Timeout: 1
+=====================  amba8c7y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 99.61 sec (Real time) / 98.62 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba8f56unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  amba8f56unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  amba8f57n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  amba8f57y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  amba9b4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 54.03 sec (Real time) / 53.95 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba9b4unrealy.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  amba9b5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 50.60 sec (Real time) / 50.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba9b5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 113.21 sec (Real time) / 113.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba9c4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 51.82 sec (Real time) / 51.41 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba9c4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 89.29 sec (Real time) / 89.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba9c5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 32.25 sec (Real time) / 31.98 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba9c5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 39.64 sec (Real time) / 39.23 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  amba9f32unrealn.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.31 sec (Real time) / 119.83 sec (User CPU time)
+Timeout: 1
+=====================  amba9f32unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 51.03 sec (Real time) / 50.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  amba9f33n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.91 sec (Real time) / 119.74 sec (User CPU time)
+Timeout: 1
+=====================  amba9f33y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 98.24 sec (Real time) / 97.32 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs128n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.45 sec (Real time) / 0.42 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs128y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.43 sec (Real time) / 0.42 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs16n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs16y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs32n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs32y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs64n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.18 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs64y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.29 sec (Real time) / 0.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  bs8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt10n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt10y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt11n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt11y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt15n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.94 sec (Real time) / 0.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt15y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.51 sec (Real time) / 0.49 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt20n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 41.38 sec (Real time) / 41.33 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt20y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 20.88 sec (Real time) / 20.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt25n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  cnt25y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.07 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  cnt2n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt2y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt30n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  cnt30y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.42 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  cnt3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt6n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt6y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt7n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt7y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  cnt9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v10_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v10_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.08 sec (Real time) / 0.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v11_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v11_5_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.06 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v12_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.06 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v12_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v13_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v13_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v14_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v14_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v15_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.15 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v15_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.15 sec (Real time) / 0.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v16_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v16_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.64 sec (Real time) / 0.58 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v17_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.14 sec (Real time) / 0.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v17_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.23 sec (Real time) / 2.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v18_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 9.68 sec (Real time) / 9.59 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v18_5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.06 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  demo-v19_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v19_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v1_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v1_5_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v20_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.31 sec (Real time) / 0.31 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v20_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.67 sec (Real time) / 0.58 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v21_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.23 sec (Real time) / 0.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v21_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.49 sec (Real time) / 1.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v22_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.63 sec (Real time) / 0.62 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v22_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.73 sec (Real time) / 1.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v23_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v23_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v24_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.66 sec (Real time) / 0.65 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v24_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.33 sec (Real time) / 4.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v25_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.88 sec (Real time) / 0.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v25_5_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.74 sec (Real time) / 4.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v2_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v2_5_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v3_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v3_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.07 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v4_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.15 sec (Real time) / 0.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v4_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.52 sec (Real time) / 0.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v5_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v5_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.31 sec (Real time) / 0.29 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v6_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.26 sec (Real time) / 0.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  demo-v6_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.63 sec (Real time) / 0.63 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v7_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v7_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.16 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v8_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v8_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v9_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  demo-v9_5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_3x3_1_1errors.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.07 sec (Real time) / 0.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  factory_assembly_4x3_1_1errors.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.39 sec (Real time) / 0.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_5x3_1_0errors.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.86 sec (Real time) / 0.86 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_5x3_1_4errors.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.22 sec (Real time) / 1.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_5x3_1_5errors.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.31 sec (Real time) / 1.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  factory_assembly_5x4_1_0errors.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 5.21 sec (Real time) / 5.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  factory_assembly_5x5_2_0errors.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 100.81 sec (Real time) / 100.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_5x5_2_10errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  factory_assembly_5x5_2_11errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.99 sec (Real time) / 119.96 sec (User CPU time)
+Timeout: 1
+=====================  factory_assembly_5x5_2_1errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 121.46 sec (Real time) / 120.22 sec (User CPU time)
+Timeout: 1
+=====================  factory_assembly_5x6_2_0errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.91 sec (Real time) / 119.78 sec (User CPU time)
+Timeout: 1
+=====================  factory_assembly_7x3_1_0errors.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.65 sec (Real time) / 4.59 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  factory_assembly_7x5_2_0errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.95 sec (Real time) / 119.78 sec (User CPU time)
+Timeout: 1
+=====================  factory_assembly_7x5_2_10errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.99 sec (Real time) / 119.82 sec (User CPU time)
+Timeout: 1
+=====================  factory_assembly_7x5_2_11errors.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.35 sec (Real time) / 119.81 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r2_1_UNREAL.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 21.32 sec (Real time) / 20.64 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  gb_s2_r2_2_REAL.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 37.01 sec (Real time) / 36.09 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  gb_s2_r2_3_REAL.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 54.79 sec (Real time) / 53.70 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  gb_s2_r2_4_REAL.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 76.49 sec (Real time) / 75.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  genbuf10b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.88 sec (Real time) / 2.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.98 sec (Real time) / 2.95 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.41 sec (Real time) / 1.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.31 sec (Real time) / 1.29 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.27 sec (Real time) / 2.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.75 sec (Real time) / 4.73 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.78 sec (Real time) / 0.77 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.80 sec (Real time) / 1.78 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10f10n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.26 sec (Real time) / 3.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10f10y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.81 sec (Real time) / 2.77 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf10f9unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.25 sec (Real time) / 3.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf10f9unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.88 sec (Real time) / 1.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 5.05 sec (Real time) / 5.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.23 sec (Real time) / 4.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.23 sec (Real time) / 2.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.99 sec (Real time) / 0.98 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 29.40 sec (Real time) / 29.34 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.44 sec (Real time) / 2.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.47 sec (Real time) / 2.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.95 sec (Real time) / 0.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11f10unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 5.74 sec (Real time) / 5.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11f10unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.56 sec (Real time) / 2.53 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf11f11n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.36 sec (Real time) / 3.31 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf11f11y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.06 sec (Real time) / 3.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf12b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.94 sec (Real time) / 1.90 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf12b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 11.00 sec (Real time) / 10.89 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf12b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.18 sec (Real time) / 1.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf12b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.07 sec (Real time) / 2.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf12c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.94 sec (Real time) / 4.89 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf12c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.28 sec (Real time) / 4.25 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf12c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.24 sec (Real time) / 1.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf12c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.16 sec (Real time) / 1.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf12f11unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.76 sec (Real time) / 3.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf12f11unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 5.57 sec (Real time) / 5.50 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf12f12n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.77 sec (Real time) / 1.74 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf12f12y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 7.24 sec (Real time) / 7.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf13b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.99 sec (Real time) / 4.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf13b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.50 sec (Real time) / 2.46 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf13b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 13.75 sec (Real time) / 13.70 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf13b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.52 sec (Real time) / 1.49 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf13c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 7.24 sec (Real time) / 7.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf13c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.72 sec (Real time) / 3.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf13c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.55 sec (Real time) / 1.53 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf13c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.47 sec (Real time) / 3.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf13f12unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.76 sec (Real time) / 4.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf13f12unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.29 sec (Real time) / 3.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf13f13n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.59 sec (Real time) / 3.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf13f13y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.38 sec (Real time) / 2.35 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf14b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 111.69 sec (Real time) / 110.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf14b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.84 sec (Real time) / 2.78 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf14b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.44 sec (Real time) / 2.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf14b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.46 sec (Real time) / 1.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf14c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 11.44 sec (Real time) / 11.41 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf14c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 8.19 sec (Real time) / 8.09 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf14c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 5.90 sec (Real time) / 5.86 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf14c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.71 sec (Real time) / 1.69 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf14f13unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 20.15 sec (Real time) / 19.90 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf14f13unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.00 sec (Real time) / 2.98 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf14f14n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.49 sec (Real time) / 3.45 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf14f14y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.53 sec (Real time) / 2.50 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf15b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.16 sec (Real time) / 3.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf15b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 5.09 sec (Real time) / 5.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf15b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.92 sec (Real time) / 1.77 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf15b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.26 sec (Real time) / 2.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf15c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 7.62 sec (Real time) / 7.58 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf15c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 23.20 sec (Real time) / 23.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf15c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.88 sec (Real time) / 1.86 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf15c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 6.40 sec (Real time) / 6.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf15f14unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 15.68 sec (Real time) / 15.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf15f14unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 4.93 sec (Real time) / 4.91 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf15f15n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 18.70 sec (Real time) / 18.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf15f15y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.35 sec (Real time) / 4.27 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf16b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 3.31 sec (Real time) / 3.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf16b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 6.21 sec (Real time) / 6.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf16b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.87 sec (Real time) / 2.83 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf16b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.28 sec (Real time) / 3.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf16c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 60.66 sec (Real time) / 60.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf16c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 37.29 sec (Real time) / 36.92 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf16c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 15.04 sec (Real time) / 15.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf16c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 10.12 sec (Real time) / 10.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf16f15unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 43.90 sec (Real time) / 43.47 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf16f15unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 9.28 sec (Real time) / 9.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf16f16n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 8.93 sec (Real time) / 8.82 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf16f16y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 6.23 sec (Real time) / 6.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf1b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.10 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf1b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.06 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf1b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.09 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf1b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf1c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.16 sec (Real time) / 0.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf1c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.11 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf1c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.08 sec (Real time) / 0.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf1c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.06 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf1f3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.08 sec (Real time) / 0.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf1f3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.06 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf1f4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.18 sec (Real time) / 0.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf1f4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.12 sec (Real time) / 0.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.23 sec (Real time) / 0.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.09 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.21 sec (Real time) / 0.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.16 sec (Real time) / 0.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.09 sec (Real time) / 0.09 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.11 sec (Real time) / 0.11 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.06 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2f3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.13 sec (Real time) / 0.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2f3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.09 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf2f4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.19 sec (Real time) / 0.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf2f4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.07 sec (Real time) / 0.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.39 sec (Real time) / 0.37 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.15 sec (Real time) / 0.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.23 sec (Real time) / 0.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.13 sec (Real time) / 0.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.34 sec (Real time) / 0.33 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.23 sec (Real time) / 0.23 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.24 sec (Real time) / 0.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.15 sec (Real time) / 0.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3f3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.34 sec (Real time) / 0.32 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3f3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.14 sec (Real time) / 0.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf3f4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.18 sec (Real time) / 0.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf3f4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.13 sec (Real time) / 0.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.85 sec (Real time) / 0.83 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.39 sec (Real time) / 0.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.40 sec (Real time) / 0.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.29 sec (Real time) / 0.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.71 sec (Real time) / 0.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.29 sec (Real time) / 0.29 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.40 sec (Real time) / 0.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.16 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4f3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.30 sec (Real time) / 0.29 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4f3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.20 sec (Real time) / 0.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf4f4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.37 sec (Real time) / 0.36 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf4f4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.54 sec (Real time) / 0.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.02 sec (Real time) / 2.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.52 sec (Real time) / 1.50 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.62 sec (Real time) / 1.61 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.53 sec (Real time) / 0.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.53 sec (Real time) / 0.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.33 sec (Real time) / 0.32 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.35 sec (Real time) / 0.34 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.29 sec (Real time) / 0.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5f4unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.75 sec (Real time) / 0.74 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5f4unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.35 sec (Real time) / 0.34 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf5f5n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.58 sec (Real time) / 0.58 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf5f5y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.73 sec (Real time) / 0.72 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.02 sec (Real time) / 1.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.95 sec (Real time) / 1.91 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.61 sec (Real time) / 0.60 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.57 sec (Real time) / 0.56 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.68 sec (Real time) / 0.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.54 sec (Real time) / 0.53 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.44 sec (Real time) / 0.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.39 sec (Real time) / 0.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6f5unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.24 sec (Real time) / 1.23 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6f5unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.54 sec (Real time) / 0.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf6f6n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.96 sec (Real time) / 0.94 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf6f6y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.51 sec (Real time) / 0.50 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf7b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.00 sec (Real time) / 1.98 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf7b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.10 sec (Real time) / 1.09 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf7b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.01 sec (Real time) / 0.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf7b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.78 sec (Real time) / 0.77 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf7c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.04 sec (Real time) / 1.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf7c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.26 sec (Real time) / 1.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf7c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.47 sec (Real time) / 0.46 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf7c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.41 sec (Real time) / 0.40 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf7f6unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 13.00 sec (Real time) / 12.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf7f6unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.33 sec (Real time) / 1.29 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf7f7n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 15.40 sec (Real time) / 15.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf7f7y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.23 sec (Real time) / 1.19 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf8b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.76 sec (Real time) / 1.73 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf8b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.88 sec (Real time) / 1.88 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf8b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.94 sec (Real time) / 0.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf8b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.69 sec (Real time) / 0.68 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf8c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.22 sec (Real time) / 1.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf8c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.34 sec (Real time) / 2.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf8c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.72 sec (Real time) / 0.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf8c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.49 sec (Real time) / 0.49 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf8f7unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.26 sec (Real time) / 1.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf8f7unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.03 sec (Real time) / 1.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf8f8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.23 sec (Real time) / 1.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf8f8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.45 sec (Real time) / 1.44 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf9b3unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.68 sec (Real time) / 2.64 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf9b3unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.62 sec (Real time) / 2.60 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf9b4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.21 sec (Real time) / 1.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf9b4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.14 sec (Real time) / 1.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf9c2unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.19 sec (Real time) / 2.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf9c2unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.37 sec (Real time) / 1.33 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf9c3n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.05 sec (Real time) / 1.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf9c3y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.70 sec (Real time) / 2.66 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf9f8unrealn.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.53 sec (Real time) / 1.51 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf9f8unrealy.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.20 sec (Real time) / 1.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  genbuf9f9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.53 sec (Real time) / 1.51 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  genbuf9f9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.55 sec (Real time) / 1.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.54 sec (Real time) / 0.49 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.24 sec (Real time) / 1.23 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.58 sec (Real time) / 1.56 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_5_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 9.85 sec (Real time) / 9.81 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  load_full_3_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 11.93 sec (Real time) / 11.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_01_1_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.07 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_01_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.15 sec (Real time) / 0.15 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_02_1_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 53.17 sec (Real time) / 52.70 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_02_2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  ltl2dba_03_1_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.26 sec (Real time) / 0.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_03_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.86 sec (Real time) / 0.80 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_04_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.08 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_05_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.76 sec (Real time) / 0.71 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_06_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.68 sec (Real time) / 1.66 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_07_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 45.27 sec (Real time) / 44.85 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_08_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.59 sec (Real time) / 0.55 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_09_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_10_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.06 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_11_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.20 sec (Real time) / 1.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_12_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.17 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_13_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.45 sec (Real time) / 0.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_14_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.13 sec (Real time) / 0.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_15_2_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 2.09 sec (Real time) / 2.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  ltl2dba_16_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.50 sec (Real time) / 0.47 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_17_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.66 sec (Real time) / 2.63 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_18_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.68 sec (Real time) / 0.67 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_19_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.09 sec (Real time) / 1.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dba_20_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.18 sec (Real time) / 1.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_01_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.95 sec (Real time) / 0.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_02_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_03_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 17.11 sec (Real time) / 17.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_04_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_05_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_06_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_07_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_08_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_09_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_10_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.47 sec (Real time) / 2.46 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_11_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.11 sec (Real time) / 0.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_12_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.90 sec (Real time) / 1.87 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_13_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 109.13 sec (Real time) / 108.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_14_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.81 sec (Real time) / 1.74 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_15_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_16_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.25 sec (Real time) / 0.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_17_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 10.91 sec (Real time) / 10.84 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  ltl2dpa_18_2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 14.19 sec (Real time) / 13.98 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  moving_obstacle_128x128_59glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  moving_obstacle_128x128_60glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  moving_obstacle_16x16_3glitches.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.02 sec (Real time) / 1.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  moving_obstacle_16x16_4glitches.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.07 sec (Real time) / 1.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  moving_obstacle_24x24_7glitches.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 15.65 sec (Real time) / 15.60 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  moving_obstacle_24x24_8glitches.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 11.10 sec (Real time) / 11.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  moving_obstacle_32x32_11glitches.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 86.35 sec (Real time) / 86.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  moving_obstacle_32x32_12glitches.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 23.08 sec (Real time) / 23.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  moving_obstacle_48x48_19glitches.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 91.02 sec (Real time) / 90.93 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  moving_obstacle_48x48_20glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  moving_obstacle_64x64_27glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  moving_obstacle_64x64_28glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.05 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  moving_obstacle_8x8_0glitches.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.22 sec (Real time) / 0.20 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  moving_obstacle_8x8_1glitches.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 0.24 sec (Real time) / 0.22 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  moving_obstacle_96x96_43glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.06 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  moving_obstacle_96x96_44glitches.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  mult10.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  mult11.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  mult12.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  mult13.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  mult14.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.06 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  mult15.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  mult16.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  mult2.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult4.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult5.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult6.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.39 sec (Real time) / 0.38 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult7.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.06 sec (Real time) / 1.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult8.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 45.79 sec (Real time) / 45.75 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult9.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  mv10n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv10y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv11n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv11y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv12n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv12y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv14n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv14y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.09 sec (Real time) / 0.06 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv16n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.20 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv16y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.12 sec (Real time) / 0.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv20n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.16 sec (Real time) / 0.16 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv20y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.08 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv2n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.10 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv2y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv9n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.07 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mv9y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs12n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs12y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs14n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs14y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs16n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs16y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs18n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs18y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs20n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs20y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs22n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.11 sec (Real time) / 0.10 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs22y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.02 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs24n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.11 sec (Real time) / 0.11 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs24y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs28n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.14 sec (Real time) / 0.13 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs28y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs2n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs2y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mvs8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay10n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.43 sec (Real time) / 0.42 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay10y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.33 sec (Real time) / 0.31 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay12n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.79 sec (Real time) / 2.78 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay12y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.08 sec (Real time) / 2.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay14n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  stay14y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 50.20 sec (Real time) / 50.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay16n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  stay16y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  stay18n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  stay18y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  stay20n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  stay20y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  stay22n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  stay22y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  stay24n.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  stay24y.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  stay2n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay2y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay4n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay4y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay6n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.02 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay6y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay8n.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.09 sec (Real time) / 0.08 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  stay8y.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.05 sec (Real time) / 0.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  gb_s2_r2_comp1_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 9.91 sec (Real time) / 9.88 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  gb_s2_r2_comp2_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r2_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r2_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r2_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r2_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r2_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp2_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r3_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r4_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp2_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r5_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.82 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp2_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.07 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r6_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.83 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.82 sec (User CPU time)
+Timeout: 1
+=====================  gb_s2_r7_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.82 sec (User CPU time)
+Timeout: 1
+=====================  load_full_2_comp1_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 1.52 sec (Real time) / 1.51 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  load_full_2_comp2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.82 sec (Real time) / 4.80 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_comp3_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.19 sec (Real time) / 4.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_comp4_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 7.81 sec (Real time) / 7.77 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_comp5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 16.35 sec (Real time) / 16.32 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_comp6_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 11.44 sec (Real time) / 11.35 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_2_comp7_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 13.66 sec (Real time) / 13.64 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_full_3_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  load_full_3_comp2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  load_full_3_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  load_full_3_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  load_full_3_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  load_full_3_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  load_full_3_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp1_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.83 sec (User CPU time)
+Timeout: 1
+=====================  load_full_4_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.05 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp1_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.81 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.78 sec (User CPU time)
+Timeout: 1
+=====================  load_full_5_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.79 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.89 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp2_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.85 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.79 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.80 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.83 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.81 sec (User CPU time)
+Timeout: 1
+=====================  load_full_6_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.82 sec (User CPU time)
+Timeout: 1
+=====================  load_2c_comp_comp1_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.14 sec (Real time) / 1.11 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.63 sec (Real time) / 1.61 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp3_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 2.38 sec (Real time) / 2.37 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp4_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.03 sec (Real time) / 4.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.31 sec (Real time) / 4.28 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp6_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.70 sec (Real time) / 4.67 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_2c_comp_comp7_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 5.66 sec (Real time) / 5.58 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_comp1_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.10 sec (Real time) / 3.05 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_comp2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 6.32 sec (Real time) / 6.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_comp3_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 11.57 sec (Real time) / 11.53 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_comp4_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 22.27 sec (Real time) / 22.23 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_comp5_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 38.79 sec (Real time) / 38.75 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_3c_comp_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.94 sec (User CPU time)
+Timeout: 1
+=====================  load_3c_comp_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.04 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  load_4c_comp_comp1_UNREAL.aag =====================
+[LOG] Realizable? 0
+Command exited with non-zero status 20
+Synthesis time: 40.53 sec (Real time) / 40.47 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (unrealizable)
+=====================  load_4c_comp_comp2_REAL.aag =====================
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 75.03 sec (Real time) / 74.96 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  load_4c_comp_comp3_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  load_4c_comp_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.93 sec (User CPU time)
+Timeout: 1
+=====================  load_4c_comp_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  load_4c_comp_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  load_4c_comp_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp1_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp2_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.08 sec (Real time) / 119.92 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp3_UNREAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.88 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp4_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.00 sec (Real time) / 119.90 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp5_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.02 sec (Real time) / 119.91 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp6_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1
+=====================  load_5c_comp_comp7_REAL.aag =====================
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.87 sec (User CPU time)
+Timeout: 1

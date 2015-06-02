@@ -35,14 +35,14 @@ from bdd_aig import BDDAIG
 from bdd_games import ConcGame
 import log
 import sys
-
+import time
 
 def merge_some_signals(cube, C, aig, argv):
-    # TODO: there must be a more pythonic way of doing all of this
     log.LOG_MSG(str(len(C)) + " sub-games originally")
     cube_deps = aig.get_bdd_deps(cube)
     dep_map = dict()
     for c in C:
+        log.DBG_MSG("Processing a subgame");
         deps = frozenset(cube_deps | aig.get_lit_deps(c))
         # log.DBG_MSG("Current deps: " + str(deps))
         found = False
@@ -75,10 +75,11 @@ def decompose(aig, argv):
         if lit_is_negated(aig.error_fake_latch.next):
             log.DBG_MSG("Decomposition opt possible (BIG OR case)")
             (A, B) = aig.get_1l_land(strip_lit(aig.error_fake_latch.next))
-            return imap(lambda a: ConcGame(
+            ret = map(lambda a: ConcGame(
                 BDDAIG(aig).short_error(a),
                 use_trans=argv.use_trans),
                 merge_some_signals(BDD.true(), A, aig, argv))
+            return ret
         else:
             (A, B) = aig.get_1l_land(aig.error_fake_latch.next)
             if not B:
@@ -129,23 +130,13 @@ def comp_synth(games, get_strat=False):
     sub_w = []
     # We will iterate several times over games!
     games = list(games)
-    #cinputs = map(get_cinputs_of_game, games)
-    #game_latches = map(lambda g: map(lambda l: l.lit,
-    #    list(g.aig.iterate_latches())), games)
-    #print "LATCHES of subgames:"
-    #for l in game_latches:
-    #    print l
-    #print "CINPUTS of subgames"
-    #for l in cinputs:
-    #    print l
-    # If all subgames have each one latch (i.e. error latch) 
-    # then the global game has the error latch
     b_latchless = all(map(lambda g: g.aig.num_latches() == 0, games))
     cinputs = map(get_cinputs_of_game, games)
-    def aux(x,y):
-        if (len(x&y)>0):
+
+    def aux(x, y):
+        if (len(x & y) > 0):
             raise Exception()
-        return x|y
+        return x | y
     for c in cinputs:
         log.DBG_MSG(str(c))
     # Are the cinputs of the subgames pairwise disjoint?
@@ -154,10 +145,11 @@ def comp_synth(games, get_strat=False):
         b_disjoint_cinputs = True
     except Exception:
         b_disjoint_cinputs = False
-    log.DBG_MSG("latchless: " +str(b_latchless))
+    log.DBG_MSG("latchless: " + str(b_latchless))
     log.DBG_MSG("disjoint cinputs: " + str(b_disjoint_cinputs))
     for game in games:
         assert isinstance(game, BackwardGame)
+        log.DBG_MSG("Solving a subgame (" + str(game.aig.num_latches()) + " latches)");
         w = backward_safety_synth(game)
         cnt += 1
         # short-circuit a negative response
@@ -191,7 +183,80 @@ def comp_synth(games, get_strat=False):
     win = backward_safety_synth(game)
     return (win, s)
 
-def comp_synth3(games, gen_game):
+def comp_synth3(games, gen_game, get_strat=True):
+    s = None
+    cum_s = BDD.true()
+    cum_w = BDD.true()
+    cnt = 0
+    triple_list = []
+    for game in games:
+        assert isinstance(game, BackwardGame)
+        w = backward_safety_synth(game)
+        cnt += 1
+        # short-circuit a negative response
+        if w is None:
+            log.DBG_MSG("Short-circuit exit 1 after sub-game #" + str(cnt))
+            return None
+        cum_w &= w
+        if get_strat:
+            s = game.cpre(w, get_strat=True)
+            cum_s &= s
+        else:
+            s = None
+        # another short-circuit exit
+        if (not cum_w or not game.init() & cum_w):
+            log.DBG_MSG("Short-circuit exit 2 after sub-game #" + str(cnt))
+            return None
+        triple_list.append((game, s, w))
+    log.DBG_MSG("Solved " + str(cnt) + " sub games.")
+    # lets simplify transition functions
+    if get_strat:
+        gen_game.short_aig_error(~cum_s)
+    else:
+        gen_game.add_aig_error(~cum_w)
+    # what comes next is a fixpoint computation using a UPRE
+    # step at a time in the global game and using it to get more
+    # information from the local sub-games
+    lose = BDD.true()
+    lose_next = ~cum_w | gen_game.error()
+    while lose_next != lose:
+        lose = lose_next
+        log.DBG_MSG("Doing global UPRE")
+        lose_next = lose | gen_game.upre(lose)
+        for i in range(len(triple_list)):
+            wt = triple_list[i][2]
+            gamet = triple_list[i][0]
+            local_deps = set([x.lit for x in gamet.aig.iterate_latches()])
+            rem_lats = gen_game.aig.get_bdd_latch_deps(lose_next) - local_deps
+            pt = lose_next
+            if rem_lats:
+                pt = lose_next.univ_abstract(
+                    BDD.make_cube(map(BDD, rem_lats)))
+            # log.BDD_DMP(lose_next, "global losing area iterate")
+            # log.BDD_DMP(pt, "new losing area")
+            assert BDD.make_impl(~wt, pt) == BDD.true()
+            if BDD.make_impl(pt, ~wt) != BDD.true():
+                gamet.short_error = pt
+                wt = backward_safety_synth(gamet)
+                if (wt is None or not gamet.init() & wt):
+                    log.DBG_MSG("Short-circuit exit 3")
+                    return None
+                if get_strat:
+                    st = gamet.cpre(wt, get_strat=True)
+                    cum_s &= st
+                    triple_list[i] = (gamet, st, wt)
+                else:
+                    triple_list[i] = (gamet, None, wt)
+        for t in triple_list:
+            lose_next |= ~t[2]
+    # after the fixpoint has been reached we can compute the error
+    win = ~lose
+    if (not win or not gen_game.init() & win):
+        return None
+    else:
+        return win
+
+def comp_synth3_old(games, gen_game):
     s = None
     cum_s = None
     cum_w = None
@@ -219,7 +284,7 @@ def comp_synth3(games, gen_game):
         triple_list.append((game, s, w))
     log.DBG_MSG("Solved " + str(cnt) + " sub games.")
     # lets simplify transition functions
-    # gen_game.short_aig_error(~cum_s)
+    gen_game.short_aig_error(~cum_s)
     # what comes next is a fixpoint computation using a UPRE
     # step at a time in the global game and using it to get more
     # information from the local sub-games
@@ -355,9 +420,8 @@ def subgame_mapper(games, aig):
 
 def subgame_reducer(games, aig, argv, a=None, b=None, c=None):
     assert games
-    get_strat = False
     # When all BDD sizes are above this threshold, we switch to Comp. Alg. 1
-    SWITCH_THRESHOLD = 8000
+    SWITCH_THRESHOLD = 5000
     # Make sure games is not an iterator (we'll traverse it several times)
     games = list(games)
     if a is None:
@@ -384,24 +448,24 @@ def subgame_reducer(games, aig, argv, a=None, b=None, c=None):
         mean_bdd_size = mean_bdd_size / len(games)
         mean_cinp_size = mean_cinp_size / len(games)
         p_ratio = 0.5 * mean_bdd_size / mean_cinp_size
-        min_sij = None
+        #min_sij = None
         for i in range(0, len(games) - 1):
             for j in range(i + 1, len(games)):
                 sij = (games[i][1] & games[j][1]).dag_size()
-                if ( min_sij is None):
-                    min_sij = sij
-                else:
-                    min_sij = min(min_sij, sij)
+                #if ( min_sij is None):
+                #    min_sij = sij
+                #else:
+                #    min_sij = min(min_sij, sij)
                 pij = len(cinputs[i] | cinputs[j])
                 triple_list.append((i, j, -sij - p_ratio * pij ))
         # now we get the best pair according to the fij function
         (i, j, val) = max(triple_list, key=lambda x: x[2])
-        if (min_sij > SWITCH_THRESHOLD):
-            log.DBG_MSG("--- SWITCHING TO ALG1 --- (min size: " + str(min_sij) + ")")
-            newerr = ~reduce(lambda w,g: w & g[1], games, BDD.true())
-            game = ConcGame(BDDAIG(aig).short_error(newerr),
-                    use_trans=argv.use_trans)
-            return backward_safety_synth(game)
+        #if (min_sij > SWITCH_THRESHOLD):
+        #    log.DBG_MSG("--- SWITCHING TO ALG1 --- (min size: " + str(min_sij) + ")")
+        #    newerr = ~reduce(lambda w,g: w & g[1], games, BDD.true())
+        #    game = ConcGame(BDDAIG(aig).short_error(newerr),
+        #            use_trans=argv.use_trans)
+        #    return backward_safety_synth(game)
 
         log.DBG_MSG("We must reduce games " + str(i) + " and " + str(j))
         log.DBG_MSG("\t " + str(len(games)-1) + " subgames left after this")

@@ -211,6 +211,7 @@ class AIG:
         if lit not in self._deps_cache:
             self._deps_cache[lit] = self.get_mult_lit_deps([lit])
         return self._deps_cache[lit]
+        #return self.get_mult_lit_deps([lit])
 
     def get_lit_latch_deps(self, lit):
         latchset = set([x.lit for x in self.iterate_latches()])

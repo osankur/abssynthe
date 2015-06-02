@@ -1,0 +1,3897 @@
+=====================  mult_bool_matrix_2_2_10.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 58 sub-games originally
+[LOG] 20 sub-games after incl. red.
+[LOG] (Reducing the subgames from 20 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.14 sec (Real time) / 0.14 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_12.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 70 sub-games originally
+[LOG] 24 sub-games after incl. red.
+[LOG] (Reducing the subgames from 24 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.27 sec (Real time) / 0.26 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_14.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 82 sub-games originally
+[LOG] 28 sub-games after incl. red.
+[LOG] (Reducing the subgames from 28 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.42 sec (Real time) / 0.30 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_16.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 94 sub-games originally
+[LOG] 32 sub-games after incl. red.
+[LOG] (Reducing the subgames from 32 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.65 sec (Real time) / 0.48 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_18.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 106 sub-games originally
+[LOG] 36 sub-games after incl. red.
+[LOG] (Reducing the subgames from 36 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.70 sec (Real time) / 0.69 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_20.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 118 sub-games originally
+[LOG] 40 sub-games after incl. red.
+[LOG] (Reducing the subgames from 40 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.65 sec (Real time) / 0.64 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_22.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 130 sub-games originally
+[LOG] 44 sub-games after incl. red.
+[LOG] (Reducing the subgames from 44 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.81 sec (Real time) / 0.80 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_24.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 142 sub-games originally
+[LOG] 48 sub-games after incl. red.
+[LOG] (Reducing the subgames from 48 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.00 sec (Real time) / 1.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_26.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 154 sub-games originally
+[LOG] 52 sub-games after incl. red.
+[LOG] (Reducing the subgames from 52 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.52 sec (Real time) / 1.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_28.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 166 sub-games originally
+[LOG] 56 sub-games after incl. red.
+[LOG] (Reducing the subgames from 56 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.22 sec (Real time) / 1.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_2.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 10 sub-games originally
+[LOG] 4 sub-games after incl. red.
+[LOG] (Not reducing the subgames any further)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_3.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 16 sub-games originally
+[LOG] 6 sub-games after incl. red.
+[LOG] (Reducing the subgames from 6 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_5.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 28 sub-games originally
+[LOG] 10 sub-games after incl. red.
+[LOG] (Reducing the subgames from 10 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.01 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_7.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 40 sub-games originally
+[LOG] 14 sub-games after incl. red.
+[LOG] (Reducing the subgames from 14 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.03 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_2_9.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 52 sub-games originally
+[LOG] 18 sub-games after incl. red.
+[LOG] (Reducing the subgames from 18 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.13 sec (Real time) / 0.12 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_11.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 64 sub-games originally
+[LOG] 22 sub-games after incl. red.
+[LOG] (Reducing the subgames from 22 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 1.50 sec (Real time) / 1.48 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_13.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 76 sub-games originally
+[LOG] 26 sub-games after incl. red.
+[LOG] (Reducing the subgames from 26 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.23 sec (Real time) / 3.21 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_15.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 88 sub-games originally
+[LOG] 30 sub-games after incl. red.
+[LOG] (Reducing the subgames from 30 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 4.21 sec (Real time) / 4.17 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_17.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 100 sub-games originally
+[LOG] 34 sub-games after incl. red.
+[LOG] (Reducing the subgames from 34 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 6.06 sec (Real time) / 5.99 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_19.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 112 sub-games originally
+[LOG] 38 sub-games after incl. red.
+[LOG] (Reducing the subgames from 38 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 7.50 sec (Real time) / 7.49 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_21.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 124 sub-games originally
+[LOG] 42 sub-games after incl. red.
+[LOG] (Reducing the subgames from 42 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 15.03 sec (Real time) / 15.01 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_23.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 136 sub-games originally
+[LOG] 46 sub-games after incl. red.
+[LOG] (Reducing the subgames from 46 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 10.20 sec (Real time) / 10.07 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_25.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 148 sub-games originally
+[LOG] 50 sub-games after incl. red.
+[LOG] (Reducing the subgames from 50 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 25.46 sec (Real time) / 25.39 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_27.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 160 sub-games originally
+[LOG] 54 sub-games after incl. red.
+[LOG] (Reducing the subgames from 54 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 11.53 sec (Real time) / 11.43 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_29.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 172 sub-games originally
+[LOG] 58 sub-games after incl. red.
+[LOG] (Reducing the subgames from 58 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 14.83 sec (Real time) / 14.52 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_30.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 178 sub-games originally
+[LOG] 60 sub-games after incl. red.
+[LOG] (Reducing the subgames from 60 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 20.48 sec (Real time) / 20.44 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_4.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 22 sub-games originally
+[LOG] 8 sub-games after incl. red.
+[LOG] (Reducing the subgames from 8 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.04 sec (Real time) / 0.04 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_6.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 34 sub-games originally
+[LOG] 12 sub-games after incl. red.
+[LOG] (Reducing the subgames from 12 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.25 sec (Real time) / 0.24 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2_3_8.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 46 sub-games originally
+[LOG] 16 sub-games after incl. red.
+[LOG] (Reducing the subgames from 16 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.71 sec (Real time) / 0.54 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_2.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 4 sub-games originally
+[LOG] 4 sub-games after incl. red.
+[LOG] (Not reducing the subgames any further)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.03 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_3_3_3.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 9 sub-games originally
+[LOG] 9 sub-games after incl. red.
+[LOG] (Reducing the subgames from 9 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.24 sec (Real time) / 0.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_3_3_5.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 15 sub-games originally
+[LOG] 15 sub-games after incl. red.
+[LOG] (Reducing the subgames from 15 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 3.80 sec (Real time) / 3.76 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_3_4_3.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 9 sub-games originally
+[LOG] 9 sub-games after incl. red.
+[LOG] (Reducing the subgames from 9 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.56 sec (Real time) / 0.54 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_3_4_5.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 15 sub-games originally
+[LOG] 15 sub-games after incl. red.
+[LOG] (Reducing the subgames from 15 down to 4)
+[LOG] 4 sub-games after incl. red.
+Command terminated by signal 9
+Synthesis time: 120.01 sec (Real time) / 119.80 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_3.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 9 sub-games originally
+[LOG] 9 sub-games after incl. red.
+[LOG] (Reducing the subgames from 9 down to 4)
+[LOG] 4 sub-games after incl. red.
+[LOG] *No local improvement*
+[LOG] Realizable? 1
+Command exited with non-zero status 10
+Synthesis time: 0.18 sec (Real time) / 0.18 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 0
+Realizability correct: 1 (realizable)
+=====================  mult_bool_matrix_4_4_5.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 20 sub-games originally
+[LOG] 20 sub-games after incl. red.
+[LOG] (Reducing the subgames from 20 down to 4)
+[LOG] 4 sub-games after incl. red.
+Command terminated by signal 9
+Synthesis time: 120.74 sec (Real time) / 119.80 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_4.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 16 sub-games originally
+[LOG] 16 sub-games after incl. red.
+[LOG] (Reducing the subgames from 16 down to 4)
+[LOG] 4 sub-games after incl. red.
+Command terminated by signal 9
+Synthesis time: 120.85 sec (Real time) / 119.45 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_5.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 25 sub-games originally
+[LOG] 25 sub-games after incl. red.
+[LOG] (Reducing the subgames from 25 down to 4)
+[LOG] 4 sub-games after incl. red.
+Command terminated by signal 9
+Synthesis time: 120.81 sec (Real time) / 119.51 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_6_6_7.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 124 sub-games originally
+[LOG] 42 sub-games after incl. red.
+[LOG] (Reducing the subgames from 42 down to 4)
+Command terminated by signal 9
+Synthesis time: 120.93 sec (Real time) / 119.51 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_6_7_10.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 178 sub-games originally
+[LOG] 60 sub-games after incl. red.
+[LOG] (Reducing the subgames from 60 down to 4)
+Command terminated by signal 9
+Synthesis time: 120.74 sec (Real time) / 119.71 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_6_7_8.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 142 sub-games originally
+[LOG] 48 sub-games after incl. red.
+[LOG] (Reducing the subgames from 48 down to 4)
+Command terminated by signal 9
+Synthesis time: 121.07 sec (Real time) / 119.81 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_6_8_10.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 178 sub-games originally
+[LOG] 60 sub-games after incl. red.
+[LOG] (Reducing the subgames from 60 down to 4)
+Command terminated by signal 9
+Synthesis time: 120.56 sec (Real time) / 119.67 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_6_8_9.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 160 sub-games originally
+[LOG] 54 sub-games after incl. red.
+[LOG] (Reducing the subgames from 54 down to 4)
+Command terminated by signal 9
+Synthesis time: 120.03 sec (Real time) / 119.77 sec (User CPU time)
+Timeout: 1
+=====================  mult_bool_matrix_6.aag =====================
+[LOG] Decomposition possible (BIG OR case)
+[LOG] 36 sub-games originally
+[LOG] 36 sub-games after incl. red.
+[LOG] (Reducing the subgames from 36 down to 4)
+[LOG] 4 sub-games after incl. red.
+Command terminated by signal 9
+Synthesis time: 120.81 sec (Real time) / 119.86 sec (User CPU time)
+Timeout: 1
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  20.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)
+=====================  10.aag =====================
+Command exited with non-zero status 1
+Synthesis time: 0.00 sec (Real time) / 0.00 sec (User CPU time)
+Timeout: 0
+Crash or out-of-mem: 1 (Exit code: 1)

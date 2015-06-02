@@ -1,0 +1,164 @@
+cycle_sched_2       ;0.04               ;0.03
+cycle_sched_3       ;0.23               ;0.21
+cycle_sched_4       ;1.14               ;1.12
+cycle_sched_5       ;6.08               ;6.03
+cycle_sched_6       ;2.49               ;2.42
+cycle_sched_7       ;7.41               ;6.97
+cycle_sched_8       ;90.92              ;89.71
+cycle_sched_9       ;15.18              ;15.06
+cycle_sched_10      ;143.99             ;142.73
+cycle_sched_11      ;312.23             ;309.55
+cycle_sched_12      ;228.88             ;227.48
+cycle_sched_13      ;121.96             ;120.91
+amba2b8unrealn      ;1.01               ;0.97
+amba2b8unrealy      ;0.94               ;0.93
+amba2b9n            ;0.77               ;0.75
+amba2b9y            ;0.69               ;0.69
+amba2c6unrealn      ;0.53               ;0.52
+amba2c6unrealy      ;0.52               ;0.50
+amba2c7n            ;0.47               ;0.46
+amba2c7y            ;0.52               ;0.51
+amba2f8unrealn      ;0.74               ;0.72
+amba2f8unrealy      ;0.59               ;0.58
+amba2f9n            ;0.46               ;0.46
+amba2f9y            ;0.47               ;0.46
+amba3b4unrealn      ;1.25               ;1.23
+amba3b4unrealy      ;1.69               ;1.67
+amba3b5n            ;1.36               ;1.34
+amba3b5y            ;2.62               ;2.59
+amba3c4unrealn      ;1.15               ;1.13
+amba3c4unrealy      ;1.43               ;1.40
+amba3c5n            ;5.67               ;5.61
+amba3c5y            ;1.36               ;1.35
+amba3f8unrealn      ;1.70               ;1.70
+amba3f8unrealy      ;1.56               ;1.55
+amba3f9n            ;5.33               ;5.27
+amba3f9y            ;1.69               ;1.65
+amba4b8unrealn      ;33.43              ;33.39
+amba4b8unrealy      ;6.15               ;6.11
+amba4b9n            ;12.51              ;12.48
+amba4b9y            ;12.44              ;12.40
+amba4c6unrealn      ;8.00               ;7.99
+amba4c6unrealy      ;16.27              ;16.23
+amba4c7n            ;6.73               ;6.71
+amba4c7y            ;7.44               ;7.39
+amba4f24unrealn     ;11.13              ;11.09
+amba4f24unrealy     ;4.05               ;4.03
+amba4f25n           ;21.87              ;21.82
+amba4f25y           ;17.66              ;17.62
+amba5b4unrealn      ;6.15               ;6.14
+amba5b4unrealy      ;20.29              ;20.21
+amba5b5n            ;4.89               ;4.84
+amba5b5y            ;21.18              ;20.98
+amba5c4unrealn      ;144.83             ;143.61
+amba5c4unrealy      ;12.06              ;11.94
+amba5c5n            ;16.03              ;15.87
+amba5c5y            ;10.43              ;10.34
+demo-v2_2_UNREAL    ;0.00               ;0.00
+demo-v2_5_UNREAL    ;0.00               ;0.00
+demo-v3_2_REAL      ;0.00               ;0.00
+demo-v3_5_REAL      ;0.06               ;0.06
+demo-v4_2_UNREAL    ;0.17               ;0.17
+demo-v4_5_REAL      ;0.52               ;0.51
+demo-v5_2_REAL      ;0.01               ;0.00
+demo-v5_5_REAL      ;0.30               ;0.29
+demo-v6_2_UNREAL    ;0.27               ;0.26
+demo-v6_5_REAL      ;0.63               ;0.62
+factory_assembly_3x3_1_1errors;0.07     ;0.07
+factory_assembly_4x3_1_1errors;0.40     ;0.39
+factory_assembly_5x3_1_0errors;0.85     ;0.83
+factory_assembly_5x3_1_4errors;1.31     ;1.30
+genbuf10b3unrealn   ;2.97               ;2.95
+genbuf10b3unrealy   ;2.95               ;2.93
+genbuf10b4n         ;1.40               ;1.38
+genbuf10b4y         ;1.33               ;1.31
+genbuf10c2unrealn   ;2.27               ;2.25
+genbuf10c2unrealy   ;4.95               ;4.90
+genbuf10c3n         ;0.79               ;0.76
+genbuf10c3y         ;1.86               ;1.84
+genbuf10f10n        ;3.27               ;3.26
+genbuf10f10y        ;2.84               ;2.84
+genbuf10f9unrealn   ;2.99               ;2.97
+genbuf10f9unrealy   ;1.90               ;1.87
+genbuf11b3unrealn   ;4.99               ;4.97
+genbuf11b3unrealy   ;4.38               ;4.30
+genbuf11b4n         ;2.25               ;2.22
+genbuf11b4y         ;0.99               ;0.96
+genbuf11c2unrealn   ;12.15              ;12.10
+genbuf11c2unrealy   ;2.44               ;2.40
+genbuf11c3n         ;2.50               ;2.49
+genbuf11c3y         ;0.97               ;0.94
+genbuf11f10unrealn  ;3.22               ;3.18
+genbuf11f10unrealy  ;2.65               ;2.64
+genbuf11f11n        ;3.26               ;3.23
+genbuf11f11y        ;2.93               ;2.89
+genbuf2b3unrealy    ;0.07               ;0.07
+genbuf2b4n          ;0.21               ;0.20
+genbuf2b4y          ;0.05               ;0.05
+genbuf2c2unrealn    ;0.16               ;0.16
+genbuf2c2unrealy    ;0.10               ;0.09
+genbuf2c3n          ;0.09               ;0.09
+genbuf2c3y          ;0.07               ;0.07
+genbuf2f3unrealn    ;0.14               ;0.13
+genbuf2f3unrealy    ;0.10               ;0.08
+genbuf2f4n          ;0.22               ;0.21
+genbuf2f4y          ;0.07               ;0.07
+genbuf3b3unrealn    ;0.38               ;0.37
+genbuf3b3unrealy    ;0.15               ;0.15
+genbuf3b4n          ;0.24               ;0.23
+genbuf3b4y          ;0.13               ;0.13
+genbuf3c2unrealn    ;0.35               ;0.34
+genbuf3c2unrealy    ;0.25               ;0.24
+genbuf3c3n          ;0.25               ;0.24
+genbuf3c3y          ;0.17               ;0.16
+genbuf3f3unrealn    ;0.34               ;0.33
+genbuf3f3unrealy    ;0.15               ;0.14
+genbuf3f4n          ;0.20               ;0.19
+genbuf3f4y          ;0.13               ;0.12
+genbuf4b3unrealn    ;0.88               ;0.87
+genbuf4b3unrealy    ;0.37               ;0.37
+genbuf4b4n          ;0.39               ;0.39
+genbuf4b4y          ;0.27               ;0.26
+genbuf4c2unrealn    ;0.74               ;0.74
+genbuf4c2unrealy    ;0.29               ;0.28
+genbuf4c3n          ;0.38               ;0.37
+genbuf4c3y          ;0.16               ;0.15
+genbuf4f3unrealn    ;0.28               ;0.28
+genbuf4f3unrealy    ;0.18               ;0.18
+genbuf4f4n          ;0.35               ;0.34
+genbuf4f4y          ;0.41               ;0.40
+genbuf5b3unrealn    ;2.07               ;2.04
+genbuf5b3unrealy    ;1.55               ;1.52
+genbuf5b4n          ;1.70               ;1.69
+genbuf5b4y          ;0.51               ;0.51
+genbuf5c2unrealn    ;0.55               ;0.54
+genbuf5c2unrealy    ;0.46               ;0.45
+genbuf5c3n          ;0.35               ;0.33
+genbuf5c3y          ;0.28               ;0.27
+genbuf5f4unrealn    ;0.75               ;0.74
+genbuf5f4unrealy    ;0.36               ;0.35
+genbuf5f5n          ;0.59               ;0.58
+genbuf5f5y          ;0.72               ;0.71
+genbuf6b3unrealn    ;1.03               ;1.02
+genbuf6b3unrealy    ;1.89               ;1.86
+genbuf6b4n          ;0.61               ;0.59
+genbuf6b4y          ;0.57               ;0.57
+genbuf6c2unrealn    ;0.70               ;0.69
+genbuf6c2unrealy    ;0.55               ;0.53
+gb_s2_r2_comp1_UNREAL;12.36             ;12.24
+gb_s2_r2_comp2_UNREAL;504.62            ;498.97
+load_full_2_comp1_UNREAL;1.55           ;1.52
+load_full_2_comp2_REAL;3.08             ;3.05
+load_full_2_comp3_REAL;4.13             ;4.09
+load_full_3_comp1_UNREAL;316.99         ;313.57
+load_2c_comp_comp1_REAL;1.14            ;1.12
+load_2c_comp_comp2_REAL;1.64            ;1.62
+load_2c_comp_comp3_REAL;2.44            ;2.42
+gb_s2_r7_comp7_REAL ;501.46             ;499.38
+gb_s2_r7_comp1_UNREAL;500.02            ;499.76
+gb_s2_r3_comp1_UNREAL;500.01            ;499.63
+gb_s2_r3_comp2_UNREAL;500.01            ;499.67
+gb_s2_r4_comp1_UNREAL;500.02            ;499.71
+gb_s2_r4_comp2_REAL ;500.02             ;499.76
+gb_s2_r6_comp1_UNREAL;500.01            ;499.75
+gb_s2_r6_comp2_UNREAL;500.01            ;499.74

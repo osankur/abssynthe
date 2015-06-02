@@ -165,7 +165,7 @@ class BDD(bdd.BDD_Base):
         for v in var_list:
             if self != self.exist_abstract(BDD(v)):
                 occ.append(v)
-        self.occ_sem_dict[tvar_list] = occ
+        #self.occ_sem_dict[tvar_list] = occ
         return occ
 
     def occ_pos(self, var_list=None):

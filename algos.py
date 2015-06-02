@@ -162,3 +162,57 @@ def backward_safety_synth(game):
     else:
         return win_region
 
+def forward_reachables(game):
+    init_state = game.init()
+    log.DBG_MSG("Computing forward reach.")
+    reach_region = fixpoint(
+        init_state,
+        fun=lambda x: x | game.aig.post_bdd(x)
+    )
+    log.DBG_MSG("Forward Reach Set has size " + str(reach_region.dag_size()))
+    return reach_region
+
+def forward_solve(game):
+    log.DBG_MSG("Solving forwards")
+    init_state = game.init()
+    error_states = game.error()
+    # the onion rings during BFS traversal
+    onionRings = [init_state]
+    # union of the onion rings
+    unionOfRings = init_state
+    # the last ring of the BFS traversal - all that have been seen before
+    front = onionRings[-1]
+    while front != BDD.false():
+        log.DBG_MSG("Forward step: " + str(len(onionRings)))
+        oldfront = front
+        front = game.aig.post_monolithic_bdd(oldfront) & ~unionOfRings
+        onionRings.append(front)
+        unionOfRings = unionOfRings | front
+        if (front != BDD.false() and front & error_states == front):
+            print "front <= error_states"
+            return False
+        elif (front & error_states != BDD.false()):
+            log.DBG_MSG("\tReached error, going up backwards")
+            # go back along the rings to do upre
+            # always intersected with the i-th reachset
+            berr = front & error_states
+            # will be onionRings restricted to not yet losing states
+            rem_states = [front & ~error_states]
+            print "\t--front & ~error_states is empty: ", (rem_states[0] == BDD.false())
+            print "\t--front & error_states is empty: ", (berr == BDD.false())
+            for r in reversed(onionRings[:-1]):
+                berr = game.aig.upre_bdd(berr) & r
+                print "\t--berr is empty: ", (berr == BDD.false())
+                rem_states.append(r & ~berr)
+            if (berr != BDD.false()):
+                return False
+            onionRings = list(reversed(rem_states))
+            unionOfRings = reduce(lambda x,y: x|y, onionRings)
+            print "\tRefined onion ring size: " + str(len(onionRings))
+            front = onionRings[-1]
+            # At this point we have proved that no env strategy guarantees
+            # reaching error in len(onionRings) steps
+            # We also pruned the onion rings to the states not losing by such
+            # strategies
+    return True
+

@@ -33,14 +33,6 @@ TODO LIST
 
 2) How can we apply restrict on states? (rather than trans. functions?)
 
-3) Modify Alg.2: if all BDD sizes exceed a given threshold finish them with
-Alg.1 
-
-4) Alg2: try the other way around pij ->  -pij
-
-5) I got rid of the cpre computation in comp.1 it seems much faster
-Can we adapt this to Alg.2? Would it still be efficient to keep the original
-error function (I don't think so)?
 
 CHANGES
 
@@ -67,6 +59,15 @@ regions and strategies. No need to UPRE. DONE
 
 4) Removed the unnecessary cpre in the last iteration of Alg.2
 
+5) I got rid of the cpre computation in comp.1 it seems much faster
+The same idea did a little worse for Alg.3, we're keeping the get_strat version
+as default.
+
+6) Modify Alg.2: if all BDD sizes exceed a given threshold finish them with
+Alg.1. Didn't do anything with threshold 5000 or 8000
+I think only the last BDD becomes big
+
+
 Optimizations:
     - Choosing the subgame pairs that have the least joint cinputs were
       sometimes very beneficial:
@@ -89,6 +90,8 @@ from bdd_aig import BDDAIG
 from algos import (
     backward_safety_synth,
     forward_safety_synth,
+    forward_reachables,
+    forward_solve
 )
 from bdd_games import (
     ConcGame,
@@ -115,8 +118,15 @@ def synth(argv):
 
 
 def synth_from_spec(aig, argv):
+    if argv.use_reach:
+        game = ConcGame(aig,
+                        use_trans=argv.use_trans,
+                        opt_type=argv.opt_type)
+        w = forward_solve(game)
+        log.LOG_MSG("Realizable: " + str(w))
+        exit(0)
     # Explicit approach
-    if argv.use_symb:
+    elif argv.use_symb:
         assert argv.out_file is None
         symgame = SymblicitGame(aig)
         w = forward_safety_synth(symgame)
@@ -131,19 +141,8 @@ def synth_from_spec(aig, argv):
         if argv.comp_algo == 1:
             # solve and aggregate sub-games
             (w, strat) = comp_synth(game_it,argv.get_strat)
-            # back to the general game
-            # if w is None:
-            #     return False
-            # log.DBG_MSG("Interm. win region bdd node count = " +
-            #             str(w.dag_size()))
-            # game = ConcGame(BDDAIG(aig).short_error(~strat),
-            #                 use_trans=argv.use_trans)
-            # w = backward_safety_synth(game)
         elif argv.comp_algo == 2:
-            # print "STARTING NOW"
             games_mapped = subgame_mapper(game_it, aig)
-            # local aggregation yields None if short-circ'd
-            # return False
             if games_mapped is None:
                 return False
             w = subgame_reducer(games_mapped, aig, argv)
@@ -194,6 +193,9 @@ def main():
     parser = argparse.ArgumentParser(description="AIG Format Based Synth")
     parser.add_argument("spec", metavar="spec", type=str,
                         help="input specification in extended AIGER format")
+    parser.add_argument("-r", "--reachability", action="store_true",
+                        dest="use_reach", default=False,
+                        help="Compute forward reach set")
     parser.add_argument("-t", "--use_trans", action="store_true",
                         dest="use_trans", default=False,
                         help="Compute a transition relation")

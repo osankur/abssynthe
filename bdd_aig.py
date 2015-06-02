@@ -21,7 +21,7 @@ Guillermo A. Perez
 Universite Libre de Bruxelles
 gperezme@ulb.ac.be
 """
-
+import sys
 from itertools import imap, chain, combinations
 from utils import funcomp
 from aig import (
@@ -47,6 +47,9 @@ class BDDAIG(AIG):
         self._cached_transition = None
         self.bdd_gate_cache = dict()
         self.latch_restr = None
+        # Successor relation without the
+        # inputs
+        self.post_rel = None
 
     def _copy_from_aig(self, aig):
         assert isinstance(aig, AIG)
@@ -63,7 +66,7 @@ class BDDAIG(AIG):
 
     def get_bdd_deps(self, b):
         bdd_deps = set(b.occ_sem())
-        bdd_latch_deps = bdd_deps - set([symbol_lit(x) for x
+        bdd_latch_deps = bdd_deps & set([symbol_lit(x) for x
                                          in self.iterate_latches()])
         deps = reduce(set.union,
                       map(self.get_lit_deps,
@@ -88,8 +91,14 @@ class BDDAIG(AIG):
                                  self.lit2bdd(l.next).safe_restrict(b))
                                  # self.lit2bdd(l.next) & b)
 
-    # short-circuit the error bdd and restrict the whole thing to
-    # the relevant latches
+    # add b to the error function as a disjunct
+    def add_error(self, b):
+        nu_bddaig = BDDAIG(aig=self)
+        nu_bddaig.set_lit2bdd(self.error_fake_latch.next, 
+                nu_bddaig.lit2bdd(self.error_fake_latch.next) | b)
+        return nu_bddaig
+
+    # short-circuit the error bdd to b and restrict to cone(b)
     def short_error(self, b):
         nu_bddaig = BDDAIG(aig=self)
         nu_bddaig.set_lit2bdd(self.error_fake_latch.next, b)
@@ -99,50 +108,21 @@ class BDDAIG(AIG):
                         if l.lit not in latch_deps]
             log.DBG_MSG(str(len(not_deps)) + " Latches not needed")
         nu_bddaig.latch_restr = latch_deps
-        orig_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
-                                l in self.iterate_latches()])
-        nu_bddaig.restrict_latch_next_funs(~b)
-        after_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
-                                l in self.iterate_latches()])
-        if (after_size < orig_size):
-            print "short_error restrict improvement: ", after_size, " < ", orig_size
         return nu_bddaig
 
-    #def short_error_list(self, blist):
-    #    nu_bddaig = BDDAIG(aig=self)
-    #    b = reduce(lambda x,y: x|y, blist, BDD.false())
-    #    nu_bddaig.set_lit2bdd(self.error_fake_latch.next, b)
-    #    latch_deps = self.get_bdd_latch_deps(b)
-    #    if log.debug:
-    #        not_deps = [l.lit for l in self.iterate_latches()
-    #                    if l.lit not in latch_deps]
-    #        log.DBG_MSG(str(len(not_deps)) + " Latches not needed")
-    #                    # : " +
-    #                    # str(not_deps))
-    #    nu_bddaig.latch_restr = latch_deps
-    #    ############ This never reduces the BDD sizes!
-    #    #multiple_restr = False
-    #    #orig_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
-    #    #                        l in self.iterate_latches()])
-    #    #orig_sizes = [self.lit2bdd(l.next).dag_size() for
-    #    #                        l in self.iterate_latches()]
-    #    #if (multiple_restr):
-    #    #    for err in blist:
-    #    #        nu_bddaig.restrict_latch_next_funs(~err)
-    #    #    nu_bddaig.restrict_latch_next_funs(~b)
-    #    #else:
-    #    #    nu_bddaig.restrict_latch_next_funs(~b)
-    #    #after_size = reduce(lambda x,y:x+y, [self.lit2bdd(l.next).dag_size() for
-    #    #                        l in self.iterate_latches()])
-    #    #after_sizes = [self.lit2bdd(l.next).dag_size() for
-    #    #                        l in self.iterate_latches()]
-    #    #if (after_size < orig_size):
-    #    #    print "Improvement: ", after_size, " < ", orig_size
-    #    #else:
-    #    #    print "No improvement"
-    #    #if (any(map(lambda x: x[0]<x[1], zip(orig_sizes,after_sizes)))):
-    #    #    print "Local improvement!"
-    #    return nu_bddaig
+    # short-circuit the error bdd to b and restrict the trans functions
+    # to ~b
+    def short_error_restrict(self, b):
+        nu_bddaig = BDDAIG(aig=self)
+        nu_bddaig.set_lit2bdd(self.error_fake_latch.next, b)
+        latch_deps = self.get_bdd_latch_deps(b)
+        if log.debug:
+            not_deps = [l.lit for l in self.iterate_latches()
+                        if l.lit not in latch_deps]
+            log.DBG_MSG(str(len(not_deps)) + " Latches not needed")
+        nu_bddaig.latch_restr = latch_deps
+        # nu_bddaig.restrict_latch_next_funs(~b)
+        return nu_bddaig
 
     def iterate_latches(self):
         for l in AIG.iterate_latches(self):
@@ -250,28 +230,135 @@ class BDDAIG(AIG):
                                 self.iterate_uncontrollable_inputs()))))
         return self.unprime_latches_in_bdd(b)
 
-    def post_bdd(self, src_states_bdd, sys_strat=None,
-                 use_trans=False, over_approx=False):
-        """
-        POST = EL.EXu.EXc : src(L) ^ T(L,Xu,Xc,L') [^St(L,Xu,Xc)]
-        optional argument fixes possible actions for the environment
-        """
-        if not use_trans or over_approx:
-            return self.over_post_bdd(src_states_bdd, sys_strat)
-        transition_bdd = self.trans_rel_bdd()
-        trans = transition_bdd
-        if sys_strat is not None:
-            trans &= sys_strat
-        trans = trans.restrict(src_states_bdd)
+    def post_monolithic_bdd(self, src_states_bdd, sys_strat=None):
+        latches = [x for x in self.iterate_latches()]
+        latch_cube = BDD.make_cube(imap(funcomp(BDD, symbol_lit),latches))
+        trans = self.trans_rel_bdd()
+        vars = [x for x in self.iterate_controllable_inputs()] + [x for x in self.iterate_uncontrollable_inputs()]
+        cube = BDD.make_cube(imap(funcomp(BDD, symbol_lit), vars))
+        trans = trans.exist_abstract(cube)
+        post = (trans & src_states_bdd).exist_abstract(latch_cube)
+        return self.unprime_latches_in_bdd(post)
 
-        suc_bdd = trans.and_abstract(
-            src_states_bdd,
-            BDD.make_cube(imap(funcomp(BDD, symbol_lit), chain(
-                self.iterate_controllable_inputs(),
-                self.iterate_uncontrollable_inputs(),
-                self.iterate_latches())
-            )))
-        return self.unprime_latches_in_bdd(suc_bdd)
+    def post_bdd(self, src_states_bdd, sys_strat=None):
+        latches = [x for x in self.iterate_latches()]
+        latch_cube = BDD.make_cube(imap(funcomp(BDD, symbol_lit),latches))
+        trans = None
+        if (self.post_rel is None):
+            log.DBG_MSG("Will compute a quantification schedule")
+            W1 = 2
+            W2 = 1
+            W4 = 1
+            # we launch clustering
+            P = []
+            inputs = [x for x in self.iterate_controllable_inputs()] + [x for x in self.iterate_uncontrollable_inputs()]
+            latch_lits = set(map(symbol_lit, latches))
+            input_lits = set(map(symbol_lit, inputs))
+            # Q = set(map(lambda x: self.lit2bdd(x.next), latches))
+            Q = set(latches)
+            caredVars = latch_lits | input_lits
+            while len(Q) != 0:
+                v = []
+                m = []
+                # The list of sets of dependent variables for each element of Q
+                Qbdd = map(lambda l: self.lit2bdd(l.next), Q)
+                deps = map(lambda b: set(b.occ_sem(caredVars)),Qbdd)
+                # deps = map(lambda b: set(self.get_bdd_deps(b)) & caredVars,Qbdd)
+                allQdeps = reduce(lambda x,y: x|y, deps);
+                # The list of sets of BDD indices of the dependent variables ...
+                dep_indices = map(lambda s: map(lambda b: BDD(b).get_index(),s), deps)
+                dep_indices = map(lambda s: set([0]) if (len(s) == 0) else s, dep_indices)
+                w = map(lambda s: len(s), deps)
+                m = map(lambda s: max(s), dep_indices)
+                M = max(m)
+                x = len(allQdeps);
+                for (q,qdep) in zip(Q,deps):
+                    vset = qdep
+                    for (u,udep) in zip(Q,deps):
+                        if u == q:
+                            continue
+                        vset = vset - udep
+                    v.append(len(vset))
+                # total scores
+                R = []
+                for (ve,we,me,q) in zip(v,w,m,Q):
+                    if (we == 0):
+                        r1 = 0
+                    else:
+                        r1 = ve / float(we)
+                    r2 = we / float(x)
+                    r4 = me / float(M)
+                    R.append((q,W1 * r1 + W2 * r2 + W4*r4))
+                Rsorted = sorted(R, key=lambda (x,y): y)
+                qselected = Rsorted[0][0]
+                Q = Q - set([qselected])
+                P.append(qselected)
+            # Computing the quantification schedule
+            var_clusters = []
+            acc = set([])
+            for p in P:
+                newvars = set(self.lit2bdd(p.next).occ_sem(caredVars)) - acc
+                var_clusters.append(newvars)
+                acc = acc | newvars
+            # print "Printing quantification order:"
+            # for qv in var_clusters:
+            #    print qv
+            # Computing the transition relation
+            self.post_rel = BDD.true()
+            PT = map(lambda l: BDD.make_eq(BDD(self.get_primed_var(l.lit)),
+                                            self.lit2bdd(l.next)), P)
+            log.DBG_MSG("Done computing the quant. schedule")
+            # PTdeps = map(lambda b: b.occ_sem(caredVars), PT)
+            # for i in range(len(PTdeps)):
+            #    # verifier que PT[i] ne depend pas de var_clusters[i+1:]
+            #    for var in var_clusters[i+1:]:
+            #        assert( len(set(PTdeps[i]) & var) == 0)
+            # for t in PT:
+            #    print "Trans has size " + str(t.dag_size())
+            for (var, con) in reversed(zip(var_clusters,PT)):
+                self.post_rel &= con
+                # log.DBG_MSG("Conjoining trans rel. Current size = " + str(self.post_rel.dag_size()))
+                if (var):
+                    self.post_rel = self.post_rel.exist_abstract(BDD.make_cube(imap(BDD,var)))
+            # self.post_rel = self.post_rel.exist_abstract(BDD.make_cube(imap(BDD,acc)))
+            # print "Computed Reach Set. BDD has size : " + str(self.post_rel.dag_size())
+            # print "False: " + str(BDD.false() == self.post_rel)
+            # trans = self.trans_rel_bdd();
+            # trans = trans.exist_abstract(BDD.make_cube(imap(BDD,acc)))
+            # assert(trans == self.post_rel)
+            allvars = [x.lit for x in self.iterate_controllable_inputs()] + [x.lit for x in self.iterate_uncontrollable_inputs()]
+            print allvars
+            print acc
+            ########## SINCE WE ARE INTERSECTING WITH SRC_STATES_BDD LATER,
+            ########## WE SHOULDN'T QUANTIFY AWAY LATCHES. FIX THIS.
+            ########## BETTER: INTERSECT FIRST THE ERROR TRANS FUNCTION WITH SRC_STATES
+            assert(set(allvars) == set(acc))
+        post = (self.post_rel & src_states_bdd).exist_abstract(latch_cube)
+        return self.unprime_latches_in_bdd(post)
+    #def post_bdd(self, src_states_bdd, sys_strat=None,
+    #             use_trans=False, over_approx=False):
+    #    """
+    #    POST = EL.EXu.EXc : src(L) ^ T(L,Xu,Xc,L') [^St(L,Xu,Xc)]
+    #    optional argument fixes possible actions for the environment
+    #    """
+    #    if not use_trans or over_approx:
+    #        return self.over_post_bdd(src_states_bdd, sys_strat)
+    #    transition_bdd = self.trans_rel_bdd()
+    #    trans = transition_bdd
+    #    if sys_strat is not None:
+    #        trans &= sys_strat
+    #    trans = trans.restrict(src_states_bdd)
+
+    #    suc_bdd = trans.and_abstract(
+    #        src_states_bdd,
+    #        BDD.make_cube(imap(funcomp(BDD, symbol_lit), chain(
+    #            self.iterate_controllable_inputs(),
+    #            self.iterate_uncontrollable_inputs(),
+    #            self.iterate_latches())
+    #        )))
+    #    return self.unprime_latches_in_bdd(suc_bdd)
+
+    
 
     def substitute_latches_next_orig(self, b, use_trans=False, restrict_fun=None):
         if use_trans:

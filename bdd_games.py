@@ -91,8 +91,8 @@ class ConcGame(BackwardGame):
     def short_aig_error(self, error):
         self.aig = self.aig.short_error(error)
 
-    def short_aig_error(self, errs):
-        self.aig = self.aig.short_error_list(errs)
+    def add_aig_error(self, error):
+        self.aig = self.aig.add_error(error)
 
     def upre(self, dst):
         if (self.opt_type == 2):
