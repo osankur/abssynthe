@@ -259,6 +259,7 @@ class BDDAIG(AIG):
         # Q is the list of pairs of latches and their trans relations except for err latch, 
         # for which we conjoin with src_states_bdd
         log.DBG_MSG("Doing err_fun & src_states")
+        sys.stdout.flush()
         if b_trans:
             Q = zip(latches,trans)
         else:
@@ -270,28 +271,29 @@ class BDDAIG(AIG):
                 else:
                     Q.append((q, b))
         log.DBG_MSG("Launching Clustering")
+        sys.stdout.flush()
         if b_trans:
             caredVars = input_lits
         else:
             caredVars = latch_lits | input_lits
-        Q = set(Q)
+        deps_ = map(lambda b: set(b[1].occ_sem(caredVars)) ,Q)
+        Q = zip(Q,deps_)
         while len(Q) != 0:
             v = []
             m = []
             # The list of sets of dependent variables for each element of Q
-            deps = map(lambda b: set(b[1].occ_sem(caredVars)),Q)
             # deps = map(lambda b: set(self.get_bdd_deps(b)) & caredVars,Qbdd)
-            allQdeps = reduce(lambda x,y: x|y, deps);
+            allQdeps = reduce(lambda x,y: x|y, imap(lambda q: q[1], Q));
             # The list of sets of BDD indices of the dependent variables ...
-            dep_indices = map(lambda s: map(lambda b: BDD(b).get_index(),s), deps)
+            dep_indices = map(lambda s: map(lambda b: BDD(b).get_index(),s), imap(lambda q: q[1], Q))
             dep_indices = map(lambda s: set([0]) if (len(s) == 0) else s, dep_indices)
-            w = map(lambda s: len(s), deps)
+            w = map(lambda s: len(s), imap(lambda q: q[1], Q))
             m = map(lambda s: max(s), dep_indices)
             M = max(m)
             x = len(allQdeps);
-            for (q,qdep) in zip(Q,deps):
+            for (q,qdep) in Q:
                 vset = qdep
-                for (u,udep) in zip(Q,deps):
+                for (u,udep) in Q:
                     if u == q:
                         continue
                     vset = vset - udep
@@ -307,8 +309,8 @@ class BDDAIG(AIG):
                 r4 = me / float(M)
                 R.append((q,W1 * r1 + W2 * r2 + W4*r4))
             qselected = min(R, key=lambda (x,y): y)[0]
-            Q = Q - set([qselected])
-            P.append(qselected)
+            Q.remove(qselected)
+            P.append(qselected[0])
         # Reminder: we want to conjoin all elements of P[1]
         # Computing the quantification schedule
         var_clusters = []
@@ -318,12 +320,13 @@ class BDDAIG(AIG):
             var_clusters.append(newvars)
             acc = acc | newvars
         cj = zip(var_clusters, map(lambda l: l[0].lit, P))
-        for (vars,l) in cj:
-            print "Latch ", l, " : ", vars
-        print "All variables to be quantified: ", sorted(list(acc))
+        # for (vars,l) in cj:
+        #    print "Latch ", l, " : ", vars
+        # print "All variables to be quantified: ", sorted(list(acc))
         PT = map(lambda x: x[1], P)
         post = BDD.true()
         log.DBG_MSG("Ending Clustering")
+        sys.stdout.flush()
         for (var, con) in reversed(zip(var_clusters,PT)):
             post &= con
             if (var):
@@ -332,6 +335,8 @@ class BDDAIG(AIG):
             post = self.unprime_latches_in_bdd((src_states_bdd & post).exist_abstract(latch_cube))
         else:
             post = self.unprime_latches_in_bdd(post)
+        log.DBG_MSG("Finished Post computation")
+        sys.stdout.flush()
         return post
 
 
