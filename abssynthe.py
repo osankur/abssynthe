@@ -118,12 +118,18 @@ def synth(argv):
 
 
 def synth_from_spec(aig, argv):
-    if argv.use_reach:
+    if argv.use_forward:
         game = ConcGame(aig,
                         use_trans=argv.use_trans,
                         opt_type=argv.opt_type)
         w = forward_solve(game)
         log.LOG_MSG("Realizable: " + str(w))
+        exit(0)
+    elif argv.use_reach:
+        game = ConcGame(aig,
+                        use_trans=argv.use_trans,
+                        opt_type=argv.opt_type)
+        w = forward_reachables(game)
         exit(0)
     # Explicit approach
     elif argv.use_symb:
@@ -196,6 +202,9 @@ def main():
     parser.add_argument("-r", "--reachability", action="store_true",
                         dest="use_reach", default=False,
                         help="Compute forward reach set")
+    parser.add_argument("-f", "--forward", action="store_true",
+                        dest="use_forward", default=False,
+                        help="Forward alg.")
     parser.add_argument("-t", "--use_trans", action="store_true",
                         dest="use_trans", default=False,
                         help="Compute a transition relation")
