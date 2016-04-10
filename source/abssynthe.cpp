@@ -88,6 +88,7 @@ void usage() {
 void parse_arguments(int argc, char** argv) {
     // default values
     settings.comp_algo = 0;
+    settings.internal_algo = 1;
     settings.use_trans = false;
     settings.parallel = false;
     settings.ordering_strategies = false;
@@ -98,7 +99,7 @@ void parse_arguments(int argc, char** argv) {
     int opt_key;
     int opt_index;
     while (true) {
-        opt_key = getopt_long(argc, argv, "v:tpsc:o:", long_options,
+        opt_key = getopt_long(argc, argv, "v:tpsc:o:a:", long_options,
                               &opt_index);
         if (opt_key == -1)
             break;
@@ -127,6 +128,15 @@ void parse_arguments(int argc, char** argv) {
                 settings.comp_algo = atoi(optarg);
                 if (settings.comp_algo < 1 || settings.comp_algo > 3) {
                     errMsg(std::string("Expected comp_algo to be in {1,2,3} "
+                                       "instead of ") + optarg);
+                    usage();
+                    exit(1);
+                }
+                break;
+            case 'a':
+                settings.internal_algo = atoi(optarg);
+                if (settings.internal_algo < 1 || settings.internal_algo > 3) {
+                    errMsg(std::string("Expected internal_algo to be in {1,2,3} "
                                        "instead of ") + optarg);
                     usage();
                     exit(1);
@@ -170,7 +180,7 @@ int main (int argc, char** argv) {
         } else if (settings.comp_algo == 3){
                 result = compSolve3(&aig);
         } else { // traditional fixpoint computation
-                result = solve(&aig);
+            result = solve(&aig, CUDD_REORDER_SIFT, settings.internal_algo);
         }
     }
     // return the realizability test result

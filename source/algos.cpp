@@ -249,6 +249,12 @@ static BDD substituteLatchesNext(BDDAIG* spec, BDD dst, BDD* care_region=NULL) {
                                            primed_latch_cube);
     } else {
         vector<BDD> next_funs = spec->nextFunComposeVec(care_region);
+				assert(next_funs.size()>0);
+				/*
+				for (unsigned int i = 0; i < next_funs.size(); i++){
+					cout << "Table[" << i << "].size = " << next_funs[i].nodeCount() << endl;
+				}
+				*/
         result = dst.VectorCompose(next_funs);
 #if false
         BDD trans_rel_bdd = spec->transRelBdd();
@@ -268,7 +274,8 @@ static BDD substituteLatchesNext(BDDAIG* spec, BDD dst, BDD* care_region=NULL) {
 // states after the upre step (the complement of all good transitions)
 static BDD upre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
     BDD not_dst = ~dst;
-    trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
+    trans_bdd = substituteLatchesNext(spec, dst, NULL);
+    // trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
     BDD cinput_cube = spec->cinputCube();
     BDD uinput_cube = spec->uinputCube();
     BDD temp_bdd = trans_bdd.UnivAbstract(cinput_cube);
@@ -278,7 +285,7 @@ static BDD upre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
 static bool internalSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
                           BDD* losing_region, BDD* losing_transitions,
                           bool do_synth=false) {
-        //static int occ_counter = 1;
+
     dbgMsg("Computing fixpoint of UPRE.");
         //cout << "Visited " << occ_counter++ << endl;
     bool includes_init = false;
@@ -291,11 +298,19 @@ static bool internalSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     } else {
         error_states = spec->errorStates();
     }
+		// JUST TESTING
+		// printf("Starting synthesis...\n"); fflush(stdout);
+		// synthAlgo(mgr, spec, ~error_states, mgr->bddOne());
+		// printf("Done synthesis...\n"); fflush(stdout);
+		// 
+
+
     BDD prev_error = ~mgr->bddOne();
     includes_init = ((init_state & error_states) != ~mgr->bddOne());
     while (!includes_init && error_states != prev_error) {
         prev_error = error_states;
         error_states = prev_error | upre(spec, prev_error, bad_transitions);
+				dbgMsg("Iterate(L,X_u,X_c) has size " + to_string(error_states.nodeCount()));
         includes_init = ((init_state & error_states) != ~mgr->bddOne());
         cnt++;
     }
@@ -323,11 +338,228 @@ static bool internalSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     return !includes_init;
 }
 
-bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
+/*
+static BDD cpre_os1(BDDAIG* spec, BDD dst, BDD &trans_bdd, int approx_threshold) {
+		trans_bdd = spec->pre(dst,approx_threshold);
+    BDD cinput_cube = spec->cinputCube();
+    BDD uinput_cube = spec->uinputCube();
+    BDD temp_bdd = trans_bdd.ExistAbstract(cinput_cube);
+    return temp_bdd.UnivAbstract(uinput_cube);
+}
+*/
+static BDD upre_os1(BDDAIG* spec, BDD dst, BDD &trans_bdd, int approx_threshold) {
+		trans_bdd = spec->pre(dst,approx_threshold, NULL);
+    BDD cinput_cube = spec->cinputCube();
+    BDD uinput_cube = spec->uinputCube();
+    BDD temp_bdd = trans_bdd.UnivAbstract(cinput_cube);
+    return temp_bdd.ExistAbstract(uinput_cube);
+}
+
+/*
+ * This is the cpre version 
+ */
+/*
+static bool internalSolve_os1(Cudd* mgr, BDDAIG* spec, const BDD* cpre_init, 
+                          BDD* winning_region, BDD* winning_transitions,
+                          bool do_synth=false, int approx_threshold=0) {
+		//static int occ_counter = 1;
+    dbgMsg("Computing fixpoint of CPRE.");
+    bool includes_init = false;
+    unsigned cnt = 0;
+    BDD good_transitions;
+    BDD init_state = spec->initState();
+    BDD iterate;
+    if (cpre_init != NULL) {
+        iterate = *cpre_init;
+    } else {
+        iterate = ~spec->errorStates();
+    }
+
+    BDD prev_iterate = ~mgr->bddOne();
+    includes_init = ((init_state & iterate) != ~mgr->bddOne());
+
+    while (includes_init && iterate != prev_iterate) {
+        prev_iterate = iterate;
+				BDD u1 = cpre_os1(spec, prev_iterate, good_transitions, approx_threshold);
+        iterate = prev_iterate & u1;
+				dbgMsg("Iterate(L,X_u,X_c) has size " + to_string(iterate.nodeCount()));
+        includes_init = ((init_state & iterate) != ~mgr->bddOne());
+        cnt++;
+    }
+    dbgMsg("Early exit? " + to_string(!includes_init) + 
+           ", after " + to_string(cnt) + " iterations.");
+
+    if (winning_region != NULL) {
+        *winning_region = iterate;
+    }
+    if (winning_transitions != NULL){
+        *winning_transitions = good_transitions;
+    } 
+    // if !includes_init == true, then ~bad_transitions is the set of all
+    // good transitions for controller (Eve)
+    if (includes_init && do_synth && settings.out_file != NULL) {
+        dbgMsg("Starting synthesis, acquiring lock on synth mutex");
+        if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
+        finalizeSynth(mgr, spec, 
+                      synthAlgo(mgr, spec, good_transitions, iterate));
+    }
+    return includes_init;
+}
+*/
+
+static bool internalSolve_os1(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
+                          BDD* losing_region, BDD* losing_transitions,
+                          bool do_synth=false, int approx_threshold=0) {
+    dbgMsg("Computing fixpoint of UPRE.");
+        //cout << "Visited " << occ_counter++ << endl;
+    bool includes_init = false;
+    unsigned cnt = 0;
+    BDD bad_transitions;
+    BDD init_state = spec->initState();
+    BDD error_states;
+    if (upre_init != NULL) {
+        error_states = *upre_init;
+    } else {
+        error_states = spec->errorStates();
+    }
+
+
+    BDD prev_error = ~mgr->bddOne();
+    includes_init = ((init_state & error_states) != ~mgr->bddOne());
+    while (!includes_init && error_states != prev_error) {
+        prev_error = error_states;
+        error_states = prev_error | upre_os1(spec, prev_error, bad_transitions, approx_threshold);
+				cout << ("Iterate has size " + to_string(error_states.nodeCount())) << endl;
+        includes_init = ((init_state & error_states) != ~mgr->bddOne());
+        cnt++;
+    }
+    
+    dbgMsg("Early exit? " + to_string(includes_init) + 
+           ", after " + to_string(cnt) + " iterations.");
+
+#ifndef NDEBUG
+    spec->dump2dot(error_states & init_state, "uprestar_and_init.dot");
+#endif
+    if (losing_region != NULL) {
+        *losing_region = error_states;
+    }
+    if (losing_transitions != NULL){
+        *losing_transitions = bad_transitions;
+    } 
+    // if !includes_init == true, then ~bad_transitions is the set of all
+    // good transitions for controller (Eve)
+    if (!includes_init && do_synth && settings.out_file != NULL) {
+        dbgMsg("Starting synthesis, acquiring lock on synth mutex");
+        if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
+        finalizeSynth(mgr, spec, 
+                      synthAlgo(mgr, spec, ~bad_transitions, ~error_states));
+    }
+    return !includes_init;
+}
+
+
+
+/** TODO INCORRECT and slow anyway
+ * This is just like the first compositional algorithm where the ``subgame''
+ * is obtained by appyling BBD under-approximations on the next-state functions.
+ *
+ * To correct this alg, one should define the careset as those states /
+ * transitions in which all the under-approximations or their complements are
+ * defined, and systematically intersect the upre computation with this set.
+ */
+static bool internalSolve_os2(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
+                          BDD* losing_region, BDD* losing_transitions,
+                          bool do_synth=false) {
+	dbgMsg("Creating the under-approx game");
+	// This is needed to create the variables
+	BDD init_state = spec->initState();
+	BDDAIG prel_spec(*spec, 100, 1, 100, 0);
+	BDD losing1;
+	BDD bad_transitions1;
+	cout << ("*** Solving the under-approx game...") << endl;;
+	bool ret = internalSolve(mgr, &prel_spec, NULL, &losing1, &bad_transitions1, false);
+	/* TODO fill in losing_region and losing_transitions */
+	cout << ("*** Under-Approx fixpoint has size: " + to_string(losing1.nodeCount())) << endl;
+	if (!ret) return ret;
+	cout << ("*** Solving the true game...") << endl;
+	BDDAIG impr_spec(*spec, spec->getErrorFunction() | bad_transitions1);
+	BDD losing2;
+	BDD bad_transitions2;
+	return internalSolve(mgr, &impr_spec, &losing1, &losing2, &bad_transitions2, false);
+}
+
+/* This is the cpre version */
+/*
+static bool successiveApproximationSolve(Cudd* mgr, BDDAIG* spec){
+	int threshold = 3000;
+	int threshold_incr = 3000;
+	int max_count = 5;
+	BDD init_state = spec->initState();
+	BDD prev_iterate = ~spec->errorStates();
+	BDD iterate;
+	for (int i = 0; i < max_count; i++, threshold += threshold_incr){
+		cout << "*** Solving approximation " << i << " with threshold: " << threshold << endl;
+		bool ret = internalSolve_os1(mgr, spec, NULL, &iterate, NULL, false, threshold);
+		cout << "\n\t Got iterate of size: " << iterate.nodeCount() << endl << endl;
+		prev_iterate = iterate;
+		if (ret) return ret;
+	}
+	// Exact computation in the worst case
+	dbgMsg("*** Doing a concrete fixpoint");
+	return internalSolve_os1(mgr, spec, NULL, &iterate, NULL, false, 0);
+}
+*/
+/*
+ * 
+time ./abssynthe -v LDW -a 3 ../../bench-syntcomp14/amba3c5y.aag 
+1m47
+... -a 1
+8m..
+
+
+
+ *
+ *
+ */
+static bool successiveApproximationSolve(Cudd* mgr, BDDAIG* spec){
+	int threshold = 8000;
+	int threshold_incr = 3000;
+	int max_count = 2;
+	BDD init_state = spec->initState();
+	BDD iterate = spec->errorStates();
+	/*
+	BDD prev_iterate = spec->errorStates();
+	for (int i = 0; i < max_count; i++, threshold += threshold_incr){
+		cout << "*** Solving approximation " << i << " with threshold: " << threshold << endl;
+		bool ret = internalSolve_os1(mgr, spec, &iterate, &iterate, NULL, false, threshold);
+		cout << "\n\t Got iterate of size: " << iterate.nodeCount() << endl << endl;
+		prev_iterate = iterate;
+		if (!ret) return ret;
+	}
+	*/
+	for (int i = 0; i < max_count; i++, threshold += threshold_incr){
+		cout << "*** Solving approximation " << i << " with threshold: " << threshold << endl;
+		bool ret = internalSolve_os1(mgr, spec, &iterate, &iterate, NULL, false, threshold);
+		cout << "\n\t Got iterate of size: " << iterate.nodeCount() << endl << endl;
+		if (!ret) return ret;
+	}
+	// Exact computation in the worst case
+	dbgMsg("*** Doing a concrete fixpoint");
+	/*return internalSolve_os1(mgr, spec, &iterate, NULL, NULL, false, 0);*/
+	return internalSolve(mgr, spec, &iterate, NULL, NULL, false);
+}
+
+bool solve(AIG* spec_base, Cudd_ReorderingType reordering, int algo_type) {
     Cudd mgr(0, 0);
     mgr.AutodynEnable(reordering);
     BDDAIG spec(*spec_base, &mgr);
-    return internalSolve(&mgr, &spec, NULL, NULL, NULL, true);
+		if (algo_type == 1 ){
+			return internalSolve(&mgr, &spec, NULL, NULL, NULL, true);
+		} else if (algo_type == 2){
+			return internalSolve_os2(&mgr, &spec, NULL, NULL, NULL, true);
+		} else {
+			return successiveApproximationSolve(&mgr, &spec);
+		}
 }
 
 bool compSolve1(AIG* spec_base) {
@@ -650,7 +882,7 @@ static void pWorker(AIG* spec_base, int solver) {
             result = compSolve3(spec_base);
             break;
         case 4:
-            result = solve(spec_base, CUDD_REORDER_SIFT);
+            result = solve(spec_base, CUDD_REORDER_SIFT, 1);
             break;
         case 5:
             result = solve(spec_base, CUDD_REORDER_WINDOW2);

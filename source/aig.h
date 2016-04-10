@@ -90,14 +90,15 @@ class BDDAIG : public AIG {
         std::unordered_map<unsigned, BDD>* lit2bdd_map;
         std::unordered_map<unsigned long, std::set<unsigned>>* bdd2deps_map;
         std::vector<BDD>* next_fun_compose_vec;
-        BDD lit2bdd(unsigned);
         std::vector<BDD> mergeSomeSignals(BDD, std::vector<unsigned>*);
         bool isValidLatchBdd(BDD);
         bool isValidBdd(BDD);
+        BDD lit2bdd(unsigned);
     public:
         static BDD safeRestrict(BDD, BDD);
         std::set<unsigned> semanticDeps(BDD);
         static unsigned primeVar(unsigned lit) { return AIG::stripLit(lit) + 1; }
+				BDDAIG(const BDDAIG &, int, double, int, int kind);
         BDDAIG(const AIG&, Cudd*);
         BDDAIG(const BDDAIG&, BDD);
         ~BDDAIG();
@@ -110,6 +111,10 @@ class BDDAIG : public AIG {
         BDD uinputCube();
         BDD transRelBdd();
         BDD toCube(std::set<unsigned>&);
+				/** Compute Pre with partitioned trans rel, by pushing quantifiers
+				 * inside the conjunction */
+				BDD pre(BDD,int underApprox_threshold, BDD* careset);
+				BDD getErrorFunction();
         std::set<unsigned> getBddDeps(BDD);
         std::set<unsigned> getBddLatchDeps(BDD);
         std::vector<BDD> nextFunComposeVec(BDD*);

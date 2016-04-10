@@ -33,13 +33,14 @@ struct settings_struct {
     bool parallel;
     bool ordering_strategies;
     int comp_algo;
+    int internal_algo;
     const char* spec_file;
     const char* out_file;
 };
 
 extern struct settings_struct settings;
 
-bool solve(AIG*,Cudd_ReorderingType reordering=CUDD_REORDER_SIFT);
+bool solve(AIG*,Cudd_ReorderingType reordering=CUDD_REORDER_SIFT, int algo_type=1);
 bool compSolve1(AIG*);
 bool compSolve2(AIG*);
 bool compSolve3(AIG*);

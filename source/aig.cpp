@@ -315,6 +315,34 @@ BDDAIG::BDDAIG(const AIG &base, Cudd* local_mgr) : AIG(base) {
     this->short_error = NULL;
 }
 
+BDDAIG::BDDAIG(const BDDAIG &base, int bdd_threshold, double quality, int approx_threshold, int kind) : AIG(base) {
+    this->mgr = base.mgr;
+    this->must_clean = false;
+    this->lit2bdd_map = base.lit2bdd_map;
+    this->bdd2deps_map = base.bdd2deps_map;
+    this->primed_latch_cube = NULL;
+    this->cinput_cube = NULL;
+    this->uinput_cube = NULL;
+    this->next_fun_compose_vec = NULL;
+    this->trans_rel = NULL;
+    this->short_error = NULL;
+
+		std::vector<BDD> nfuncs  = this->nextFunComposeVec(NULL);
+		dbgMsg("*** Applying approximation kind: " + std::to_string(kind));
+		if (kind == 0){
+			dbgMsg("[DBG] Approximation: Got nextFunComposeVec of size: " + std::to_string(nfuncs.size()));
+			for (unsigned int i = 0; i < this->next_fun_compose_vec->size(); i++){
+				if ((*this->next_fun_compose_vec)[i].nodeCount() > bdd_threshold){
+					int init_size = (*this->next_fun_compose_vec)[i].nodeCount();
+					(*this->next_fun_compose_vec)[i] = (*this->next_fun_compose_vec)[i].UnderApprox(0, approx_threshold, true, quality);
+					std::cout << "[DBG]\t Approximated vector[" << i << "] from " << init_size << " down to " << 
+						(*this->next_fun_compose_vec)[i].nodeCount() << std::endl;
+				}
+			}
+		} 
+}
+
+
 BDDAIG::BDDAIG(const BDDAIG &base, BDD error) : AIG(base) {
     this->mgr = base.mgr;
     this->must_clean = false;
@@ -539,8 +567,49 @@ std::vector<unsigned> AIG::getLatchLits(){
     return v;
 }
 
+/** if underApprox_threshold <= 0, this is exact computation.
+ * Otherwise, under-approximate the bdd on the way*/
+BDD BDDAIG::pre(BDD S, int underApprox_threshold, BDD * careset = NULL){
+	std::vector<aiger_symbol*> slatches = std::vector<aiger_symbol*>(this->latches);
+	for (unsigned int i = 0; i < slatches.size(); i++){
+		for(unsigned int j = i+1; j < slatches.size(); j++){
+			aiger_symbol * tmp = slatches[j];
+			if (this->lit2bdd(slatches[i]->next).nodeCount() >
+					this->lit2bdd(tmp->next).nodeCount()){
+				slatches[j] = slatches[i];
+				slatches[i] = tmp;
+			}
+		}
+	}
+	BDD result = this->primeLatchesInBdd(S);
+	for (std::vector<aiger_symbol*>::iterator i = slatches.begin(); i != slatches.end(); i++) {
+			BDD next_fun;
+			BDD rel;
+			if ((*i)->lit == this->error_fake_latch->lit &&
+					this->short_error != NULL) {
+					next_fun = *this->short_error; 
+			} else if (this->short_error != NULL) { // simplify functions
+					next_fun = this->lit2bdd((*i)->next);
+					next_fun = BDDAIG::safeRestrict(next_fun,
+																					~(*this->short_error));
+			} else {
+					next_fun = this->lit2bdd((*i)->next);
+			}
+			BDD pvar = this->mgr->bddVar(AIG::primeVar( (*i)->lit));
+			rel = ((~pvar) | next_fun) & (pvar | ~next_fun);
+			result = result.AndAbstract(rel, pvar);
+			if (underApprox_threshold > 0 && result.nodeCount() > underApprox_threshold){
+				std::cout << "Under-approximating from " << result.nodeCount() << " ";
+				//result = result.SubsetCompress(0, underApprox_threshold);
+				result = result.UnderApprox(0, underApprox_threshold, true, 50);
+				std::cout << "down to " << result.nodeCount() << std::endl;
+			}
+	}
+	return result;
+}
 std::vector<BDD> BDDAIG::nextFunComposeVec(BDD* care_region=NULL) {
     if (this->next_fun_compose_vec == NULL) {
+
         //dbgMsg("building and caching next_fun_compose_vec");
         this->next_fun_compose_vec = new std::vector<BDD>();
         // fill the vector with singleton bdds except for the latches
@@ -776,6 +845,10 @@ std::set<unsigned> BDDAIG::semanticDeps(BDD b) {
     return result;
 }
 
+BDD BDDAIG::getErrorFunction(){
+	return this->nextFunComposeVec(NULL)[this->error_fake_latch->lit];
+}
+
 std::vector<BDDAIG*> BDDAIG::decompose() {
     std::vector<BDDAIG*> result;
     if (AIG::litIsNegated(this->error_fake_latch->next)) {
@@ -832,7 +905,7 @@ std::vector<BDDAIG*> BDDAIG::decompose() {
 bool BDDAIG::isValidLatchBdd(BDD b) {
 #ifndef NDEBUG
     std::set<unsigned> vars_in_cone = this->semanticDeps(b);
-    int hits = 0;
+    unsigned int hits = 0;
     for (std::vector<aiger_symbol*>::iterator i = this->latches.begin();
          i != this->latches.end(); i++) {
         if (vars_in_cone.find((*i)->lit) != vars_in_cone.end())
