@@ -96,6 +96,7 @@ class BDDAIG : public AIG {
         BDD lit2bdd(unsigned);
     public:
         static BDD safeRestrict(BDD, BDD);
+				BDD underApprox(BDD original, int threshold, double quality);
         std::set<unsigned> semanticDeps(BDD);
         static unsigned primeVar(unsigned lit) { return AIG::stripLit(lit) + 1; }
 				BDDAIG(const BDDAIG &, int, double, int, int kind);

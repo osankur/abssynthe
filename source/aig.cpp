@@ -298,6 +298,32 @@ BDD BDDAIG::safeRestrict(BDD original, BDD rest_region) {
         return original;
 }
 
+/** Apply UnderApprox, and if it doesn't manage to reduce the size,
+ * use SubsetCompress */
+static BDD aux_underApprox(BDD original, int threshold, double quality){
+	BDD a = original.UnderApprox(0, threshold, true, quality);
+	if (a.nodeCount() == original.nodeCount())
+		return a.SubsetCompress(0, threshold);
+	return a;
+}
+/** 
+ * Apply the above under-approximation function.
+ * If the result is trivial, remove it from the original BDD
+ * and repeat approximation. Repeat this a few times until you give up
+ */
+BDD BDDAIG::underApprox(BDD original, int threshold, double quality){
+	const int toosmall = 10;
+	BDD remaining_original = original;
+	BDD tmp = aux_underApprox(original, threshold, quality);
+	BDD first_approx = tmp;
+	int i = 0;
+	for(i = 0; tmp.nodeCount() < toosmall && i < 10; i++){
+		tmp = aux_underApprox((remaining_original & (~tmp)), threshold, quality);
+	}
+	std::cout << "Approx: Tried " << i << " times \n";
+	if (tmp.nodeCount() < toosmall) return first_approx;
+	return tmp;
+}
 unsigned AIG::numLatches(){
     return latches.size();
 }
@@ -595,13 +621,15 @@ BDD BDDAIG::pre(BDD S, int underApprox_threshold, BDD * careset = NULL){
 			} else {
 					next_fun = this->lit2bdd((*i)->next);
 			}
+			if(careset) next_fun = safeRestrict(next_fun, *careset);
 			BDD pvar = this->mgr->bddVar(AIG::primeVar( (*i)->lit));
 			rel = ((~pvar) | next_fun) & (pvar | ~next_fun);
 			result = result.AndAbstract(rel, pvar);
 			if (underApprox_threshold > 0 && result.nodeCount() > underApprox_threshold){
 				std::cout << "Under-approximating from " << result.nodeCount() << " ";
 				//result = result.SubsetCompress(0, underApprox_threshold);
-				result = result.UnderApprox(0, underApprox_threshold, true, 50);
+				//result = result.UnderApprox(0, underApprox_threshold, true, 500);
+				result = this->underApprox(result, underApprox_threshold, 10);
 				std::cout << "down to " << result.nodeCount() << std::endl;
 			}
 	}

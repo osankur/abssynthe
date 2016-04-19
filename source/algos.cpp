@@ -274,8 +274,7 @@ static BDD substituteLatchesNext(BDDAIG* spec, BDD dst, BDD* care_region=NULL) {
 // states after the upre step (the complement of all good transitions)
 static BDD upre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
     BDD not_dst = ~dst;
-    trans_bdd = substituteLatchesNext(spec, dst, NULL);
-    // trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
+    trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
     BDD cinput_cube = spec->cinputCube();
     BDD uinput_cube = spec->uinputCube();
     BDD temp_bdd = trans_bdd.UnivAbstract(cinput_cube);
@@ -298,12 +297,6 @@ static bool internalSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     } else {
         error_states = spec->errorStates();
     }
-		// JUST TESTING
-		// printf("Starting synthesis...\n"); fflush(stdout);
-		// synthAlgo(mgr, spec, ~error_states, mgr->bddOne());
-		// printf("Done synthesis...\n"); fflush(stdout);
-		// 
-
 
     BDD prev_error = ~mgr->bddOne();
     includes_init = ((init_state & error_states) != ~mgr->bddOne());
@@ -348,11 +341,13 @@ static BDD cpre_os1(BDDAIG* spec, BDD dst, BDD &trans_bdd, int approx_threshold)
 }
 */
 static BDD upre_os1(BDDAIG* spec, BDD dst, BDD &trans_bdd, int approx_threshold) {
-		trans_bdd = spec->pre(dst,approx_threshold, NULL);
-    BDD cinput_cube = spec->cinputCube();
-    BDD uinput_cube = spec->uinputCube();
-    BDD temp_bdd = trans_bdd.UnivAbstract(cinput_cube);
-    return temp_bdd.ExistAbstract(uinput_cube);
+	if (approx_threshold <= 0)
+		return upre(spec, dst, trans_bdd);
+	trans_bdd = spec->pre(dst,approx_threshold, NULL);
+	BDD cinput_cube = spec->cinputCube();
+	BDD uinput_cube = spec->uinputCube();
+	BDD temp_bdd = trans_bdd.UnivAbstract(cinput_cube);
+	return temp_bdd.ExistAbstract(uinput_cube);
 }
 
 /*
@@ -406,12 +401,15 @@ static bool internalSolve_os1(Cudd* mgr, BDDAIG* spec, const BDD* cpre_init,
     return includes_init;
 }
 */
-
+/* max_steps : max number of upre steps. -1 means no limit.
+ * If max_steps is specified, then the returned result is conclusive 
+ * only if it is false (unrealizable).
+ * */
 static bool internalSolve_os1(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
                           BDD* losing_region, BDD* losing_transitions,
-                          bool do_synth=false, int approx_threshold=0) {
+                          bool do_synth=false, int approx_threshold=0, 
+													int max_steps=-1, int * steps_performed = NULL) {
     dbgMsg("Computing fixpoint of UPRE.");
-        //cout << "Visited " << occ_counter++ << endl;
     bool includes_init = false;
     unsigned cnt = 0;
     BDD bad_transitions;
@@ -423,16 +421,19 @@ static bool internalSolve_os1(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
         error_states = spec->errorStates();
     }
 
-
     BDD prev_error = ~mgr->bddOne();
     includes_init = ((init_state & error_states) != ~mgr->bddOne());
     while (!includes_init && error_states != prev_error) {
         prev_error = error_states;
         error_states = prev_error | upre_os1(spec, prev_error, bad_transitions, approx_threshold);
-				cout << ("Iterate has size " + to_string(error_states.nodeCount())) << endl;
+				cout << "Iterate " << cnt << " has size " + to_string(error_states.nodeCount()) << endl;
         includes_init = ((init_state & error_states) != ~mgr->bddOne());
         cnt++;
+				if (max_steps >= 0 && cnt >= (unsigned)max_steps) break;
     }
+		if (steps_performed){
+				*steps_performed = cnt;
+		}
     
     dbgMsg("Early exit? " + to_string(includes_init) + 
            ", after " + to_string(cnt) + " iterations.");
@@ -511,13 +512,9 @@ static bool successiveApproximationSolve(Cudd* mgr, BDDAIG* spec){
 */
 /*
  * 
-time ./abssynthe -v LDW -a 3 ../../bench-syntcomp14/amba3c5y.aag 
-1m47
-... -a 1
-8m..
-
-
-
+	Idea: Use approximation at later stages, not at the beginning
+	Idea: Calculate both under and upper approximations at each step
+		Track whether the result is approximate or exact for early termination
  *
  *
  */
@@ -525,27 +522,24 @@ static bool successiveApproximationSolve(Cudd* mgr, BDDAIG* spec){
 	int threshold = 8000;
 	int threshold_incr = 3000;
 	int max_count = 2;
+	int exact_steps = 0;
+
 	BDD init_state = spec->initState();
 	BDD iterate = spec->errorStates();
-	/*
-	BDD prev_iterate = spec->errorStates();
+	cout << "*** Starting concrete iterations..." << endl;
+	int steps_performed;
+	bool ret = internalSolve_os1(mgr, spec, &iterate, &iterate, NULL, false, 0, exact_steps, &steps_performed);
+	cout << "*** Done with prior exact computation: " << steps_performed << " steps performed out of " << exact_steps << endl;
+	if (!ret || steps_performed < exact_steps) return ret;
+
 	for (int i = 0; i < max_count; i++, threshold += threshold_incr){
 		cout << "*** Solving approximation " << i << " with threshold: " << threshold << endl;
-		bool ret = internalSolve_os1(mgr, spec, &iterate, &iterate, NULL, false, threshold);
-		cout << "\n\t Got iterate of size: " << iterate.nodeCount() << endl << endl;
-		prev_iterate = iterate;
-		if (!ret) return ret;
-	}
-	*/
-	for (int i = 0; i < max_count; i++, threshold += threshold_incr){
-		cout << "*** Solving approximation " << i << " with threshold: " << threshold << endl;
-		bool ret = internalSolve_os1(mgr, spec, &iterate, &iterate, NULL, false, threshold);
+		bool ret = internalSolve_os1(mgr, spec, &iterate, &iterate, NULL, false, threshold, exact_steps);
 		cout << "\n\t Got iterate of size: " << iterate.nodeCount() << endl << endl;
 		if (!ret) return ret;
 	}
 	// Exact computation in the worst case
 	dbgMsg("*** Doing a concrete fixpoint");
-	/*return internalSolve_os1(mgr, spec, &iterate, NULL, NULL, false, 0);*/
 	return internalSolve(mgr, spec, &iterate, NULL, NULL, false);
 }
 
