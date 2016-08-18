@@ -135,8 +135,8 @@ void parse_arguments(int argc, char** argv) {
                 break;
             case 'a':
                 settings.internal_algo = atoi(optarg);
-                if (settings.internal_algo < 1 || settings.internal_algo > 3) {
-                    errMsg(std::string("Expected internal_algo to be in {1,2,3} "
+                if (settings.internal_algo < 1 || settings.internal_algo > 4) {
+                    errMsg(std::string("Expected internal_algo to be in {1,2,3,4} "
                                        "instead of ") + optarg);
                     usage();
                     exit(1);

@@ -317,7 +317,7 @@ BDD BDDAIG::underApprox(BDD original, int threshold, double quality){
 	BDD tmp = aux_underApprox(original, threshold, quality);
 	BDD first_approx = tmp;
 	int i = 0;
-	for(i = 0; tmp.nodeCount() < toosmall && i < 10; i++){
+	for(i = 0; tmp.nodeCount() < toosmall && i < 20; i++){
 		tmp = aux_underApprox((remaining_original & (~tmp)), threshold, quality);
 	}
 	std::cout << "Approx: Tried " << i << " times \n";
