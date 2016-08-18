@@ -64,7 +64,7 @@ typedef struct aiger_symbol aiger_symbol;
 
 /*------------------------------------------------------------------------*/
 /* Each literal is associated to a variable having an unsigned index.  The
- * variable index is obtained by deviding the literal index by two, which is
+ * variable index is obtained by dividing the literal index by two, which is
  * the same as removing the sign bit.
  */
 #define aiger_var2lit(i) \
@@ -362,5 +362,10 @@ aiger_and *aiger_is_and (aiger *, unsigned lit);
  */
 void aiger_redefine_input_as_and(aiger*, unsigned, unsigned, unsigned);
 void aiger_remove_outputs(aiger*);
+
+/*------------------------------------------------------------------------*/
+/* Externalizing a method to translate aiger to cnf for a QBF solver.
+ */
+int aiger2dimacs(aiger*, const char*, int, int, unsigned*, int);
 
 #endif

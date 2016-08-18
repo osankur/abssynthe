@@ -926,7 +926,12 @@ aiger_string_put (char ch, aiger_buffer * buffer)
   if (buffer->cursor == buffer->end)
     return EOF;
   *buffer->cursor++ = ch;
+<<<<<<< HEAD
   return ch;
+=======
+  res = ch;
+  return res;
+>>>>>>> dc2c048a4694382fc44a5e0d96c3304b66298645
 }
 
 static int

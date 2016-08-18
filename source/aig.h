@@ -29,6 +29,7 @@
 #include <vector>
 #include <set>
 #include <unordered_set>
+#include <map>
 #include <unordered_map>
 #include <cassert>
 
@@ -44,8 +45,9 @@ class AIG {
         std::vector<aiger_symbol*> latches;
         std::vector<aiger_symbol*> c_inputs;
         std::vector<aiger_symbol*> u_inputs;
-        aiger_symbol* error_fake_latch;
-        void introduceErrorLatch();
+        aiger_symbol error_fake_latch;
+        char error_fake_latch_name[6];
+        void pushErrorLatch();
         std::unordered_map<unsigned, std::set<unsigned>>* lit2deps_map;
         std::unordered_map<unsigned,
                            std::pair<std::vector<unsigned>,
@@ -56,25 +58,35 @@ class AIG {
                              std::unordered_set<unsigned>*);
         std::set<unsigned> getLitDeps(unsigned);
         static unsigned primeVar(unsigned lit) { return AIG::stripLit(lit) + 1; }
+        void defaultValues();
     public:
-        void removeErrorLatch();
+        void popErrorLatch();
         static unsigned negateLit(unsigned lit) { return lit ^ 1; }
         static bool litIsNegated(unsigned lit) { return (lit & 1) == 1; }
         static unsigned stripLit(unsigned lit) { return lit & ~1; }
         AIG(const char*, bool intro_error_latch=true);
         AIG(const AIG&);
+        AIG();
         ~AIG();
         void cleanCaches();
         unsigned maxVar();
+        void addInput(unsigned, const char*);
+        void addOutput(unsigned, const char*);
         void addGate(unsigned, unsigned, unsigned);
         void input2gate(unsigned, unsigned);
         void writeToFile(const char*);
+        void writeToFileAsCnf(const char*, unsigned*, int);
         std::vector<aiger_symbol*> getLatches() { return this->latches; }
         std::vector<aiger_symbol*> getCInputs() { return this->c_inputs; }
+        std::vector<aiger_symbol*> getUInputs() { return this->u_inputs; }
         unsigned numLatches();
         std::vector<unsigned> getCInputLits();
         std::vector<unsigned> getUInputLits();
         std::vector<unsigned> getLatchLits();
+        unsigned optimizedGate(unsigned, unsigned);
+        unsigned copyGateFromAux(const AIG*, unsigned,
+            std::map<std::pair<unsigned, unsigned>, unsigned>*);
+        unsigned copyGateFrom(const AIG*, unsigned);
 };
 
 class BDDAIG : public AIG {
@@ -82,6 +94,7 @@ class BDDAIG : public AIG {
         bool must_clean;
     protected:
         Cudd* mgr;
+        BDD* latch_cube;
         BDD* primed_latch_cube;
         BDD* cinput_cube;
         BDD* uinput_cube;
@@ -94,12 +107,14 @@ class BDDAIG : public AIG {
         bool isValidLatchBdd(BDD);
         bool isValidBdd(BDD);
         BDD lit2bdd(unsigned);
+        void defaultValues();
     public:
         static BDD safeRestrict(BDD, BDD);
 				BDD underApprox(BDD original, int threshold, double quality);
         std::set<unsigned> semanticDeps(BDD);
         static unsigned primeVar(unsigned lit) { return AIG::stripLit(lit) + 1; }
 				BDDAIG(const BDDAIG &, int, double, int, int kind);
+        BDDAIG(const BDDAIG&, std::vector<std::pair<unsigned, BDD>>);
         BDDAIG(const AIG&, Cudd*);
         BDDAIG(const BDDAIG&, BDD);
         ~BDDAIG();
@@ -108,6 +123,7 @@ class BDDAIG : public AIG {
         BDD errorStates();
         BDD primeLatchesInBdd(BDD);
         BDD primedLatchCube();
+        BDD latchCube();
         BDD cinputCube();
         BDD uinputCube();
         BDD transRelBdd();
@@ -119,7 +135,10 @@ class BDDAIG : public AIG {
         std::set<unsigned> getBddDeps(BDD);
         std::set<unsigned> getBddLatchDeps(BDD);
         std::vector<BDD> nextFunComposeVec(BDD*);
+        std::vector<BDD> getNextFunVec();
         std::vector<BDDAIG*> decompose();
+        bool isValidLatchBdd(BDD);
+        bool isValidBdd(BDD);
 };
 
 #endif
