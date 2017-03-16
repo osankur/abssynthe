@@ -125,6 +125,7 @@ class BDDAIG : public AIG {
         BDD uinputCube();
         BDD transRelBdd();
         BDD toCube(std::set<unsigned>&);
+
         std::set<unsigned> getBddDeps(BDD);
         std::set<unsigned> getBddLatchDeps(BDD);
         std::vector<BDD> nextFunComposeVec(BDD*);

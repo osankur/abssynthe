@@ -109,12 +109,14 @@ void parse_arguments(int argc, char** argv) {
     settings.ordering_strategies = false;
     settings.out_file = NULL;
     settings.spec_file = NULL;
+		
+		settings.custom = 0;
 
     // read values from argv
     int opt_key;
     int opt_index;
     while (true) {
-        opt_key = getopt_long(argc, argv, "v:tapsc:o:w:i:", long_options,
+        opt_key = getopt_long(argc, argv, "v:tapsc:o:w:i:z:", long_options,
                               &opt_index);
         if (opt_key == -1)
             break;
@@ -161,6 +163,9 @@ void parse_arguments(int argc, char** argv) {
             case 'i':
                 settings.ind_cert_out_file = optarg;
                 break;
+						case 'z':
+								settings.custom = atoi(optarg);
+								break;
             default:
                 usage();
                 exit(1);
@@ -183,13 +188,16 @@ void parse_arguments(int argc, char** argv) {
 int main(int argc, char** argv) {
     parse_arguments(argc, argv);
     // solve the synthesis problem
+		std::cout << settings.spec_file << " ";
     bool result;
     if (settings.parallel) {
         result = solveParallel();
     } else {
         // try to open the spec now
         AIG aig(settings.spec_file);
-        if (settings.comp_algo == 1) {
+				if (settings.custom > 0){
+					result = custom_solve1(&aig, CUDD_REORDER_SIFT);
+				} else if (settings.comp_algo == 1) {
                 result = compSolve1(&aig);
         } else if (settings.comp_algo == 2){
                 result = compSolve2(&aig);

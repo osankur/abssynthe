@@ -38,9 +38,13 @@ struct settings_struct {
     const char* out_file;
     const char* win_region_out_file;
     const char* ind_cert_out_file;
+
+		int custom;
 };
 
 extern struct settings_struct settings;
+
+bool custom_solve1(AIG*,Cudd_ReorderingType reordering=CUDD_REORDER_SIFT);
 
 bool solve(AIG*,Cudd_ReorderingType reordering=CUDD_REORDER_SIFT);
 bool compSolve1(AIG*);

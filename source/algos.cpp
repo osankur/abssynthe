@@ -36,12 +36,13 @@
 #include <list>
 #include <set>
 #include <cfloat>
+#include <vector>
 #include "cuddObj.hh"
 
 #include "abssynthe.h"
 #include "logging.h"
 #include "aig.h"
-
+#include "automaton.h"
 
 using namespace std;
 
@@ -116,8 +117,12 @@ static unsigned bdd2aig(Cudd* mgr, AIG* spec, BDD a_bdd,
     return res;
 }
 
+
+
+
+
 static vector<pair<unsigned, BDD>> synthAlgo(Cudd* mgr, BDDAIG* spec,
-                                             BDD non_det_strategy, BDD care_set) {
+                                             BDD non_det_strategy, BDD care_set, int sorting = 2) {
     BDD strategy = non_det_strategy;
 #ifndef NDEBUG
     spec->dump2dot(strategy, "strategy.dot");
@@ -127,17 +132,56 @@ static vector<pair<unsigned, BDD>> synthAlgo(Cudd* mgr, BDDAIG* spec,
         litstring += to_string(*i) + ", ";
     dbgMsg("Semantic deps of the non-det strat: " + litstring);
 #endif
-    vector<aiger_symbol*> c_inputs = spec->getCInputs();
+    vector<aiger_symbol*> original_c_inputs = spec->getCInputs();
     vector<unsigned> c_input_lits;
     vector<BDD> c_input_funs;
 #ifndef NDEBUG
     dbgMsg("non-det strategy BDD size: " +
            to_string(non_det_strategy.nodeCount()));
 #endif
-
+		
+		// Sort
+		vector<aiger_symbol*> c_inputs(original_c_inputs);
+    struct customLess {
+				customLess(Cudd * mgr){
+					this->mgr = mgr;
+				}
+        bool operator()(aiger_symbol * a, aiger_symbol * b)
+        {   
+            return mgr->ReadPerm( a->lit ) < mgr->ReadPerm(b->lit);
+        }
+				Cudd * mgr;
+    };
+    struct customGreater {
+				customGreater(Cudd * mgr){
+					this->mgr = mgr;
+				}
+        bool operator()(aiger_symbol * a, aiger_symbol * b)
+        {   
+            return mgr->ReadPerm( a->lit ) > mgr->ReadPerm(b->lit);
+        }
+				Cudd * mgr;
+    };
+		customLess cl(mgr);
+		customGreater gr(mgr);
+		if (sorting == 1){
+			dbgMsg("Sorting cinput variables < ");
+			std::sort(c_inputs.begin(), c_inputs.end(), cl);
+		} else if (sorting == 2){
+			dbgMsg("Sorting cinput variables > ");
+			std::sort(c_inputs.begin(), c_inputs.end(), gr);
+		}
+		/*
+			for(unsigned i = 0; i < c_inputs.size(); i++){
+				cout << "Cinput " << c_inputs[i]->lit << "(variable at position " << 
+						mgr->ReadPerm(c_inputs[i]->lit) << ")"<< endl;
+			}
+		*/
     // as a first step, we compute a single bdd per controllable input
     for (vector<aiger_symbol*>::iterator i = c_inputs.begin();
          i != c_inputs.end(); i++) {
+    //for (vector<aiger_symbol*>::iterator i = c_inputs.begin();
+    //     i != c_inputs.end(); i++) {
         BDD c = mgr->bddVar((*i)->lit);
         BDD others_cube = mgr->bddOne();
         unsigned others_count = 0;
@@ -175,9 +219,10 @@ static vector<pair<unsigned, BDD>> synthAlgo(Cudd* mgr, BDDAIG* spec,
         // on care set: must_be_true.restrict(care_set) <-> must_be_true
         // or         ~(must_be_false).restrict(care_set) <-> ~must_be_false
         BDD opt1 = BDDAIG::safeRestrict(must_be_true, local_care_set);
-        //dbgMsg("opt1 BDD size: " + to_string(opt1.nodeCount()));
+				dbgMsg("local_care_set has size " + to_string(local_care_set.nodeCount()));
+        dbgMsg("opt1 BDD size: " + to_string(opt1.nodeCount()) + " while mbt: " + to_string(must_be_true.nodeCount()));
         BDD opt2 = BDDAIG::safeRestrict(~must_be_false, local_care_set);
-        //dbgMsg("opt2 BDD size: " + to_string(opt2.nodeCount()));
+        dbgMsg("opt2 BDD size: " + to_string(opt2.nodeCount()) + " while mbf: " + to_string(must_be_false.nodeCount()));
         BDD res;
         if (opt1.nodeCount() < opt2.nodeCount())
             res = opt1;
@@ -200,6 +245,12 @@ static vector<pair<unsigned, BDD>> synthAlgo(Cudd* mgr, BDDAIG* spec,
         i++;
         j++;
     }
+
+		int totalsize = 0;
+		for (unsigned i = 0; i < result.size(); i++){
+			totalsize += result[i].second.nodeCount();
+		}
+		cout << "*** Total nodeCount " << totalsize << endl;
 
     return result;
 }
@@ -615,6 +666,380 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     BDDAIG spec(*spec_base, &mgr);
     return internalSolve(&mgr, &spec, NULL, NULL, NULL, true);
 }
+
+
+
+/** These are custom algorithms */
+
+BDD pre(BDDAIG* spec, BDD dst, std::vector<BDD> & composeVec){
+	BDD trans_bdd = dst.VectorCompose(composeVec);
+	BDD cinput_cube = spec->cinputCube();
+	BDD uinput_cube = spec->uinputCube();
+	BDD temp_bdd = trans_bdd.ExistAbstract(cinput_cube);
+	return temp_bdd.ExistAbstract(uinput_cube);
+}
+
+/*
+BDD coreachErrUnderStrat(Cudd * mgr, BDDAIG* spec, std::map<unsigned, BDD> partial_strat){
+	std::vector<BDD> trans = spec->nextFunComposeVec(NULL);
+	for(std::map<unsigned,BDD>::iterator it = partial_strat.begin();
+			it != partial_strat.end();
+			it++)
+	{
+			assert(it->first < trans.size());
+			trans[it->first] = it->second;
+	}
+	BDD iterate = spec->errorStates();
+	BDD prev = ~mgr->bddOne();
+	while( iterate != prev ){
+		prev = iterate;
+		iterate = iterate | pre(spec, iterate, trans);
+	}
+	return iterate;
+}
+*/
+
+// TODO Use restrict here
+BDD coreachErrUnderStrat(Cudd * mgr, BDDAIG* spec, BDD partial_strat){
+	std::vector<BDD> trans = spec->nextFunComposeVec(NULL);
+	std::vector<aiger_symbol*> latches = spec->getLatches();
+	std::vector<aiger_symbol*>::iterator it = latches.begin();
+	for( ; it != latches.end(); it++){
+		trans[(*it)->lit] &= partial_strat;
+	}
+	BDD iterate = spec->errorStates();
+	BDD prev = ~mgr->bddOne();
+	while( iterate != prev ){
+		prev = iterate;
+		iterate = iterate | pre(spec, iterate, trans);
+	}
+	return iterate;
+}
+static vector<pair<unsigned, BDD>> custom_synthAlgo(Cudd* mgr, BDDAIG* spec,
+                                             BDD non_det_strategy, BDD care_set, int sorting = 0) {
+		// At iteration i, non_det_strategy is non_det_strategy & F_1 & ... & F_i
+    BDD strategy = non_det_strategy;
+		// At iteration i, partial_strategy is F_1 & F_2 & ... & F_i
+		BDD partial_strategy = mgr->bddOne();
+
+		BDD coreach = coreachErrUnderStrat(mgr, spec, partial_strategy);
+
+#ifndef NDEBUG
+    spec->dump2dot(strategy, "strategy.dot");
+    set<unsigned> deps = spec->semanticDeps(strategy);
+    string litstring;
+    for (set<unsigned>::iterator i = deps.begin(); i != deps.end(); i++)
+        litstring += to_string(*i) + ", ";
+    dbgMsg("Semantic deps of the non-det strat: " + litstring);
+#endif
+    vector<aiger_symbol*> original_c_inputs = spec->getCInputs();
+    vector<unsigned> c_input_lits;
+    vector<BDD> c_input_funs;
+#ifndef NDEBUG
+    dbgMsg("non-det strategy BDD size: " +
+           to_string(non_det_strategy.nodeCount()));
+#endif
+		
+
+		// Sort
+		vector<aiger_symbol*> c_inputs(original_c_inputs);
+    struct customLess {
+				customLess(Cudd * mgr){
+					this->mgr = mgr;
+				}
+        bool operator()(aiger_symbol * a, aiger_symbol * b)
+        {   
+            return mgr->ReadPerm( a->lit ) < mgr->ReadPerm(b->lit);
+        }
+				Cudd * mgr;
+    };
+    struct customGreater {
+				customGreater(Cudd * mgr){
+					this->mgr = mgr;
+				}
+        bool operator()(aiger_symbol * a, aiger_symbol * b)
+        {   
+            return mgr->ReadPerm( a->lit ) > mgr->ReadPerm(b->lit);
+        }
+				Cudd * mgr;
+    };
+		customLess cl(mgr);
+		customGreater gr(mgr);
+		if (sorting == 1){
+			dbgMsg("Sorting cinput variables < ");
+			std::sort(c_inputs.begin(), c_inputs.end(), cl);
+		} else if (sorting == 2){
+			dbgMsg("Sorting cinput variables > ");
+			std::sort(c_inputs.begin(), c_inputs.end(), gr);
+		}
+
+		int ccount = 0;
+    // as a first step, we compute a single bdd per controllable input
+    for (vector<aiger_symbol*>::iterator i = c_inputs.begin();
+         i != c_inputs.end(); i++) {
+        BDD c = mgr->bddVar((*i)->lit);
+				// Shortcut if err not reachable from init state given current partial_strategy
+				if ( (spec->initState() & coreach) == ~mgr->bddOne() ){
+					dbgMsg("SHORTCUTTING for cinput " + to_string(c.NodeReadIndex()) + ": partial strategy is sufficint to win");
+					BDD one = mgr->bddOne();
+					strategy &= (~c | one) & (~one | c);
+					partial_strategy &= (~c | one) & (~one | c);
+					c_input_funs.push_back(one);
+					c_input_lits.push_back((*i)->lit);
+					continue;
+				}
+        BDD others_cube = mgr->bddOne();
+        unsigned others_count = 0;
+        for (vector<aiger_symbol*>::iterator j = c_inputs.begin();
+             j != c_inputs.end(); j++) {
+            //dbgMsg("CInput " + to_string((*j)->lit));
+            if ((*i)->lit == (*j)->lit)
+                continue;
+            others_cube &= mgr->bddVar((*j)->lit);
+            //dbgMsg("Other cube has lit " + to_string((*j)->lit));
+            others_count++;
+        }
+        BDD c_arena;
+        if (others_count > 0)
+            c_arena = strategy.ExistAbstract(others_cube);
+        else {
+            //dbgMsg("No need to abstract other cinputs");
+            c_arena = strategy;
+        }
+#ifndef NDEBUG
+        spec->dump2dot(c_arena, "c_arena.dot");
+        spec->dump2dot(c_arena.Cofactor(c), "c_arena_true.dot");
+#endif
+        // pairs (x,u) in which c can be true
+        BDD can_be_true = c_arena.Cofactor(c);
+        //dbgMsg("Can be true BDD size: " + to_string(can_be_true.nodeCount()));
+        // pairs (x,u) in which c can be false
+        BDD can_be_false = c_arena.Cofactor(~c);
+        //dbgMsg("Can be false BDD size: " + to_string(can_be_false.nodeCount()));
+        BDD must_be_true = (~can_be_false) & can_be_true;
+        //dbgMsg("Must be true BDD size: " + to_string(must_be_true.nodeCount()));
+        BDD must_be_false = (~can_be_true) & can_be_false;
+        //dbgMsg("Must be false BDD size: " + to_string(must_be_false.nodeCount()));
+        BDD local_care_set = (care_set & (must_be_true | must_be_false)) & coreach;
+        // on care set: must_be_true.restrict(care_set) <-> must_be_true
+        // or         ~(must_be_false).restrict(care_set) <-> ~must_be_false
+        BDD opt1 = BDDAIG::safeRestrict(must_be_true, local_care_set);
+				dbgMsg("local_care_set has size " + to_string(local_care_set.nodeCount()));
+        dbgMsg("opt1 BDD size: " + to_string(opt1.nodeCount()) + " while mbt: " + to_string(must_be_true.nodeCount()));
+        BDD opt2 = BDDAIG::safeRestrict(~must_be_false, local_care_set);
+        dbgMsg("opt2 BDD size: " + to_string(opt2.nodeCount()) + " while mbf: " + to_string(must_be_false.nodeCount()));
+        BDD res;
+        if (opt1.nodeCount() < opt2.nodeCount())
+            res = opt1;
+        else
+            res = opt2;
+#ifndef NDEBUG
+        dbgMsg("Size of function for " + to_string(c.NodeReadIndex()) + " = " +
+               to_string(res.nodeCount()));
+#endif
+        strategy &= (~c | res) & (~res | c);
+        partial_strategy &= (~c | res) & (~res | c);
+        c_input_funs.push_back(res);
+        c_input_lits.push_back((*i)->lit);
+
+				// Computation is expensive. Do not do it at each iteration.
+				if (ccount % 2 == 0)
+					coreach = coreachErrUnderStrat(mgr, spec, partial_strategy);
+				ccount++;
+    }
+
+    vector<pair<unsigned, BDD>> result;
+    vector<unsigned>::iterator i = c_input_lits.begin();
+    vector<BDD>::iterator j = c_input_funs.begin();
+    for (; i != c_input_lits.end();) {
+        result.push_back(make_pair(*i, *j));
+        i++;
+        j++;
+    }
+
+		int totalsize = 0;
+		for (unsigned i = 0; i < result.size(); i++){
+			totalsize += result[i].second.nodeCount();
+		}
+		cout << "*** Total nodeCount " << totalsize << endl;
+
+    return result;
+}
+
+
+
+void custom_synthesis(Cudd *mgr, BDDAIG * spec, BDD & win){
+	int n = mgr->ReadSize();
+	BDD reg = win.ExistAbstract(spec->cinputCube());
+	int regSize = reg.nodeCount();
+	int smallSize = regSize/4;
+	cout << "Win domain has size " << regSize << endl;
+	vector<BDD> decomp; // disjunctive decomp of win
+	for(unsigned i =0 ;i < 16; i++){
+		if (reg == ~mgr->bddOne() ) break;
+		BDD disj = reg.UnderApprox(n, smallSize, false, 0.8);
+		if (disj == ~mgr->bddOne() || disj == reg){
+			if (2* smallSize > regSize){
+				break;
+			} else{
+				smallSize *= 2;
+			}
+		} else {
+			cout << "Adding " << i << " of size " << disj.nodeCount() << endl;
+			decomp.push_back(disj);
+			reg = reg & ~disj;
+		}
+	}
+	if (reg != ~mgr->bddOne()){
+		decomp.push_back(reg);
+		cout << "Also adding last one of size " << reg.nodeCount() << endl;
+	}
+	//for(unsigned i = 0; i < decomp.size(); i++){
+	//	cout << "BDD[" << i << "].nodeCount = " << decomp[i].nodeCount() << endl;
+	//}
+}
+
+static bool custom_internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
+                               BDD* losing_region, BDD* losing_transitions,
+                               bool do_synth=false) {
+    //static int occ_counter = 1;
+    dbgMsg("Computing fixpoint of UPRE.");
+    //cout << "Visited " << occ_counter++ << endl;
+    bool includes_init = false;
+    unsigned cnt = 0;
+    BDD bad_transitions;
+    BDD init_state = spec->initState();
+    BDD error_states;
+    if (upre_init != NULL)
+        error_states = *upre_init;
+    else
+        error_states = spec->errorStates();
+    BDD prev_error = ~mgr->bddOne();
+    includes_init = ((init_state & error_states) != ~mgr->bddOne());
+    while (!includes_init && error_states != prev_error) {
+        prev_error = error_states;
+        error_states = prev_error | upre(spec, prev_error, bad_transitions);
+        includes_init = ((init_state & error_states) != ~mgr->bddOne());
+        cnt++;
+    }
+    
+    dbgMsg("Early exit? " + to_string(includes_init) + 
+           ", after " + to_string(cnt) + " iterations.");
+
+#ifndef NDEBUG
+    spec->dump2dot(error_states & init_state, "uprestar_and_init.dot");
+#endif
+    if (losing_region != NULL) {
+        *losing_region = error_states;
+    }
+    if (losing_transitions != NULL){
+        *losing_transitions = bad_transitions;
+    } 
+    // if !includes_init == true, then ~bad_transitions is the set of all
+    // good transitions for controller (Eve)
+    if (!includes_init && do_synth && outputExpected()) {
+        dbgMsg("acquiring lock on synth mutex");
+        if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
+        BDD clean_winning_region = (~error_states).Cofactor(~spec->errorStates());
+#ifndef NDEBUG
+        // we can check that the bdd represents an inductive winning region as
+        // follows
+        assert(((~clean_winning_region |
+                 upre(spec, ~clean_winning_region, bad_transitions)) &
+                clean_winning_region) == ~mgr->bddOne());
+#endif
+        if (settings.out_file != NULL) {
+            dbgMsg("Starting synthesis");
+						vector<pair<unsigned, BDD> > strat = custom_synthAlgo(mgr, spec, ~bad_transitions,
+                          ~error_states, 2);
+						// let us clean the AIG before we start introducing new stuff
+						spec->popErrorLatch();
+            finalizeSynth(mgr, spec, strat);
+        } else {
+					// let us clean the AIG before we start introducing new stuff
+					spec->popErrorLatch();
+				}
+        if (settings.win_region_out_file != NULL) {
+            dbgMsg("Starting output of winning region");
+            outputWinRegion(mgr, spec, clean_winning_region);
+						/*
+						// Actually dump BDD
+						std::vector<BDD> v;
+						v.push_back(clean_winning_region);
+						FILE * file = fopen("win.dot", "w");
+						mgr->DumpDot(v, NULL, NULL, file);
+						fclose(file);
+
+						// custom_synthesis(mgr, spec, clean_winning_region);
+						// New stuff: Smaller relation
+						int output_level = mgr->ReadSize() - spec->getCInputLits().size();
+						Node * node = Node::from_DdNode(mgr->getManager(), 0, clean_winning_region.getNode());
+						
+						Functionizer f(mgr, node, output_level);
+						cout << "OK\n"; cout.flush();
+						BDD func;
+						int width = f.getBddWidth();
+						cout << "Original winning region has width " << width << endl;
+						// bool success = f.automaton(3 * width /2, func);
+						bool success = f.automaton(3, func);
+						if (success){
+							logMsg("Successfully synthesized a smaller(?) relation");
+							cout << "winning_region.nodeCount() =  " << clean_winning_region.nodeCount() << endl;
+							cout << "func.nodeCount() =  " << func.nodeCount() << endl;
+							v.clear();
+							v.push_back(func);
+							FILE * file = fopen("func.dot", "w");
+							mgr->DumpDot(v, NULL, NULL, file);
+							fclose(file);
+						} else {
+							logMsg("No solution for a smaller relation");
+						}
+						*/
+        }
+        if (settings.ind_cert_out_file != NULL) {
+            dbgMsg("Starting output of inductive certificate");
+            outputIndCertificate(mgr, spec, clean_winning_region);
+        }
+    }
+    return !includes_init;
+}
+
+static bool custom_internalSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
+                          BDD* losing_region, BDD* losing_transitions,
+                          bool do_synth=false) {
+    // otherwise, just use the exact version
+    return custom_internalSolveExact(mgr, spec, upre_init, losing_region,
+                              losing_transitions, do_synth);
+}
+
+
+bool custom_solve1(AIG* spec_base, Cudd_ReorderingType reordering) {
+    Cudd mgr(0, 0);
+    mgr.AutodynEnable(reordering);
+		// Group CInputs and the rest in two separate groups
+		// Here we assume that the cinputs appear first in our AIG representation
+		// FIXME We could put a check here
+		/*
+		int nvars = 2*(spec_base->maxVar());
+		int last_cinput = 2*(spec_base->getCInputs().size());
+		MtrNode * top = Mtr_InitGroupTree(0, nvars+1);
+		MtrNode * m2 = Mtr_MakeGroup(top, 0, last_cinput+1, MTR_DEFAULT);
+		MtrNode * m1 = Mtr_MakeGroup(top, last_cinput+1, nvars - last_cinput-1,MTR_DEFAULT);
+		// cerr << "Interval: [0; " << last_cinput << "] and [" << last_cinput+1 << "; " << last_var << "]\n";
+		mgr.SetTree(top);
+		Mtr_PrintGroups(top,0);
+		*/
+		// mgr.MakeTreeNode(1, 2 * spec_base->getCInputs().size(), MTR_DEFAULT);
+		// mgr.MakeTreeNode(2 * spec_base->getCInputs().size() + 1, 2* (spec_base->getUInputs().size() + spec_base->getLatches().size()), MTR_DEFAULT);
+		// mgr.MakeTreeNode(1, 2 * spec_base->getCInputs().size(), MTR_DEFAULT);
+		// mgr.MakeTreeNode(2 * spec_base->getCInputs().size() + 1, 2* (spec_base->getUInputs().size() + spec_base->getLatches().size()), MTR_DEFAULT);
+		// Mtr_PrintTree(mgr.ReadTree());
+    BDDAIG spec(*spec_base, &mgr);
+    return custom_internalSolve(&mgr, &spec, NULL, NULL, NULL, true);
+}
+
+
+/****/
 
 bool compSolve1(AIG* spec_base) {
     Cudd mgr(0, 0);

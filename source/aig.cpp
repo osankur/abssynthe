@@ -936,7 +936,7 @@ std::set<unsigned> BDDAIG::semanticDeps(BDD b) {
         BDD simpler_b = b.ExistAbstract(this->mgr->bddVar(i));
         if (b != simpler_b) {
             result.insert(i);
-            dbgMsg("Depends on var " + std::to_string(i));
+            // dbgMsg("Depends on var " + std::to_string(i));
         }
     }
     return result;
