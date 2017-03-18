@@ -41,6 +41,7 @@ struct settings_struct {
     const char* ind_cert_out_file;
 
 		int custom;
+		unsigned overlapping_subgames;
 };
 
 extern struct settings_struct settings;

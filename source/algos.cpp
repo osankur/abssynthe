@@ -1321,16 +1321,22 @@ bool compSolve2(AIG* spec_base) {
         // we have to release the memory used for the caches and stuff
         delete *i;
     }
+
     double mean_bdd_size = total_bdd_size / subgame_results.size();
     double mean_cinp_size = total_cinp_size / subgame_results.size();
     double cinp_factor = 0.5 * mean_bdd_size / mean_cinp_size;
+		/*
+		std::cout << "mean_bdd_size = " << mean_bdd_size << std::endl;
+		std::cout << "cinp_factor = " << cinp_factor << std::endl;
+		std::cout << "mean_cinp_size = " << mean_cinp_size << std::endl;
+		*/
     while (subgame_results.size() >= 2) {
         // Get the pair min_i,min_j that minimizes the score
         // The score is defined as: 
         // b.countNode() + cinp_factor * cinp_union.size()
         // where b is the disjunction of the error functions, and cinp_union
         // is the union of the cinputs of the subgames.
-        int min_i, min_j; // the indices of the selected games
+        int min_i = 0, min_j = 1; // the indices of the selected games
         list<subgame_info>::iterator min_it, min_jt; // iterators to selected games
         double best_score = DBL_MAX;  // the score of the selected pair
         BDD joint_err; // the disjunction of the error function of the pair
@@ -1342,6 +1348,7 @@ bool compSolve2(AIG* spec_base) {
             jt = it;
             jt++;
             j = i + 1;
+						// std::cout << "_i_ = " << i << std::endl;
             for (; jt != subgame_results.end(); j++, jt++) {
                 BDD b = it->first | jt->first;
                 set<unsigned> cinp_union;
@@ -1349,6 +1356,8 @@ bool compSolve2(AIG* spec_base) {
                           jt->second.begin(), jt->second.end(),
                           inserter(cinp_union,cinp_union.begin()));
                 double score = b.nodeCount() + cinp_factor * cinp_union.size();
+								// std::cout << "_j_ = " << j << std::endl;
+								// std::cout << "\t score = " << score << ", best_score = " << best_score << std::endl;
                 if (score < best_score) {
                     min_i = i;
                     min_j = j;

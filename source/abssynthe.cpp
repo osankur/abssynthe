@@ -116,12 +116,12 @@ void parse_arguments(int argc, char** argv) {
     settings.spec_file = NULL;
 		
 		settings.custom = 0;
-
+		settings.overlapping_subgames = 0;
     // read values from argv
     int opt_key;
     int opt_index;
     while (true) {
-        opt_key = getopt_long(argc, argv, "v:ta::psc:o:w:i:z:", long_options,
+        opt_key = getopt_long(argc, argv, "v:ta::psc:O:o:w:i:z:", long_options,
                               &opt_index);
         if (opt_key == -1)
             break;
@@ -165,6 +165,9 @@ void parse_arguments(int argc, char** argv) {
                     errMsg("Expected comp_algo to be in {1,2,3,4} "
                            "instead of " + std::string(optarg));
                 break;
+						case 'O':
+								settings.overlapping_subgames = atoi(optarg);
+								break;
             case 'o':
                 settings.out_file = optarg;
                 break;

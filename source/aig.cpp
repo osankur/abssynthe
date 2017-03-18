@@ -42,7 +42,7 @@
 #include "aiger.h"
 #include "aig.h"
 #include "logging.h"
-
+#include "abssynthe.h"
 
 // A <= B iff A - B = empty
 static bool setInclusion(std::set<unsigned>* A, std::set<unsigned>* B) {
@@ -992,6 +992,37 @@ std::vector<BDDAIG*> BDDAIG::decompose() {
             }
         }
     }
+		
+		if (settings.overlapping_subgames){
+			std::vector<BDDAIG*> nu_result;
+			if (result.size() >= 2 + settings.overlapping_subgames){
+				dbgMsg("Merging subgames two by two. From " + std::to_string(result.size()));
+				for(unsigned i = 0; i < result.size() - settings.overlapping_subgames; i++){
+					// FIXME Here short_error is never null by construction, but still we should
+					// do as follows:
+					//BDD error_funi = 
+					//	(result[i]->short_error)? result[i]->short_error :
+					//	result[i]->getNextFunVec()[result[i]->error_fake_latch.lit];
+					
+					BDD short_error = mgr->bddZero();
+					std::cout << "Merging game " << i << " with ";
+					for(unsigned j = i; j <= i + settings.overlapping_subgames; j++){
+						std::cout << "game(" << j << ") ";
+						assert(result[j]->short_error);
+						short_error |= * result[j]->short_error;
+					}
+					std::cout << "\n";
+					//assert(result[i]->short_error && result[i+1]->short_error);
+					//BDDAIG * nugame = new BDDAIG(*this, *result[i]->short_error | *result[i+1]->short_error);
+					BDDAIG * nugame = new BDDAIG(*this, short_error);
+					nu_result.push_back(nugame);
+				}
+				for(unsigned i = 0; i < result.size(); i++){
+					delete(result[i]);
+				}
+				result = nu_result;
+			}
+		}
     return result;
 }
 
