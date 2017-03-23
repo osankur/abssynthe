@@ -36,6 +36,7 @@
 #include <iterator>
 #include <iostream>
 #include <ctime>
+#include <iterator>
 #include "cudd.h"
 #include "cuddObj.hh"
 
@@ -729,6 +730,11 @@ std::vector<BDD> BDDAIG::getNextFunVec() {
     return result;
 }
 
+BDD BDDAIG::errorFunction(){
+	if (this->short_error) return *this->short_error;
+	return this->lit2bdd(this->error_fake_latch->lit);
+}
+
 std::vector<BDD> BDDAIG::nextFunComposeVec(BDD* care_region=NULL) {
     if (this->next_fun_compose_vec == NULL) {
         //dbgMsg("building and caching next_fun_compose_vec");
@@ -1089,3 +1095,27 @@ bool BDDAIG::isValidBdd(BDD b) {
     return true;
 #endif
 }
+
+
+BDDAIG_ADM::BDDAIG_ADM(const BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i)
+	: BDDAIG(spec, short_error)
+{
+	std::vector<unsigned> cinput_lits = getCInputLits();
+	std::vector<unsigned> Xc_minus_i;
+	set_difference(cinput_lits.begin(), cinput_lits.end(), Xc_i.begin(), Xc_i.end(), 
+			Xc_minus_i.begin());
+	this->prot_cinputs = std::vector<unsigned>(Xc_i.begin(), Xc_i.end());
+	this->coop_cinputs = Xc_minus_i;
+	this->prot_cinput_cube = new BDD(toCube(Xc_i));
+	std::set<unsigned> Xc_minus_i_set = std::set<unsigned>(Xc_minus_i.begin(), Xc_minus_i.end());
+	this->coop_cinput_cube = new BDD(toCube(Xc_minus_i_set));
+	// TODO Display these sets for testing
+}
+BDD BDDAIG_ADM::prot_cinputCube(){
+	return *this->cinput_cube;
+}
+BDD BDDAIG_ADM::coop_cinputCube(){
+	return mgr->bddOne();
+}
+
+

@@ -1262,6 +1262,63 @@ bool compSolve4(AIG* spec_base) {
     return true;
 }
 
+
+/**
+ * Admissible-compositional algorithm
+ */
+bool compSolve5(AIG* spec_base) {
+	typedef pair<BDD, BDD> subgame_info;
+	Cudd mgr(0, 0);
+	mgr.AutodynEnable(CUDD_REORDER_SIFT);
+	BDDAIG spec(*spec_base, &mgr);
+	vector<BDDAIG*> subgames = spec.decompose();
+	if (subgames.size() == 0) return internalSolve(&mgr, &spec, NULL, NULL, NULL,
+			true);
+
+	// Compute subgames associated to each cinput c.
+	vector<BDD> suberror;
+	// vector of pairs of cinputs C, and game indices merged for C
+	vector<pair<set<unsigned>, set<unsigned>> > clusters;
+	vector<unsigned> cinputs = spec.getCInputLits();
+	for(unsigned c = cinputs.begin(); c != cinputs.end(); c++){
+		set<unsigned> subgame_indices;
+		// Go over each subgame and include it if c is in the cone of its error func
+		for(unsigned i = 0;i < subgames.size(); i++){
+			// TODO is this what I need? Does it contain all cinputs on which it
+			// depends?
+			set<unsigned> deps = getBddDeps(subgames[i]->errorFunction());
+			if (deps.find(c) != deps.end()){
+				suberror |= subgames[i]->errorFunction();
+				subgame_indices.insert(i);
+			}
+		}
+		set<unsigned> cset();
+		cset.insert(c);
+		clusters.push_back( pair(cset, subgame_indices) );
+	}
+
+	/*
+	// A very sad way of doing functional fold:
+	BDD one = mgr->bddOne();
+	std::vector<BDD> next_funs =  nextFunComposeVec(&one);
+	//std::vector<set<unsigned> > deps = std::vector<set<unsigned> >();
+	std::set<unsigned> deps;
+	for(auto it = next_funs.begin(); it != next_funs.end(); it++){
+		std::set<unsigned> itdeps = getBddDeps(*it);
+		std::for_each(itdeps.begin(), itdeps.end(), [&deps](unsigned u){deps.insert(u);});
+	}
+	// Make a set of cinputs
+	std::vector<unsigned> cinput_lits = getCInutLits();
+	std::set<unsigned> cinput_set;
+	for(auto it = cinput_lits.begin(); it != cinput_lits.end(); it++){
+		std::for_each(it->begin(), it->end(), [&cinput_set](unsigned u){cinput_set.insert(u);});
+	}
+	// Restrict deps to cinput_set
+	std::set<unsigned> cinput_deps;
+	set_intersection(deps.begin(), deps.end(), cinput_set.begin(), cinput_set.end(), cinput_deps.begin());
+	*/
+}
+
 static void pWorker(AIG* spec_base, int solver) {
     assert(data != NULL);
     bool result;
