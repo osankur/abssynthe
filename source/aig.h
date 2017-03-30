@@ -127,6 +127,7 @@ class BDDAIG : public AIG {
         BDD toCube(std::set<unsigned>&);
 				BDD errorFunction();
         std::set<unsigned> getBddDeps(BDD);
+				std::set<unsigned> getBddCInputDeps(BDD);
         std::set<unsigned> getBddLatchDeps(BDD);
         std::vector<BDD> nextFunComposeVec(BDD*);
         std::vector<BDD> getNextFunVec();
@@ -136,20 +137,23 @@ class BDDAIG : public AIG {
 };
 
 /**
- * Game specification with antagonistic player (Xu), 
+ * Game specification with antaonistic player (Xu), 
  * protagonistic player (Xc_i), and possibly cooperating player (Xc_{-i}).
  * This represents a subgame in the admissible synthesis approach
  */
 class BDDAIG_ADM : public BDDAIG {
 	private:
 			BDD* prot_cinput_cube;
-			BDD* coop_cinput_cube;
+			BDD* anta_cinput_cube;
+			BDD* prot_primed_cinput_cube; // TODO Initialize this
 			std::vector<unsigned> prot_cinputs;
-			std::vector<unsigned> coop_cinputs;
+			std::vector<unsigned> anta_cinputs;
 	public:
-			BDDAIG_ADM(const BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i);
+			BDDAIG_ADM(BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i);
 			BDD prot_cinputCube();
-			BDD coop_cinputCube();
+			BDD anta_cinputCube();
+			BDD primeProtCInputsInBdd(BDD);
+			BDD prot_primedCInputCube(); // TODO implement his
 };
 
 #endif

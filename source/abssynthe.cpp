@@ -56,7 +56,7 @@ static struct option long_options[] = {
 void usage() {
     std::cout << ABSSYNTHE_VERSION << std::endl
 << "usage:" << std::endl
-<<"./abssynthe [-h] [-t] [-a] [-r] [-p] [-s] [-c {1,2,3,4}] "
+<<"./abssynthe [-h] [-t] [-a] [-r] [-p] [-s] [-c {1,2,3,4,5}] "
 <<"[-v VERBOSE_LEVEL] [-o OUT_FILE] spec"
 << std::endl
 << "positional arguments:" << std::endl
@@ -83,7 +83,7 @@ void usage() {
 << std::endl
 << "                                   strategies for the reorderings"
 << std::endl
-<< "-c {1,2,3,4}, --comp_algo {1,2,3,4}" << std::endl
+<< "-c {1,2,3,4,5}, --comp_algo {1,2,3,4,5}" << std::endl
 << "                                   choice of compositional algorithm"
 << std::endl
 << "-v VERBOSE_LEVEL, --verbose_level VERBOSE_LEVEL" << std::endl
@@ -168,8 +168,8 @@ void parse_arguments(int argc, char** argv) {
                 break;
             case 'c':
                 settings.comp_algo = atoi(optarg);
-                if (settings.comp_algo < 1 || settings.comp_algo > 4)
-                    errMsg("Expected comp_algo to be in {1,2,3,4} "
+                if (settings.comp_algo < 1 || settings.comp_algo > 5)
+                    errMsg("Expected comp_algo to be in {1,2,3,4,5} "
                            "instead of " + std::string(optarg));
                 break;
             case 'o':
@@ -213,6 +213,8 @@ int main(int argc, char** argv) {
                 result = compSolve3(&aig);
         } else if (settings.comp_algo == 4){
                 result = compSolve4(&aig);
+        } else if (settings.comp_algo == 5){
+                result = compSolve5(&aig);
         } else { // traditional fixpoint computation
                 result = solve(&aig);
         }

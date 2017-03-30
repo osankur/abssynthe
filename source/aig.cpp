@@ -732,9 +732,8 @@ std::vector<BDD> BDDAIG::getNextFunVec() {
 
 BDD BDDAIG::errorFunction(){
 	if (this->short_error) return *this->short_error;
-	return this->lit2bdd(this->error_fake_latch->lit);
+	return this->lit2bdd(this->error_fake_latch.lit);
 }
-
 std::vector<BDD> BDDAIG::nextFunComposeVec(BDD* care_region=NULL) {
     if (this->next_fun_compose_vec == NULL) {
         //dbgMsg("building and caching next_fun_compose_vec");
@@ -748,7 +747,7 @@ std::vector<BDD> BDDAIG::nextFunComposeVec(BDD* care_region=NULL) {
                 if (i == this->error_fake_latch.lit &&
                     this->short_error != NULL) {
                     next_fun = *this->short_error; 
-                    //dbgMsg("Latch " + std::to_string(i) + " is the error latch");
+                    // dbgMsg("Latch " + std::to_string(i) + " is the error latch");
                 } else if (this->short_error != NULL) { // simplify functions
                     next_fun = this->lit2bdd((*latch_it)->next);
                     next_fun = BDDAIG::safeRestrict(next_fun,
@@ -783,6 +782,8 @@ std::vector<BDD> BDDAIG::nextFunComposeVec(BDD* care_region=NULL) {
             i++;
         }
     }
+		// std::cout << "nextFunComposeVec::mgr.ReadSize() = " << this->mgr->ReadSize() << "\n";
+		// std::cout << "result.size() = " << result.size() << "\n";
     return result;
 }
 
@@ -859,6 +860,14 @@ std::set<unsigned> BDDAIG::getBddLatchDeps(BDD b) {
     std::set_intersection(deps.begin(), deps.end(), latches.begin(), latches.end(),
                           std::inserter(depLatches, depLatches.begin()));
     return depLatches;
+}
+std::set<unsigned> BDDAIG::getBddCInputDeps(BDD b) {
+    std::set<unsigned> deps = this->getBddDeps(b);
+    std::vector<unsigned> cinputs = this->getCInputLits();
+    std::set<unsigned> depC;
+    std::set_intersection(deps.begin(), deps.end(), cinputs.begin(), cinputs.end(),
+                          std::inserter(depC, depC.begin()));
+    return depC;
 }
 
 std::vector<BDD> BDDAIG::mergeSomeSignals(BDD cube, std::vector<unsigned>* original) {
@@ -1096,26 +1105,79 @@ bool BDDAIG::isValidBdd(BDD b) {
 #endif
 }
 
+static void print_unsigned_vector(std::vector<unsigned> s){
+	std::cout << "[";
+	for(auto it = s.begin(); it != s.end(); it++){
+		std::cout << *it << ", ";
+	}
+	std::cout <<"]\n";
+}
+static void print_unsigned_set(std::set<unsigned> s){
+	std::cout << "[";
+	for(auto it = s.begin(); it != s.end(); it++){
+		std::cout << *it << ", ";
+	}
+	std::cout <<"]\n";
+}
 
-BDDAIG_ADM::BDDAIG_ADM(const BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i)
+
+
+BDDAIG_ADM::BDDAIG_ADM(BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i)
 	: BDDAIG(spec, short_error)
 {
-	std::vector<unsigned> cinput_lits = getCInputLits();
+	std::cout << "[DBG] Creating adm. subgame with Xc_i: "; print_unsigned_set(Xc_i);
+
+	std::vector<unsigned> cinput_lits = this->getCInputLits();
 	std::vector<unsigned> Xc_minus_i;
+
+	std::cout << "[DBG] All cinputs for this subgame: "; print_unsigned_vector(cinput_lits);
+
 	set_difference(cinput_lits.begin(), cinput_lits.end(), Xc_i.begin(), Xc_i.end(), 
-			Xc_minus_i.begin());
+			std::inserter(Xc_minus_i, Xc_minus_i.begin()));
+
+	std::cout << "[DBG] Computing Xc_mins_i: "; print_unsigned_vector(Xc_minus_i);
+
 	this->prot_cinputs = std::vector<unsigned>(Xc_i.begin(), Xc_i.end());
-	this->coop_cinputs = Xc_minus_i;
+	this->anta_cinputs = Xc_minus_i;
 	this->prot_cinput_cube = new BDD(toCube(Xc_i));
 	std::set<unsigned> Xc_minus_i_set = std::set<unsigned>(Xc_minus_i.begin(), Xc_minus_i.end());
-	this->coop_cinput_cube = new BDD(toCube(Xc_minus_i_set));
-	// TODO Display these sets for testing
+	this->anta_cinput_cube = new BDD(toCube(Xc_minus_i_set));
+	this->prot_primed_cinput_cube = 
+			new BDD(this->primeProtCInputsInBdd(*this->prot_cinput_cube));
+
+	std::cout << "[DBG] Subgame prot_cinputs: ";
+	print_unsigned_vector(this->prot_cinputs);
+	std::cout << "[DBG] Subgame anta_cinputs: ";
+	print_unsigned_vector(this->anta_cinputs);
 }
+
+/**
+ * Protagonistic controllable inputs
+ * (prot_cinputCube /\ anta_cinputCube = cinputCube)
+ */
 BDD BDDAIG_ADM::prot_cinputCube(){
-	return *this->cinput_cube;
+	return *this->prot_cinput_cube;
 }
-BDD BDDAIG_ADM::coop_cinputCube(){
-	return mgr->bddOne();
+/**
+ * Antagonistic controllable inputs
+ * (prot_cinputCube /\ anta_cinputCube = cinputCube)
+ */
+BDD BDDAIG_ADM::anta_cinputCube(){
+	return *this->anta_cinput_cube;
+}
+BDD BDDAIG_ADM::primeProtCInputsInBdd(BDD original) {
+    std::vector<BDD> pcinput_bdds, primed_pcinput_bdds;
+    for (auto it = this->prot_cinputs.begin();
+         it != this->prot_cinputs.end(); it++) {
+				unsigned i = *it;
+        pcinput_bdds.push_back(this->mgr->bddVar(i));
+        primed_pcinput_bdds.push_back(this->mgr->bddVar(AIG::primeVar(i)));
+    }
+    BDD result = original.SwapVariables(pcinput_bdds, 
+				primed_pcinput_bdds);
+    return result;
 }
 
-
+BDD BDDAIG_ADM::prot_primedCInputCube(){
+	return *this->prot_primed_cinput_cube;
+}

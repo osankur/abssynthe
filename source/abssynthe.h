@@ -49,6 +49,7 @@ bool compSolve1(AIG*);
 bool compSolve2(AIG*);
 bool compSolve3(AIG*);
 bool compSolve4(AIG*);
+bool compSolve5(AIG*);
 bool solveParallel();
 
 #endif
