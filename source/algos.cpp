@@ -1265,7 +1265,7 @@ bool compSolve4(AIG* spec_base) {
     return true;
 }
 
-
+/*
 static BDD cpre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
     BDD not_dst = ~dst;
     trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
@@ -1279,55 +1279,83 @@ BDD post(BDDAIG * spec, BDD states_allinputs){
 	BDD rel = (states_allinputs & transrel).ExistAbstract(spec->cinputCube()).ExistAbstract(spec->uinputCube());
 	return spec->primeLatchesInBdd(rel.ExistAbstract(spec->latchCube()));
 }
+*/
 
 /** 
  *
- * The compositional algorithm based on admissibility (N. Basset - R. Brenguier)
- *	FIXME still debugging. Currently it declares e.g. amba2c7y.aag as
+ * The compositional algorithm based on admissibility
+ *	FIXME still buggy. Currently it declares e.g. amba2c7y.aag as
  *	unrealizable
- *	
- * Def: WeakDom(q,u,a,b) where a in X_ci, b in X_c_minus_i 
- * = 
- * for all c in X_c_minus_i, Val(delta(q,u,a,c)) <= Val(q,u,b,c)
- * /\
- * ( Val(delta(q,u,a,c)) = Val(q,u,b,c) = 0 
- * 			->
- *   delta(q,u,a,c) = delta(q,u,b,c)
- * )
  *
- * We call Weak1 the first conjunct of WeakDom, and Weak2 the second one.
+ *	1) We define subgames as follows. Let subgames[0..n] be computed by the
+ *	decompose function as in other comp. algorithms.
  *
- * Let V1(L), V0(L), Vm1(L) be the partition into values computed as follows:
- * V1(L) = anta_cpre^*(~error)
- * V0(L) = cpre^*(~error) \ V1(L)
- * Vm1(L) = ~V1(L) & ~V0(L)
+ *	- Let cinput_deps[i] be the set of cinputs on which the error function of
+ *	subgames[i] depends. This is obtained by BDDAIG::getBddDeps
+ *	(thus includes all cinputs on which the error function depends, but also
+ *	those of the next state functions of all latches on which it depends, 
+ *	and recursively...)
  *
- * Let transVi(L,X_u,X_c) = Vi[ l <- f(l,Xu,X_ci, X_c_minus_i) ]
- * Let transVi'(L,X_u,X_ci', X_c_minus_i) = Vi[ l <- f(l,Xu,X_ci', X_c_minus_i) ]
+ *	- We redefine subgames in the vectors clusters[0..m] as follows:
+ *	for each cinput c, we obtain cluster[c] by merging all subgames[i]
+ *	such that "c in cinput_deps[i]".
+ *
+ *	- (We will later merge some of these clusters if they share too many
+ *	subgames, but the algorithm should be correct independently of this
+ *	merging procedure)
+ *
+ *	- We then compute the predicate LA_i for each cluster i, as follows.
+ *		Let X_ci be the set of protagonistic cinputs (the singleton c above in our
+ *			case). They are called prot_cinputs in the code.
+ *		Let X_c_m_i be the rest of the cinputs
+ *
+ *		1) Compute the values. Define
+ *
+ *		anta_cpre(S(L)) = ∀X_u ∃X_ci ∀X_c_m_i S[ l <- f_l(L,X_u,X_c) ]
+ *
+ *		Let V1 = nu X. ~error /\ X /\ anta_cpre(X)
+ *		Let V0 = internal_solve(clusters[i]) // so that all cinputs are protagonistic
+ *		Let Vm1 = ~V0 & ~V1
+ *
+ * 		2) We are going to construct the predicate WeakDom(L,X_u, X_ci, X_ci')
+ *		Recall the definition.
+ * 		
+ * 		Def: WeakDom(q,u,a,b) where a in X_ci, b in X_c_minus_i 
+ * 		= 
+ * 		for all c in X_c_m_i, Val(delta(q,u,a,c)) <= Val(q,u,b,c)
+ * 					/\
+ * 		( Val(delta(q,u,a,c)) = Val(q,u,b,c) = 0 
+ * 					->
+ *   		delta(q,u,a,c) = delta(q,u,b,c)
+ * 		)
+ *		
+ *		// The set of transitions (L,X_u,X_c) that lead to Vi:
+ * 		Let transVi(L,X_u,X_c) = Vi[ l <- f(l,Xu,X_ci, X_c_minus_i) ]
+ *		Let transVi'(L,X_u,X_ci', X_c_minus_i) = transVi.primeProtCInputLatches()
  * 
- * Let Leq(L,X_u,X_c,X_ci') = TransV1' \/ TransVm1 \/ (TransV0 /\ TransV0')
- * Let Weak1(L,X_u,X_c,X_c') = forall X_c_minus_i. Leq
+ * 		// The first conjunct in WeakDom:
+ * 		Let Weak1(L,X_u,X_ci,X_ci') = ∀ X_c_m_i. (TransV1' \/ TransVm1 \/ (TransV0 /\ TransV0'))
  *
- * Let tmp1(L,L') = /\_{l in L} (l=l')
- * Let tmp2 = tmp1[ l <- f(L,X_u,X_c), l' <- f(L, X_u, X_ci', X_c_minus_i) ]
- * 		// tmp2 is the set of (L,X_u,X_c, X_ci') such that
- *    // delta(q,u,(a,c)) = delta(q,u,(b,c))
- * Let Weak2 = forall X_c_minus_i. (TransV0 /\ TransV0'  ->  tmp2 )
- * Let WeakDom(L,X_u,X_ci,X_ci') = Weak1 /\ Weak2
- * Let LA_i(L, X_u, X_c) = forall X_ci'. ( WeakDom(L,X_u,X_ci,X_ci') -> 
+ * 		Let tmp1(L,L') = /\_{l in L} (l <-> l')
+ * 		Let tmp2 = tmp1[ l <- f(L,X_u,X_c)] [l' <- f(L, X_u, X_ci', X_c_m_i) ]
+ * 		// tmp2 is the set of (L,X_u,X_ci, X_c_m_i, X_ci') such that
+ *    // 	delta(L,X_u,(X_ci,X_c_m_i)) = delta(L,X_u,(X_ci',X_c_m_i))
+ *
+ * 		Let Weak2 = ∀ X_c_m_i. (TransV0 /\ TransV0'  ->  tmp2 )
+ * 		Let WeakDom(L,X_u,X_ci,X_ci') = Weak1 /\ Weak2
+ * 		Let LA_i(L, X_u, X_c) = ∀ X_ci'. ( WeakDom(L,X_u,X_ci,X_ci') -> 
  * 																			 WeakDom(L,X_u,X_ci',X_ci)
  * 																		 )
  * Let LA(L,X_u,X_c) = /\_i LA_i
  *
  * Let CPRE_LA(S(L)) = 
- * 	forall Xu, exists Xc, LA(L,X_u,X_c) /\ S[ l <- f(L,X_u,X_c) ]
+ * 	∀Xu ∃Xc LA(L,X_u,X_c) /\ S[ l <- f(L,X_u,X_c) ]
  *
- * Future optimization: we could use early quantification on LA seen as a
- * conjunction.
+ * (Future optimization: we could use early quantification on LA seen as a
+ * conjunction.)
  *
- * Let V01 = /\_i (V0_i \/ V1_i)
- * Compute CPRE_LA*( V01 )
- * 	which is the winning region
+ * Let AllV01 = /\_i (V0_i \/ V1_i)
+ * Compute CPRE_LA*( AllV01 ) // This is the winning region
  */
 
 
@@ -1372,10 +1400,12 @@ bool compSolve5(AIG* spec_base) {
 	vector<set<unsigned> > cinput_deps;
 	for(unsigned i = 0; i < subgames.size(); i++){
 		 cinput_deps.push_back(spec.getBddCInputDeps(subgames[i]->errorFunction()));
+		 cout << "Subgame " << i << " depends on cinputs: ";
+		 print_unsigned_set(cinput_deps[i]);
 	}
 
 	// Compute subgames associated to each cinput c.
-	// subgame_str is a tuple of (cinputs C, game indices merged for C, error func)
+	// subgame_str is a tuple of (cinputs C, game indices merged to obtain C, error func)
 	typedef tuple<set<unsigned>, set<unsigned >, BDD> subgame_str;
 	vector<subgame_str> clusters;
 	vector<BDD> win_regions;
@@ -1386,7 +1416,6 @@ bool compSolve5(AIG* spec_base) {
 	BDD one = mgr.bddOne();
 	for(auto cit = cinputs.begin(); cit != cinputs.end(); cit++){
 		unsigned c = *cit;
-		// DEBUG
 		cout << "\n[DBG] Processing cinput " << c << endl;
 
 		set<unsigned> subgame_indices;
@@ -1401,20 +1430,20 @@ bool compSolve5(AIG* spec_base) {
 		set<unsigned> cset;
 		cset.insert(c);
 		clusters.push_back( subgame_str(cset, subgame_indices, suberror) );
-		// DEBUG
+
 		cout << "\t Subgames are: ";
 		print_unsigned_set(subgame_indices);
 	}
 	// TODO heuristics: merge here subgames that share a lot of error functions
 
-	// Build the subgames given by the clusters vector
+	// Build the new subgames in the clusters vector
 	vector<BDDAIG_ADM*> cluster_games;
 	BDD LA = mgr.bddOne();
 	BDD allV01 = mgr.bddOne();
 	for(unsigned i = 0; i < clusters.size(); i++){
 		BDDAIG_ADM * ng = new BDDAIG_ADM(spec, 
-					get<2>(clusters[i]),
-					get<0>(clusters[i]));
+					get<2>(clusters[i]), // error function
+					get<0>(clusters[i])); // protagonistic cinputs
 		cluster_games.push_back(ng);
 		// DEBUG
 		cout << "[DBG] Created new adm-subgame " << i << " out of " << clusters.size() << "\n";
@@ -1423,14 +1452,13 @@ bool compSolve5(AIG* spec_base) {
 		BDD good_transitions;
 		BDD iterate = ~ng->errorStates();
 		BDD prev = ~mgr.bddOne();
-			cout << "[DBG] Computing anta-cpre*\n";
+		cout << "[DBG] Computing anta-cpre*\n";
 		while( prev != iterate ){
 			prev = iterate;
 			iterate &= anta_cpre(ng, iterate, good_transitions);
 			cout << "[DBG]\t iterate size " << iterate.nodeCount() << endl;
 		}
 		BDD V1 = iterate;
-		cout << "[DBG] Done V1\n";
 
 		// Compute V0
 		BDD losing_region;
@@ -1438,6 +1466,12 @@ bool compSolve5(AIG* spec_base) {
 		if (!internalSolve(&mgr, ng, NULL, &losing_region, &losing_transitions)){
 			return false;
 		}
+
+		cout << "-----\nlosing_transitions dependencies: ";
+		print_unsigned_set(spec.semanticDeps(losing_transitions));
+		// print_unsigned_set(spec.semanticDeps(losing_region));
+		cout << "----\n";
+
 		// win_regions.push_back(!losing_region); 
 		BDD V0 = ~losing_region & ~V1;
 		
@@ -1448,7 +1482,6 @@ bool compSolve5(AIG* spec_base) {
 		BDD Vm1 = losing_region;
 
 		allV01 &= ~losing_region;
-		cout << "[DBG] Computed allV01\n";
 
 		BDD transV1 = substituteLatchesNext(ng, V1, NULL);
 		BDD transV0 = substituteLatchesNext(ng, V0, NULL);
@@ -1461,7 +1494,6 @@ bool compSolve5(AIG* spec_base) {
 		BDD leq = transVm1 | (transV1_ | (transV0 & transV0_));
 		BDD Weak1 = leq.UnivAbstract(ng->anta_cinputCube());
 	
-		cout << "[DBG] Done Weak1\n";
 		/*
 		// Checking that Weak1 is satisfiable from all states(L)
 		BDD debug = Weak1.ExistAbstract(ng->cinputCube());
@@ -1481,23 +1513,23 @@ bool compSolve5(AIG* spec_base) {
 		}
 		// tmp2 = eqstate[ l <- f_l(L,X_u,X_c) ]
 		BDD tmp2 = substituteLatchesNext(ng, eqstate, NULL);
-		// Now [l' <- f(L,X_u,X_ci', X_c_minus_i) ]
-		vector<BDD> next_funs = ng->nextFunComposeVec(NULL);
-		for(unsigned i = 0; i < next_funs.size(); i++){
-			next_funs[i] = 
-				ng->primeProtCInputsInBdd(next_funs[i]);
-		}
-		BDD tmp3 = tmp2.VectorCompose(next_funs);
 
+		// Now do [l' <- f(L,X_u,X_ci', X_c_minus_i) ]
+		vector<BDD> next_funs_p = ng->nextFunComposeVec4PrimedLatches(NULL);
+		BDD tmp3 = tmp2.VectorCompose(next_funs_p);
+
+		// forall X_c_m_i. (V0 & V0' -> tmp3)
 		BDD Weak2 = (~(transV0 & transV0_) | tmp3).UnivAbstract( ng->anta_cinputCube());
-		cout << "[DBG] Done Weak2\n";
 
 		// FIXME BDD WeakDom = Weak1 & Weak2;
 		// For debugging purposes: a realizable game should be realizable if we disregard Weak2:
-		BDD WeakDom = Weak1;
+		BDD WeakDom = Weak1 & Weak2;
 		BDD WeakDomP = ng->primeProtCInputsInBdd(WeakDom);
 		BDD LA_local = (~WeakDom | WeakDomP).UnivAbstract( ng->prot_primedCInputCube() );
 		LA &= LA_local;
+
+		cout << "LA_local deps: ";
+		print_unsigned_set(spec.semanticDeps(LA_local));
 		cout << "[DBG] New LA has " << LA.nodeCount() << " nodes\n";
 	}
 	// Check: there is a locally admissible move from all states

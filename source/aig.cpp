@@ -1121,7 +1121,6 @@ static void print_unsigned_set(std::set<unsigned> s){
 }
 
 
-
 BDDAIG_ADM::BDDAIG_ADM(BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i)
 	: BDDAIG(spec, short_error)
 {
@@ -1181,3 +1180,25 @@ BDD BDDAIG_ADM::primeProtCInputsInBdd(BDD original) {
 BDD BDDAIG_ADM::prot_primedCInputCube(){
 	return *this->prot_primed_cinput_cube;
 }
+
+/** This is a bad name and place for this function.
+ * It computes the compose vector for [l' <- f_l(L,X_u,X_c)]
+ * and primes all prot cinput variables in these next-state functions.
+ */
+std::vector<BDD> BDDAIG_ADM::nextFunComposeVec4PrimedLatches(BDD * care){
+	std::vector<BDD> next_funs = nextFunComposeVec(care);
+	std::vector<unsigned> latches = getLatchLits();
+	std::set<unsigned> latch_set(latches.begin(), latches.end());
+
+	for(unsigned i = 0; i < next_funs.size(); i++){
+		if (error_fake_latch.lit == i) continue;
+		if ( latch_set.find(i) != latch_set.end() ){
+			unsigned j = AIG::primeVar(i);
+			next_funs[j] = 
+				primeProtCInputsInBdd(primeProtCInputsInBdd(next_funs[i]));
+			next_funs[i] = mgr->bddVar(i);
+		}
+	}
+	return next_funs;
+}
+

@@ -145,7 +145,7 @@ class BDDAIG_ADM : public BDDAIG {
 	private:
 			BDD* prot_cinput_cube;
 			BDD* anta_cinput_cube;
-			BDD* prot_primed_cinput_cube; // TODO Initialize this
+			BDD* prot_primed_cinput_cube;
 			std::vector<unsigned> prot_cinputs;
 			std::vector<unsigned> anta_cinputs;
 	public:
@@ -153,7 +153,8 @@ class BDDAIG_ADM : public BDDAIG {
 			BDD prot_cinputCube();
 			BDD anta_cinputCube();
 			BDD primeProtCInputsInBdd(BDD);
-			BDD prot_primedCInputCube(); // TODO implement his
+			BDD prot_primedCInputCube();
+			std::vector<BDD> nextFunComposeVec4PrimedLatches(BDD *);
 };
 
 #endif
