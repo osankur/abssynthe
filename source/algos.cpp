@@ -1265,21 +1265,6 @@ bool compSolve4(AIG* spec_base) {
     return true;
 }
 
-/*
-static BDD cpre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
-    BDD not_dst = ~dst;
-    trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
-    BDD cinput_cube = spec->cinputCube();
-    BDD uinput_cube = spec->uinputCube();
-    BDD temp_bdd = trans_bdd.ExistAbstract(cinput_cube);
-    return temp_bdd.UnivAbstract(uinput_cube);
-}
-BDD post(BDDAIG * spec, BDD states_allinputs){
-	BDD transrel = spec->transRelBdd();
-	BDD rel = (states_allinputs & transrel).ExistAbstract(spec->cinputCube()).ExistAbstract(spec->uinputCube());
-	return spec->primeLatchesInBdd(rel.ExistAbstract(spec->latchCube()));
-}
-*/
 
 /** 
  *
@@ -1365,8 +1350,8 @@ BDD post(BDDAIG * spec, BDD states_allinputs){
  * antaonistic so that anta_cpre is an under-approx of cpre
  */
 static BDD anta_cpre(BDDAIG_ADM* spec, BDD dst, BDD &trans_bdd) {
-    BDD not_dst = ~dst;
-    trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
+    // BDD not_dst = ~dst;
+    trans_bdd = substituteLatchesNext(spec, dst, NULL);
     BDD anta_cinput_cube = spec->anta_cinputCube();
     BDD prot_cinput_cube = spec->prot_cinputCube();
     BDD uinput_cube = spec->uinputCube();
@@ -1387,13 +1372,15 @@ void print_unsigned_set(set<unsigned> s){
  * Admissible-compositional algorithm
  */
 bool compSolve5(AIG* spec_base) {
-	// typedef pair<BDD, BDD> subgame_info;
 	Cudd mgr(0, 0);
 	mgr.AutodynEnable(CUDD_REORDER_SIFT);
 	BDDAIG spec(*spec_base, &mgr);
 	vector<BDDAIG*> subgames = spec.decompose();
 	if (subgames.size() == 0) return internalSolve(&mgr, &spec, NULL, NULL, NULL,
 			true);
+
+	// We need the primed error latch to appear in compose vectors
+	BDD perr = spec.primeLatchesInBdd(spec.errorStates());
 
 	// Compute cinput-dependencies of each subgame
 	vector<set<unsigned> > latch_deps;
@@ -1411,15 +1398,13 @@ bool compSolve5(AIG* spec_base) {
 	vector<BDD> win_regions;
 
 	vector<unsigned> cinputs = spec.getCInputLits();
-	std::set<unsigned> cinput_set;
-	std::for_each(cinputs.begin(), cinputs.end(), [&cinput_set](unsigned u){cinput_set.insert(u);});
-	BDD one = mgr.bddOne();
+	std::set<unsigned> cinput_set(cinputs.begin(), cinputs.end());
 	for(auto cit = cinputs.begin(); cit != cinputs.end(); cit++){
 		unsigned c = *cit;
 		cout << "\n[DBG] Processing cinput " << c << endl;
 
 		set<unsigned> subgame_indices;
-		BDD suberror = ~one;
+		BDD suberror = ~mgr.bddOne();
 		// Go over each subgame and include it if c is in the cone of its error func
 		for(unsigned i = 0; i < subgames.size(); i++){
 			if (cinput_deps[i].find(c) != cinput_deps[i].end()){
@@ -1438,20 +1423,20 @@ bool compSolve5(AIG* spec_base) {
 
 	// Build the new subgames in the clusters vector
 	vector<BDDAIG_ADM*> cluster_games;
-	BDD LA = mgr.bddOne();
-	BDD allV01 = mgr.bddOne();
+	BDD LA = mgr.bddOne(); // Final LA predicate
+	BDD allV01 = mgr.bddOne(); // /\_i (V0^i|V1^i)
 	for(unsigned i = 0; i < clusters.size(); i++){
 		BDDAIG_ADM * ng = new BDDAIG_ADM(spec, 
 					get<2>(clusters[i]), // error function
 					get<0>(clusters[i])); // protagonistic cinputs
 		cluster_games.push_back(ng);
 		// DEBUG
-		cout << "[DBG] Created new adm-subgame " << i << " out of " << clusters.size() << "\n";
+		cout << "[DBG] Created adm-subgame " << i << " out of " << clusters.size() << "\n";
 
 		// Compute V1
 		BDD good_transitions;
 		BDD iterate = ~ng->errorStates();
-		BDD prev = ~mgr.bddOne();
+		BDD prev = mgr.bddOne();
 		cout << "[DBG] Computing anta-cpre*\n";
 		while( prev != iterate ){
 			prev = iterate;
@@ -1466,10 +1451,6 @@ bool compSolve5(AIG* spec_base) {
 		if (!internalSolve(&mgr, ng, NULL, &losing_region, &losing_transitions)){
 			return false;
 		}
-
-		cout << "-----\nV0 dependencies: ";
-		print_unsigned_set(spec.semanticDeps(losing_transitions));
-		cout << "----\n";
 
 		BDD V0 = ~losing_region & ~V1;
 		
@@ -1488,9 +1469,12 @@ bool compSolve5(AIG* spec_base) {
 
 		BDD transV0_ = ng->primeProtCInputsInBdd(transV0);
 
+
+		BDD anta_cinputCube = ng->anta_cinputCube();
+
 		// Computation of WeakDom
 		BDD leq = transVm1 | (transV1_ | (transV0 & transV0_));
-		BDD Weak1 = leq.UnivAbstract(ng->anta_cinputCube());
+		BDD Weak1 = leq.UnivAbstract(anta_cinputCube);
 	
 		/*
 		// Checking that Weak1 is satisfiable from all states(L)
@@ -1499,12 +1483,12 @@ bool compSolve5(AIG* spec_base) {
 		assert(debug == mgr.bddOne());
 		*/
 
+		// Will now compute Weak2
 		BDD eqstate = mgr.bddOne();
 		vector<unsigned> latches = ng->getLatchLits();
 		for(auto it = latches.begin(); it != latches.end(); it++){
 			unsigned i = *it;
 			BDD l  = mgr.bddVar(i);
-			if ( l == ng->errorStates() ) continue;
 			BDD l_ = ng->primeLatchesInBdd(l);
 
 			eqstate &= (l & l_) | (~l & ~l_);
@@ -1516,30 +1500,27 @@ bool compSolve5(AIG* spec_base) {
 		vector<BDD> next_funs_p = ng->nextFunComposeVec4PrimedLatches(NULL);
 		BDD tmp3 = tmp2.VectorCompose(next_funs_p);
 
-		// forall X_c_m_i. (V0 & V0' -> tmp3)
-		BDD Weak2 = (~(transV0 & transV0_) | tmp3).UnivAbstract( ng->anta_cinputCube());
+		//  Weak2 := forall X_c_m_i. (V0 & V0' -> tmp3)
+		BDD Weak2 = (~ (transV0 & transV0_) | tmp3).UnivAbstract( anta_cinputCube);
 
-		// For debugging purposes: a realizable game should still be realizable if we disregard Weak2:
-		// BDD WeakDom = Weak1; // This should also work
 		BDD WeakDom = Weak1 & Weak2;
+		// LA_local := ∀X_c_i'.( WeakDom(L,X_u,X_c_i,X_c_i') -> WeakDom(L,X_u,X_c_i',X_c_i)  ).
 		BDD WeakDomP = ng->primeProtCInputsInBdd(WeakDom);
-		BDD LA_local = (~WeakDom | WeakDomP).UnivAbstract( ng->prot_primedCInputCube() );
+		BDD primed_protCInputCube = ng->primedProtCInputCube();
+		BDD LA_local = (~WeakDom | WeakDomP).UnivAbstract(primed_protCInputCube);
 		LA &= LA_local;
-
-		cout << "LA_local deps: ";
-		print_unsigned_set(spec.semanticDeps(LA_local));
-		cout << "[DBG] New LA has " << LA.nodeCount() << " nodes\n";
 	}
 	// Check: there is a locally admissible move from all states
 	assert( mgr.bddOne() == LA.ExistAbstract(spec.cinputCube()).ExistAbstract(spec.uinputCube()));
 	cout << "[DBG] Done computing LA predicate with " << LA.nodeCount() << " nodes\n";
 
-	// For debugging: check that computing cpre*(allV01) allows to solve the game
+	// Check: that computing cpre*(allV01) allows to solve the game
 	// -- this is just like comp algo 1
 	BDD losing_region;
 	BDD losing_transitions;
 	BDD not_subfps = ~allV01;
 	cout << "Pre-check verdict: " << internalSolve(&mgr, &spec, &not_subfps, &losing_region, &losing_transitions) << endl;
+	//
 
 	// Compute cpre*_LA
 	BDD init_state = spec.initState();
@@ -1551,9 +1532,9 @@ bool compSolve5(AIG* spec_base) {
 	cout << "[DBG] Initially, includes_init: " << includes_init << endl;
 	while( (iterate != prev) && includes_init ){
 		prev = iterate;
-		BDD not_iterate = ~iterate;
+		// BDD not_iterate = ~iterate;
+		// BDD trans_bdd = substituteLatchesNext(&spec, iterate, &not_iterate);
 		BDD trans_bdd = substituteLatchesNext(&spec, iterate, NULL);
-		//BDD trans_bdd = substituteLatchesNext(&spec, iterate, &not_iterate);
 		trans_bdd &= LA; 
 		BDD tmp = trans_bdd.ExistAbstract(spec.cinputCube());
 		iterate &= tmp.UnivAbstract(spec.uinputCube());

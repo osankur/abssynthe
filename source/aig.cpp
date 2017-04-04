@@ -1134,14 +1134,14 @@ BDDAIG_ADM::BDDAIG_ADM(BDDAIG& spec, BDD short_error, std::set<unsigned> Xc_i)
 	set_difference(cinput_lits.begin(), cinput_lits.end(), Xc_i.begin(), Xc_i.end(), 
 			std::inserter(Xc_minus_i, Xc_minus_i.begin()));
 
-	std::cout << "[DBG] Computing Xc_mins_i: "; print_unsigned_vector(Xc_minus_i);
+	std::cout << "[DBG] Xc_mins_i: "; print_unsigned_vector(Xc_minus_i);
 
 	this->prot_cinputs = std::vector<unsigned>(Xc_i.begin(), Xc_i.end());
 	this->anta_cinputs = Xc_minus_i;
 	this->prot_cinput_cube = new BDD(toCube(Xc_i));
 	std::set<unsigned> Xc_minus_i_set = std::set<unsigned>(Xc_minus_i.begin(), Xc_minus_i.end());
 	this->anta_cinput_cube = new BDD(toCube(Xc_minus_i_set));
-	this->prot_primed_cinput_cube = 
+	this->primed_prot_cinput_cube = 
 			new BDD(this->primeProtCInputsInBdd(*this->prot_cinput_cube));
 
 	std::cout << "[DBG] Subgame prot_cinputs: ";
@@ -1177,25 +1177,26 @@ BDD BDDAIG_ADM::primeProtCInputsInBdd(BDD original) {
     return result;
 }
 
-BDD BDDAIG_ADM::prot_primedCInputCube(){
-	return *this->prot_primed_cinput_cube;
+BDD BDDAIG_ADM::primedProtCInputCube(){
+	return *this->primed_prot_cinput_cube;
 }
 
-/** This is a bad name and place for this function.
+/** FIXME
+ * This is a bad name and a bad place for this function.
  * It computes the compose vector for [l' <- f_l(L,X_u,X_c)]
  * and primes all prot cinput variables in these next-state functions.
  */
 std::vector<BDD> BDDAIG_ADM::nextFunComposeVec4PrimedLatches(BDD * care){
+	// Just start with the regular next_fun vector and switch
+	// for each latch l and l', and prime the cinputs
 	std::vector<BDD> next_funs = nextFunComposeVec(care);
 	std::vector<unsigned> latches = getLatchLits();
 	std::set<unsigned> latch_set(latches.begin(), latches.end());
 
 	for(unsigned i = 0; i < next_funs.size(); i++){
-		if (error_fake_latch.lit == i) continue;
 		if ( latch_set.find(i) != latch_set.end() ){
 			unsigned j = AIG::primeVar(i);
-			next_funs[j] = 
-				primeProtCInputsInBdd(primeProtCInputsInBdd(next_funs[i]));
+			next_funs[j] = primeProtCInputsInBdd(next_funs[i]);
 			next_funs[i] = mgr->bddVar(i);
 		}
 	}
