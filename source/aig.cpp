@@ -1203,3 +1203,59 @@ std::vector<BDD> BDDAIG_ADM::nextFunComposeVec4PrimedLatches(BDD * care){
 	return next_funs;
 }
 
+
+void BDDAIG_ADM::printDeps(BDD b){
+	std::vector<unsigned> l = getLatchLits();
+	std::vector<unsigned> u = getUInputLits();
+	std::vector<unsigned> pc = prot_cinputs;
+	std::vector<unsigned> ac = anta_cinputs;
+	std::vector<unsigned> lp, up, pcp, acp;
+	for(auto it = l.begin(); it != l.end(); it++){
+		lp.push_back(AIG::primeVar(*it));
+	}
+	for(auto it = u.begin(); it != u.end(); it++){
+		up.push_back(AIG::primeVar(*it));
+	}
+	for(auto it = pc.begin(); it != pc.end(); it++){
+		pcp.push_back(AIG::primeVar(*it));
+	}
+	for(auto it = ac.begin(); it != ac.end(); it++){
+		acp.push_back(AIG::primeVar(*it));
+	}
+
+	std::set<unsigned> deps = semanticDeps(b);
+	std::set<unsigned> deps_l, deps_lp, deps_u, deps_up, deps_ac, deps_acp, deps_pc, deps_pcp;
+	std::set_intersection(deps.begin(), deps.end(), l.begin(), l.end(),
+												std::inserter(deps_l, deps_l.begin()));
+	std::set_intersection(deps.begin(), deps.end(), lp.begin(), lp.end(),
+												std::inserter(deps_lp, deps_lp.begin()));
+	std::set_intersection(deps.begin(), deps.end(), u.begin(), u.end(),
+												std::inserter(deps_u, deps_u.begin()));
+	std::set_intersection(deps.begin(), deps.end(), up.begin(), up.end(),
+												std::inserter(deps_up, deps_up.begin()));
+	std::set_intersection(deps.begin(), deps.end(), ac.begin(), ac.end(),
+												std::inserter(deps_ac, deps_ac.begin()));
+	std::set_intersection(deps.begin(), deps.end(), acp.begin(), acp.end(),
+												std::inserter(deps_acp, deps_acp.begin()));
+	std::set_intersection(deps.begin(), deps.end(), pc.begin(), pc.end(),
+												std::inserter(deps_pc, deps_pc.begin()));
+	std::set_intersection(deps.begin(), deps.end(), pcp.begin(), pcp.end(),
+												std::inserter(deps_pcp, deps_pcp.begin()));
+	print_unsigned_set(deps);
+	std::cout << "\tL: ";
+	print_unsigned_set(deps_l);
+	std::cout << "\tL': ";
+	print_unsigned_set(deps_lp);
+	std::cout << "\tU: ";
+	print_unsigned_set(deps_u);
+	std::cout << "\tU': ";
+	print_unsigned_set(deps_up);
+	std::cout << "\tpC: ";
+	print_unsigned_set(deps_pc);
+	std::cout << "\tpC': ";
+	print_unsigned_set(deps_pcp);
+	std::cout << "\taC: ";
+	print_unsigned_set(deps_ac);
+	std::cout << "\taC': ";
+	print_unsigned_set(deps_acp);
+}

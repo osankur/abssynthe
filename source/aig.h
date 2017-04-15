@@ -154,6 +154,7 @@ class BDDAIG_ADM : public BDDAIG {
 			BDD anta_cinputCube();
 			BDD primeProtCInputsInBdd(BDD);
 			BDD primedProtCInputCube();
+			void printDeps(BDD);
 			std::vector<BDD> nextFunComposeVec4PrimedLatches(BDD *);
 };
 

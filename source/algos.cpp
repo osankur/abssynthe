@@ -1368,6 +1368,7 @@ void print_unsigned_set(set<unsigned> s){
 	cout <<"]\n";
 }
 
+
 /**
  * Admissible-compositional algorithm
  */
@@ -1508,6 +1509,8 @@ bool compSolve5(AIG* spec_base) {
 		BDD WeakDomP = ng->primeProtCInputsInBdd(WeakDom);
 		BDD primed_protCInputCube = ng->primedProtCInputCube();
 		BDD LA_local = (~WeakDom | WeakDomP).UnivAbstract(primed_protCInputCube);
+		cout << "LA_local deps\n";
+		ng->printDeps(LA_local);
 		LA &= LA_local;
 	}
 	// Check: there is a locally admissible move from all states
