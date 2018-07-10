@@ -99,16 +99,20 @@ class Location:
         self.urgent = urgent
         self.committed = committed
         self.initial = initial
+        self.invariant = None
         Loc_id = Loc_id + 1
 
     def set_invariant(self, invar):
-        raise "not implemented"
+        self.invariant = invar
+
     def dump(self):
         print "<location id=\"{0}\"><name>{1}</name>".format(self.id, self.name)
         if self.urgent:
             print "<urgent/>"
         if self.committed:
             print "<committed/>"
+        if self.invariant:
+            print "<label kind=\"invariant\">{0}</label>".format(self.invariant)
         print "</location>"
 
 class Transition:
@@ -211,10 +215,7 @@ class TAWRITER:
         for i in input_list:
             inputs[i.lit] = self.clean_name(self.aig.get_lit_name(i.lit))
             print >> decl, "bool {0};".format(inputs[i.lit])
-            urgent = True
-            if input_list[-1] == i:
-                urgent = False
-            loc_after_i = Location("JustSet"+inputs[i.lit], urgent=urgent)
+            loc_after_i = Location("JustSet"+inputs[i.lit], urgent=True)
             tr0 = Transition(last_location, loc_after_i, up="{0} := false".format(inputs[i.lit]))
             tr1 = Transition(last_location, loc_after_i, up="{0} := true".format(inputs[i.lit]))
             temp.add_transition(tr0)
@@ -229,7 +230,7 @@ class TAWRITER:
         for x in latch_list:
             latches[x.lit] = "L" + self.clean_name(self.aig.get_lit_name(x.lit))
             print >> decl, "bool {0};".format(latches[x.lit])
-            latch_locations[x.lit] = Location("Updated"+ latches[x.lit])
+            latch_locations[x.lit] = Location("Updated"+ latches[x.lit], urgent=True)
 
             # Add the following transitions
             # up(l_i) ---- f(vec(l),I) = l_i, t=0, t:=0 ----> up(l_{i+1})
@@ -239,14 +240,27 @@ class TAWRITER:
             tr = Transition(last_location, latch_locations[x.lit], guard=g, up="t:=0")
             temp.add_transition(tr)
 
-            g = "{0} &amp;&amp; {0} != {1} &amp;&amp; {2} &gt;= {3}".format(latches[x.lit], next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][0])
-            up="{0}:=0, {1} := {2}".format(clock_name[x.lit], latches[x.lit], next_funcs[x.lit])
-            tr = Transition(last_location, latch_locations[x.lit], guard=g, up=up)
+            loc0 = Location(latch_locations[x.lit].name + "_becomes0")
+            loc0.set_invariant("{0} &lt;= {1}".format(clock_name[x.lit], self.delays[x.lit][0]))
+            loc1 = Location(latch_locations[x.lit].name + "_becomes1")
+            loc1.set_invariant("{0} &lt;= {1}".format(clock_name[x.lit], self.delays[x.lit][1]))
+
+            g = "{0} &amp;&amp; {0} != {1}".format(latches[x.lit], next_funcs[x.lit])
+            tr = Transition(last_location, loc0, guard=g)
             temp.add_transition(tr)
 
             up="{0}:=0, {1} := {2}".format(clock_name[x.lit], latches[x.lit], next_funcs[x.lit])
-            g = "!{0} &amp;&amp; {0} != {1} &amp;&amp; {2} &gt;= {3}".format(latches[x.lit], next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][1])
-            tr = Transition(last_location, latch_locations[x.lit], guard=g, up=up)
+            g = "{0} &gt;= {1}".format(clock_name[x.lit], self.delays[x.lit][0])
+            tr = Transition(loc0, latch_locations[x.lit], guard=g, up=up)
+            temp.add_transition(tr)
+
+            g = "!{0} &amp;&amp; {0} != {1}".format(latches[x.lit], next_funcs[x.lit])
+            tr = Transition(last_location, loc1, guard=g)
+            temp.add_transition(tr)
+
+            up = "{0}:=0, {1} := {2}".format(clock_name[x.lit], latches[x.lit], next_funcs[x.lit])
+            g = "{0} &gt;= {1}".format(clock_name[x.lit], self.delays[x.lit][1])
+            tr = Transition(loc1, latch_locations[x.lit], guard=g, up=up)
             temp.add_transition(tr)
 
             last_location = latch_locations[x.lit]
