@@ -169,7 +169,7 @@ class TAWRITER:
                     assert(len(si) == 2)
                     delays[latches[l]] = (si[0],si[1])
                 else:
-                    delays[latches[l]] = (0,0)
+                    delays[latches[l]] = (1,1)
         log.DBG_MSG("Latch delays: " + str(delays))
         return delays
 
@@ -200,19 +200,22 @@ class TAWRITER:
         # is it an input, latch, gate or constant
         if input or latch:
             # Boolean variables are encoded as 1-bit integers for now
-            result = "({0} == 1)".format(self.name_of(stripped_lit))
+            #result = "({0} == 1)".format(self.name_of(stripped_lit))
+            result = "({0})".format(self.name_of(stripped_lit))
         elif and_gate:
             result = ("({0} &amp;&amp; {1})".format(self.lit2formula(and_gate.rhs0),
+#            result = ("({0} * {1})".format(self.lit2formula(and_gate.rhs0),
                       self.lit2formula(and_gate.rhs1)))
         else:  # 0 literal, 1 literal and errors
-            result = "false" # this means false
+            result = "0" # this means false
         # cache result
         self.lit_to_formula[stripped_lit] = result
         if is_neg:
-            if result == "false":
-                result = "true"
+            if result == "0":
+                result = "1"
             else:
                 result = "!{0}".format(result)
+#                result = "(1-{0})".format(result)
             self.lit_to_formula[lit] = result
         return result
 
@@ -235,7 +238,7 @@ class TAWRITER:
         nta = NTA()
         temp = Template("Circuit")
         nta.add_template(temp)
-        nta.set_system("Process = Circuit();\nsystem Process;")
+        nta.set_system("system Circuit;")
         decl = StringIO.StringIO()
         init = Location("Init", urgent=True,initial=True)
         deadlock = Location("dead")
@@ -279,9 +282,9 @@ class TAWRITER:
             temp.add_transition(tr)
 
             # if it changes but the delay is already respected, move on directly
-            g = "{0} &amp;&amp; {0} != {1} &amp;&amp; {2} &gt;= {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][0])
+            g = "{0} == 1 &amp;&amp; {0} != {1} &amp;&amp; {2} &gt;= {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][0])
             temp.add_transition(Transition(last_location, latch_locations[x.lit], guard=g))
-            g = "!{0} &amp;&amp; {0} != {1} &amp;&amp; {2} &gt;= {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][1])
+            g = "{0} == 0 &amp;&amp; {0} != {1} &amp;&amp; {2} &gt;= {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][1])
             temp.add_transition(Transition(last_location, latch_locations[x.lit], guard=g))
 
             # if we have to wait to respect the delay go to specific wait state and wait precisely for the delay (matching invariant + guard)
@@ -290,7 +293,7 @@ class TAWRITER:
             loc1 = Location(latch_locations[x.lit].name + "_becomes1")
             loc1.set_invariant("{0} &lt;= {1}".format(clock_name[x.lit], self.delays[x.lit][1]))
 
-            g = "{0} &amp;&amp; {0} != {1} &amp;&amp; {2} &lt; {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][0])
+            g = "{0} == 1 &amp;&amp; {0} != {1} &amp;&amp; {2} &lt; {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][0])
             tr = Transition(last_location, loc0, guard=g)
             temp.add_transition(tr)
 
@@ -299,7 +302,7 @@ class TAWRITER:
             tr = Transition(loc0, latch_locations[x.lit], guard=g, up=up)
             temp.add_transition(tr)
 
-            g = "!{0} &amp;&amp; {0} != {1} &amp;&amp; {2} &lt; {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][1])
+            g = "{0} == 0 &amp;&amp; {0} != {1} &amp;&amp; {2} &lt; {3}".format(self.name_of(x.lit), next_funcs[x.lit], clock_name[x.lit], self.delays[x.lit][1])
             tr = Transition(last_location, loc1, guard=g)
             temp.add_transition(tr)
 
