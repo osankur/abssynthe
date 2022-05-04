@@ -67,6 +67,7 @@ static shared_data* data = NULL;
 
 struct synthesis_data {
     vector<pair<unsigned, BDD>> c_functions;
+    vector<pair<unsigned, BDD>> i_functions;
 };
 static synthesis_data synth_data;
 
@@ -226,6 +227,61 @@ static vector<pair<unsigned, BDD>> synthAlgo(Cudd* mgr, BDDAIG* spec,
     return result;
 }
 
+static vector<pair<unsigned, BDD>> synthEnvAlgo(Cudd* mgr, BDDAIG* spec, BDD strategy) {
+    vector<aiger_symbol*> i_inputs = spec->getUInputs();
+    vector<unsigned> i_input_lits;
+    vector<BDD> i_input_funs;
+    // as a first step, we compute a single bdd per controllable input
+    for (vector<aiger_symbol*>::iterator i = i_inputs.begin();
+         i != i_inputs.end(); i++) {
+        BDD c = mgr->bddVar((*i)->lit);
+        BDD others_cube = mgr->bddOne();
+        unsigned others_count = 0;
+        for (vector<aiger_symbol*>::iterator j = i_inputs.begin();
+             j != i_inputs.end(); j++) {
+            //dbgMsg("CInput " + to_string((*j)->lit));
+            if ((*i)->lit == (*j)->lit)
+                continue;
+            others_cube &= mgr->bddVar((*j)->lit);
+            //dbgMsg("Other cube has lit " + to_string((*j)->lit));
+            others_count++;
+        }
+        BDD c_arena;
+        if (others_count > 0)
+            c_arena = strategy.ExistAbstract(others_cube);
+        else {
+            //dbgMsg("No need to abstract other cinputs");
+            c_arena = strategy;
+        }
+#ifndef NDEBUG
+        spec->dump2dot(c_arena, "c_arena.dot");
+        spec->dump2dot(c_arena.Cofactor(c), "c_arena_true.dot");
+#endif
+        // pairs (x,u) in which c can be true
+        BDD res = c_arena.Cofactor(c);
+#ifndef NDEBUG
+        dbgMsg("Size of function for " + to_string(c.NodeReadIndex()) + " = " +
+               to_string(res.nodeCount()));
+#endif
+        //strategy &= (~c | res) & (~res | c);
+        strategy = strategy.Compose(res, (*i)->lit);
+        i_input_funs.push_back(res);
+        i_input_lits.push_back((*i)->lit);
+    }
+
+    vector<pair<unsigned, BDD>> result;
+    vector<unsigned>::iterator i = i_input_lits.begin();
+    vector<BDD>::iterator j = i_input_funs.begin();
+    for (; i != i_input_lits.end();) {
+        result.push_back(make_pair(*i, *j));
+        i++;
+        j++;
+    }
+    return result;
+}
+
+
+
 static void finalizeSynth(Cudd* mgr, AIG* spec,
                           vector<pair<unsigned, BDD>> result=
                           synth_data.c_functions) {
@@ -258,6 +314,41 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
     // Cleaning
     synth_data.c_functions.clear();
 }
+
+static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
+                          vector<pair<unsigned, BDD>> result=
+                          synth_data.i_functions) {
+    // we now get rid of all controllable inputs in the aig spec by replacing
+    // each one with an and computed using bdd2aig...
+    if (settings.final_reordering) {
+        mgr->ReduceHeap(CUDD_REORDER_SIFT_CONVERGE, 0);
+    }
+    // NOTE: because of the way bdd2aig is implemented, we must ensure that BDDs are
+    // no longer operated on after this point!
+    unordered_map<unsigned long, unsigned> cache;
+    vector<unsigned> uinputs = spec->getUInputLits();
+    for (vector<pair<unsigned, BDD>>::iterator i = result.begin();
+         i != result.end(); i++) {
+        spec->input2gate(i->first, bdd2aig(mgr, spec, i->second, &cache));
+#ifndef NDEBUG
+        dbgMsg("final function BDD size: " +
+               to_string((i->second).nodeCount()));
+#endif
+        uinputs.erase(remove(uinputs.begin(), uinputs.end(), i->first),
+                      uinputs.end());
+    }
+    for (vector<unsigned>::iterator i = uinputs.begin();
+         i != uinputs.end(); i++) {
+        logMsg("Setting unused uinput " + to_string(*i));
+        spec->input2gate(*i, bdd2aig(mgr, spec, ~mgr->bddOne() , &cache));
+    }
+    // Finally, we write the modified spec to file
+    spec->writeToFile(settings.out_file);
+    // Cleaning
+    synth_data.i_functions.clear();
+}
+
+
 
 static void outputWinRegion(Cudd* mgr, BDDAIG* spec, BDD winning_region) {
     // we will work on a clean spec
@@ -715,6 +806,27 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
             outputIndCertificate(mgr, spec, clean_winning_region);
         }
     }
+
+    // if includes_init == true, then bad_transitions is the set of all
+    // winning transitions for the adversary
+    if (includes_init && do_synth && outputExpected()) {
+        dbgMsg("acquiring lock on synth mutex");
+        if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
+        // let us clean the AIG before we start introducing new stuff
+        spec->popErrorLatch();
+        if (settings.out_file != NULL) {
+            dbgMsg("Starting synthesis");
+            synth_data.i_functions = synthEnvAlgo(mgr, spec,
+                                               bad_transitions);
+        }
+        if (settings.win_region_out_file != NULL) {
+            logMsg("Ignoring winning region file");
+        }
+        if (settings.ind_cert_out_file != NULL) {
+            logMsg("Ignoring inductive certificate file");
+        }
+    }
+
     return !includes_init;
 }
 
@@ -1244,6 +1356,8 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     Cudd mgr(0, 0);
     mgr.AutodynEnable(reordering);
     bool result;
+    BDD losing_region;
+    BDD losing_transitions;
     // we want spec to get garbage collected before we finalize
     // the synthesis step
     {
@@ -1257,14 +1371,19 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
         } else if (settings.comp_algo == 4){
                 result = compSolve4(&mgr, &spec);
         } else { // traditional fixpoint computation
-            result = internalSolve(&mgr, &spec, NULL, NULL, NULL,
+            // result = internalSolve(&mgr, &spec, NULL, NULL, NULL,
+            //                        settings.out_file != NULL);
+            result = internalSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
                                    settings.out_file != NULL);
         }
     }
     // deal with the synthesis step if needed
     if (result && settings.out_file != NULL) {
-        dbgMsg("Starting circuit generation");
+        dbgMsg("Starting (winning) circuit generation");
         finalizeSynth(&mgr, spec_base);
+    } else if (!result && settings.out_file != NULL){
+        logMsg("Starting (losing) circuit generation");
+        finalizeEnvSynth(&mgr, spec_base);
     }
     return result;
 }
