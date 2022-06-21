@@ -310,6 +310,8 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
         spec->input2gate(*i, bdd2aig(mgr, spec, ~mgr->bddOne() , &cache));
     }
     // Finally, we write the modified spec to file
+    logMsg("Writing to file ");
+    logMsg(settings.out_file);
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.c_functions.clear();
@@ -1379,7 +1381,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     }
     // deal with the synthesis step if needed
     if (result && settings.out_file != NULL) {
-        dbgMsg("Starting (winning) circuit generation");
+        logMsg("Starting (winning) circuit generation");
         finalizeSynth(&mgr, spec_base);
     } else if (!result && settings.out_file != NULL){
         logMsg("Starting (losing) circuit generation");

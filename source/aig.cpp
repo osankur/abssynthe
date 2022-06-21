@@ -229,11 +229,16 @@ AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
         exit(1);
     }
     if (spec->num_outputs != 1) {
-        errMsg(std::string() +
-               std::to_string(spec->num_outputs) + " > 1 number of outputs in " +
-               "AIGER file " +
-               aiger_file_name);
-        exit(1);
+        if (strcmp(this->spec->outputs[0].name,"error") != 0){
+            errMsg(std::string() +
+                std::to_string(spec->num_outputs) + " > 1 number of outputs in " +
+                "AIGER file " +
+                aiger_file_name);
+            errMsg("There must be either a single output, or the output 0 must be named 'error'.");
+            exit(1);
+        } else {
+            wrnMsg("There are several outputs. The output 0 named 'error' is considered the error output.");
+        }
     }
     // let us now build the vector of latches, c_inputs, and u_inputs
     for (unsigned i = 0; i < spec->num_latches; i++)
