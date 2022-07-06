@@ -290,9 +290,16 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
     if (settings.final_reordering) {
         mgr->ReduceHeap(CUDD_REORDER_SIFT_CONVERGE, 0);
     }
+    unordered_map<unsigned long, unsigned> cache;
+
+    for (auto p : synth_data.c_functions){
+        aiger_symbol* symbol = aiger_is_input(spec->getSpec(), p.first);
+        assert(symbol);
+        spec->addOutput(bdd2aig(mgr, spec, p.second, &cache),symbol->name);
+    }
+
     // NOTE: because of the way bdd2aig is implemented, we must ensure that BDDs are
     // no longer operated on after this point!
-    unordered_map<unsigned long, unsigned> cache;
     vector<unsigned> cinputs = spec->getCInputLits();
     for (vector<pair<unsigned, BDD>>::iterator i = result.begin();
          i != result.end(); i++) {
@@ -309,6 +316,7 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
         logMsg("Setting unused cinput " + to_string(*i));
         spec->input2gate(*i, bdd2aig(mgr, spec, ~mgr->bddOne() , &cache));
     }
+
     // Finally, we write the modified spec to file
     logMsg("Writing to file ");
     logMsg(settings.out_file);
@@ -328,6 +336,13 @@ static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
     // NOTE: because of the way bdd2aig is implemented, we must ensure that BDDs are
     // no longer operated on after this point!
     unordered_map<unsigned long, unsigned> cache;
+
+    for (auto p : synth_data.i_functions){
+        aiger_symbol* symbol = aiger_is_input(spec->getSpec(), p.first);
+        assert(symbol);
+        spec->addOutput(bdd2aig(mgr, spec, p.second, &cache),symbol->name);
+    }
+
     vector<unsigned> uinputs = spec->getUInputLits();
     for (vector<pair<unsigned, BDD>>::iterator i = result.begin();
          i != result.end(); i++) {
@@ -794,7 +809,7 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
         // let us clean the AIG before we start introducing new stuff
         spec->popErrorLatch();
         if (settings.out_file != NULL) {
-            dbgMsg("Starting synthesis");
+            logMsg("Starting synthesis");
             synth_data.c_functions = synthAlgo(mgr, spec,
                                                ~bad_transitions,
                                                ~error_states);
@@ -804,7 +819,7 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
             outputWinRegion(mgr, spec, clean_winning_region);
         }
         if (settings.ind_cert_out_file != NULL) {
-            dbgMsg("Starting output of inductive certificate");
+            logMsg("Starting output of inductive certificate");
             outputIndCertificate(mgr, spec, clean_winning_region);
         }
     }
@@ -841,7 +856,7 @@ static bool internalSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     if (settings.use_abs &&
         (losing_region == NULL) &&
         (losing_transitions == NULL)) {
-        dbgMsg("Using an internal abstract solver");
+        logMsg("Using an internal abstract solver");
 
         if (!settings.abs_threshold)
             return internalSolveAbstract(mgr, spec, upre_init, do_synth);
@@ -884,7 +899,7 @@ static bool compSolve1(Cudd* mgr, BDDAIG* spec) {
     for (vector<BDDAIG*>::iterator i = subgames.begin(); i != subgames.end(); i++) {
         vector<unsigned> ic = (*i)->getCInputLits();
         set<unsigned> intersection;
-        set_intersection(ic.begin(), ic.end(), total_cinputs.begin(), 
+        std::set_intersection(ic.begin(), ic.end(), total_cinputs.begin(), 
                          total_cinputs.end(), 
                          inserter(intersection,intersection.begin()));
         if (intersection.size() > 0 ) {
@@ -1048,7 +1063,7 @@ static bool compSolve2(Cudd* mgr, BDDAIG* spec) {
         }
         dbgMsg("Selected subgames " + to_string(min_i) + " and " + to_string(min_j));
         set<unsigned> intersection;
-        set_intersection(min_it->second.begin(), min_it->second.end(),
+        std::set_intersection(min_it->second.begin(), min_it->second.end(),
                          min_jt->second.begin(), min_jt->second.end(), 
                          inserter(intersection, intersection.begin()));
         BDD losing_transitions;
@@ -1373,13 +1388,11 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
         } else if (settings.comp_algo == 4){
                 result = compSolve4(&mgr, &spec);
         } else { // traditional fixpoint computation
-            // result = internalSolve(&mgr, &spec, NULL, NULL, NULL,
-            //                        settings.out_file != NULL);
             result = internalSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
                                    settings.out_file != NULL);
         }
     }
-    // deal with the synthesis step if needed
+    // Generate and output strategy for the winning player
     if (result && settings.out_file != NULL) {
         logMsg("Starting (winning) circuit generation");
         finalizeSynth(&mgr, spec_base);

@@ -184,7 +184,6 @@ void AIG::input2gate(unsigned input, unsigned rh0) {
     dbgMsg("Gated input " + std::to_string(input) + " with val = " +
            std::to_string(rh0));
 }
-
 void AIG::pushErrorLatch() {
     this->error_fake_latch.name = this->error_fake_latch_name;
     this->error_fake_latch.lit = (this->maxVar() + 1) * 2;

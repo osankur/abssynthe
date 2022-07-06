@@ -106,13 +106,15 @@ void usage() {
 << std::endl
 << "                                   With file extension .aag, ASCII output will"
 << std::endl
-<< "                                   be used. The argument is ignored if spec"
+<< "                                   be used. The output is the circuit controlled"
 << std::endl
-<< "                                   is not realizable." << std::endl
+<< "                                   by the winning strategy of the winning player." << std::endl
 << "-w WIN_REGION_OUT_FILE, --win_region WIN_REGION_OUT_FILE" << std::endl
 << "                                   Output winning region file path. Same "
 << std::endl
-<< "                                   file extension rules as for OUT_FILE."
+<< "                                   file extension rules as for OUT_FILE. The output\n"
+<< "                                   contains the description of the states (without inputs)\n"
+<< "                                   from which there is a winning strategy."
 << std::endl
 << "-i IND_CERT_OUT_FILE, --ind_cert IND_CERT_OUT_FILE" << std::endl
 << "                                   Output a certificate of the winning region "
@@ -142,6 +144,7 @@ void parse_arguments(int argc, char** argv) {
     settings.out_file = NULL;
     settings.win_region_out_file = NULL;
     settings.ind_cert_out_file = NULL;
+    settings.strat_file = NULL;
 
     // read values from argv
     int opt_key;

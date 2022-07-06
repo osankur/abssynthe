@@ -68,6 +68,9 @@ class AIG {
         AIG(const AIG&);
         AIG();
         ~AIG();
+        aiger* getSpec(){
+            return spec;
+        }
         void cleanCaches();
         unsigned maxVar();
         void addInput(unsigned, const char*);

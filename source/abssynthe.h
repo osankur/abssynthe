@@ -42,6 +42,7 @@ struct settings_struct {
     const char* out_file;
     const char* win_region_out_file;
     const char* ind_cert_out_file;
+    const char* strat_file;
 };
 
 extern struct settings_struct settings;
