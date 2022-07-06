@@ -232,6 +232,11 @@ int main(int argc, char** argv) {
         result = solve(&aig);
     }
     // return the realizability test result
+    if (result){
+        std::cout << "[abssynthe] Controller can ensure safety\n";
+    } else {
+        std::cout << "[abssynthe] Adversary can ensure reachability\n";
+    }
     logMsg("Realizable? " + std::to_string(result));
     exit(result ? EXIT_STATUS_REALIZABLE : EXIT_STATUS_UNREALIZABLE);
 }

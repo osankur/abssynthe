@@ -318,8 +318,8 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
     }
 
     // Finally, we write the modified spec to file
-    logMsg("Writing to file ");
-    logMsg(settings.out_file);
+    dbgMsg("Writing to file ");
+    dbgMsg(settings.out_file);
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.c_functions.clear();
@@ -809,7 +809,7 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
         // let us clean the AIG before we start introducing new stuff
         spec->popErrorLatch();
         if (settings.out_file != NULL) {
-            logMsg("Starting synthesis");
+            dbgMsg("Starting synthesis");
             synth_data.c_functions = synthAlgo(mgr, spec,
                                                ~bad_transitions,
                                                ~error_states);
@@ -1394,10 +1394,10 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     }
     // Generate and output strategy for the winning player
     if (result && settings.out_file != NULL) {
-        logMsg("Starting (winning) circuit generation");
+        logMsg("Generating safety strategy");
         finalizeSynth(&mgr, spec_base);
     } else if (!result && settings.out_file != NULL){
-        logMsg("Starting (losing) circuit generation");
+        logMsg("Generating reachability strategy");
         finalizeEnvSynth(&mgr, spec_base);
     }
     return result;
