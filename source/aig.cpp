@@ -188,7 +188,14 @@ void AIG::pushErrorLatch() {
     this->error_fake_latch.name = this->error_fake_latch_name;
     this->error_fake_latch.lit = (this->maxVar() + 1) * 2;
     this->spec->maxvar++;
-    this->error_fake_latch.next = this->spec->outputs[0].lit;
+    if (this->spec->num_outputs > 0){
+        this->error_fake_latch.next = this->spec->outputs[0].lit;
+    } else if (this->spec->num_bad > 0){
+        this->error_fake_latch.next = this->spec->bad[0].lit;
+    } else {
+        errMsg("Not error output or bad property founds.");
+        exit(1);
+    }
     dbgMsg(std::string("Error fake latch = ") + 
            std::to_string(this->error_fake_latch.lit));
     this->latches.push_back(&(this->error_fake_latch));
@@ -227,7 +234,7 @@ AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
                aiger_file_name);
         exit(1);
     }
-    if (spec->num_outputs != 1) {
+    if (spec->num_outputs > 1) {
         if (strcmp(this->spec->outputs[0].name,"error") != 0){
             errMsg(std::string() +
                 std::to_string(spec->num_outputs) + " > 1 number of outputs in " +
@@ -238,6 +245,23 @@ AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
         } else {
             wrnMsg("There are several outputs. The output 0 named 'error' is considered the error output.");
         }
+    } else if (spec->num_outputs == 0 && spec->num_bad > 0){
+        if (strcmp(this->spec->bad[0].name,"error") != 0){
+            errMsg(std::string() +
+                std::to_string(spec->num_outputs) + " > 1 number of bads in " +
+                "AIGER file " +
+                aiger_file_name);
+            errMsg("There must be either a single output, or output 0 must be named 'error', bad property 0 must be named 'error'.");
+            exit(1);
+        } else {
+            wrnMsg("There are no outputs. The bad state property 0 named 'error' is considered the error output.");
+        }
+        
+    } else {
+        errMsg(std::string("Error ") +
+               " AIGER file does not contain any outputs: " +
+               aiger_file_name);
+        exit(1);
     }
     // let us now build the vector of latches, c_inputs, and u_inputs
     for (unsigned i = 0; i < spec->num_latches; i++)
