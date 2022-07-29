@@ -201,6 +201,10 @@ void AIG::pushErrorLatch() {
     this->latches.push_back(&(this->error_fake_latch));
 }
 
+aiger_symbol AIG::get_error_fake_latch(){
+    return this->error_fake_latch;
+}
+
 // CAREFUL: popping the error latch is not guarded by any checks
 void AIG::popErrorLatch() {
     this->spec->maxvar--;
@@ -234,7 +238,6 @@ AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
                aiger_file_name);
         exit(1);
     }
-    std::cout << "Number of outputs: " << spec->num_outputs << "\n";
     if (spec->num_outputs >= 1) {
         if (strcmp(this->spec->outputs[0].name,"error") != 0){
             errMsg(std::string() +

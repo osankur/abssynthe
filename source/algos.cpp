@@ -231,7 +231,7 @@ static vector<pair<unsigned, BDD>> synthEnvAlgo(Cudd* mgr, BDDAIG* spec, BDD str
     vector<aiger_symbol*> i_inputs = spec->getUInputs();
     vector<unsigned> i_input_lits;
     vector<BDD> i_input_funs;
-    // as a first step, we compute a single bdd per controllable input
+    // as a first step, we compute a single bdd per uncontrollable input
     for (vector<aiger_symbol*>::iterator i = i_inputs.begin();
          i != i_inputs.end(); i++) {
         BDD c = mgr->bddVar((*i)->lit);
@@ -250,12 +250,12 @@ static vector<pair<unsigned, BDD>> synthEnvAlgo(Cudd* mgr, BDDAIG* spec, BDD str
         if (others_count > 0)
             c_arena = strategy.ExistAbstract(others_cube);
         else {
-            //dbgMsg("No need to abstract other cinputs");
+            //dbgMsg("No need to abstract other uinputs");
             c_arena = strategy;
         }
 #ifndef NDEBUG
-        spec->dump2dot(c_arena, "c_arena.dot");
-        spec->dump2dot(c_arena.Cofactor(c), "c_arena_true.dot");
+        spec->dump2dot(c_arena, "i_arena.dot");
+        spec->dump2dot(c_arena.Cofactor(c), "i_arena_true.dot");
 #endif
         // pairs (x,u) in which c can be true
         BDD res = c_arena.Cofactor(c);
@@ -760,6 +760,7 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     dbgMsg("Computing fixpoint of UPRE.");
     bool includes_init = false;
     unsigned cnt = 0;
+    BDD cinput_cube = spec->cinputCube();
     BDD bad_transitions;
     BDD init_state = spec->initState();
     BDD error_states;
@@ -768,10 +769,17 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     else
         error_states = spec->errorStates();
     BDD prev_error = ~mgr->bddOne();
+    if (losing_transitions != NULL){
+        *losing_transitions = ~mgr->bddOne();
+    } 
     includes_init = ((init_state & error_states) != ~mgr->bddOne());
     while (!includes_init && error_states != prev_error) {
         prev_error = error_states;
         error_states = prev_error | upre(spec, prev_error, bad_transitions);
+        if (losing_transitions != NULL){
+            *losing_transitions = *losing_transitions | 
+                (bad_transitions & ~prev_error).UnivAbstract(cinput_cube);
+        }
         includes_init = ((init_state & error_states) != ~mgr->bddOne());
         cnt++;
 #ifndef NDEBUG
@@ -789,9 +797,9 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     if (losing_region != NULL) {
         *losing_region = error_states;
     }
-    if (losing_transitions != NULL){
-        *losing_transitions = bad_transitions;
-    } 
+    // if (losing_transitions != NULL){
+    //     *losing_transitions = bad_transitions;
+    // } 
     // if !includes_init == true, then ~bad_transitions is the set of all
     // good transitions for controller (Eve)
     if (!includes_init && do_synth && outputExpected()) {
@@ -831,10 +839,20 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
         if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
         // let us clean the AIG before we start introducing new stuff
         spec->popErrorLatch();
-        if (settings.out_file != NULL) {
+        if (settings.out_file != NULL && losing_transitions != NULL) {
             dbgMsg("Starting synthesis");
+            // synth_data.i_functions = synthEnvAlgo(mgr, spec,
+            //                                    bad_transitions);
+            // Remove the dependence on error latch
+            *losing_transitions = losing_transitions->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+            // spec->dump2dot(*losing_transitions, "strategy.dot");
+            // set<unsigned> deps = spec->semanticDeps(*losing_transitions);
+            // string litstring;
+            // for (set<unsigned>::iterator i = deps.begin(); i != deps.end(); i++)
+            //     litstring += to_string(*i) + ", ";
+            // dbgMsg("Semantic deps of the non-det strat: " + litstring);            
             synth_data.i_functions = synthEnvAlgo(mgr, spec,
-                                               bad_transitions);
+                                               *losing_transitions);
         }
         if (settings.win_region_out_file != NULL) {
             logMsg("Ignoring winning region file");

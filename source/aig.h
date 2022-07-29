@@ -60,6 +60,7 @@ class AIG {
         static unsigned primeVar(unsigned lit) { return AIG::stripLit(lit) + 1; }
         void defaultValues();
     public:
+        aiger_symbol get_error_fake_latch();
         void popErrorLatch();
         static unsigned negateLit(unsigned lit) { return lit ^ 1; }
         static bool litIsNegated(unsigned lit) { return (lit & 1) == 1; }
