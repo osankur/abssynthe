@@ -3,7 +3,7 @@ DIR=`dirname $0`/
 cd ${DIR}source
 tar -zxvf cudd-2.5.1.tar.gz
 cd cudd-2.5.1
-#make objlib
+make objlib
 cd ..
 make abssynthe
 cd ..
