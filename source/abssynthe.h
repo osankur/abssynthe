@@ -35,6 +35,7 @@ struct settings_struct {
     bool parallel;
     bool ordering_strategies;
     bool final_reordering;
+    bool best_effort_reach;
     int comp_algo;
     int n_folds;
     int abs_threshold;
