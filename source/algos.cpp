@@ -348,9 +348,9 @@ static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
         int cnt=0;
         for (auto cls : synth_data.control_loss_states){
             if (cnt == 0){
-                spec->addOutput(bdd2aig(mgr, spec, cls, &cache),"_control_loss_state_");
+                spec->addOutput(bdd2aig(mgr, spec, cls, &cache),"_cooperation_");
             } else {
-                spec->addOutput(bdd2aig(mgr, spec, cls, &cache),("_control_loss_state_"+std::to_string(cnt)).c_str());
+                spec->addOutput(bdd2aig(mgr, spec, cls, &cache),("_cooperation_"+std::to_string(cnt)).c_str());
             }
             cnt++;
         }
@@ -948,9 +948,9 @@ spec->dump2dot(error_states, fname.c_str());
             *losing_region = error_states;
         }
 #ifdef NDEBUG
-fname = "control_losses" + to_string(cnt) + ".dot";
+fname = "cooperation_states" + to_string(cnt) + ".dot";
 spec->dump2dot(control_loss_states, fname.c_str());
-std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<". control_losses size: "<< 
+std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<". cooperation size: "<< 
            control_loss_states.nodeCount() << "\n";
 #endif
     }
@@ -977,7 +977,8 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
     }
 
 
-    logMsg("Strategy synthesized with " + std::to_string(cnt) + " control losses.\n");
+    // logMsg("Strategy synthesized with " + std::to_string(cnt) + " control losses.");
+    std::cout << ("[abssynthe] Strategy synthesized with " + std::to_string(cnt) + " cooperation step(s).") << "\n";
     return !includes_init;
 }
 
@@ -1533,10 +1534,10 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     }
     // Generate and output strategy for the winning player
     if (result && settings.out_file != NULL) {
-        logMsg("Generating safety strategy");
+        dbgMsg("Generating safety strategy");
         finalizeSynth(&mgr, spec_base);
     } else if (!result && settings.out_file != NULL){
-        logMsg("Generating reachability strategy");
+        dbgMsg("Generating reachability strategy");
         finalizeEnvSynth(&mgr, spec_base);
     }
     return result;
