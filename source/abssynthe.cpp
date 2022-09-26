@@ -40,6 +40,7 @@ struct settings_struct settings;
 
 static struct option long_options[] = {
     {"verbose_level", required_argument, NULL, 'v'},
+    {"best_effort_reach", no_argument, NULL, 'b'},
     {"use_trans", no_argument, NULL, 't'},
     {"use_abs", optional_argument, NULL, 'a'},
     {"min_ordering", optional_argument, NULL, 'm'},
@@ -94,6 +95,8 @@ void usage() {
 << std::endl
 << "-m, --min_ordering                 manual reordering just before generating"
 << std::endl
+<< "-b, --best_effort_reach            compute best effort strategy for reaching the target state (output=1)"
+<< std::endl
 << "                                   output, to obtain a smaller circuit"
 << std::endl
 << "-v VERBOSE_LEVEL, --verbose_level VERBOSE_LEVEL" << std::endl
@@ -131,6 +134,7 @@ void parse_arguments(int argc, char** argv) {
     std::cout << std::endl;
 #endif
     // default values
+    settings.best_effort_reach = false;
     settings.use_trans = false;
     settings.use_abs = false;
     settings.use_rsynth = false;
@@ -150,7 +154,7 @@ void parse_arguments(int argc, char** argv) {
     int opt_key;
     int long_idx;
     while (true) {
-        opt_key = getopt_long(argc, argv, "v:ta::prsmc:f:o:w:i:", long_options, &long_idx);
+        opt_key = getopt_long(argc, argv, "v:bta::prsmc:f:o:w:i:", long_options, &long_idx);
         if (opt_key == -1)
             break;
         switch (opt_key) {
@@ -162,6 +166,9 @@ void parse_arguments(int argc, char** argv) {
                 break;
             case 't':
                 settings.use_trans = true;
+                break;
+            case 'b':
+                settings.best_effort_reach = true;
                 break;
             case 'r':
                 settings.use_rsynth = true;

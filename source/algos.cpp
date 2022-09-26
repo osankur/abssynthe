@@ -68,6 +68,7 @@ static shared_data* data = NULL;
 struct synthesis_data {
     vector<pair<unsigned, BDD>> c_functions;
     vector<pair<unsigned, BDD>> i_functions;
+    vector<BDD> control_loss_states;
 };
 static synthesis_data synth_data;
 
@@ -323,6 +324,7 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.c_functions.clear();
+    synth_data.control_loss_states.clear();
 }
 
 static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
@@ -342,7 +344,17 @@ static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
         assert(symbol);
         spec->addOutput(bdd2aig(mgr, spec, p.second, &cache),symbol->name);
     }
-
+    if (settings.best_effort_reach){
+        int cnt=0;
+        for (auto cls : synth_data.control_loss_states){
+            if (cnt == 0){
+                spec->addOutput(bdd2aig(mgr, spec, cls, &cache),"_cooperation_");
+            } else {
+                spec->addOutput(bdd2aig(mgr, spec, cls, &cache),("_cooperation_"+std::to_string(cnt)).c_str());
+            }
+            cnt++;
+        }
+    }
     vector<unsigned> uinputs = spec->getUInputLits();
     for (vector<pair<unsigned, BDD>>::iterator i = result.begin();
          i != result.end(); i++) {
@@ -363,6 +375,7 @@ static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.i_functions.clear();
+    synth_data.control_loss_states.clear();
 }
 
 
@@ -754,6 +767,16 @@ static BDD upre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
     return temp_bdd.ExistAbstract(uinput_cube);
 }
 
+static BDD pre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
+    BDD not_dst = ~dst;
+    trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
+    BDD cinput_cube = spec->cinputCube();
+    BDD uinput_cube = spec->uinputCube();
+    BDD temp_bdd = trans_bdd.ExistAbstract(cinput_cube);
+    return temp_bdd.ExistAbstract(uinput_cube);
+}
+
+
 static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
                                BDD* losing_region, BDD* losing_transitions,
                                bool do_synth=false) {
@@ -862,6 +885,100 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
         }
     }
 
+    return !includes_init;
+}
+
+static int bestEffortReachSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
+                               BDD* losing_region, BDD* losing_transitions,
+                               bool do_synth=false) 
+    {
+    bool includes_init = false;
+    unsigned cnt = 0;
+    BDD cinput_cube = spec->cinputCube();
+    BDD uinput_cube = spec->uinputCube();
+    BDD bad_transitions;
+    BDD init_state = spec->initState();
+    BDD error_states;
+    if (upre_init != NULL)
+        error_states = *upre_init;
+    else
+        error_states = spec->errorStates();
+    BDD prev_error = ~mgr->bddOne();
+    if (losing_transitions != NULL){
+        *losing_transitions = ~mgr->bddOne();
+    } 
+    includes_init = ((init_state & error_states) != ~mgr->bddOne());
+#ifdef NDEBUG
+string fname = "init.dot";
+spec->dump2dot(init_state, fname.c_str());
+#endif
+
+    // control_loss_state(L,X_u): states from which a cooperative move is necessary
+    // synth_data.control_loss_states = ~mgr->bddOne();
+    // BDD & control_loss_states = synth_data.control_loss_states;
+    BDD control_loss_states = mgr->bddZero();
+    while (!includes_init && error_states != prev_error) {
+        prev_error = error_states;
+        BDD it_losing_region;
+        BDD it_losing_transitions;
+        // Compute attractor for Env: error_states = error_states | Upre*(error_states)
+        includes_init = !internalSolveExact(mgr, spec, &error_states, &it_losing_region, &it_losing_transitions, false);
+        error_states = prev_error | it_losing_region;        
+        if (losing_transitions != NULL){
+            *losing_transitions = *losing_transitions | it_losing_transitions;
+        }
+#ifdef NDEBUG
+std::cout << "Upre* done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<"\n";
+fname = "upre_error" + to_string(cnt) + ".dot";
+spec->dump2dot(error_states, fname.c_str());
+#endif
+        if (includes_init) break;
+        cnt++;
+
+        // Add one-step cooperative predecessors: error_states = error_states | Pre(error_states)
+        BDD it_pre_transitions;
+        BDD pre_error_states = pre(spec, error_states, it_pre_transitions);
+        control_loss_states = control_loss_states | (it_pre_transitions.ExistAbstract(cinput_cube) & ~error_states);
+        error_states = error_states | control_loss_states.ExistAbstract(uinput_cube);
+        includes_init = ((init_state & error_states) != ~mgr->bddOne());
+        if (losing_transitions != NULL){
+            *losing_transitions = *losing_transitions | it_pre_transitions.ExistAbstract(cinput_cube);
+        }
+        if (losing_region != NULL) {
+            *losing_region = error_states;
+        }
+#ifdef NDEBUG
+fname = "cooperation_states" + to_string(cnt) + ".dot";
+spec->dump2dot(control_loss_states, fname.c_str());
+std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<". cooperation size: "<< 
+           control_loss_states.nodeCount() << "\n";
+#endif
+    }
+
+    if (includes_init && do_synth && outputExpected()) {
+        dbgMsg("acquiring lock on synth mutex");
+        if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
+        // let us clean the AIG before we start introducing new stuff
+        spec->popErrorLatch();
+        if (settings.out_file != NULL && losing_transitions != NULL) {
+            dbgMsg("Starting synthesis");
+            synth_data.control_loss_states.push_back(control_loss_states.ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit)));
+            // synth_data.control_loss_states = mgr->bddOne();
+            *losing_transitions = losing_transitions->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+            synth_data.i_functions = synthEnvAlgo(mgr, spec,
+                                               *losing_transitions);
+        }
+        if (settings.win_region_out_file != NULL) {
+            logMsg("Ignoring winning region file");
+        }
+        if (settings.ind_cert_out_file != NULL) {
+            logMsg("Ignoring inductive certificate file");
+        }
+    }
+
+
+    // logMsg("Strategy synthesized with " + std::to_string(cnt) + " control losses.");
+    std::cout << ("[abssynthe] Strategy synthesized with " + std::to_string(cnt) + " cooperation step(s).") << "\n";
     return !includes_init;
 }
 
@@ -1405,6 +1522,11 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
                 result = compSolve3(&mgr, &spec);
         } else if (settings.comp_algo == 4){
                 result = compSolve4(&mgr, &spec);
+        } else if (settings.best_effort_reach){
+            result = bestEffortReachSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
+                                   settings.out_file != NULL);
+            // 0: Adversary can guide the system to err possibly with the help of Controller
+            // 1: They cannot, which means that err is not reachable from init
         } else { // traditional fixpoint computation
             result = internalSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
                                    settings.out_file != NULL);
@@ -1412,10 +1534,10 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     }
     // Generate and output strategy for the winning player
     if (result && settings.out_file != NULL) {
-        logMsg("Generating safety strategy");
+        dbgMsg("Generating safety strategy");
         finalizeSynth(&mgr, spec_base);
     } else if (!result && settings.out_file != NULL){
-        logMsg("Generating reachability strategy");
+        dbgMsg("Generating reachability strategy");
         finalizeEnvSynth(&mgr, spec_base);
     }
     return result;

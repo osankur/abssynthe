@@ -261,6 +261,7 @@ AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
             wrnMsg("There are no outputs. The bad state property 0 named 'error' is considered the error output.");
         }        
     } else if (spec->num_outputs == 0 && spec->num_bad == 0){
+    } else  if (spec->num_outputs == 0 && spec->num_bad == 0){
         errMsg(std::string("Error ") +
                " AIGER file does not contain any outputs or bad states: " +
                aiger_file_name);
