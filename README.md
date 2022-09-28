@@ -6,6 +6,10 @@ synthesize controllers from succinct safety specifications.
 * Maintainer: Guillermo A. Perez (University of Antwerp)
 * Contributors: Nicolas Basset, Romain Brenguier, Ocan Sankur, Jean-Francois Raskin 
 
+The present fork contains the following extensions:
+- If Environment is winning, a winning strategy is output for Environment if -o option is given.
+- Best-effort strategies are computed for reachability objectives for Environment with the -b option.
+
 ## Building
 We provide a building script for your convenience, but you may have to
 customize it for your set up.
