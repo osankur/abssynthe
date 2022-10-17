@@ -97,8 +97,6 @@ void usage() {
 << std::endl
 << "-b, --best_effort_reach            compute best effort strategy for reaching the target state (output=1)"
 << std::endl
-<< "                                   output, to obtain a smaller circuit"
-<< std::endl
 << "-v VERBOSE_LEVEL, --verbose_level VERBOSE_LEVEL" << std::endl
 << "                                   Verbose level string, i.e. (D)ebug,"
 << std::endl
