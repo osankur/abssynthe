@@ -379,6 +379,7 @@ static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitio
     spec->addOutput(bdd2aig(mgr, spec, *losing_transitions, &cache),"_attractor_");
     spec->addOutput(bdd2aig(mgr, spec, *safe_transitions, &cache),"_safe_");
     spec->addOutput(bdd2aig(mgr, spec, *control_loss_states, &cache),"_cooperation_");
+    assert((*losing_transitions & *control_loss_states) == mgr->bddZero());
 
     // Finally, we write the modified spec to file
     spec->writeToFile(settings.out_file);
@@ -943,7 +944,7 @@ static int bestEffortReachSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
         *losing_transitions = ~mgr->bddOne();
     } 
     includes_init = ((init_state & error_states) != ~mgr->bddOne());
-#ifdef NDEBUG
+#ifndef NDEBUG
 string fname = "init.dot";
 spec->dump2dot(init_state, fname.c_str());
 #endif
@@ -970,10 +971,10 @@ spec->dump2dot(init_state, fname.c_str());
         if(safe_transitions != NULL){
             BDD safe_trans;
             upre(spec, it_losing_region, safe_trans);
-            *safe_transitions |= safe_trans;
+            *safe_transitions |= safe_trans.UnivAbstract(cinput_cube);
         }
 
-#ifdef NDEBUG
+#ifndef NDEBUG
 std::cout << "Upre* done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<"\n";
 fname = "upre_error" + to_string(cnt) + ".dot";
 spec->dump2dot(error_states, fname.c_str());
@@ -993,7 +994,7 @@ spec->dump2dot(error_states, fname.c_str());
         if (losing_region != NULL) {
             *losing_region = error_states;
         }
-#ifdef NDEBUG
+#ifndef NDEBUG
 fname = "cooperation_states" + to_string(cnt) + ".dot";
 spec->dump2dot(*control_loss_states ,fname.c_str());
 //spec->dump2dot(it_pre_transitions, "ite.dot");
@@ -1008,11 +1009,10 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
         spec->popErrorLatch();
         if (settings.out_file != NULL && losing_transitions != NULL && control_loss_states != NULL) {
             dbgMsg("Starting synthesis");
-            *losing_transitions &= ~*control_loss_states;
             *control_loss_states = control_loss_states->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
             *losing_transitions = losing_transitions->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
             *safe_transitions &= (~*losing_transitions).ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
-#ifdef NDEBUG
+#ifndef NDEBUG
             spec->dump2dot(*safe_transitions, "safe.dot");
             spec->dump2dot(*control_loss_states, "cooperation.dot");
             spec->dump2dot(*losing_transitions, "losing.dot");
@@ -1026,6 +1026,8 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
         }
     }
 
+    *losing_transitions &= ~*control_loss_states;
+    *safe_transitions &= ~*control_loss_states;
 
     // logMsg("Strategy synthesized with " + std::to_string(cnt) + " control losses.");
     std::cout << ("[abssynthe] Strategy synthesized with " + std::to_string(cnt) + " cooperation step(s).") << "\n";
@@ -1581,6 +1583,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
                                                 settings.out_file != NULL);
             // 0: Adversary can guide the system to err possibly with the help of Controller
             // 1: They cannot, which means that err is not reachable from init
+            assert((losing_transitions & control_loss_states) == mgr.bddZero());
         } else { // traditional fixpoint computation
             result = internalSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
                                    settings.out_file != NULL);
