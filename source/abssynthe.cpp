@@ -41,6 +41,7 @@ struct settings_struct settings;
 static struct option long_options[] = {
     {"verbose_level", required_argument, NULL, 'v'},
     {"best_effort_reach", no_argument, NULL, 'b'},
+    {"bad_output", no_argument, NULL, 'x'},
     {"use_trans", no_argument, NULL, 't'},
     {"use_abs", optional_argument, NULL, 'a'},
     {"min_ordering", optional_argument, NULL, 'm'},
@@ -60,7 +61,7 @@ void usage() {
     std::cout << ABSSYNTHE_VERSION << std::endl
 << "usage:" << std::endl
 << "./abssynthe [-h] [-t] [-a] [-r] [-p] [-s] [-c {1,2,3,4}] "
-<< "[-f N_FOLDS] [-m] [-v VERBOSE_LEVEL] [-o OUT_FILE] spec"
+<< "[-f N_FOLDS] [-m] [-b] [-x BAD_OUTPUT] [-v VERBOSE_LEVEL] [-o OUT_FILE] spec"
 << std::endl
 << "positional arguments:" << std::endl
 << "spec                               input specification in extended AIGER format"
@@ -96,6 +97,8 @@ void usage() {
 << "-m, --min_ordering                 manual reordering just before generating"
 << std::endl
 << "-b, --best_effort_reach            compute best effort strategy for reaching the target state (output=1)"
+<< std::endl
+<< "-x, --bad_output                   the name of the output to be considered as the error specification"
 << std::endl
 << "-v VERBOSE_LEVEL, --verbose_level VERBOSE_LEVEL" << std::endl
 << "                                   Verbose level string, i.e. (D)ebug,"
@@ -147,12 +150,13 @@ void parse_arguments(int argc, char** argv) {
     settings.win_region_out_file = NULL;
     settings.ind_cert_out_file = NULL;
     settings.strat_file = NULL;
+    settings.bad_output = NULL;
 
     // read values from argv
     int opt_key;
     int long_idx;
     while (true) {
-        opt_key = getopt_long(argc, argv, "v:bta::prsmc:f:o:w:i:", long_options, &long_idx);
+        opt_key = getopt_long(argc, argv, "v:bta::prsmc:f:o:w:i:x:", long_options, &long_idx);
         if (opt_key == -1)
             break;
         switch (opt_key) {
@@ -210,6 +214,9 @@ void parse_arguments(int argc, char** argv) {
             case 'i':
                 settings.ind_cert_out_file = optarg;
                 break;
+            case 'x':
+                settings.bad_output = optarg;
+                break;
             default:
                 usage();
                 exit(1);
@@ -233,7 +240,7 @@ int main(int argc, char** argv) {
         result = solveParallel();
     } else {
         // try to open the spec now
-        AIG aig(settings.spec_file);
+        AIG aig(settings.spec_file, settings.bad_output);
         result = solve(&aig);
     }
     // return the realizability test result

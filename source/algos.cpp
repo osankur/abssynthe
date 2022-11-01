@@ -1672,7 +1672,7 @@ bool solveParallel() {
             children[i] = kiddo;
         } else {
             solver = i;
-            AIG spec(settings.spec_file);
+            AIG spec(settings.spec_file,NULL,true);
 	        if (ordering_strategies)
 	            pWorker(&spec, solver + 4);
 	        else

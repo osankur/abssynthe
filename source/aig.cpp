@@ -188,14 +188,7 @@ void AIG::pushErrorLatch() {
     this->error_fake_latch.name = this->error_fake_latch_name;
     this->error_fake_latch.lit = (this->maxVar() + 1) * 2;
     this->spec->maxvar++;
-    if (this->spec->num_outputs > 0){
-        this->error_fake_latch.next = this->spec->outputs[0].lit;
-    } else if (this->spec->num_bad > 0){
-        this->error_fake_latch.next = this->spec->bad[0].lit;
-    } else {
-        errMsg("Not error output or bad property founds.");
-        exit(1);
-    }
+    this->error_fake_latch.next = this->bad_output->lit;
     dbgMsg(std::string("Error fake latch = ") + 
            std::to_string(this->error_fake_latch.lit));
     this->latches.push_back(&(this->error_fake_latch));
@@ -221,6 +214,7 @@ void AIG::defaultValues() {
                                std::pair<std::vector<unsigned>,
                                          std::vector<unsigned>>>();
     this->spec = NULL;
+    this->bad_output = NULL;
 }
 
 AIG::AIG() {
@@ -228,7 +222,7 @@ AIG::AIG() {
     this->spec = aiger_init();
 }
 
-AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
+AIG::AIG(const char* aiger_file_name, const char * bad_output, bool intro_error_latch) {
     this->defaultValues();
     this->spec = aiger_init();
     const char* err = aiger_open_and_read_from_file (spec, aiger_file_name);
@@ -238,34 +232,34 @@ AIG::AIG(const char* aiger_file_name, bool intro_error_latch) {
                aiger_file_name);
         exit(1);
     }
-    if (spec->num_outputs > 1) {
-        if (strcmp(this->spec->outputs[0].name,"error") != 0){
-            errMsg(std::string() +
-                std::to_string(spec->num_outputs) + " > 1 number of outputs in " +
-                "AIGER file " +
-                aiger_file_name);
-            errMsg("There must be either a single output, or the output 0 must be named 'error'.");
-            exit(1);
-        } else {
-            wrnMsg("There are several outputs. The output 0 named 'error' is considered the error output.");
+    if (bad_output != NULL){
+        for(unsigned i = 0; i < this->spec->num_outputs; i++){
+            if (strcmp(this->spec->outputs[i].name,bad_output) == 0){
+                this->bad_output = &this->spec->outputs[i];
+                break;
+            }
         }
-    } else if (spec->num_outputs == 0 && spec->num_bad > 0){
-        if (strcmp(this->spec->bad[0].name,"error") != 0){
-            errMsg(std::string() +
-                std::to_string(spec->num_outputs) + " > 1 number of bads in " +
-                "AIGER file " +
-                aiger_file_name);
-            errMsg("There must be either a single output, or output 0 must be named 'error', bad property 0 must be named 'error'.");
-            exit(1);
+        for(unsigned i = 0; i < this->spec->num_bad; i++){
+            if (strcmp(this->spec->bad[i].name,bad_output) == 0){
+                this->bad_output = &this->spec->bad[i];
+                break;
+            }
+        }
+        if (this->bad_output == NULL){
+            errMsg("Output or bad specification not found");
+            exit(1);            
+        }
+    } else {
+        if (this->spec->num_outputs > 0){
+            this->bad_output = &this->spec->outputs[0];
+            wrnMsg("Output 0 is considered to be the bad specification");
+        } else if (this->spec->num_bad > 0){
+            this->bad_output = &this->spec->bad[0];
+            wrnMsg("Bad 0 is considered to be the bad specification");
         } else {
-            wrnMsg("There are no outputs. The bad state property 0 named 'error' is considered the error output.");
-        }        
-    } else if (spec->num_outputs == 0 && spec->num_bad == 0){
-    } else  if (spec->num_outputs == 0 && spec->num_bad == 0){
-        errMsg(std::string("Error ") +
-               " AIGER file does not contain any outputs or bad states: " +
-               aiger_file_name);
-        exit(1);
+            errMsg("No error output or bad property found.");
+            exit(1);
+        }
     }
     // let us now build the vector of latches, c_inputs, and u_inputs
     for (unsigned i = 0; i < spec->num_latches; i++)

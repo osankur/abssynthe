@@ -40,6 +40,7 @@
 class AIG {
     private:
         bool must_clean;
+        aiger_symbol * bad_output;
     protected:
         aiger* spec;
         std::vector<aiger_symbol*> latches;
@@ -65,7 +66,7 @@ class AIG {
         static unsigned negateLit(unsigned lit) { return lit ^ 1; }
         static bool litIsNegated(unsigned lit) { return (lit & 1) == 1; }
         static unsigned stripLit(unsigned lit) { return lit & ~1; }
-        AIG(const char*, bool intro_error_latch=true);
+        AIG(const char*, const char * error, bool intro_error_latch=true);
         AIG(const AIG&);
         AIG();
         ~AIG();
