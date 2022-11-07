@@ -898,6 +898,7 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
     return !includes_init;
 }
 
+
 /**
  * @brief Compute a set of states from which Env can force the game into error=1
  * with possibly cooperation of Controller. This computes the least fp of
@@ -958,7 +959,8 @@ spec->dump2dot(init_state, fname.c_str());
         *safe_transitions = mgr->bddZero();
     }
 
-    while (!includes_init && error_states != prev_error) {
+    // while (!includes_init && error_states != prev_error) {
+    while ( error_states != prev_error) {
         prev_error = error_states;
         BDD it_losing_region;
         BDD it_losing_transitions;
@@ -968,18 +970,12 @@ spec->dump2dot(init_state, fname.c_str());
         if (losing_transitions != NULL){
             *losing_transitions = *losing_transitions | it_losing_transitions;
         }
-        if(safe_transitions != NULL){
-            BDD safe_trans;
-            upre(spec, it_losing_region, safe_trans);
-            *safe_transitions |= safe_trans.UnivAbstract(cinput_cube);
-        }
-
 #ifndef NDEBUG
 std::cout << "Upre* done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<"\n";
 fname = "upre_error" + to_string(cnt) + ".dot";
 spec->dump2dot(error_states, fname.c_str());
 #endif
-        if (includes_init) break;
+        // if (includes_init) break;
         cnt++;
 
         // Add one-step cooperative predecessors: error_states = error_states | Pre(error_states)
@@ -987,22 +983,29 @@ spec->dump2dot(error_states, fname.c_str());
         BDD pre_error_states = pre(spec, error_states, it_pre_transitions);
         *control_loss_states = *control_loss_states | (it_pre_transitions.ExistAbstract(cinput_cube) & ~error_states);
         error_states = error_states | control_loss_states->ExistAbstract(uinput_cube);
-        includes_init = ((init_state & error_states) != ~mgr->bddOne());
-        if (losing_transitions != NULL){
-            *losing_transitions = *losing_transitions | it_pre_transitions.ExistAbstract(cinput_cube);
-        }
+        includes_init |= ((init_state & error_states) != ~mgr->bddOne());
         if (losing_region != NULL) {
             *losing_region = error_states;
         }
+
 #ifndef NDEBUG
 fname = "cooperation_states" + to_string(cnt) + ".dot";
 spec->dump2dot(*control_loss_states ,fname.c_str());
 //spec->dump2dot(it_pre_transitions, "ite.dot");
 std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<". cooperation size: "<< 
            control_loss_states->nodeCount() << "\n";
+
 #endif
     }
     if (includes_init && do_synth && outputExpected()) {
+
+        if(safe_transitions != NULL){
+            BDD safe_trans;
+            upre(spec, error_states, safe_trans);
+            *safe_transitions |= safe_trans.UnivAbstract(cinput_cube);
+        }
+
+
         dbgMsg("acquiring lock on synth mutex");
         if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
         // let us clean the AIG before we start introducing new stuff
