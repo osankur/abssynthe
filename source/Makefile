@@ -15,7 +15,6 @@ CUDD_LIBS=$(CUDD_PATH)/obj/libobj.a \
 
 abssynthe: $(HEADERS) $(SOURCES) $(CUDD_HDRS) $(CUDD_LIBS)
 	$(CXX) $(CXXFLAGS) $(SOURCES) $(CUDD_LIBS) -o abssynthe -I $(CUDD_HDRS)
-	cp abssynthe ../binary/
 
 abssynthe-dbg: $(HEADERS) $(SOURCES) $(CUDD_HDRS) $(CUDD_LIBS)
 	$(CXX) $(DBGFLAGS) $(SOURCES) $(CUDD_LIBS) -o abssynthe-dbg -I $(CUDD_HDRS)
