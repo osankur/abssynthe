@@ -68,7 +68,7 @@ static shared_data* data = NULL;
 struct synthesis_data {
     vector<pair<unsigned, BDD>> c_functions;
     vector<pair<unsigned, BDD>> i_functions;
-    // vector<BDD> control_loss_states;
+    // vector<BDD> control_loss_transitions;
 };
 static synthesis_data synth_data;
 
@@ -324,7 +324,7 @@ static void finalizeSynth(Cudd* mgr, AIG* spec,
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.c_functions.clear();
-    // synth_data.control_loss_states.clear();
+    // synth_data.control_loss_transitions.clear();
 }
 
 static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
@@ -364,10 +364,10 @@ static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.i_functions.clear();
-    // synth_data.control_loss_states.clear();
+    // synth_data.control_loss_transitions.clear();
 }
 
-static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitions, BDD * control_loss_states, BDD * safe_transitions){
+static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitions, BDD * control_loss_transitions, BDD * safe_transitions){
     // we now get rid of all controllable inputs in the aig spec by replacing
     // each one with an and computed using bdd2aig...
     if (settings.final_reordering) {
@@ -377,15 +377,15 @@ static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitio
     // no longer operated on after this point!
     unordered_map<unsigned long, unsigned> cache;
     spec->addOutput(bdd2aig(mgr, spec, *losing_transitions, &cache),"_attractor_");
-    spec->addOutput(bdd2aig(mgr, spec, *safe_transitions, &cache),"_safe_");
-    spec->addOutput(bdd2aig(mgr, spec, *control_loss_states, &cache),"_cooperation_");
-    assert((*losing_transitions & *control_loss_states) == mgr->bddZero());
+    spec->addOutput(bdd2aig(mgr, spec, *control_loss_transitions, &cache),"_cooperation_");
+    spec->addOutput(bdd2aig(mgr, spec, *safe_transitions, &cache),"_coreach_");
+    assert((*losing_transitions & *control_loss_transitions) == mgr->bddZero());
 
     // Finally, we write the modified spec to file
     spec->writeToFile(settings.out_file);
     // Cleaning
     synth_data.i_functions.clear();
-    // synth_data.control_loss_states.clear();
+    // synth_data.control_loss_transitions.clear();
 }
 
 
@@ -903,7 +903,21 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
  * @brief Compute a set of states from which Env can force the game into error=1
  * with possibly cooperation of Controller. This computes the least fp of
  *   X -> err \/ Pre(Upre^*(X)) 
- * until init is reached.
+ * all states are covered. At each iteration (the fresh states of) Upre^*(X) is added to `losing_transitions`,
+ * and (the fresh states of) Pre(...) to `control_loss_transitions`.
+ * 
+ * So picking a pair (l,x_u) from control_loss_transitions, we either enter the corresponding Upre^*(X),
+ * or go to an unknown state (that could be anywhere, e.g. be inconclusive).
+ * 
+ * At the end of the fp computation, error_states is the set of all coreachable states from the error state.
+ * Let this set be called Coreach.
+ * 
+ * AllCoop = ∃X_c. Pre(Coreach)(L,X_u,X_c).
+ * 
+ * And restrict it to states outside of `losing_transitions` and `control_loss_transitions`. This set is nonempty
+ * in general since from some cooperative state l, some uncmaction x_u, might only lead to states that were not
+ * yet in the fp during its computation. These state sare further from the objective so we may want to rather use
+ * actions from `control_loss_transitions`. Nonetheless, for achieving completeness in testing, these are important as well.
  * 
  * @param mgr 
  * @param spec 
@@ -914,7 +928,7 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
  * @pre all given BDD* are non-null except possibly for upre_init.
  * @post *losing_transitions(L,X_u) is the set of state-Env action pairs from which Env can ensure
  * either error or the next control loss point (these are the witness transitions of Upre^* in the above fp).
- * @post synth_data.control_loss_states contains a single BDD describing the set of states (L,X_u)
+ * @post synth_data.control_loss_transitions contains a single BDD describing the set of states (L,X_u)
  * from which cooperation is needed. This set is disjoint from *losing_transitions, and is the witness of the pre
  * operation in the fp above.
  * @post safe_transitions(L,X_u) is the set of state and unc action pairs such that the state belongs to losing_region, and s.t. all successors stay
@@ -922,12 +936,12 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
  * @return int 
  */
 static int bestEffortReachSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
-                               BDD* losing_region, BDD* losing_transitions, BDD * control_loss_states, BDD * safe_transitions,
+                               BDD* losing_region, BDD* losing_transitions, BDD * control_loss_transitions, BDD * safe_transitions,
                                bool do_synth=false) 
     {
     assert(losing_transitions != NULL);
     assert(losing_region != NULL);
-    assert(control_loss_states != NULL);
+    assert(control_loss_transitions != NULL);
     assert(safe_transitions != NULL);
     bool includes_init = false;
     unsigned cnt = 0;
@@ -951,15 +965,14 @@ spec->dump2dot(init_state, fname.c_str());
 #endif
 
     // control_loss_state(L,X_u): states from which a cooperative move is necessary
-    // synth_data.control_loss_states = ~mgr->bddOne();
-    // BDD & control_loss_states = synth_data.control_loss_states;
-    if (control_loss_states != nullptr)
-        *control_loss_states = mgr->bddZero();
+    // synth_data.control_loss_transitions = ~mgr->bddOne();
+    // BDD & control_loss_transitions = synth_data.control_loss_transitions;
+    if (control_loss_transitions != nullptr)
+        *control_loss_transitions = mgr->bddZero();
     if (safe_transitions != nullptr){
         *safe_transitions = mgr->bddZero();
     }
 
-    // while (!includes_init && error_states != prev_error) {
     while ( error_states != prev_error) {
         prev_error = error_states;
         BDD it_losing_region;
@@ -981,8 +994,8 @@ spec->dump2dot(error_states, fname.c_str());
         // Add one-step cooperative predecessors: error_states = error_states | Pre(error_states)
         BDD it_pre_transitions;
         BDD pre_error_states = pre(spec, error_states, it_pre_transitions);
-        *control_loss_states = *control_loss_states | (it_pre_transitions.ExistAbstract(cinput_cube) & ~error_states);
-        error_states = error_states | control_loss_states->ExistAbstract(uinput_cube);
+        *control_loss_transitions = *control_loss_transitions | (it_pre_transitions.ExistAbstract(cinput_cube) & ~error_states);
+        error_states = error_states | control_loss_transitions->ExistAbstract(uinput_cube);
         includes_init |= ((init_state & error_states) != ~mgr->bddOne());
         if (losing_region != NULL) {
             *losing_region = error_states;
@@ -990,10 +1003,10 @@ spec->dump2dot(error_states, fname.c_str());
 
 #ifndef NDEBUG
 fname = "cooperation_states" + to_string(cnt) + ".dot";
-spec->dump2dot(*control_loss_states ,fname.c_str());
+spec->dump2dot(*control_loss_transitions ,fname.c_str());
 //spec->dump2dot(it_pre_transitions, "ite.dot");
 std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<". cooperation size: "<< 
-           control_loss_states->nodeCount() << "\n";
+           control_loss_transitions->nodeCount() << "\n";
 
 #endif
     }
@@ -1001,8 +1014,8 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
 
         if(safe_transitions != NULL){
             BDD safe_trans;
-            upre(spec, error_states, safe_trans);
-            *safe_transitions |= safe_trans.UnivAbstract(cinput_cube);
+            pre(spec, error_states, safe_trans);
+            *safe_transitions = safe_trans.ExistAbstract(cinput_cube);
         }
 
 
@@ -1010,14 +1023,15 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
         if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
         // let us clean the AIG before we start introducing new stuff
         spec->popErrorLatch();
-        if (settings.out_file != NULL && losing_transitions != NULL && control_loss_states != NULL) {
+        if (settings.out_file != NULL && losing_transitions != NULL && control_loss_transitions != NULL) {
             dbgMsg("Starting synthesis");
-            *control_loss_states = control_loss_states->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+            *control_loss_transitions = control_loss_transitions->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
             *losing_transitions = losing_transitions->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
-            *safe_transitions &= (~*losing_transitions).ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+            *safe_transitions = safe_transitions->ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+            // *safe_transitions &= (~*losing_transitions).ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
 #ifndef NDEBUG
-            spec->dump2dot(*safe_transitions, "safe.dot");
-            spec->dump2dot(*control_loss_states, "cooperation.dot");
+            spec->dump2dot(*safe_transitions, "coreach.dot");
+            spec->dump2dot(*control_loss_transitions, "cooperation.dot");
             spec->dump2dot(*losing_transitions, "losing.dot");
 #endif
         }
@@ -1028,9 +1042,9 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
             logMsg("Ignoring inductive certificate file");
         }
     }
-
-    *losing_transitions &= ~*control_loss_states;
-    *safe_transitions &= ~*control_loss_states;
+    *control_loss_transitions &= *losing_transitions;
+    // *losing_transitions &= ~*control_loss_transitions;
+    // *safe_transitions &= ~*control_loss_transitions;
 
     // logMsg("Strategy synthesized with " + std::to_string(cnt) + " control losses.");
     std::cout << ("[abssynthe] Strategy synthesized with " + std::to_string(cnt) + " cooperation step(s).") << "\n";
@@ -1565,7 +1579,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     bool result;
     BDD losing_region;
     BDD losing_transitions;
-    BDD control_loss_states;
+    BDD control_loss_transitions;
     BDD safe_transitions;
     // we want spec to get garbage collected before we finalize
     // the synthesis step
@@ -1581,12 +1595,12 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
                 result = compSolve4(&mgr, &spec);
         } else if (settings.best_effort_reach){
             result = bestEffortReachSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions, 
-                                                &control_loss_states,
+                                                &control_loss_transitions,
                                                 &safe_transitions,
                                                 settings.out_file != NULL);
             // 0: Adversary can guide the system to err possibly with the help of Controller
             // 1: They cannot, which means that err is not reachable from init
-            assert((losing_transitions & control_loss_states) == mgr.bddZero());
+            assert((losing_transitions & control_loss_transitions) == mgr.bddZero());
         } else { // traditional fixpoint computation
             result = internalSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
                                    settings.out_file != NULL);
@@ -1601,7 +1615,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
         finalizeEnvSynth(&mgr, spec_base);
     } else if (!result && settings.best_effort_reach && settings.out_file != NULL){
         dbgMsg("Generating best-effort reachability strategy");
-        finalizeBestEffortSynth(&mgr, spec_base, &losing_transitions, &control_loss_states, &safe_transitions);
+        finalizeBestEffortSynth(&mgr, spec_base, &losing_transitions, &control_loss_transitions, &safe_transitions);
     }
     return result;
 }
