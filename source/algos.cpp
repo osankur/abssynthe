@@ -37,6 +37,7 @@
 #include <list>
 #include <set>
 #include <cfloat>
+#include <sstream>
 #include "cuddObj.hh"
 
 #include "abssynthe.h"
@@ -367,7 +368,8 @@ static void finalizeEnvSynth(Cudd* mgr, AIG* spec,
     // synth_data.control_loss_transitions.clear();
 }
 
-static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitions, BDD * control_loss_transitions, BDD * safe_transitions){
+static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitions, BDD * control_loss_transitions, BDD * safe_transitions,
+                                    std::vector<BDD> & onion_layers){
     // we now get rid of all controllable inputs in the aig spec by replacing
     // each one with an and computed using bdd2aig...
     if (settings.final_reordering) {
@@ -380,7 +382,11 @@ static void finalizeBestEffortSynth(Cudd* mgr, AIG* spec, BDD * losing_transitio
     spec->addOutput(bdd2aig(mgr, spec, *control_loss_transitions, &cache),"_cooperation_");
     spec->addOutput(bdd2aig(mgr, spec, *safe_transitions, &cache),"_coreach_");
     assert((*losing_transitions & *control_loss_transitions) == mgr->bddZero());
-
+    for(size_t i = 0; i < onion_layers.size(); i++){
+        std::stringstream ss;
+        ss << "_pre" << i << "_";
+        spec->addOutput(bdd2aig(mgr, spec, onion_layers[i], &cache), ss.str().c_str());
+    }
     // Finally, we write the modified spec to file
     spec->writeToFile(settings.out_file);
     // Cleaning
@@ -928,16 +934,16 @@ static bool internalSolveExact(Cudd* mgr, BDDAIG* spec, const BDD* upre_init,
  * @pre all given BDD* are non-null except possibly for upre_init.
  * @post *losing_transitions(L,X_u) is the set of state-Env action pairs from which Env can ensure
  * either error or the next control loss point (these are the witness transitions of Upre^* in the above fp).
- * @post synth_data.control_loss_transitions contains a single BDD describing the set of states (L,X_u)
+ * @post *control_loss_transitions(L, X_u) contains a single BDD describing the set of states (L,X_u)
  * from which cooperation is needed. This set is disjoint from *losing_transitions, and is the witness of the pre
  * operation in the fp above.
- * @post safe_transitions(L,X_u) is the set of state and unc action pairs such that the state belongs to losing_region, and s.t. all successors stay
- * within the Upre^* (although may not make progress toward target); and such that the pair does not belong to losing_transitions.
+ * @post safe_transitions(L,X_u) is the set of all coreachable state-X_u pair.
+ * @post onion_layers contains bwd reachability layers: 0 is error_states, 1 is Pre(error_states) etc.
  * @return int 
  */
 static int bestEffortReachSolve(Cudd* mgr, BDDAIG* spec, const BDD* upre_init, 
                                BDD* losing_region, BDD* losing_transitions, BDD * control_loss_transitions, BDD * safe_transitions,
-                               bool do_synth=false) 
+                               std::vector<BDD> & onion_layers, bool do_synth=false) 
     {
     assert(losing_transitions != NULL);
     assert(losing_region != NULL);
@@ -1007,7 +1013,6 @@ spec->dump2dot(*control_loss_transitions ,fname.c_str());
 //spec->dump2dot(it_pre_transitions, "ite.dot");
 std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << ". size of error_states: " << error_states.nodeCount() <<". cooperation size: "<< 
            control_loss_transitions->nodeCount() << "\n";
-
 #endif
     }
     if (includes_init && do_synth && outputExpected()) {
@@ -1043,8 +1048,18 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
         }
     }
     *control_loss_transitions &= *losing_transitions;
-    // *losing_transitions &= ~*control_loss_transitions;
-    // *safe_transitions &= ~*control_loss_transitions;
+
+    // Compute backward reachability onion rings:
+    error_states = spec->errorStates();
+    BDD next = spec->errorStates();
+    while( next != mgr->bddZero()){
+        onion_layers.push_back(next);
+        pre(spec, onion_layers[onion_layers.size()-1], next);
+        next = next.ExistAbstract(cinput_cube);
+        next = next.ExistAbstract(uinput_cube);
+        next &= ~error_states;
+        error_states |= next;
+    }
 
     // logMsg("Strategy synthesized with " + std::to_string(cnt) + " control losses.");
     std::cout << ("[abssynthe] Strategy synthesized with " + std::to_string(cnt) + " cooperation step(s).") << "\n";
@@ -1581,6 +1596,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
     BDD losing_transitions;
     BDD control_loss_transitions;
     BDD safe_transitions;
+    std::vector<BDD> onion_layers;
     // we want spec to get garbage collected before we finalize
     // the synthesis step
     {
@@ -1597,6 +1613,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
             result = bestEffortReachSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions, 
                                                 &control_loss_transitions,
                                                 &safe_transitions,
+                                                onion_layers,
                                                 settings.out_file != NULL);
             // 0: Adversary can guide the system to err possibly with the help of Controller
             // 1: They cannot, which means that err is not reachable from init
@@ -1615,7 +1632,7 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
         finalizeEnvSynth(&mgr, spec_base);
     } else if (!result && settings.best_effort_reach && settings.out_file != NULL){
         dbgMsg("Generating best-effort reachability strategy");
-        finalizeBestEffortSynth(&mgr, spec_base, &losing_transitions, &control_loss_transitions, &safe_transitions);
+        finalizeBestEffortSynth(&mgr, spec_base, &losing_transitions, &control_loss_transitions, &safe_transitions,  onion_layers);
     }
     return result;
 }
