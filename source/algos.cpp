@@ -1049,9 +1049,10 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
     }
     *control_loss_transitions &= *losing_transitions;
 
-    // Compute backward reachability onion rings:
-    error_states = spec->errorStates();
-    BDD next = spec->errorStates();
+    // Compute backward reachability onion rings (start with the error states and not the fake latch)
+    pre(spec, spec->errorStates(), error_states);
+    error_states.ExistAbstract(cinput_cube).ExistAbstract(uinput_cube);
+    BDD next = error_states;
     while( next != mgr->bddZero()){
         onion_layers.push_back(next);
         pre(spec, onion_layers[onion_layers.size()-1], next);
