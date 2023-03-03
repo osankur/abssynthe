@@ -1,6 +1,6 @@
 CXX=g++
-#CXXFLAGS=-Wall -std=c++11 -pthread -O3 -D NDEBUG -g
-CXXFLAGS=-Wall -std=c++11 -pthread -O3 -g
+CXXFLAGS=-Wall -std=c++11 -pthread -O3 -D NDEBUG -g
+#CXXFLAGS=-Wall -std=c++11 -pthread -O3 -g
 DBGFLAGS=-Wall -std=c++11 -pthread -fsanitize=address -fno-omit-frame-pointer -g
 HEADERS=abssynthe.h logging.h aig.h aiger.h
 SOURCES=abssynthe.cpp logging.cpp aig.cpp aiger.c aigtocnf.c algos.cpp
