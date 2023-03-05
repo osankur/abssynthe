@@ -785,7 +785,7 @@ static BDD upre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
 
 static BDD pre(BDDAIG* spec, BDD dst, BDD &trans_bdd) {
     BDD not_dst = ~dst;
-    trans_bdd = substituteLatchesNext(spec, dst, &not_dst);
+    trans_bdd = substituteLatchesNext(spec, dst, NULL);
     BDD cinput_cube = spec->cinputCube();
     BDD uinput_cube = spec->uinputCube();
     BDD temp_bdd = trans_bdd.ExistAbstract(cinput_cube);
@@ -1015,13 +1015,9 @@ std::cout << "Pre done. cnt=" << cnt << ". includes_init: " << includes_init << 
            coop_transitions->nodeCount() << "\n";
 #endif
     }
-    // BDD greedy_states = error_states;
-    // assert( greedy_states == (*losing_transitions | *coop_transitions).ExistAbstract(cinput_cube).ExistAbstract(uinput_cube).ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit)));
-
-    // std::cout << "greedy  contains init: " << ((init_state & error_states) != ~mgr->bddOne()) << "\n";
     // Compute backward reachability onion rings (start with the error states and not the fake latch)
     pre(spec, spec->errorStates(), error_states);
-    error_states = error_states.ExistAbstract(cinput_cube).ExistAbstract(uinput_cube).ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+    error_states = error_states.ExistAbstract(cinput_cube).ExistAbstract(uinput_cube);
     BDD next = error_states;
     cnt = 0;
     while( next != mgr->bddZero()){
@@ -1033,20 +1029,18 @@ cnt++;
 #endif 
 
         pre(spec, onion_layers[onion_layers.size()-1], next);
-        next = next.ExistAbstract(cinput_cube).ExistAbstract(uinput_cube).ExistAbstract(mgr->bddVar(spec->get_error_fake_latch().lit));
+        next = next.ExistAbstract(cinput_cube).ExistAbstract(uinput_cube);
         next &= ~error_states;
         error_states |= next;
+    }
+    if(coreach_transitions != NULL){
+        BDD coreach_trans;
+        pre(spec, error_states, coreach_trans);
+        *coreach_transitions = coreach_trans.ExistAbstract(cinput_cube);
     }
 
     // Synthesis
     if (includes_init && do_synth && outputExpected()) {
-
-        if(coreach_transitions != NULL){
-            BDD safe_trans;
-            pre(spec, error_states, safe_trans);
-            *coreach_transitions = safe_trans.ExistAbstract(cinput_cube);
-        }
-
         dbgMsg("acquiring lock on synth mutex");
         if (data != NULL) pthread_mutex_lock(&data->synth_mutex);
         // let us clean the AIG before we start introducing new stuff
@@ -1632,11 +1626,6 @@ bool solve(AIG* spec_base, Cudd_ReorderingType reordering) {
             // losing transitions and coop transitions must be disjoint
             assert((losing_transitions & coop_transitions) == mgr.bddZero());
             // all states that are coreachable must be covered in the greedy states that is coop | losing
-#ifndef NDEBUG
-            BDD greedy_states = (coop_transitions | losing_transitions).ExistAbstract(spec.cinputCube()).ExistAbstract(spec.uinputCube());
-            BDD coreach_states = (coreach_transitions).ExistAbstract(spec.cinputCube()).ExistAbstract(spec.uinputCube());
-            assert((coreach_states & !greedy_states) == mgr.bddZero());
-#endif
 
         } else { // traditional fixpoint computation
             result = internalSolve(&mgr, &spec, NULL, &losing_region, &losing_transitions,
