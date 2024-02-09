@@ -60,6 +60,15 @@ For the inductive certificate we go beyond just safe states and want to capture 
 
 # Changelog
 
+## The `reach_synt` branch: Best-Effort Reachability
+The current branch adds the following features:
+- The new -b option solves the best-effort reachability problem: it computes the winning region W_0 for environment (thus with reachability objective),
+but also the set of cooperative states C_0 from which some pair of controllable and uncontrollable input leads to the winning region W_0. The attractor of this larger set W_0 union C_0 is computed and called W_1, and another layer of cooperative states C_1 (which can reach W_1 in one step) is computed. This is repeated  until all coreachable states are covered. 
+- The -o option now outputs the full circuit controlled by the winning strategy, whether it is player 1 or player 2. The file contains the controlled circuit with additional outputs:
+    - An output called `_attractor_` represents the union of W_i (a state sets this output to 1 iff it belongs to this union)
+    - An output called `_cooperation_` is the union of C_i
+    - A list of outputs `_pre0_`, `_pre1_`, etc. are the backwards reachability layers (`_pre0_` is `err`, `_pre1_` is its predecessors etc.)
+
 ## UPDATES v2.1
 Besides bug fixing, this version includes options for
 * a forced reordering just before generating the output circuit (so as
